@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizFlash", "QuizFlash.csproj", "{EB68D9D5-D2DC-4E77-9189-77A71C8F092C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB68D9D5-D2DC-4E77-9189-77A71C8F092C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB68D9D5-D2DC-4E77-9189-77A71C8F092C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB68D9D5-D2DC-4E77-9189-77A71C8F092C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB68D9D5-D2DC-4E77-9189-77A71C8F092C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3117EB04-D4AE-407D-A8FB-F58ABB776CAD}
+	EndGlobalSection
+EndGlobal
