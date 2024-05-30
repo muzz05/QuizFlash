@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizFlash"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="QuizFlash" Height="500" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
         
+        <!--Logo Section-->
+        <StackPanel Background="#282438" Orientation="Horizontal">
+            <Image Height="40" HorizontalAlignment="Left" Source="A:\Coding\C#\Projects\QuizFlash\Images\Logo.jpg" Margin="10, 10, 10, 10"/>
+            <TextBlock Foreground="#c4c3cf" Margin="10,10,10,10" VerticalAlignment="Center">QuizFlash</TextBlock>
+        </StackPanel>
+
+        <!--Header-->
+        <Grid Background="#282438" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" VerticalAlignment="Center">User</TextBlock>
+        </Grid>
+
+        <!--Navigation-->
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button>Home</Button>
+            <Button>Classroom</Button>
+            <Button>Quiz</Button>
+        </StackPanel>
+        
+        <!--Main View-->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <TextBlock>Hello</TextBlock>
+        </Grid>
     </Grid>
 </Window>
