@@ -15,7 +15,7 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        
+
         <!--Logo Section-->
         <StackPanel Background="#282438" Orientation="Horizontal">
             <Image Height="40" HorizontalAlignment="Left" Source="A:\Coding\C#\Projects\QuizFlash\Images\Logo.jpg" Margin="10, 10, 10, 10"/>
@@ -29,14 +29,33 @@
 
         <!--Navigation-->
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button>Home</Button>
-            <Button>Classroom</Button>
-            <Button>Quiz</Button>
+            <Button Background="Transparent" Cursor="Hand" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Images\home.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>
+                    <TextBlock Margin="0" VerticalAlignment="Center">Home</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" Cursor="Hand" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Images\classroom.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>
+                    <TextBlock Margin="0" VerticalAlignment="Center">Classroom</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Background="Transparent" Cursor="Hand" Height="40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Images\quiz.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>
+                    <TextBlock Margin="0" VerticalAlignment="Center">Quiz</TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
-        
+
         <!--Main View-->
         <Grid Grid.Column="1" Grid.Row="1">
-            <TextBlock>Hello</TextBlock>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="281*"/>
+                <RowDefinition Height="155*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.RowSpan="2">Hello</TextBlock>
         </Grid>
     </Grid>
 </Window>
