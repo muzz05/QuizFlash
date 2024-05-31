@@ -19,6 +19,8 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
+
+
         public Teacher()
         {
             InitializeComponent();

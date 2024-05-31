@@ -180,9 +180,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
     <Folder Include="StudentSection\" />
     <Folder Include="TeacherSection\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\students.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\classroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
