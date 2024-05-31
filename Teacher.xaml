@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizFlash"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="Teacher Dashboard" Height="500" Width="800">
-    <Grid>
+    <Grid Background="#282438">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -17,45 +18,78 @@
         </Grid.RowDefinitions>
 
         <!--Logo Section-->
-        <StackPanel Background="#282438" Orientation="Horizontal">
-            <Image Height="40" HorizontalAlignment="Left" Source="Images/Logo.jpg" Margin="10, 10, 10, 10"/>
-            <TextBlock Foreground="#c4c3cf" Margin="10,10,10,10" VerticalAlignment="Center">QuizFlash</TextBlock>
+        <StackPanel Background="#282438" Orientation="Horizontal" Width="160" HorizontalAlignment="Center">
+            <Grid Width="22" Height="22" Margin="20,0,0,0">
+                <Ellipse Fill="white" />
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Images/Logo.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Grid>
+            <TextBlock HorizontalAlignment="Center" Foreground="white" Margin="10,10,10,12" FontSize="19" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
         </StackPanel>
 
         <!--Header-->
         <Grid Background="#282438" Grid.Column="1">
-            <TextBlock HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" VerticalAlignment="Center">User</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >User Profile</TextBlock>
+                <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
+
+            </StackPanel>
         </Grid>
 
         <!--Navigation-->
-        <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button Background="Transparent" Cursor="Hand" Height="40">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="Images/home.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>-->
-                    <TextBlock Margin="0" VerticalAlignment="Center">Home</TextBlock>
-                </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
+            <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1" >
+                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/home.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Home</TextBlock>
+                </Grid>
             </Button>
-            <Button Background="Transparent" Cursor="Hand" Height="40">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="Images/classroom.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>-->
-                    <TextBlock Margin="0" VerticalAlignment="Center">Classroom</TextBlock>
-                </StackPanel>
+            <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
+                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image  RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/classroom.png" Grid.Column="0" Height="18" Width="18" HorizontalAlignment="Left"/>
+                    <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" Margin="10, 0, 0, 0" >Classroom</TextBlock>
+                </Grid>
             </Button>
-            <Button Background="Transparent" Cursor="Hand" Height="40">
-                <StackPanel Orientation="Horizontal">
-                    <!--<Image Source="Images/quiz.png" Height="30" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,10,0"/>-->
-                    <TextBlock Margin="0" VerticalAlignment="Center">Quiz</TextBlock>
-                </StackPanel>
+            <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
+                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/students.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Students</TextBlock>
+                </Grid>
+            </Button>
+            <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
+                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/logout.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
+                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Logout</TextBlock>
+                </Grid>
             </Button>
         </StackPanel>
 
         <!--Main View-->
-        <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="281*"/>
-                <RowDefinition Height="155*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.RowSpan="2">Hello</TextBlock>
+        <Grid Grid.Column="1" Grid.Row="1"  Background="#282438">
+            <Grid Background="Transparent" Margin="15,5,15,15" >
+                <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
+
+            </Grid>
         </Grid>
     </Grid>
 </Window>
