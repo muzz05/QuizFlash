@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizFlash"
+        xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Title="Teacher Dashboard" Height="500" Width="800">
     <Grid Background="#282438">
         <Grid.ColumnDefinitions>
@@ -19,22 +21,14 @@
 
         <!--Logo Section-->
         <StackPanel Background="#282438" Orientation="Horizontal" Width="160" HorizontalAlignment="Center">
-            <Grid Width="22" Height="22" Margin="20,0,0,0">
-                <Ellipse Fill="white" />
-                <Ellipse>
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="/Images/Logo.png"  RenderOptions.BitmapScalingMode="HighQuality"/>
-
-                    </Ellipse.Fill>
-                </Ellipse>
-            </Grid>
-            <TextBlock HorizontalAlignment="Center" Foreground="white" Margin="10,10,10,12" FontSize="19" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
+            <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Height="18"/>
+            <TextBlock HorizontalAlignment="Center" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="19" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
         </StackPanel>
 
         <!--Header-->
         <Grid Background="#282438" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >User Profile</TextBlock>
+                <TextBlock Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >Teacher Profile</TextBlock>
                 <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
 
             </StackPanel>
@@ -48,8 +42,8 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/home.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Home</TextBlock>
+                    <Icons:PackIconTypicons Kind="Home" Foreground="#c4c3cf" Height="13" Width="13"/>
+                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
                 </Grid>
             </Button>
             <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
@@ -58,8 +52,8 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
-                    <Image  RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/classroom.png" Grid.Column="0" Height="18" Width="18" HorizontalAlignment="Left"/>
-                    <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" Margin="10, 0, 0, 0" >Classroom</TextBlock>
+                    <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf"/>
+                    <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="100">Classroom</TextBlock>
                 </Grid>
             </Button>
             <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
@@ -68,20 +62,23 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/students.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Students</TextBlock>
+                    <Icons:PackIconForkAwesome Kind="GraduationCap" Foreground="#c4c3cf" Height="13" Width="13"/>
+                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Students</TextBlock>
                 </Grid>
             </Button>
-            <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
-                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="90*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/logout.png" Grid.Column="0" Height="18" Width="18" Margin="0, 0, 0, 0" HorizontalAlignment="Left"/>
-                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="white" >Logout</TextBlock>
-                </Grid>
-            </Button>
+            <Grid Margin="0,270">
+
+                <Button BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Height="40" Grid.Column="1">
+                    <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="90*"/>
+                        </Grid.ColumnDefinitions>
+                        <Icons:PackIconEvaIcons Kind="LogOut" Foreground="#c4c3cf" Height="13" Width="13"/>
+                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Logout</TextBlock>
+                    </Grid>
+                </Button>
+            </Grid>
         </StackPanel>
 
         <!--Main View-->
