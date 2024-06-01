@@ -6,20 +6,14 @@
         xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:QuizFlash"
         mc:Ignorable="d"
+        WindowStyle="None"
         Title="Signup" Height="670" Width="850" WindowStartupLocation="CenterScreen">
-
-
-    
-    
-    
-    
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="C:\Users\Rizwan\Downloads\close.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
 
         <Border CornerRadius="0 0 0 0">
             <Border.Background>
@@ -31,17 +25,22 @@
 
             <Grid>
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Let's get you set up" Style="{StaticResource TitleText}" />
-                    <TextBlock Text="Join our quiz platform now and start your journey towards unlimited learning and knowledge!" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
-                    <!--<Image Source="\Images\arrow-right.ok.png" Width="50" ></Image>-->
-                    <Icons:PackIconTypicons Kind="ArrowForwardOutline" Width="50"/>
+                    <Image HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="100" Width="100" Margin="0, 0, 0, 10"/>
+
+                    <TextBlock Text="Let's get you set up" Style="{StaticResource TitleText}" FontSize="25" />
+                    <TextBlock Text="Join our quiz platform now and start your journey towards unlimited learning and knowledge!" Opacity="0.8" Margin="20 30 20 20" Style="{StaticResource NormalText}" />
+                    <Icons:PackIconFontAwesome Kind="ArrowAltCircleRightSolid" HorizontalAlignment="Center" Height="40" Width="40" Foreground="#c4c3cf"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <Border Background="#353340 " Grid.Column="1" CornerRadius="0 0 0 0" MouseDown="Border_MouseDown">
-            <StackPanel VerticalAlignment="Center" >
-                <TextBlock  Text="Registration" Foreground="#c4c3cf" Style="{StaticResource TitleText}" />
+            <StackPanel VerticalAlignment="Center" Height="650">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12"/>
+                    <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12"/>
+                </StackPanel>
+                <TextBlock  Text="Registration" Foreground="#c4c3cf" Style="{StaticResource TitleText}" Margin="0,80,0,15"/>
 
 
 
@@ -51,8 +50,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <Image Source="C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Images\userrname.png" Height="30" />
+                        <Icons:PackIconMaterial Kind="Account" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
                         <TextBlock x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" />
                         <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
@@ -64,8 +62,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <Image Source="/Images/.png" Height="30" />
+                        <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
                         <TextBlock x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" />
                         <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
@@ -77,8 +74,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <Image Source="/Images/password.png" Height="30" />
+                        <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
                         <TextBlock x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" />
                         <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" />
 
@@ -92,33 +88,49 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-                        <Image Source="/Images/padlock.png" Height="30" />
+                        <Icons:PackIconMaterial Kind="MotherHeart" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
                         <TextBlock x:Name="textSecurity" MouseDown="textSecurity_MouseDown" Text="Enter your mother's name?" Style="{StaticResource textHint}" />
                         <TextBox x:Name="txtSecurity"  TextChanged="txtSecurity_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
 
 
-
-                <Border BorderBrush="#c4c3cf" Margin="70,10" CornerRadius="5">
-                    <StackPanel Margin="7,9" >
+                <!--Buttons for Changing the Roles-->
+                <Border BorderBrush="#c4c3cf" Margin="100,10" CornerRadius="5">
+                    <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40*"/>
                             </Grid.ColumnDefinitions>
+                            <Button Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Grid>
+                                        <Ellipse Fill="#c4c3cf" Height="40" Width="40"/>
+                                        <Icons:PackIconFontAwesome Kind="GraduationCapSolid" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                    </Grid>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#c4c3cf" FontSize="15" FontWeight="SemiBold">Student</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Grid>
+                                        <Ellipse Fill="#c4c3cf" Height="40" Width="40"/>
+                                        <Icons:PackIconVaadinIcons Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
+                                    </Grid>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#c4c3cf" FontSize="15" FontWeight="SemiBold">Teacher</TextBlock>
+                                </StackPanel>
+                            </Button>
                             <!-- Checkbox for Teacher -->
-                            <CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <!--<CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
                             <!-- Checkbox for Student -->
-                            <CheckBox Grid.Column="1" Foreground="#c4c3cf" Background="#c4c3cf" FontSize="20" Content="Student" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <!--<CheckBox Grid.Column="1" Foreground="#c4c3cf" Background="#c4c3cf" FontSize="20" Content="Student" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
                         </Grid>
                     </StackPanel>
                 </Border>
-
-
-
-                <Button Content="Sign Up" Click="Button_Click" Style="{StaticResource mainButton}" />
+                <Button Content="Sign Up" Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 
