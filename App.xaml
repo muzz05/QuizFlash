@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:QuizFlash"
-             StartupUri="Signup.xaml">
+             StartupUri="Teacher.xaml">
 
     <Application.Resources>
+        
+        <!--For Kaif-->
 
 
         <Style x:Key="TitleText" TargetType="TextBlock">
@@ -142,6 +144,54 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+        
+        <!--For Muzzammil-->
+
+        <Style x:Key="NavigationButtons" TargetType="Button">
+
+            <Setter Property="Background" Value="#282438"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#4a4457"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#4a4457"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4a4457"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+
+
+
+        <!--For Haider-->
+        
+        
 
 
     </Application.Resources>
