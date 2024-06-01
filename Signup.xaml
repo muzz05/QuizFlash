@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:QuizFlash"
         mc:Ignorable="d"
         Title="Signup" Height="670" Width="850" WindowStartupLocation="CenterScreen">
@@ -32,7 +33,8 @@
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Let's get you set up" Style="{StaticResource TitleText}" />
                     <TextBlock Text="Join our quiz platform now and start your journey towards unlimited learning and knowledge!" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
-                    <Image Source="\Images\arrow-right.ok.png" Width="50" ></Image>
+                    <!--<Image Source="\Images\arrow-right.ok.png" Width="50" ></Image>-->
+                    <Icons:PackIconTypicons Kind="ArrowForwardOutline" Width="50"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -50,7 +52,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="/Images/username.png" Height="30" />
+                        <Image Source="C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Images\userrname.png" Height="30" />
                         <TextBlock x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" />
                         <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
@@ -63,7 +65,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="/Images/Email.png" Height="30" />
+                        <Image Source="/Images/.png" Height="30" />
                         <TextBlock x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" />
                         <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
@@ -76,7 +78,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="/Images/padlock.png" Height="30" />
+                        <Image Source="/Images/password.png" Height="30" />
                         <TextBlock x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" />
                         <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" />
 
