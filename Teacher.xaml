@@ -37,7 +37,7 @@
         <!--Navigation-->
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
             <Button Style="{StaticResource NavigationButtons}" >
-                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
@@ -47,17 +47,17 @@
                 </Grid>
             </Button>
             <Button Style="{StaticResource NavigationButtons}" >
-                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf"/>
+                    <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
                     <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="100">Classroom</TextBlock>
                 </Grid>
             </Button>
             <Button Style="{StaticResource NavigationButtons}" >
-                <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="90*"/>
@@ -69,12 +69,12 @@
             <Grid Margin="0,230">
 
                 <Button Style="{StaticResource NavigationButtons}" >
-                    <Grid HorizontalAlignment="left" Width="190" Margin="25,0,0,0">
+                    <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="90*"/>
                         </Grid.ColumnDefinitions>
-                        <Icons:PackIconEvaIcons Kind="LogOut" Foreground="#c4c3cf" Height="13" Width="13"/>
+                        <Icons:PackIconEvaIcons Kind="LogOut" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
                         <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Logout</TextBlock>
                     </Grid>
                 </Button>
