@@ -1,3 +1,4 @@
+-- CREATING THE DATABASE TABLES
 CREATE TABLE User (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
@@ -9,18 +10,21 @@ CREATE TABLE User (
 CREATE TABLE Teachers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
-    course VARCHAR(255) NOT NULL,
     teacherCode VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Students (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    Department VARCHAR(255),
     userId INT NOT NULL,
     studentCode VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Quiz (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    totalQuestions INT NOT NULL,
+    totalMarks INT NOT NULL,
+    marksPerQuestion INT NOT NULl,
     teacherId INT NOT NULL,
     classroomId INT NOT NULL
 );
@@ -36,8 +40,18 @@ CREATE TABLE QuestionAnswers (
     correct CHAR(1) NOT NULL
 );
 
+CREATE TABLE StudentResponse (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    quizId INT NOT NULL,
+    questionId INT NOT NULL,
+    studentId INT NOT NULL,
+    isCorrect TINYINT(1) NOT NULL,
+    checkedAnswer TINYINT(1) NOT NULL,
+);
+
 CREATE TABLE Classroom (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
     teacherId INT NOT NULL,
     studentCount INT NOT NULL,
     classCode VARCHAR(255) NOT NULL
@@ -60,5 +74,86 @@ CREATE TABLE Result (
     id INT AUTO_INCREMENT PRIMARY KEY,
     quizId INT NOT NULL,
     studentId INT NOT NULL,
-    marks INT NOT NULL
+    marksObtained INT NOT NULL
 );
+
+-- ADDING DUMMY DATA TO THE TABLES 
+
+
+-- Dummy data for User table
+INSERT INTO User (email, password, name, isTeacher) VALUES 
+('teacher1@example.com', 'password1', 'Teacher One', true),
+('teacher2@example.com', 'password2', 'Teacher Two', true),
+('teacher3@example.com', 'password3', 'Teacher Three', true),
+('student1@example.com', 'password1', 'Student One', false),
+('student2@example.com', 'password2', 'Student Two', false),
+('student3@example.com', 'password3', 'Student Three', false),
+('student4@example.com', 'password4', 'Student Four', false),
+('student5@example.com', 'password5', 'Student Five', false),
+('student6@example.com', 'password6', 'Student Six', false),
+('student7@example.com', 'password7', 'Student Seven', false);
+
+-- Dummy data for Teachers table
+INSERT INTO Teachers (userId, teacherCode) VALUES 
+(1, 'TCODE001'),
+(2, 'TCODE002'),
+(3, 'TCODE003');
+
+-- Dummy data for Students table with Engineering departments
+INSERT INTO Students (Department, userId, studentCode) VALUES 
+('Software Engineering', 4, 'SCODE001'),
+('Electrical Engineering', 5, 'SCODE002'),
+('Civil Engineering', 6, 'SCODE003'),
+('Mechanical Engineering', 7, 'SCODE004'),
+('Chemical Engineering', 8, 'SCODE005'),
+('Aerospace Engineering', 9, 'SCODE006'),
+('Biomedical Engineering', 10, 'SCODE007');
+
+-- Dummy data for Quiz table
+INSERT INTO Quiz (totalQuestions, totalMarks, marksPerQuestion, teacherId, classroomId) VALUES 
+(10, 50, 5, 1, 1),
+(15, 60, 4, 2, 2),
+(20, 100, 5, 3, 3);
+
+-- Dummy data for QuestionAnswers table with engineering-related questions
+INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES 
+(1, 'What is the main programming language used in software engineering?', 'A) Java', 'B) Python', 'C) C++', 'D) Ruby', 'B'),
+(1, 'What is the SI unit of electrical resistance?', 'A) Watt', 'B) Ohm', 'C) Volt', 'D) Ampere', 'B'),
+(2, 'Which of the following is a primary material used in civil engineering for construction?', 'A) Aluminum', 'B) Steel', 'C) Copper', 'D) Plastic', 'B'),
+(2, 'What is the principle behind the operation of a steam turbine?', 'A) Boyle\'s Law', 'B) Newton\'s Third Law', 'C) Carnot Cycle', 'D) Pascal\'s Law', 'C');
+
+-- Dummy data for StudentResponse table
+INSERT INTO StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) VALUES 
+(1, 1, 4, 1, 1),
+(1, 2, 4, 0, 1),
+(2, 3, 5, 1, 1),
+(2, 4, 5, 0, 1);
+
+-- Dummy data for Classroom table
+INSERT INTO Classroom (name, teacherId, studentCount, classCode) VALUES 
+('Class A', 1, 30, 'CLASSA001'),
+('Class B', 2, 25, 'CLASSB002'),
+('Class C', 3, 20, 'CLASSC003');
+
+-- Dummy data for ClassroomStudents table
+INSERT INTO ClassroomStudents (classroomId, studentId) VALUES 
+(1, 4),
+(1, 5),
+(1, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(3, 10);
+
+-- Dummy data for Flashcards table with engineering-related topics
+INSERT INTO Flashcards (studentId, title, data) VALUES 
+(4, 'Flashcards for Mechanical Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+(5, 'Flashcards for Electrical Engineering', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(6, 'Flashcards for Chemical Engineering', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+
+-- Dummy data for Result table
+INSERT INTO Result (quizId, studentId, marksObtained) VALUES 
+(1, 4, 40),
+(1, 5, 45),
+(2, 6, 50),
+(2, 7, 55);
