@@ -77,6 +77,13 @@ CREATE TABLE Result (
     marksObtained INT NOT NULL
 );
 
+CREATE TABLE LoggedDevices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId INT NOT NULL,
+    MacAddress VARCHAR(255) NOT NULL,
+    lastLogin INT DEFAULT 0,
+)
+
 -- ADDING DUMMY DATA TO THE TABLES 
 
 
