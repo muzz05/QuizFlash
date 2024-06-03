@@ -36,7 +36,7 @@
 
         <!--Navigation-->
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
-            <Button Style="{StaticResource NavigationButtons}" >
+            <RadioButton Style="{StaticResource NavigationButtons}" >
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -45,8 +45,8 @@
                     <Icons:PackIconTypicons Kind="Home" Foreground="#c4c3cf" Height="13" Width="13"/>
                     <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
                 </Grid>
-            </Button>
-            <Button Style="{StaticResource NavigationButtons}" >
+            </RadioButton>
+            <RadioButton Style="{StaticResource NavigationButtons}" >
                 <Grid HorizontalAlignment="left" Width="120" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -55,8 +55,8 @@
                     <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2"/>
                     <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="90">Classroom</TextBlock>
                 </Grid>
-            </Button>
-            <Button Style="{StaticResource NavigationButtons}" >
+            </RadioButton>
+            <RadioButton Style="{StaticResource NavigationButtons}" >
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -65,8 +65,8 @@
                     <Icons:PackIconMaterial Kind="HumanMaleBoard" Foreground="#c4c3cf" Height="13" Width="13"/>
                     <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Teachers</TextBlock>
                 </Grid>
-            </Button>
-            <Button Style="{StaticResource NavigationButtons}" >
+            </RadioButton>
+            <RadioButton Style="{StaticResource NavigationButtons}" >
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -75,9 +75,9 @@
                     <Icons:PackIconMaterial Kind="Cards" Foreground="#c4c3cf" Height="13" Width="13"/>
                     <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Flash Cards</TextBlock>
                 </Grid>
-            </Button>
+            </RadioButton>
             <Grid Margin="0,180">
-                <Button Style="{StaticResource NavigationButtons}" >
+                <Button Style="{StaticResource NavigationButtonLogout}" >
                     <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
