@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:toggleswitch="clr-namespace:ToggleSwitch;assembly=ToggleSwitch"
         xmlns:local="clr-namespace:QuizFlash"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -26,7 +27,6 @@
             <Grid>
                 <StackPanel VerticalAlignment="Center">
                     <Image HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="100" Width="100" Margin="0, 0, 0, 10"/>
-
                     <TextBlock Text="Let's get you set up" Style="{StaticResource TitleText}" FontSize="25" />
                     <TextBlock Text="Join our quiz platform now and start your journey towards unlimited learning and knowledge!" Opacity="0.8" Margin="20 30 20 20" Style="{StaticResource NormalText}" />
                     <Icons:PackIconFontAwesome Kind="ArrowAltCircleRightSolid" HorizontalAlignment="Center" Height="40" Width="40" Foreground="#c4c3cf"/>
@@ -35,7 +35,7 @@
         </Border>
 
         <Border Background="#353340 " Grid.Column="1" CornerRadius="0 0 0 0" MouseDown="Border_MouseDown">
-            <StackPanel VerticalAlignment="Center" Height="650">
+            <StackPanel VerticalAlignment="Center" Height="700">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                     <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12"/>
                     <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12"/>
@@ -94,16 +94,60 @@
                     </Grid>
                 </Border>
 
+                <Border BorderBrush="#c4c3cf" BorderThickness="1" Margin="70 10" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Icons:PackIconMaterial Kind="MotherHeart" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                        <TextBlock x:Name="dropdowndept" Text="Select Department:" Style="{StaticResource textHint}" Background="#c3c4cf" Foreground="#353340" />
+                        <!-- Customized ComboBox -->
+                        <ComboBox x:Name="cmbDepartments" Grid.Column="1" Margin="5,0,0,0" SelectionChanged="CmbDepartments_SelectionChanged">
+                            <ComboBox.Resources>
+                                <!-- Style for the ComboBoxItem -->
+                                <Style TargetType="ComboBoxItem">
+                                    <Setter Property="Background" Value="#353340"/>
+                                    <Setter Property="Foreground" Value="#c4c3cf"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                    <Setter Property="FontSize" Value="14"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <!--In WPF, a ControlTemplate is a markup element that defines the appearance and behavior of a control.
+                                            When you define a custom ControlTemplate for a ComboBoxItem you are specifying how each item in the ComboBox should be rendered.-->
+                                            <ControlTemplate TargetType="ComboBoxItem">
+                                                <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                                                    <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ComboBox.Resources>
+                            <!-- ComboBox Items -->
+                            <ComboBoxItem Content="Software"/>
+                            <ComboBoxItem Content="Civil"/>
+                            <ComboBoxItem Content="Mechanical"/>
+                            <ComboBoxItem Content="Electrical"/>
+                            <ComboBoxItem Content="Electronics"/>
+                            <ComboBoxItem Content="CSIT"/>
+                            <ComboBoxItem Content="Telecommunication"/>
+                        </ComboBox>
+                    </Grid>
+                </Border>
+
+
+
 
                 <!--Buttons for Changing the Roles-->
                 <Border BorderBrush="#c4c3cf" Margin="100,10" CornerRadius="5">
                     <StackPanel>
                         <Grid>
-                            <Grid.ColumnDefinitions>
+                            <!--<Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40*"/>
                                 <ColumnDefinition Width="40*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0">
+                            </Grid.ColumnDefinitions>-->
+                            <!--<Button Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0">
                                 <StackPanel Orientation="Horizontal">
 
                                     <Grid>
@@ -122,11 +166,24 @@
                                     </Grid>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#c4c3cf" FontSize="15" FontWeight="SemiBold">Teacher</TextBlock>
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
                             <!-- Checkbox for Teacher -->
                             <!--<CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
                             <!-- Checkbox for Student -->
                             <!--<CheckBox Grid.Column="1" Foreground="#c4c3cf" Background="#c4c3cf" FontSize="20" Content="Student" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                            <toggleswitch:HorizontalToggleSwitch x:Name="MyToggleSwitch" 
+                                   Width="100" Height="50" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center"
+                                   UncheckedBackground="#353340"
+                                   CheckedBackground="#c4c3cf"                                
+                                   UncheckedForeground="#c4c3cf"
+                                   CheckedForeground="#353340"
+                                    CheckedContent="Teacher"
+                                     UncheckedContent="Student" 
+                                     Cursor="Hand" 
+                                     FlowDirection="LeftToRight"/>
+
                         </Grid>
                     </StackPanel>
                 </Border>

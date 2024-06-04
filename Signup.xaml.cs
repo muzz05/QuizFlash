@@ -19,6 +19,7 @@ namespace QuizFlash
         public Signup()
         {
             InitializeComponent();
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -97,5 +98,16 @@ namespace QuizFlash
         {
             txtEmail_signup.Focus();
         }
+
+
+        private void CmbDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem)cmbDepartments.SelectedItem;
+
+            string selectedDepartment = selectedItem.Content.ToString();
+
+            dropdowndept.Text = selectedDepartment;
+        }
     }
 }
+
