@@ -3,6 +3,7 @@ CREATE TABLE User (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    departmentId INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     isTeacher BOOLEAN NOT NULL
 );
@@ -15,7 +16,6 @@ CREATE TABLE Teachers (
 
 CREATE TABLE Students (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Department VARCHAR(255),
     userId INT NOT NULL,
     studentCode VARCHAR(255) UNIQUE NOT NULL
 );
@@ -84,21 +84,27 @@ CREATE TABLE LoggedDevices (
     lastLogin INT DEFAULT 0,
 )
 
+CREATE TABLE Department (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+)
+
 -- ADDING DUMMY DATA TO THE TABLES 
 
 
 -- Dummy data for User table
-INSERT INTO User (email, password, name, isTeacher) VALUES 
-('teacher1@example.com', 'password1', 'Teacher One', true),
-('teacher2@example.com', 'password2', 'Teacher Two', true),
-('teacher3@example.com', 'password3', 'Teacher Three', true),
-('student1@example.com', 'password1', 'Student One', false),
-('student2@example.com', 'password2', 'Student Two', false),
-('student3@example.com', 'password3', 'Student Three', false),
-('student4@example.com', 'password4', 'Student Four', false),
-('student5@example.com', 'password5', 'Student Five', false),
-('student6@example.com', 'password6', 'Student Six', false),
-('student7@example.com', 'password7', 'Student Seven', false);
+INSERT INTO User (email, password, departmentId, name, isTeacher) VALUES 
+('teacher1@example.com', 'password1', 1, 'Teacher One', true),
+('teacher2@example.com', 'password2', 2, 'Teacher Two', true),
+('teacher3@example.com', 'password3', 3, 'Teacher Three', true),
+('student1@example.com', 'password1', 4, 'Student One', false),
+('student2@example.com', 'password2', 5, 'Student Two', false),
+('student3@example.com', 'password3', 6, 'Student Three', false),
+('student4@example.com', 'password4', 7, 'Student Four', false),
+('student5@example.com', 'password5', 8, 'Student Five', false),
+('student6@example.com', 'password6', 9, 'Student Six', false),
+('student7@example.com', 'password7', 10, 'Student Seven', false);
+
 
 -- Dummy data for Teachers table
 INSERT INTO Teachers (userId, teacherCode) VALUES 
@@ -107,14 +113,15 @@ INSERT INTO Teachers (userId, teacherCode) VALUES
 (3, 'TCODE003');
 
 -- Dummy data for Students table with Engineering departments
-INSERT INTO Students (Department, userId, studentCode) VALUES 
-('Software Engineering', 4, 'SCODE001'),
-('Electrical Engineering', 5, 'SCODE002'),
-('Civil Engineering', 6, 'SCODE003'),
-('Mechanical Engineering', 7, 'SCODE004'),
-('Chemical Engineering', 8, 'SCODE005'),
-('Aerospace Engineering', 9, 'SCODE006'),
-('Biomedical Engineering', 10, 'SCODE007');
+INSERT INTO Students (userId, studentCode) VALUES 
+(4, 'SCODE001'),
+(5, 'SCODE002'),
+(6, 'SCODE003'),
+(7, 'SCODE004'),
+(8, 'SCODE005'),
+(9, 'SCODE006'),
+(10, 'SCODE007');
+
 
 -- Dummy data for Quiz table
 INSERT INTO Quiz (totalQuestions, totalMarks, marksPerQuestion, teacherId, classroomId) VALUES 
@@ -164,3 +171,16 @@ INSERT INTO Result (quizId, studentId, marksObtained) VALUES
 (1, 5, 45),
 (2, 6, 50),
 (2, 7, 55);
+
+-- Dummy data for Department table
+INSERT INTO Department (name) VALUES 
+('Software Engineering'),
+('Electrical Engineering'),
+('Mechanical Engineering'),
+('Civil Engineering'),
+('Chemical Engineering'),
+('Biomedical Engineering'),
+('Aerospace Engineering'),
+('Environmental Engineering'),
+('Industrial Engineering'),
+('Materials Engineering');
