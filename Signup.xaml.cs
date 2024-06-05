@@ -97,18 +97,22 @@ namespace QuizFlash
             dropdowndept.Text = selectedDepartment;
         }
 
+
+
+
+
         private void Student_checkbox_Checked(object sender, RoutedEventArgs e)
         {
             // Uncheck the Teacher checkbox
             Teacher_checkbox.IsChecked = false;
 
             // Update colors for Student
-            student_check_icon.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
-            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            student_ellipse.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
 
             // Revert colors for Teacher
-            Teacher_check_icon.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
-            Teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            teacher_ellipse.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
 
 
         }
@@ -119,12 +123,12 @@ namespace QuizFlash
             Student_checkbox.IsChecked = false;
 
             // Update colors for Teacher
-            Teacher_check_icon.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
-            Teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            teacher_ellipse.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
 
             // Revert colors for Student
-            student_check_icon.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
-            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            student_ellipse.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
         }
 
 
