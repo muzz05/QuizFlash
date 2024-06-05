@@ -19,6 +19,7 @@ namespace QuizFlash
         public Signup()
         {
             InitializeComponent();
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -69,18 +70,6 @@ namespace QuizFlash
                 textEmail_signup.Visibility = Visibility.Visible;
         }
 
-        private void txtSecurity_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtSecurity.Text) && txtSecurity.Text.Length > 0)
-                textSecurity.Visibility = Visibility.Collapsed;
-            else
-                textSecurity.Visibility = Visibility.Visible;
-        }
-
-        private void textSecurity_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtSecurity.Focus();
-        }
 
 
 
@@ -97,5 +86,49 @@ namespace QuizFlash
         {
             txtEmail_signup.Focus();
         }
+
+
+        private void CmbDepartments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem)cmbDepartments.SelectedItem;
+
+            string selectedDepartment = selectedItem.Content.ToString();
+
+            dropdowndept.Text = selectedDepartment;
+        }
+
+        private void Student_checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            // Uncheck the Teacher checkbox
+            Teacher_checkbox.IsChecked = false;
+
+            // Update colors for Student
+            student_check_icon.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+
+            // Revert colors for Teacher
+            Teacher_check_icon.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            Teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+
+
+        }
+
+        private void Teacher_checkbox_Checked(object sender, RoutedEventArgs e)
+        {
+            // Uncheck the Student checkbox
+            Student_checkbox.IsChecked = false;
+
+            // Update colors for Teacher
+            Teacher_check_icon.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            Teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+
+            // Revert colors for Student
+            student_check_icon.Fill = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
+        }
+
+
+
     }
 }
+

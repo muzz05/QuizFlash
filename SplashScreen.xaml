@@ -1,0 +1,39 @@
+﻿<Window x:Class="QuizFlash.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:QuizFlash"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="SplashScreen" Height="210" Width="470"
+        Background="Transparent">
+    <Border Background="#282438" CornerRadius="25" BorderThickness="0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Height="210" HorizontalAlignment="Center" Margin="20,0,0,0">
+                <StackPanel Background="#282438" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Margin="0,20,0,0">
+                    <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Height="20" Width="20"/>
+                    <TextBlock HorizontalAlignment="Left" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="24" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
+                </StackPanel>
+                <StackPanel Margin="0,16,0,0">
+                    <TextBlock HorizontalAlignment="left" Foreground="#8c8c91"  FontSize="12" FontWeight="Bold" VerticalAlignment="Center">Loading Resources...</TextBlock>
+                    <ProgressBar Width="200" HorizontalAlignment="Left" IsIndeterminate="True" Value="0" Margin="0,10"/>
+                </StackPanel>
+                <!--<TextBlock HorizontalAlignment="Center" Foreground="#8c8c91" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center">Test Your Knowledge, Have Fun!</TextBlock>-->
+                <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  Margin="0,26,0,0" FontSize="8" VerticalAlignment="Center">copyright © 2024 by Muzzammil, Kaif, and Haider.</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  FontSize="8" VerticalAlignment="Center">All rights reserved.</TextBlock>
+
+            </StackPanel>
+            <Image Grid.Column="1" Source="/Images/splash.png" Height="180"/>
+        </Grid>
+    </Border>
+</Window>
