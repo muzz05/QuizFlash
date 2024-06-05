@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        Height="600" Width="700" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
-        Background="#272537" WindowStyle="None">
+        Height="700" Width="1000" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
+        Background="#272537" WindowStyle="None" ResizeMode="NoResize">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -85,17 +85,17 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Department" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Department" Binding="{Binding Department}" IsReadOnly="True" Width="*" />
                         <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Roll Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
-                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                        <DataGridTextColumn Header="Roll Number" Binding="{Binding RollNumber}" IsReadOnly="True" Width="*" />
+                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEditButton}">
+                                        <Button Style="{StaticResource gridEditButton}" Margin="50 0 0 0">
                                         <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                        <Button Style="{StaticResource gridRemoveButton}">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>

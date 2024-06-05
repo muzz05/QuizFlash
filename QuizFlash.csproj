@@ -243,6 +243,9 @@
     <Compile Include="ClassroomPage.xaml.cs">
       <DependentUpon>ClassroomPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlashCard.xaml.cs">
+      <DependentUpon>FlashCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Signup.xaml.cs">
       <DependentUpon>Signup.xaml</DependentUpon>
     </Compile>
@@ -258,9 +261,16 @@
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StudentClassroom.xaml.cs">
+      <DependentUpon>StudentClassroom.xaml</DependentUpon>
+    </Compile>
     <Page Include="ClassroomPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlashCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -298,6 +308,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Teacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentClassroom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

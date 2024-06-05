@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuizFlash
 {
     /// <summary>
-    /// Interaction logic for ClassroomPag.xaml
+    /// Interaction logic for FlashCard.xaml
     /// </summary>
-    public partial class ClassroomPag : Window
+    public partial class FlashCard : Window
     {
-        public ClassroomPag()
+        public FlashCard()
         {
             InitializeComponent();
         }

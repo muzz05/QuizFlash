@@ -2,11 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="SplashScreen.xaml"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+             StartupUri="FlashCard.xaml"
+             xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
    
     <Application.Resources>
-
+    
+                <!--For Kaif-->        
+        
                 <Style x:Key="TitleText" TargetType="TextBlock">
                     <Setter Property="FontSize" Value="35" />
                     <Setter Property="FontWeight" Value="Bold" />
@@ -78,10 +80,6 @@
 
 
 
-
-
-
-
                 <Style x:Key="imgClose" TargetType="Image">
                     <Setter Property="Width" Value="20" />
                     <Setter Property="Height" Value="20" />
@@ -121,7 +119,7 @@
                 </Style>
 
 
-                <Style x:Key="mainButton" TargetType="{x:Type Button}">
+                <Style x:Key="mainButton" TargetType="Button">
                     <Setter Property="FontSize" Value="20" />
                     <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="Margin" Value="0 20 0 0" />
@@ -140,12 +138,13 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#c4c3cf" />
-                            <Setter Property="Foreground" Value="#353340" />
+                    <Setter Property="BorderBrush" Value="#353340"/>
+                    <Setter Property="Background" Value="#272537" />
+                    <Setter Property="Foreground" Value="White" />
                         </Trigger>
                         <Trigger Property="IsMouseCaptured" Value="True">
-                            <Setter Property="Background" Value="#c4c3cf" />
-                            <Setter Property="Foreground" Value="#353340" />
+                            <Setter Property="Background" Value="#22202f" />
+                            <Setter Property="Foreground" Value="Gray" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -247,6 +246,8 @@
                         </Trigger>
                     </Style.Triggers>
                 </Style>
+        
+        <!--For Haider-->
 
                 <Style x:Key="topButton" TargetType="Button">
             <Setter Property="Background" Value="#dcdcdc" />
@@ -331,6 +332,10 @@
                     <Setter Property="Background" Value="#22202f" />
                     <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#353340" />
+                    <Setter Property="Foreground" Value="#ffffff" />
+                </Trigger>
             </Style.Triggers>
         </Style>
 
@@ -375,6 +380,11 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#22202f" />
+                    <Setter Property="Foreground" Value="#ffffff" />
+                </Trigger>
+
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#353340" />
                     <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
             </Style.Triggers>
@@ -610,6 +620,7 @@
 
         <Style x:Key="DataGridColumnHeaderStyle1" TargetType="{x:Type DataGridColumnHeader}">
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Background" Value="#353340" />
             <Setter Property="Foreground" Value="#c3c4cf" />
             <Setter Property="Margin" Value="30 0 15 10" />
@@ -632,18 +643,19 @@
 
 
         <!--#region Check Box Style-->
-        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
-        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
-        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF"/>
-        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD"/>
-        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
-        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#22202f"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#272537"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#353340"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#363846"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#22202f"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#272537"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#353340"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#363846"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#22202f"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#272537"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#353340"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#363846"/>
+
         <Style x:Key="CheckBoxStyle1" TargetType="{x:Type CheckBox}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
