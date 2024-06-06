@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuizFlash
 {
     /// <summary>
-    /// Interaction logic for ClassroomPag.xaml
+    /// Interaction logic for TeacherClassroomPage.xaml
     /// </summary>
-    public partial class ClassroomPage : Window
+    public partial class TeacherClassroomPage : Page
     {
-        public ClassroomPage()
+        public TeacherClassroomPage()
         {
             InitializeComponent();
         }
