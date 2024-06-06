@@ -255,17 +255,20 @@
     <Compile Include="Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentClassroom.xaml.cs">
-      <DependentUpon>StudentClassroom.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StudentDataPage.xaml.cs">
       <DependentUpon>StudentDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentHomePage.xaml.cs">
+      <DependentUpon>StudentHomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="TeacherClassroomPage.xaml.cs">
       <DependentUpon>TeacherClassroomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherHomePage.xaml.cs">
+      <DependentUpon>TeacherHomePage.xaml</DependentUpon>
     </Compile>
     <Page Include="FlashCard.xaml">
       <SubType>Designer</SubType>
@@ -306,11 +309,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentClassroom.xaml">
+    <Page Include="StudentDataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentDataPage.xaml">
+    <Page Include="StudentHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +322,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TeacherClassroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

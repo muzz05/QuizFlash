@@ -1,110 +1,108 @@
--- CREATING THE DATABASE TABLES
-CREATE TABLE User (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
+
+CREATE TABLE [User] (
+    id INT Identity(1,1) PRIMARY KEY,
+    email NVARCHAR(255) NOT NULL,
+    password NVARCHAR(255) NOT NULL,
     departmentId INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    isTeacher BOOLEAN NOT NULL
+    name NVARCHAR(255) NOT NULL,
+    isTeacher BIT NOT NULL
 );
 
 CREATE TABLE Teachers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     userId INT NOT NULL,
-    teacherCode VARCHAR(255) UNIQUE NOT NULL
+    teacherCode NVARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Students (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     userId INT NOT NULL,
-    studentCode VARCHAR(255) UNIQUE NOT NULL
+    studentCode NVARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Quiz (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     totalQuestions INT NOT NULL,
     totalMarks INT NOT NULL,
-    marksPerQuestion INT NOT NULl,
+    marksPerQuestion INT NOT NULL,
     teacherId INT NOT NULL,
     classroomId INT NOT NULL
 );
 
 CREATE TABLE QuestionAnswers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     quizId INT NOT NULL,
-    question TEXT NOT NULL,
-    optionA TEXT NOT NULL,
-    optionB TEXT NOT NULL,
-    optionC TEXT NOT NULL,
-    optionD TEXT NOT NULL,
+    question NVARCHAR(MAX) NOT NULL,
+    optionA NVARCHAR(MAX) NOT NULL,
+    optionB NVARCHAR(MAX) NOT NULL,
+    optionC NVARCHAR(MAX) NOT NULL,
+    optionD NVARCHAR(MAX) NOT NULL,
     correct CHAR(1) NOT NULL
 );
 
 CREATE TABLE StudentResponse (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     quizId INT NOT NULL,
     questionId INT NOT NULL,
     studentId INT NOT NULL,
-    isCorrect TINYINT(1) NOT NULL,
-    checkedAnswer TINYINT(1) NOT NULL,
+    isCorrect BIT NOT NULL,
+    checkedAnswer BIT NOT NULL
 );
 
 CREATE TABLE Classroom (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    id INT Identity(1,1) PRIMARY KEY,
+    name NVARCHAR(255) NOT NULL,
     teacherId INT NOT NULL,
     studentCount INT NOT NULL,
-    classCode VARCHAR(255) NOT NULL
+    classCode NVARCHAR(255) NOT NULL
 );
 
 CREATE TABLE ClassroomStudents (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     classroomId INT NOT NULL,
     studentId INT NOT NULL
 );
 
 CREATE TABLE Flashcards (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     studentId INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    data TEXT NOT NULL
+    title NVARCHAR(255) NOT NULL,
+    data NVARCHAR(MAX) NOT NULL
 );
 
 CREATE TABLE Result (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     quizId INT NOT NULL,
     studentId INT NOT NULL,
     marksObtained INT NOT NULL
 );
 
 CREATE TABLE LoggedDevices (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT Identity(1,1) PRIMARY KEY,
     userId INT NOT NULL,
-    MacAddress VARCHAR(255) NOT NULL,
-    lastLogin INT DEFAULT 0,
-)
+    MacAddress NVARCHAR(255) NOT NULL,
+    lastLogin INT DEFAULT 0
+);
 
 CREATE TABLE Department (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-)
+    id INT Identity(1,1) PRIMARY KEY,
+    name NVARCHAR(255) NOT NULL
+);
 
--- ADDING DUMMY DATA TO THE TABLES 
-
+-- ADDING DUMMY DATA TO THE TABLES
 
 -- Dummy data for User table
-INSERT INTO User (email, password, departmentId, name, isTeacher) VALUES 
-('teacher1@example.com', 'password1', 1, 'Teacher One', true),
-('teacher2@example.com', 'password2', 2, 'Teacher Two', true),
-('teacher3@example.com', 'password3', 3, 'Teacher Three', true),
-('student1@example.com', 'password1', 4, 'Student One', false),
-('student2@example.com', 'password2', 5, 'Student Two', false),
-('student3@example.com', 'password3', 6, 'Student Three', false),
-('student4@example.com', 'password4', 7, 'Student Four', false),
-('student5@example.com', 'password5', 8, 'Student Five', false),
-('student6@example.com', 'password6', 9, 'Student Six', false),
-('student7@example.com', 'password7', 10, 'Student Seven', false);
-
+INSERT INTO [User] (email, password, departmentId, name, isTeacher) VALUES 
+('teacher1@example.com', 'password1', 1, 'Teacher One', 1),
+('teacher2@example.com', 'password2', 2, 'Teacher Two', 1),
+('teacher3@example.com', 'password3', 3, 'Teacher Three', 1),
+('student1@example.com', 'password1', 4, 'Student One', 0),
+('student2@example.com', 'password2', 5, 'Student Two', 0),
+('student3@example.com', 'password3', 6, 'Student Three', 0),
+('student4@example.com', 'password4', 7, 'Student Four', 0),
+('student5@example.com', 'password5', 8, 'Student Five', 0),
+('student6@example.com', 'password6', 9, 'Student Six', 0),
+('student7@example.com', 'password7', 10, 'Student Seven', 0);
 
 -- Dummy data for Teachers table
 INSERT INTO Teachers (userId, teacherCode) VALUES 
@@ -122,7 +120,6 @@ INSERT INTO Students (userId, studentCode) VALUES
 (9, 'SCODE006'),
 (10, 'SCODE007');
 
-
 -- Dummy data for Quiz table
 INSERT INTO Quiz (totalQuestions, totalMarks, marksPerQuestion, teacherId, classroomId) VALUES 
 (10, 50, 5, 1, 1),
@@ -134,7 +131,7 @@ INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, option
 (1, 'What is the main programming language used in software engineering?', 'A) Java', 'B) Python', 'C) C++', 'D) Ruby', 'B'),
 (1, 'What is the SI unit of electrical resistance?', 'A) Watt', 'B) Ohm', 'C) Volt', 'D) Ampere', 'B'),
 (2, 'Which of the following is a primary material used in civil engineering for construction?', 'A) Aluminum', 'B) Steel', 'C) Copper', 'D) Plastic', 'B'),
-(2, 'What is the principle behind the operation of a steam turbine?', 'A) Boyle\'s Law', 'B) Newton\'s Third Law', 'C) Carnot Cycle', 'D) Pascal\'s Law', 'C');
+(2, 'What is the principle behind the operation of a steam turbine?', 'A) Boyle''s Law', 'B) Newton''s Third Law', 'C) Carnot Cycle', 'D) Pascal''s Law', 'C');
 
 -- Dummy data for StudentResponse table
 INSERT INTO StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) VALUES 
@@ -184,3 +181,4 @@ INSERT INTO Department (name) VALUES
 ('Environmental Engineering'),
 ('Industrial Engineering'),
 ('Materials Engineering');
+
