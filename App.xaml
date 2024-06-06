@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="Student.xaml"
+             StartupUri="Teacher.xaml"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
    
     <Application.Resources>
@@ -18,7 +18,7 @@
 
 
                 <Style x:Key="NormalText" TargetType="TextBlock">
-                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="FontSize" Value="14" />
                     <Setter Property="LineHeight" Value="28" />
                     <Setter Property="TextWrapping" Value="Wrap" />
                     <Setter Property="TextAlignment" Value="Center" />
@@ -28,14 +28,14 @@
 
                 <Style x:Key="button" TargetType="{x:Type Button}">
                     <Setter Property="FontSize" Value="14" />
-                    <Setter Property="Width" Value="200" />
+                    <Setter Property="Width" Value="100" />
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Foreground" Value="#FDFEFE" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderBrush="White" Padding="15" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderBrush="White" Padding="10 8" BorderThickness="1">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>
@@ -61,7 +61,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" CornerRadius="30" BorderBrush="#878787" Padding="15" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="15" BorderBrush="#878787" Padding="10 8" BorderThickness="1">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </ControlTemplate>

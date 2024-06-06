@@ -34,6 +34,11 @@ namespace QuizFlash
             StudentViewFrame.Content = new FlashCardPage();
         }
 
+        private void StudentHomePageCheck(object sender, RoutedEventArgs e)
+        {
+            StudentViewFrame.Content = new StudentHomePage();
+        }
+
         private void Logout(object sender, RoutedEventArgs e)
         {
             this.Close();

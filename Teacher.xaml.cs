@@ -32,6 +32,12 @@ namespace QuizFlash
             TeacherViewFrame.Content = new StudentDataPage();
         }
 
+        private void TeacherHomePageCheck(object sender, RoutedEventArgs e)
+        {
+            // This is for Student page Navigation
+            TeacherViewFrame.Content = new TeacherHomePage();
+        }
+
         private void ClassroomTagCheck(object sender, RoutedEventArgs e)
         {
             // This is for Classroom Navigation
