@@ -32,7 +32,7 @@
                 <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  FontSize="8" VerticalAlignment="Center">All rights reserved.</TextBlock>
 
             </StackPanel>
-            <Image Grid.Column="1" Source="/Images/splash.png" Height="180"/>
+            <Image Grid.Column="1" Source="/Images/Icons/splash.png" Height="180"/>
         </Grid>
     </Border>
 </Window>

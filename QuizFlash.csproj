@@ -240,11 +240,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClassroomPage.xaml.cs">
-      <DependentUpon>ClassroomPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FlashCard.xaml.cs">
       <DependentUpon>FlashCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlashCardPage.xaml.cs">
+      <DependentUpon>FlashCardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Signup.xaml.cs">
       <DependentUpon>Signup.xaml</DependentUpon>
@@ -255,17 +255,23 @@
     <Compile Include="Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentData.xaml.cs">
-      <DependentUpon>StudentData.xaml</DependentUpon>
+    <Compile Include="StudentClassroom.xaml.cs">
+      <DependentUpon>StudentClassroom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDataPage.xaml.cs">
+      <DependentUpon>StudentDataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
-    <Page Include="ClassroomPage.xaml">
+    <Compile Include="TeacherClassroomPage.xaml.cs">
+      <DependentUpon>TeacherClassroomPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FlashCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlashCard.xaml">
+    <Page Include="FlashCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,11 +306,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentData.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="StudentClassroom.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Teacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherClassroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -381,7 +395,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\splash.png" />
+    <Resource Include="Images\Icons\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
