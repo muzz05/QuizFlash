@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,9 @@ namespace QuizFlash
             InitializeComponent();
         }
 
+
+        // This is for UI
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -48,13 +52,6 @@ namespace QuizFlash
             passwordBox.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
-            {
-                MessageBox.Show("Successfully Signed In");
-            }
-        }
 
         private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
@@ -69,6 +66,32 @@ namespace QuizFlash
             txtEmail.Focus();
         }
 
+        // This is for logic
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Signup signupWindow =  new Signup();
+            signupWindow.Show();
+            this.Close();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
+            //{
+            //    MessageBox.Show("Successfully Signed In");
+            //}
+            bool isTeacher = false;
+            if (isTeacher)
+            {
+                Teacher teacherWindow = new Teacher();
+                teacherWindow.Show();
+            }
+            else
+            {
+                Student studentWindow = new Student();
+                studentWindow.Show();
+            }
+            this.Close();
+        }
     }
 }
 

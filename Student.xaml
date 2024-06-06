@@ -36,7 +36,7 @@
 
         <!--Navigation-->
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
-            <RadioButton Style="{StaticResource NavigationButtons}" >
+            <RadioButton Style="{StaticResource NavigationButtons}" IsChecked="True">
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -94,7 +94,7 @@
         <Grid Grid.Column="1" Grid.Row="1"  Background="#282438">
             <Grid Background="Transparent" Margin="15,5,15,15" >
                 <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
-
+                <Frame x:Name="StudentViewFrame" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
     </Grid>

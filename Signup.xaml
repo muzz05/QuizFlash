@@ -10,7 +10,7 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
-        Title="Signup" Height="670" Width="850" WindowStartupLocation="CenterScreen">
+        Title="Signup" Height="500" Width="700" WindowStartupLocation="CenterScreen">
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -37,12 +37,12 @@
         </Border>
 
         <Border Background="#353340 " Grid.Column="1" CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" BorderBrush="Transparent">
-            <StackPanel VerticalAlignment="Center" Height="700">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,30,10,0">
+            <StackPanel VerticalAlignment="Top" Height="600">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,10,0">
                     <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12"/>
                     <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12"/>
                 </StackPanel>
-                <TextBlock  Text="Registration" Foreground="#c4c3cf" Style="{StaticResource TitleText}" Margin="0,80,0,15"/>
+                <TextBlock  Text="Registration" Foreground="#c4c3cf" Style="{StaticResource TitleText}" FontSize="25" Margin="0,10,0,15"/>
 
 
 
@@ -135,9 +135,9 @@
 
 
                 <!--Buttons for Changing the Roles-->
-                <Border BorderBrush="#c4c3cf" Margin="100,10" CornerRadius="5">
+                <Border BorderBrush="#c4c3cf" Margin="0,00" CornerRadius="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid  Margin="30,0,0,0">
+                        <Grid  Margin="60,0,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*"/>
                                 <ColumnDefinition Width="50*"/>
@@ -185,7 +185,7 @@
                         </Grid>
                     </StackPanel>
                 </Border>
-                <Button Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" />
+                <Button Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" Click="Button_Click" />
             </StackPanel>
         </Border>
 

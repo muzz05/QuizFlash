@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace QuizFlash
 {
     /// <summary>
@@ -22,6 +21,15 @@ namespace QuizFlash
         public SplashScreen()
         {
             InitializeComponent();
+            this.RedirectingToLogin();
+        }
+
+        public async Task RedirectingToLogin()
+        {
+            await Task.Delay(5000);
+            Login loginWindow = new Login();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

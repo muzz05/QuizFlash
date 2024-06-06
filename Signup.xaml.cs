@@ -131,8 +131,12 @@ namespace QuizFlash
             student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(89, 89, 92));
         }
 
-
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Login loginWindow = new Login();
+            loginWindow.Show();
+            this.Close();
+        }
     }
 }
 
