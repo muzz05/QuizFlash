@@ -89,12 +89,12 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Icons:PackIconFontAwesome  Kind="UniversitySolid" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/> 
-                        <TextBlock x:Name="dropdowndept" Text="Select Department:" Style="{StaticResource textHint}" Background="#353340" Foreground="#c3c4cf" />
-                         <!--Customized ComboBox--> 
-                        <ComboBox x:Name="cmbDepartments" Grid.Column="1" Margin="12,0,0,0" SelectionChanged="CmbDepartments_SelectionChanged" Background="#353340">
+                        <Icons:PackIconFontAwesome  Kind="UniversitySolid" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                        <TextBlock x:Name="dropdowndept" Text="Select Department:" Style="{StaticResource textHint}" Background="#353340"/>
+                        <!--Customized ComboBox-->
+                        <ComboBox x:Name="cmbDepartments" Grid.Column="1" Background="Transparent" Margin="8,0,0,0" SelectionChanged="CmbDepartments_SelectionChanged" >
                             <ComboBox.Resources>
-                                 <!--Style for the ComboBoxItem--> 
+                                <!--Style for the ComboBoxItem-->
                                 <Style TargetType="ComboBoxItem">
                                     <Setter Property="Background" Value="#353340"/>
                                     <Setter Property="Foreground" Value="#c4c3cf"/>
@@ -113,7 +113,7 @@
                                     </Setter>
                                 </Style>
                             </ComboBox.Resources>
-                             ComboBox Items 
+                            ComboBox Items
                             <ComboBoxItem Content="Software"/>
                             <ComboBoxItem Content="Civil"/>
                             <ComboBoxItem Content="Mechanical"/>
@@ -134,36 +134,35 @@
 
                 <!--Buttons for Changing the Roles-->
                 <Border BorderBrush="#c4c3cf" Margin="100,10" CornerRadius="5">
-                    <StackPanel>
-                        <Grid>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid  Margin="30,0,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50*"/>
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
-                            
 
-                                    <RadioButton x:Name="Student_checkbox"  Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0" IsChecked="False" Checked="Student_checkbox_Checked" >
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid>
-                                                <Ellipse Fill="#c4c3cf" x:Name="student_check_icon" Height="40" Width="40" />
-                                                <Icons:PackIconFontAwesome Kind="GraduationCapSolid" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"/>
-                                            </Grid>
-                                            <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#c4c3cf" FontSize="15" FontWeight="SemiBold">Student</TextBlock>
-                                        </StackPanel>
-                                    </RadioButton>
-                                    <RadioButton x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="false">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Grid>
-                                                <Ellipse Fill="#c4c3cf" x:Name="Teacher_check_icon" Height="40" Width="40"/>
-                                                <Icons:PackIconVaadinIcons Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
-                                            </Grid>
-                                            <TextBlock x:Name="Teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#c4c3cf" FontSize="15" FontWeight="SemiBold">Teacher</TextBlock>
-                                        </StackPanel>
-                                    </RadioButton>
-                                    <!-- Add other radio buttons if needed -->
-                                
 
-                           
+
+
+                            <RadioButton Margin="0,20,0,0" x:Name="Student_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0" IsChecked="False" Checked="Student_checkbox_Checked">
+                                <Grid Margin="0,0,20,0">
+                                    <Ellipse x:Name="student_ellipse" Fill="#272537" Height="40" Width="40" Margin="-32,-5,90,0"/>
+                                    <Icons:PackIconFontAwesome x:Name="student_check_icon" Margin="-32,-5,90,0" Kind="GraduationCapSolid" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"/>
+                                    <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#272537" FontSize="15" FontWeight="SemiBold"><Run Text="Student"/></TextBlock>
+                                </Grid>
+                            </RadioButton>
+                            <RadioButton Margin="0,20,0,0" x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="False">
+                                <Grid  Margin="0,0,20,0">
+                                    <Ellipse x:Name="teacher_ellipse" Fill="#272537" Height="40" Width="40" Margin="-32,-5,90,0"/>
+                                    <Icons:PackIconVaadinIcons  x:Name="teacher_check_icon" Margin="-32,-5,90,0" Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
+                                    <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#272537" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
+                                </Grid>
+                            </RadioButton>
+
+
+
+
+                            <!-- Add other radio buttons if needed -->
                             <!-- Checkbox for Teacher -->
                             <!--<CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
                             <!-- Checkbox for Student -->
@@ -184,7 +183,7 @@
                         </Grid>
                     </StackPanel>
                 </Border>
-                <Button Content="Sign Up" Style="{StaticResource mainButton}" />
+                <Button Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 

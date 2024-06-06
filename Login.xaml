@@ -23,11 +23,10 @@
             </Border.Background>
 
             <Grid>
-                <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="Sign Up" Style="{StaticResource TitleText}"/>
-                    <TextBlock Text="Welcome to our quiz platform! To get started, please provide your personal information and create a new account." Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
-                    <Button Content="Sign Up" Style="{StaticResource button}" />
-                </StackPanel>
+                <StackPanel VerticalAlignment="Center"/>
+                <TextBlock Text="Sign Up" Height="77" Style="{StaticResource TitleText}" Margin="0,140,0,0" RenderTransformOrigin="0.55,1.609" HorizontalAlignment="Center" VerticalAlignment="Top" Width="320"/>
+                <TextBlock Text="Welcome to our quiz platform! To get started, please provide your personal information and create a new account." Opacity="0.8" Style="{StaticResource NormalText}" Margin="-14,0,-14,0" />
+                <Button Content="Sign Up" Background="Transparent" Style="{StaticResource mainButton}" Margin="0,369,0,151" Click="Button_Click_1" HorizontalAlignment="Center" Width="198" />
             </Grid>
         </Border>
 
@@ -59,9 +58,10 @@
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
                         <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
                         <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
-                        
+
                     </Grid>
                 </Border>
+                <Button Content="Sign In" Click="Button_Click" Style="{StaticResource mainButton}" />
 
 
 
@@ -75,10 +75,6 @@
 
                     </Grid>
                 </Border>-->
-
-
-
-                <Button Content="Sign In" Click="Button_Click" Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 
