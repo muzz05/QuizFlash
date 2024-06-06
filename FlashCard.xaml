@@ -1,0 +1,38 @@
+﻿<Window x:Class="QuizFlash.FlashCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"        
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuizFlash"
+        mc:Ignorable="d"
+        Title="FlashCard" Height="450" Width="570">
+    <Border Background="#272537" CornerRadius="10">
+        <StackPanel Height="450">
+            <TextBlock Margin="30" Style="{StaticResource TitleText}" Text="Your FlashCards"></TextBlock>
+            <WrapPanel Orientation="Horizontal">
+                <Button Style="{StaticResource mainButton}" Height="Auto" Margin="10 20" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 1</TextBlock>
+                </Button>
+                <Button Style="{StaticResource mainButton}" Margin="10 20" Height="Auto" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 2</TextBlock>
+                </Button>
+                <Button Style="{StaticResource mainButton}" Height="Auto" Margin="10 20" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 2</TextBlock>
+                </Button>
+                <Button Style="{StaticResource mainButton}" Height="Auto" Margin="10 20" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 2</TextBlock>
+                </Button>
+                <Button Style="{StaticResource mainButton}" Height="Auto" Margin="10 20" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 2</TextBlock>
+                </Button>
+                <Button Style="{StaticResource mainButton}" Height="Auto" Margin="10 20" Width="Auto">
+                    <TextBlock Style="{StaticResource NormalText}">FlashCard 2</TextBlock>
+                </Button>
+                <Button Style="{StaticResource buttonCircle}" Height="Auto" Margin="10 20" Width="Auto">
+                    <Icons:PackIconMaterialDesign Kind="Add" Height="30" Width="30" Foreground="White"/>
+                </Button>
+            </WrapPanel>
+        </StackPanel>
+    </Border>
+</Window>
