@@ -26,9 +26,21 @@ namespace QuizFlash
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void StudentTabCheck(object sender, RoutedEventArgs e)
         {
-            
+            // This is for Student page Navigation
+            TeacherViewFrame.Content = new StudentDataPage();
+        }
+
+        private void ClassroomTagCheck(object sender, RoutedEventArgs e)
+        {
+            // This is for Classroom Navigation
+            TeacherViewFrame.Content = new TeacherClassroomPage();
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

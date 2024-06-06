@@ -23,5 +23,20 @@ namespace QuizFlash
         {
             InitializeComponent();
         }
+
+        private void StudentClassroomCheck(object sender, RoutedEventArgs e)
+        {
+            StudentViewFrame.Content = new TeacherClassroomPage();
+        }
+
+        private void StudentFlashCardCheck(object sender, RoutedEventArgs e)
+        {
+            StudentViewFrame.Content = new FlashCardPage();
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
