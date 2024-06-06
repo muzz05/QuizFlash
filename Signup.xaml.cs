@@ -111,8 +111,8 @@ namespace QuizFlash
             student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
 
             // Revert colors for Teacher
-            teacher_ellipse.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
-            teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            teacher_ellipse.Fill = new SolidColorBrush(Color.FromRgb(89, 89, 92));
+            teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(89, 89, 92));
 
 
         }
@@ -127,8 +127,8 @@ namespace QuizFlash
             teacher_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(196, 195, 207));
 
             // Revert colors for Student
-            student_ellipse.Fill = new SolidColorBrush(Color.FromRgb(39, 37, 55));
-            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(39, 37, 55));
+            student_ellipse.Fill = new SolidColorBrush(Color.FromRgb(89, 89, 92));
+            student_check_tb.Foreground = new SolidColorBrush(Color.FromRgb(89, 89, 92));
         }
 
 

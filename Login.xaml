@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:QuizFlash"
+                Background="Transparent"
+        AllowsTransparency="True"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Title="Login Window" Height="600" Width="800">
 
@@ -14,7 +16,7 @@
             <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
 
-        <Border CornerRadius="0 0 0 0">
+        <Border CornerRadius="20 0 0 20">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#272537 " Offset="0" />
@@ -31,7 +33,7 @@
             </Grid>
         </Border>
 
-        <Border Background="#353340 " Grid.Column="1" CornerRadius="0 0 0 0" MouseDown="Border_MouseDown" >
+        <Border Background="#353340 " Grid.Column="1" CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" >
             <StackPanel VerticalAlignment="Center" Height="570">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                     <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12"/>
