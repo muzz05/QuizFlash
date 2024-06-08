@@ -2,14 +2,67 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="Teacher.xaml"
+             
+             StartupUri="SplashScreen.xaml"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
    
     <Application.Resources>
-    
-                <!--For Kaif-->        
         
-                <Style x:Key="TitleText" TargetType="TextBlock">
+       
+        
+        
+                <!--For Kaif-->
+        <Style x:Key="textHint_flash" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Panel.ZIndex" Value="1" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="MaxWidth" Value="170" />
+            <!-- Ensure text does not exceed the width of the card -->
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Height" Value="170" />
+                </Trigger>
+                <Trigger Property="Text" Value="Enter description for your Flash-Card">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Height" Value="170" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="textBox_flash" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Margin" Value="10 0 0 0" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <!-- Enable text wrapping -->
+            <Setter Property="MaxWidth" Value="170" />
+            <!-- Ensure text does not exceed the width of the card -->
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+
+
+
+
+
+
+
+        <Style x:Key="TitleText" TargetType="TextBlock">
                     <Setter Property="FontSize" Value="35" />
                     <Setter Property="FontWeight" Value="Bold" />
                     <Setter Property="TextAlignment" Value="Center" />
