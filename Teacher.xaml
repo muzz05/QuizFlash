@@ -28,7 +28,7 @@
         <!--Header-->
         <Grid Background="#282438" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >Teacher Profile</TextBlock>
+                <TextBlock x:Name="TeacherNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the teacher name</TextBlock>
                 <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
 
             </StackPanel>
@@ -36,7 +36,7 @@
 
         <!--Navigation-->
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
-            <RadioButton Style="{StaticResource NavigationButtons}" IsChecked="True">
+            <RadioButton Style="{StaticResource NavigationButtons}" Checked="TeacherHomePageCheck">
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -46,7 +46,7 @@
                     <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
                 </Grid>
             </RadioButton>
-            <RadioButton Style="{StaticResource NavigationButtons}" >
+            <RadioButton Style="{StaticResource NavigationButtons}" Checked="ClassroomTagCheck" >
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -56,7 +56,7 @@
                     <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="100">Classroom</TextBlock>
                 </Grid>
             </RadioButton>
-            <RadioButton Style="{StaticResource NavigationButtons}" Checked="RadioButton_Checked" >
+            <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentTabCheck" >
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
@@ -68,7 +68,7 @@
             </RadioButton>
             <Grid Margin="0,230">
 
-                <Button Style="{StaticResource NavigationButtonLogout}" >
+                <Button Style="{StaticResource NavigationButtonLogout}" Click="Logout" >
                     <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>

@@ -19,16 +19,40 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
+        private int TeacherId;
+        private int UserId;
+        private string UserName;
 
-
-        public Teacher()
+        public Teacher(int _TeacherId, int _UserId, string _TeacherName)
         {
+            TeacherId = _TeacherId;
+            UserId = _UserId;
+            UserName = _TeacherName;
             InitializeComponent();
+            TeacherNameTextBox.Text = UserName;
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void StudentTabCheck(object sender, RoutedEventArgs e)
         {
-            
+            // This is for Student page Navigation
+            TeacherViewFrame.Content = new StudentDataPage();
+        }
+
+        private void TeacherHomePageCheck(object sender, RoutedEventArgs e)
+        {
+            // This is for Student page Navigation
+            TeacherViewFrame.Content = new TeacherHomePage();
+        }
+
+        private void ClassroomTagCheck(object sender, RoutedEventArgs e)
+        {
+            // This is for Classroom Navigation
+            TeacherViewFrame.Content = new TeacherClassroomPage();
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
