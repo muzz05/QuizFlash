@@ -14,14 +14,19 @@ using System.Windows.Shapes;
 
 namespace QuizFlash
 {
-    /// <summary>
-    /// Interaction logic for CustomMessageBox.xaml
-    /// </summary>
     public partial class CustomMessageBox : Window
     {
-        public CustomMessageBox()
+        public CustomMessageBox(string Title, string Message, string Type)
         {
             InitializeComponent();
+            messageIcon.Kind = Type == "Error" ? MahApps.Metro.IconPacks.PackIconBootstrapIconsKind.ExclamationCircleFill : MahApps.Metro.IconPacks.PackIconBootstrapIconsKind.CheckCircleFill;
+            messageBoxHeading.Text = Title;
+            messageBoxText.Text = Message;
+        }
+
+        private void CloseMessageBox(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

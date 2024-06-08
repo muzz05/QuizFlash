@@ -19,11 +19,17 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
+        private int TeacherId;
+        private int UserId;
+        private string UserName;
 
-
-        public Teacher()
+        public Teacher(int _TeacherId, int _UserId, string _TeacherName)
         {
+            TeacherId = _TeacherId;
+            UserId = _UserId;
+            UserName = _TeacherName;
             InitializeComponent();
+            TeacherNameTextBox.Text = UserName;
         }
 
         private void StudentTabCheck(object sender, RoutedEventArgs e)
