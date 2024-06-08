@@ -271,6 +271,7 @@
     <Compile Include="TeacherHomePage.xaml.cs">
       <DependentUpon>TeacherHomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UniqueCodeGenerator.cs" />
     <Page Include="FlashCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
