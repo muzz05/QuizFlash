@@ -28,7 +28,7 @@
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Sign Up" Style="{StaticResource TitleText}" FontSize="25"/>
                     <TextBlock Text="Welcome to our quiz platform! To get started, please provide your personal information and create a new account." Opacity="0.8" Margin="15 20 20 10" Style="{StaticResource NormalText}" />
-                    <Button Content="Sign Up" Style="{StaticResource button}" Click="Button_Click_2" />
+                    <Button Content="Sign Up" Style="{StaticResource button}" Click="RedirectToSignup" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -47,8 +47,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textEmail" MouseDown="textEmail_MouseDown" Text="Email" Style="{StaticResource textHint}" />
-                        <TextBox Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource textBox}" />
+                        <TextBlock x:Name="textEmail" MouseDown="TextEmail_MouseDown" Text="Email" Style="{StaticResource textHint}"/>
+                        <TextBox x:Name="emailBoxLogin" TextChanged="TxtEmail_TextChanged" Style="{StaticResource textBox}"/>
                     </Grid>
                 </Border>
 
@@ -59,28 +59,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
-                        <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
-                        
+                        <TextBlock x:Name="textPassword" MouseDown="TextPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
+                        <PasswordBox x:Name="passwordBoxLogin" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
-
-
-
-                <!--<Border>
-                    <Grid Margin="30,20,0,0"  HorizontalAlignment="Center">
-                        <TextBlock Style="{StaticResource NormalText}" HorizontalAlignment="Center">
-                            <Run Text="Forgot Password?"/>
-                            <Hyperlink NavigateUri="/PasswordRecoveryPage.xaml">Click here</Hyperlink>
-                            <Run Text=" to reset your password." />
-                        </TextBlock>
-
-                    </Grid>
-                </Border>-->
-
-
-
-                <Button Content="Sign In" Click="Button_Click" Style="{StaticResource mainButton}" />
+                <Button Content="Sign In" Click="HandleLogin" Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 

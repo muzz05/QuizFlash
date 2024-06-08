@@ -28,7 +28,7 @@
         <!--Header-->
         <Grid Background="#282438" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >Student Profile</TextBlock>
+                <TextBlock x:Name="StudentNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the student name</TextBlock>
                 <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
 
             </StackPanel>

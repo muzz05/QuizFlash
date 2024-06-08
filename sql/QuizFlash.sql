@@ -1,27 +1,27 @@
 
-CREATE TABLE [User] (
-    id INT Identity(1,1) PRIMARY KEY,
-    email NVARCHAR(255) NOT NULL,
-    password NVARCHAR(255) NOT NULL,
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     departmentId INT NOT NULL,
-    name NVARCHAR(255) NOT NULL,
-    isTeacher BIT NOT NULL
+    name VARCHAR(255) NOT NULL,
+    isTeacher BOOLEAN NOT NULL
 );
 
 CREATE TABLE Teachers (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
-    teacherCode NVARCHAR(255) UNIQUE NOT NULL
+    teacherCode VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Students (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
-    studentCode NVARCHAR(255) UNIQUE NOT NULL
+    studentCode VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Quiz (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     totalQuestions INT NOT NULL,
     totalMarks INT NOT NULL,
     marksPerQuestion INT NOT NULL,
@@ -30,69 +30,69 @@ CREATE TABLE Quiz (
 );
 
 CREATE TABLE QuestionAnswers (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     quizId INT NOT NULL,
-    question NVARCHAR(MAX) NOT NULL,
-    optionA NVARCHAR(MAX) NOT NULL,
-    optionB NVARCHAR(MAX) NOT NULL,
-    optionC NVARCHAR(MAX) NOT NULL,
-    optionD NVARCHAR(MAX) NOT NULL,
+    question VARCHAR(255) NOT NULL,
+    optionA VARCHAR(255) NOT NULL,
+    optionB VARCHAR(255) NOT NULL,
+    optionC VARCHAR(255) NOT NULL,
+    optionD VARCHAR(255) NOT NULL,
     correct CHAR(1) NOT NULL
 );
 
 CREATE TABLE StudentResponse (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     quizId INT NOT NULL,
     questionId INT NOT NULL,
     studentId INT NOT NULL,
-    isCorrect BIT NOT NULL,
-    checkedAnswer BIT NOT NULL
+    isCorrect BOOLEAN NOT NULL,
+    checkedAnswer BOOLEAN NOT NULL
 );
 
 CREATE TABLE Classroom (
-    id INT Identity(1,1) PRIMARY KEY,
-    name NVARCHAR(255) NOT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
     teacherId INT NOT NULL,
     studentCount INT NOT NULL,
-    classCode NVARCHAR(255) NOT NULL
+    classCode VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE ClassroomStudents (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     classroomId INT NOT NULL,
     studentId INT NOT NULL
 );
 
 CREATE TABLE Flashcards (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     studentId INT NOT NULL,
-    title NVARCHAR(255) NOT NULL,
-    data NVARCHAR(MAX) NOT NULL
+    title VARCHAR(255) NOT NULL,
+    data VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Result (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     quizId INT NOT NULL,
     studentId INT NOT NULL,
     marksObtained INT NOT NULL
 );
 
 CREATE TABLE LoggedDevices (
-    id INT Identity(1,1) PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
     MacAddress NVARCHAR(255) NOT NULL,
     lastLogin INT DEFAULT 0
 );
 
 CREATE TABLE Department (
-    id INT Identity(1,1) PRIMARY KEY,
-    name NVARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
 );
 
 -- ADDING DUMMY DATA TO THE TABLES
 
 -- Dummy data for User table
-INSERT INTO [User] (email, password, departmentId, name, isTeacher) VALUES 
+INSERT INTO Users (email, password, departmentId, name, isTeacher) VALUES 
 ('teacher1@example.com', 'password1', 1, 'Teacher One', 1),
 ('teacher2@example.com', 'password2', 2, 'Teacher Two', 1),
 ('teacher3@example.com', 'password3', 3, 'Teacher Three', 1),
@@ -158,9 +158,9 @@ INSERT INTO ClassroomStudents (classroomId, studentId) VALUES
 
 -- Dummy data for Flashcards table with engineering-related topics
 INSERT INTO Flashcards (studentId, title, data) VALUES 
-(4, 'Flashcards for Mechanical Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-(5, 'Flashcards for Electrical Engineering', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-(6, 'Flashcards for Chemical Engineering', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+(1, 'Flashcards for Mechanical Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+(1, 'Flashcards for Electrical Engineering', 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(1, 'Flashcards for Chemical Engineering', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
 
 -- Dummy data for Result table
 INSERT INTO Result (quizId, studentId, marksObtained) VALUES 

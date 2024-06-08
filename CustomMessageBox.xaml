@@ -19,7 +19,7 @@
             </Grid.RowDefinitions>
 
             <!-- Heading Text -->
-            <TextBlock Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="19">
+            <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="19">
                 Login Success
             </TextBlock>
 
@@ -30,17 +30,16 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Ellipse Fill="#363846" Height="30" Width="30"/>
-                    <Icons:PackIconBootstrapIcons Kind="CheckCircleFill" Height="30" Width="30" Foreground="#c4c3cf" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Icons:PackIconBootstrapIcons x:Name="messageIcon" Kind="CheckCircleFill" Height="30" Width="30" Foreground="#c4c3cf" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
-                <TextBlock Grid.Column="1" Foreground="#c4c3cf" Grid.Row="0" Margin="10" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="12">
+                <TextBlock x:Name="messageBoxText" Grid.Column="1" Foreground="#c4c3cf" Grid.Row="0" Margin="10" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="12">
                     You have been Logged in Successfully
                 </TextBlock>
             </Grid>
 
             <!-- Buttons -->
             <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                <Button Style="{StaticResource MessageBoxButtons}">Ok</Button>
-                <Button Style="{StaticResource MessageBoxButtons}">Cancel</Button>
+                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Click="CloseMessageBox">OK</Button>
             </StackPanel>
         </Grid>
     </Border>
