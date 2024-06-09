@@ -7,86 +7,42 @@
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
       Background="Transparent"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="460" d:DesignWidth="700"
       Title="FlashCardPage">
 
-    <Page.Resources>
-        <DataTemplate x:Key="FlashCardTemplate">
-            <Border Background="yellow" CornerRadius="20" Width="200" Height="230" Margin="20,20,0,0">
-                <Border.Effect>
-                    <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
-                </Border.Effect>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="6*"/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,15,0,0" >
-                        <TextBlock MaxWidth="100" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="100" Height="200" MouseDown="flash_card_title_textblock_MouseDown" Text="Enter Title" Style="{StaticResource textHint_flash}" Tag="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Children[1]}" />
-                        <TextBox Margin="-10,0,0,0" FontWeight="Bold" TextChanged="flash_card_title_text_box_TextChanged" Style="{StaticResource textBox_flash}" Tag="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Children[0]}" />
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <TextBlock Cursor="IBeam" Width="170" Height="200" MouseDown="flash_card_textblock_MouseDown" Text="Enter description for your Flash-Card" Style="{StaticResource textHint_flash}" Tag="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Children[1]}" />
-                        <TextBox Margin="-10,0,0,0" TextChanged="flash_card_text_changed" Style="{StaticResource textBox_flash}" Tag="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Children[0]}" />
-                    </Grid>
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3.33*"/>
-                            <ColumnDefinition Width="3.33*"/>
-                            <ColumnDefinition Width="3.33*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Width="30" Height="30" BorderThickness="0">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="15" Background="#353340">
-                                        <Icons:PackIconMaterialDesign Kind="Save" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button Grid.Column="1" Width="30" Height="30" BorderThickness="0">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="15" Background="#353340">
-                                        <Icons:PackIconMaterialDesign Kind="DeleteForever" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button Grid.Column="2" Width="30" Height="30" BorderThickness="0">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="15" Background="#353340">
-                                        <Icons:PackIconMaterialDesign Kind="Edit" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Border>
-        </DataTemplate>
-    </Page.Resources>
+    <Border CornerRadius="20" Margin="15">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
 
-    <Border Background="#353340" CornerRadius="20" Width="800" Height="450">
-        <WrapPanel Orientation="Horizontal" Margin="0" >
-            <ItemsControl Name="FlashCardItemsControl" ItemTemplate="{StaticResource FlashCardTemplate}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Left" ItemWidth="220"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-            <Button Width="80" Height="80" VerticalAlignment="Top" Margin="30,90,0,0" Click="AddFlashCard_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="50" Background="#c3c4cf">
-                            <Icons:PackIconMaterialDesign Height="40" Width="40" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-        </WrapPanel>
+            <WrapPanel x:Name="WrapPanelFlashCards" Width="700">
+                <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
+                    <Border.BorderBrush>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Rectangle Width="50" Height="50" Fill="#c3c4cf">
+                                    <Rectangle.Stroke>
+                                        <SolidColorBrush Color="#c3c4cf"/>
+                                    </Rectangle.Stroke>
+                                    <Rectangle.StrokeDashArray>
+                                        <DoubleCollection>2 2 2 2</DoubleCollection>
+                                    </Rectangle.StrokeDashArray>
+                                </Rectangle>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.BorderBrush>
+                    <Grid Height="220" Width="200">
+
+                        <Button Width="50" Height="50" VerticalAlignment="Center" Click="AddFlashCard_Click" Cursor="Hand" HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="50" Background="#c3c4cf">
+                                        <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
     </Border>
 </Page>

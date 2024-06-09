@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Teacher Dashboard" Height="500" Width="800">
+        Title="Teacher Dashboard" Height="500" Width="880">
     <Grid Background="#282438">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>

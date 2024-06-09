@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" />
+                        <TextBlock x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" Cursor="IBeam"/>
                         <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
@@ -77,7 +77,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" />
+                        <TextBlock x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" Cursor="IBeam"/>
                         <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" />
 
                     </Grid>
@@ -86,26 +86,48 @@
 
 
                 <Border BorderBrush="#c4c3cf" BorderThickness="1" Margin="70 10" CornerRadius="5">
-                    <Grid Margin="7 9">
+                    <Grid Margin="7 9" Height="25">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Icons:PackIconFontAwesome  Kind="UniversitySolid" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="dropdowndept" Text="Select Department:" Style="{StaticResource textHint}" Background="#353340"/>
+                        <Icons:PackIconFontAwesome  Kind="UniversitySolid"  Panel.ZIndex="5" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                        <TextBlock x:Name="dropdowndept" Text="Department" Panel.ZIndex="3" Style="{StaticResource textHint}" Background="#353340" MouseDown="OpenComboBox" Cursor="Hand" Height="25"/>
                         <!--Customized ComboBox-->
-                        <ComboBox x:Name="cmbDepartments" Grid.Column="1" Background="Transparent" Margin="8,0,0,0" SelectionChanged="CmbDepartments_SelectionChanged" >
+
+                        <ComboBox x:Name="comboBoxDepartments"  Grid.Column="1" Background="#353340" Margin="10,4,0,0" SelectionChanged="CmbDepartments_SelectionChanged" Height="15" VerticalAlignment="Top">
                             <ComboBox.Resources>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ComboBox">
+                                                <Grid>
+                                                    <ToggleButton Name="ToggleButton" Grid.Column="2" ClickMode="Press" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                                        <ContentPresenter />
+                                                    </ToggleButton>
+                                                    <Popup Name="Popup" Placement="Bottom" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="Slide">
+                                                        <Grid MaxHeight="150" Width="200">
+                                                            <Border BorderBrush="White" BorderThickness="1" Background="#353340">
+                                                                <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
+                                                                    <ItemsPresenter />
+                                                                </ScrollViewer>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Popup>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
                                 <!--Style for the ComboBoxItem-->
                                 <Style TargetType="ComboBoxItem">
                                     <Setter Property="Background" Value="#353340"/>
                                     <Setter Property="Foreground" Value="#c4c3cf"/>
                                     <Setter Property="Padding" Value="5"/>
                                     <Setter Property="FontSize" Value="14"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
-                                            <!--In WPF, a ControlTemplate is a markup element that defines the appearance and behavior of a control.
-                                            When you define a custom ControlTemplate for a ComboBoxItem you are specifying how each item in the ComboBox should be rendered.-->
                                             <ControlTemplate TargetType="ComboBoxItem">
                                                 <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
                                                     <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"/>
@@ -115,16 +137,15 @@
                                     </Setter>
                                 </Style>
                             </ComboBox.Resources>
-                            <ComboBoxItem Content="Software"/>
-                            <ComboBoxItem Content="Civil"/>
-                            <ComboBoxItem Content="Mechanical"/>
-                            <ComboBoxItem Content="Electrical"/>
-                            <ComboBoxItem Content="Electronics"/>
-                            <ComboBoxItem Content="CSIT"/>
-                            <ComboBoxItem Content="Telecommunication"/>
                         </ComboBox>
                     </Grid>
                 </Border>
+
+
+
+
+
+
 
 
                 <!--Buttons for Changing the Roles-->
@@ -135,45 +156,25 @@
                                 <ColumnDefinition Width="50*"/>
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
-
-                            <RadioButton Margin="0,20,0,0" x:Name="Student_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0" IsChecked="False" Checked="Student_checkbox_Checked">
+                            <RadioButton Margin="0,20,0,0" x:Name="Student_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0" IsChecked="False" Checked="Student_checkbox_Checked" Cursor="Hand">
                                 <Grid Margin="0,0,20,0">
                                     <Ellipse x:Name="student_ellipse" Fill="#59595c" Height="40" Width="40" Margin="-32,-5,90,0"/>
                                     <Icons:PackIconFontAwesome x:Name="student_check_icon" Margin="-32,-5,90,0" Kind="GraduationCapSolid" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"/>
-                                    <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Student"/></TextBlock>
+                                    <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,10" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Student"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Margin="0,20,0,0" x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="False">
+                            <RadioButton Margin="0,20,0,0" x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="False" Cursor="Hand">
                                 <Grid  Margin="0,0,20,0">
                                     <Ellipse x:Name="teacher_ellipse" Fill="#59595c" Height="40" Width="40" Margin="-32,-5,90,0"/>
-                                    <Icons:PackIconVaadinIcons  x:Name="teacher_check_icon" Margin="-32,-5,90,0" Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
-                                    <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
+                                    <Icons:PackIconVaadinIcons  x:Name="teacher_check_icon" Margin="-32,-4,90,0" Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
+                                    <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,10" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-
-
-                            <!-- Add other radio buttons if needed -->
-                            <!-- Checkbox for Teacher -->
-                            <!--<CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
-                            <!-- Checkbox for Student -->
-                            <!--<CheckBox Grid.Column="1" Foreground="#c4c3cf" Background="#c4c3cf" FontSize="20" Content="Student" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
-                            <!--<toggleswitch:HorizontalToggleSwitch x:Name="MyToggleSwitch" 
-                                   Width="100" Height="50" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   UncheckedBackground="#353340"
-                                   CheckedBackground="#c4c3cf"                                
-                                   UncheckedForeground="#c4c3cf"
-                                   CheckedForeground="#353340"
-                                    CheckedContent="Teacher"
-                                     UncheckedContent="Student" 
-                                     Cursor="Hand" 
-                                     FlowDirection="LeftToRight"/>-->
 
                         </Grid>
                     </StackPanel>
                 </Border>
-                <Button Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" Click="Button_Click" />
+                <Button Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" Click="HandleSignup" Cursor="Hand"/>
             </StackPanel>
         </Border>
 

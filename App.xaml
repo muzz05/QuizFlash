@@ -196,7 +196,9 @@
 
                 <!--For Muzzammil-->
 
-                <Style x:Key="NavigationButtons" TargetType="RadioButton">
+        
+
+        <Style x:Key="NavigationButtons" TargetType="RadioButton">
 
                     <Setter Property="Background" Value="#282438"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
