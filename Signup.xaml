@@ -115,7 +115,6 @@
                                     </Setter>
                                 </Style>
                             </ComboBox.Resources>
-                            ComboBox Items
                             <ComboBoxItem Content="Software"/>
                             <ComboBoxItem Content="Civil"/>
                             <ComboBoxItem Content="Mechanical"/>
@@ -128,12 +127,6 @@
                 </Border>
 
 
-
-
-
-
-
-
                 <!--Buttons for Changing the Roles-->
                 <Border BorderBrush="#c4c3cf" Margin="0,00" CornerRadius="5">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -142,9 +135,6 @@
                                 <ColumnDefinition Width="50*"/>
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
-
-
-
 
                             <RadioButton Margin="0,20,0,0" x:Name="Student_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="0" IsChecked="False" Checked="Student_checkbox_Checked">
                                 <Grid Margin="0,0,20,0">
@@ -160,8 +150,6 @@
                                     <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-
-
 
 
                             <!-- Add other radio buttons if needed -->

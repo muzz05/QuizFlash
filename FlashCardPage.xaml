@@ -70,7 +70,7 @@
     </Page.Resources>
 
     <Border Background="#353340" CornerRadius="20" Width="800" Height="450">
-        <StackPanel Orientation="Horizontal" Margin="0" >
+        <WrapPanel Orientation="Horizontal" Margin="0" >
             <ItemsControl Name="FlashCardItemsControl" ItemTemplate="{StaticResource FlashCardTemplate}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -87,6 +87,6 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-        </StackPanel>
+        </WrapPanel>
     </Border>
 </Page>
