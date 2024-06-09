@@ -170,7 +170,6 @@
                                     <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,10" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-
                         </Grid>
                     </StackPanel>
                 </Border>
