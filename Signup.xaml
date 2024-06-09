@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Account" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" Cursor="IBeam" />
+                        <TextBlock x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" />
                         <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>

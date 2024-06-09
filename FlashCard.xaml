@@ -6,7 +6,7 @@
              xmlns:Icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d"
              d:DesignHeight="230" d:DesignWidth="200">
-    <Border Background="yellow" CornerRadius="20" Height="230" Width="200">
+    <Border x:Name="border_of_flashcard" CornerRadius="20" Height="230" Width="200">
         <Border.Effect>
             <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
         </Border.Effect>
@@ -36,8 +36,8 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
-                            <Icons:PackIconMaterialDesign Kind="Save" Foreground="Yellow"  Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
+                                <Icons:PackIconMaterialDesign x:Name="save_icon" Kind="Save" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -45,7 +45,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
-                                <Icons:PackIconMaterialDesign Kind="DeleteForever" Foreground="Yellow" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Icons:PackIconMaterialDesign x:Name="delete_icon" Kind="DeleteForever" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
@@ -54,7 +54,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
-                                <Icons:PackIconMaterialDesign Kind="Edit" Foreground="Yellow" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Icons:PackIconMaterialDesign  x:Name="edit_icon" Kind="Edit" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
