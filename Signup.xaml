@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Account" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" />
+                        <TextBlock Cursor="IBeam" x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" />
                         <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
@@ -65,7 +65,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" />
+                        <TextBlock Cursor="IBeam"  x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" />
                         <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
@@ -77,7 +77,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" />
+                        <TextBlock Cursor="IBeam"  x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" />
                         <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" />
 
                     </Grid>

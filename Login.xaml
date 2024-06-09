@@ -47,7 +47,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textEmail" MouseDown="TextEmail_MouseDown" Text="Email" Style="{StaticResource textHint}"/>
+                        <TextBlock Cursor="IBeam"  x:Name="textEmail" MouseDown="TextEmail_MouseDown" Text="Email" Style="{StaticResource textHint}"/>
                         <TextBox x:Name="emailBoxLogin" TextChanged="TxtEmail_TextChanged" Style="{StaticResource textBox}"/>
                     </Grid>
                 </Border>
@@ -59,7 +59,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock x:Name="textPassword" MouseDown="TextPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
+                        <TextBlock Cursor="IBeam"  x:Name="textPassword" MouseDown="TextPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
                         <PasswordBox x:Name="passwordBoxLogin" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
