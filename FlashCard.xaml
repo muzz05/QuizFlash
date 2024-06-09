@@ -16,15 +16,21 @@
                 <RowDefinition Height="6.4*"/>
                 <RowDefinition Height="1.8*"/>
             </Grid.RowDefinitions>
+
+            <!-- Badge Ellipse for Unsaved Status -->
+            <Canvas HorizontalAlignment="Right" Margin="0, 6, 10,0">
+                <Ellipse Width="8" Height="8" Fill="#353340"/>
+            </Canvas>
+
             <Grid Grid.Row="0" Margin="0,10,0,0">
                 <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="180"
                            MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center"/>
-                <TextBox FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="180"/>
+                <TextBox x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="180" Cursor="IBeam" BorderThickness="0"/>
             </Grid>
             <Line Fill="Black"/>
             <Grid Grid.Row="1">
                 <TextBlock x:Name="FlashCardDescription" Cursor="IBeam" Width="180" MouseDown="FlashCardTextBlock_MouseDown" Text="Enter description" />
-                <TextBox Width="180" Height="100" TextChanged="FlashCardTextChanged" Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent"/>
+                <TextBox x:Name="FlashCardDescriptionBox" Width="180" TextChanged="FlashCardTextChanged" Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent" Cursor="IBeam" BorderThickness="0"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

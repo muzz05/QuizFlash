@@ -8,6 +8,8 @@ namespace QuizFlash
 {
     public partial class Flashcard : UserControl
     {
+        private int FlashCardId;
+
         private static readonly Random random = new Random();
         private static readonly Brush[] lightColors = new Brush[]
         {
@@ -40,12 +42,13 @@ namespace QuizFlash
             new SolidColorBrush(Color.FromRgb(245, 245, 220))// Light lavender
         };
 
-        public Flashcard(string Title, string Description)
+        public Flashcard(string Title, string Description, int Id)
         {
             InitializeComponent();
             SetRandomBackgroundColor();
-            FlashCardTitle.Text = Title;
-            FlashCardDescription.Text = Description;
+            FlashCardTitleBox.Text = Title;
+            FlashCardDescriptionBox.Text = Description;
+            FlashCardId = Id;
         }
 
 
@@ -58,46 +61,30 @@ namespace QuizFlash
 
         private void FlashCardTitleTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            var textBox = textBlock?.Tag as TextBox;
-            if (textBox != null)
-            {
-                textBox.Visibility = Visibility.Visible;
-                textBox.Focus();
-            }
+            FlashCardTitle.Text = "";
+            FlashCardTitleBox.Focus();
         }
 
         private void FlashCardTitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var textBlock = textBox?.Tag as TextBlock;
-            if (textBlock != null)
-            {
-                textBlock.Text = textBox.Text;
-                textBox.Visibility = string.IsNullOrEmpty(textBox.Text) ? Visibility.Collapsed : Visibility.Visible;
-            }
+            if (!string.IsNullOrEmpty(FlashCardTitleBox.Text) && FlashCardTitleBox.Text.Length > 0)
+                FlashCardTitle.Visibility = Visibility.Collapsed;
+            else
+                FlashCardTitle.Visibility = Visibility.Visible;
         }
 
         private void FlashCardTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            var textBox = textBlock?.Tag as TextBox;
-            if (textBox != null)
-            {
-                textBox.Visibility = Visibility.Visible;
-                textBox.Focus();
-            }
+            FlashCardDescription.Text = "";
+            FlashCardDescriptionBox.Focus();
         }
 
         private void FlashCardTextChanged(object sender, TextChangedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var textBlock = textBox?.Tag as TextBlock;
-            if (textBlock != null)
-            {
-                textBlock.Text = textBox.Text;
-                textBox.Visibility = string.IsNullOrEmpty(textBox.Text) ? Visibility.Collapsed : Visibility.Visible;
-            }
+            if (!string.IsNullOrEmpty(FlashCardDescriptionBox.Text) && FlashCardDescriptionBox.Text.Length > 0)
+                FlashCardDescription.Visibility = Visibility.Collapsed;
+            else
+                FlashCardDescription.Visibility = Visibility.Visible;
         }
     }
 }

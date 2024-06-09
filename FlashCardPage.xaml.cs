@@ -8,16 +8,27 @@ namespace QuizFlash
     public partial class FlashCardPage : Page
     {
 
-        public FlashCardPage()
+        private int StudentId;
+        private int UserId;
+
+        public FlashCardPage(int _studentId, int _userId )
         {
+            this.StudentId = _studentId;
+            this.UserId = _userId;
+
             InitializeComponent();
         }
 
         private void AddFlashCard_Click(object sender, RoutedEventArgs e)
         {
+            AddFlashCard("", "", 1);
+        }
+
+        private void AddFlashCard(string title, string description, int id)
+        {
             int index = WrapPanelFlashCards.Children.Count - 1;
-            Flashcard newFlashCard = new Flashcard("Enter The Title", "Enter the Description");
-            newFlashCard.Margin = new Thickness(0,0,15,15);
+            Flashcard newFlashCard = new Flashcard(title, description, id);
+            newFlashCard.Margin = new Thickness(0, 0, 15, 15);
             WrapPanelFlashCards.Children.Insert(index, newFlashCard);
         }
     }
