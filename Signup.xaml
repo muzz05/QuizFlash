@@ -160,38 +160,16 @@
                                 <Grid Margin="0,0,20,0">
                                     <Ellipse x:Name="student_ellipse" Fill="#59595c" Height="40" Width="40" Margin="-32,-5,90,0"/>
                                     <Icons:PackIconFontAwesome x:Name="student_check_icon" Margin="-32,-5,90,0" Kind="GraduationCapSolid" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"/>
-                                    <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Student"/></TextBlock>
+                                    <TextBlock x:Name="student_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,10" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Student"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Margin="0,20,0,0" x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="False">
+                            <RadioButton Margin="0,20,0,0" x:Name="Teacher_checkbox" Height="50" Background="Transparent" BorderThickness="0" Grid.Column="2" Checked="Teacher_checkbox_Checked" IsChecked="False" Cursor="Hand">
                                 <Grid  Margin="0,0,20,0">
                                     <Ellipse x:Name="teacher_ellipse" Fill="#59595c" Height="40" Width="40" Margin="-32,-5,90,0"/>
                                     <Icons:PackIconVaadinIcons  x:Name="teacher_check_icon" Margin="-32,-4,90,0" Kind="DiplomaScroll" Foreground="#353340" VerticalAlignment="Center" HorizontalAlignment="Center" Height="22" Width="22"/>
                                     <TextBlock x:Name="teacher_check_tb" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,10" Foreground="#59595c" FontSize="15" FontWeight="SemiBold"><Run Text="Teacher"/></TextBlock>
                                 </Grid>
                             </RadioButton>
-
-
-
-
-                            <!-- Add other radio buttons if needed -->
-                            <!-- Checkbox for Teacher -->
-                            <!--<CheckBox Grid.Column="0" Foreground="#c4c3cf"  Background="#c4c3cf" FontSize="20" Content="Teacher" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
-                            <!-- Checkbox for Student -->
-                            <!--<CheckBox Grid.Column="1" Foreground="#c4c3cf" Background="#c4c3cf" FontSize="20" Content="Student" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
-                            <!--<toggleswitch:HorizontalToggleSwitch x:Name="MyToggleSwitch" 
-                                   Width="100" Height="50" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   UncheckedBackground="#353340"
-                                   CheckedBackground="#c4c3cf"                                
-                                   UncheckedForeground="#c4c3cf"
-                                   CheckedForeground="#353340"
-                                    CheckedContent="Teacher"
-                                     UncheckedContent="Student" 
-                                     Cursor="Hand" 
-                                     FlowDirection="LeftToRight"/>-->
-
                         </Grid>
                     </StackPanel>
                 </Border>
