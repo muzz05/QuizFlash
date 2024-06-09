@@ -4,6 +4,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -104,6 +105,8 @@ namespace QuizFlash
                 bool isTeacher = Convert.ToBoolean(row["isTeacher"]);
                 string dbUsername = row["name"].ToString();
 
+                // Checking The Password
+
                 if (password == dbPassword)
                 {
                     if (isTeacher)
@@ -114,6 +117,11 @@ namespace QuizFlash
                         TeacherUserId.Value = dbUserId;
                         object TeacherIdResult = db.ExecuteScalar(sql, TeacherUserId);
                         Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherIdResult), dbUserId, dbUsername);
+
+                        // Adding Data to the Logged Devices
+                        AddDataToLoggedDevices(dbUserId);
+
+
                         teacherWindow.Show();
                     } 
                     else
@@ -124,8 +132,14 @@ namespace QuizFlash
                         StudentUserId.Value = dbUserId;
                         object StudentIdResult = db.ExecuteScalar(sql, StudentUserId);
                         Student studentWindow = new Student(Convert.ToInt32(StudentIdResult), dbUserId, dbUsername);
+
+                        // Adding Data to the Logged Devices
+                        AddDataToLoggedDevices(dbUserId);
+
+
                         studentWindow.Show();
                     }
+
                     this.Close();
                 }
                 else
@@ -133,6 +147,55 @@ namespace QuizFlash
                     CustomMessageBox errorPassword = new CustomMessageBox("Unsuccessful Login", "Please enter the correct password", "Error");
                     errorPassword.Show();
                 }
+            }
+        }
+
+        private void AddDataToLoggedDevices(int userId)
+        {
+            Database db = new Database();
+
+
+            // The MAC Adress
+
+            string firstMacAddress = NetworkInterface
+                .GetAllNetworkInterfaces()
+                .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Select(nic => nic.GetPhysicalAddress().ToString())
+                .FirstOrDefault();
+
+            // Getting the EPOC TIme
+
+            DateTime currentTime = DateTime.UtcNow;
+            DateTimeOffset dateTimeOffset = new DateTimeOffset(currentTime);
+            long epochTime = dateTimeOffset.ToUnixTimeSeconds();
+
+            // Database Queries
+
+            string sql = "SELECT id,MacAddress FROM LoggedDevices WHERE userId = @UserId";
+            MySqlParameter UserId = new MySqlParameter();
+            UserId.ParameterName = "@UserId";
+            UserId.Value = userId;
+            DataTable result = db.ExecuteQuery(sql, UserId);
+
+            if (result.Rows.Count != 0)
+            {
+                sql = "UPDATE LoggedDevices SET lastLogin = @LastLoginEPOC WHERE id = @LoggedDevicesId";
+                MySqlParameter[] LoggedDevicesParamsAvailable = {
+                    new MySqlParameter("@LastLoginEPOC", epochTime),
+                    new MySqlParameter("@LoggedDevicesId", Convert.ToInt32(result.Rows[0]["id"])),
+                };
+                int FinalResult = db.ExecuteNonQuery(sql, LoggedDevicesParamsAvailable);
+            }
+            else
+            {
+                sql = "INSERT INTO LoggedDevices(lastLogin, MacAddress,  userId) VALUES(@LastLoginEPOC, @MACAddress, @UserId)";
+                MySqlParameter[] LoggedDevicesParams =
+                {
+                    new MySqlParameter("@LastLoginEPOC", epochTime),
+                    new MySqlParameter("@MACAddress", firstMacAddress),
+                    new MySqlParameter("@UserId", userId)
+                };
+                int FinalResult = db.ExecuteNonQuery (sql, LoggedDevicesParams);
             }
         }
 
