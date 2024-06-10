@@ -37,7 +37,7 @@ namespace QuizFlash
             new SolidColorBrush(Color.FromRgb(210, 180, 140)), // Tan
             new SolidColorBrush(Color.FromRgb(188, 143, 143)), // Rosy brown
             new SolidColorBrush(Color.FromRgb(255, 240, 245)), // Lavender blush
-            new SolidColorBrush(Color.FromRgb(245, 245, 220))// Light lavender
+            new SolidColorBrush(Color.FromRgb(245, 245, 220))  // Light lavender
         };
 
         public Flashcard(string Title, string Description)
