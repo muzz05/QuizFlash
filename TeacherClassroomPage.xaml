@@ -8,36 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="TeacherClassroomPage">
 
-    <Border Background="#272537" CornerRadius=" 20">
-        <StackPanel Height="450">
-            <TextBlock Height="100" Style="{StaticResource TitleText}">Classrooms
-            </TextBlock>
-            <WrapPanel Grid.Row="1" Margin="0,0,0,-162" VerticalAlignment="Center">
-                <Button Margin="10" Style="{StaticResource mainButton}" Height="140" Width="200" >
-                    <StackPanel Height="120" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center" >
-                        <TextBlock Style="{StaticResource NormalText}">Applied Physics</TextBlock>
-                        <TextBlock Style="{StaticResource NormalText}" Text="Mr. Tahir Jamal"></TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Margin="10" Style="{StaticResource mainButton}" Height="140" Width="200" >
-                    <StackPanel Height="120" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center" >
-                        <TextBlock Style="{StaticResource NormalText}">OOP</TextBlock>
-                        <TextBlock Style="{StaticResource NormalText}" Text="Mrs Asma Khan"></TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Margin="10" Style="{StaticResource mainButton}" Height="140" Width="200" >
-                    <StackPanel Height="120" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center" >
-                        <TextBlock Style="{StaticResource NormalText}">ARW</TextBlock>
-                        <TextBlock Style="{StaticResource NormalText}" Text="Mrs Yusera"></TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Margin="10" Style="{StaticResource mainButton}" Height="140" Width="200" >
-                    <StackPanel Height="120" Width="180" VerticalAlignment="Top" HorizontalAlignment="Center" >
-                        <TextBlock Style="{StaticResource NormalText}">SE</TextBlock>
-                        <TextBlock Style="{StaticResource NormalText}" Text="Mrs Sidra"></TextBlock>
-                    </StackPanel>
-                </Button>
-            </WrapPanel>
-        </StackPanel>
-    </Border>
+    <Grid>
+        <!-- Add a container where the classroomcontrol will be displayed -->
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+            <WrapPanel HorizontalAlignment="Left" x:Name="classroomContainer" Width="700"/>
+        </ScrollViewer>
+    </Grid>
 </Page>
+

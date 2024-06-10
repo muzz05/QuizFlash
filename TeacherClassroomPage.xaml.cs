@@ -23,6 +23,29 @@ namespace QuizFlash
         public TeacherClassroomPage()
         {
             InitializeComponent();
+            AddClassroom("Applied Physics", "PH-122", "Sir Tahir Jamal");
+            AddClassroom("Software Engineering", "SE-205", "Miss Sidra");
+            AddClassroom("Mathematics", "MTH-101", "Dr. Smith");
+            AddClassroom("Computer Science", "CS-301", "Prof. Johnson");
+            AddClassroom("Chemistry", "CH-202", "Dr. Lee");
+            AddClassroom("History", "HI-110", "Prof. Adams");
+            AddClassroom("Literature", "LI-220", "Dr. Brown");
+
+
         }
+
+        private void AddClassroom(string coursename, string code, string teacher)
+        {
+
+            classroomcontrol newClassroom = new classroomcontrol(coursename, code, teacher);
+            // Add the new classroomcontrol instance to the container
+            newClassroom.Margin = new Thickness(15, 15, 15, 15);
+            classroomContainer.Children.Add(newClassroom);
+
+
+        }
+
     }
 }
+
+

@@ -274,6 +274,9 @@
     <Compile Include="TeacherHomePage.xaml.cs">
       <DependentUpon>TeacherHomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="classroomcontrol.xaml.cs">
+      <DependentUpon>classroomcontrol.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UniqueCodeGenerator.cs" />
     <Page Include="FlashCard.xaml">
       <SubType>Designer</SubType>
@@ -313,6 +316,10 @@
     <Page Include="Signup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="classroomcontrol.xaml">
+      <SubType>Designer</SubType>
+    <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomMessageBox.xaml">
       <SubType>Designer</SubType>
