@@ -18,19 +18,19 @@
             </Grid.RowDefinitions>
 
             <!-- Badge Ellipse for Unsaved Status -->
-            <Canvas HorizontalAlignment="Right" Margin="0, 6, 10,0">
+            <Canvas x:Name="UnsavedBadge" HorizontalAlignment="Right" Margin="0, 6, 8,0" Visibility="Collapsed">
                 <Ellipse Width="8" Height="8" Fill="#353340"/>
             </Canvas>
 
             <Grid Grid.Row="0" Margin="0,10,0,0">
                 <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="180"
                            MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center"/>
-                <TextBox x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="180" Cursor="IBeam" BorderThickness="0"/>
+                <TextBox x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="170" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left"/>
             </Grid>
             <Line Fill="Black"/>
             <Grid Grid.Row="1">
                 <TextBlock x:Name="FlashCardDescription" Cursor="IBeam" Width="180" MouseDown="FlashCardTextBlock_MouseDown" Text="Enter description" />
-                <TextBox x:Name="FlashCardDescriptionBox" Width="180" TextChanged="FlashCardTextChanged" Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent" Cursor="IBeam" BorderThickness="0"/>
+                <TextBox x:Name="FlashCardDescriptionBox" Width="180" TextChanged="FlashCardTextChanged" Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent" Cursor="IBeam" BorderThickness="0" TextWrapping="Wrap"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="3.33*"/>
                     <ColumnDefinition Width="3.33*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="28" Height="28" BorderThickness="0" Cursor="Hand">
+                <Button Grid.Column="0" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="SaveFlashCard">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
@@ -47,7 +47,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Grid.Column="1" Width="28" Height="28" BorderThickness="0" Cursor="Hand">
+                <Button Grid.Column="1" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="DeleteFlashCard">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
@@ -56,11 +56,11 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Grid.Column="2" Width="28" Height="28" BorderThickness="0" Cursor="Hand">
+                <Button Grid.Column="2" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="ShareFlashCard">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
-                                <Icons:PackIconMaterialDesign  x:Name="edit_icon" Kind="Edit" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Icons:PackIconBoxIcons  x:Name="edit_icon" Kind="SolidShareAlt" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>

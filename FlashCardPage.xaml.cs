@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,12 +19,30 @@ namespace QuizFlash
             this.StudentId = _studentId;
             this.UserId = _userId;
 
+            // Getting the Already made flashcards
+
             InitializeComponent();
+
+
+            Database db = new Database();
+            string sql = "SELECT * FROM FlashCards WHERE studentId = @StudentId";
+            DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@StudentId", StudentId));
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                AddFlashCard(result.Rows[i]["title"].ToString(), result.Rows[i]["data"].ToString(), Convert.ToInt32(result.Rows[i]["id"]));
+            }
+
+
         }
 
         private void AddFlashCard_Click(object sender, RoutedEventArgs e)
         {
-            AddFlashCard("", "", 1);
+            Database db = new Database();
+            string sql = "INSERT INTO FlashCards(studentId) VALUES(@StudentId)";
+            int result = db.ExecuteNonQuery(sql, new MySqlParameter("@StudentId", StudentId));
+            sql = "SELECT MAX(id) AS MaxId FROM FlashCards WHERE studentId = @StudentId";
+            object id = db.ExecuteScalar(sql, new MySqlParameter("@StudentId", StudentId));
+            AddFlashCard("", "", Convert.ToInt32(id));
         }
 
         private void AddFlashCard(string title, string description, int id)
