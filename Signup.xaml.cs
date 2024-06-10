@@ -72,14 +72,6 @@ namespace QuizFlash
             passwordBox_signup.Focus();
         }
 
-        private void Signup_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtUsername_signup.Text) && !string.IsNullOrEmpty(passwordBox_signup.Password))
-            {
-                MessageBox.Show("Successfully Signed In");
-            }
-        }
-
         private void txtUsername_signup_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtUsername_signup.Text) && txtUsername_signup.Text.Length > 0)

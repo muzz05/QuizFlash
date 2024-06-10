@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -37,7 +39,7 @@ namespace QuizFlash
 
         private void StudentFlashCardCheck(object sender, RoutedEventArgs e)
         {
-            StudentViewFrame.Content = new FlashCardPage();
+            StudentViewFrame.Content = new FlashCardPage(StudentId, UserId);
         }
 
         private void StudentHomePageCheck(object sender, RoutedEventArgs e)
@@ -47,6 +49,19 @@ namespace QuizFlash
 
         private void Logout(object sender, RoutedEventArgs e)
         {
+            // Getting the MAC Address
+
+            string firstMacAddress = NetworkInterface
+                .GetAllNetworkInterfaces()
+                .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Select(nic => nic.GetPhysicalAddress().ToString())
+                .FirstOrDefault();
+
+
+            Database db = new Database();
+            string sql = "DELETE FROM LoggedDevices WHERE MacAddress = @MACAddress AND userId = @UserId";
+            int result = db.ExecuteNonQuery(sql, new MySqlParameter("@MACAddress", firstMacAddress), new MySqlParameter("@UserId", UserId));
+
             this.Close();
         }
     }
