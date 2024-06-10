@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,6 +10,8 @@ namespace QuizFlash
     public partial class Flashcard : UserControl
     {
         private int FlashCardId;
+        private string Title;
+        private string Description;
 
         private static readonly Random random = new Random();
         private static readonly Brush[] lightColors = new Brush[]
@@ -42,12 +45,14 @@ namespace QuizFlash
             new SolidColorBrush(Color.FromRgb(245, 245, 220))// Light lavender
         };
 
-        public Flashcard(string Title, string Description, int Id)
+        public Flashcard(string _Title, string _Description, int Id)
         {
+            Title = _Title;
+            Description = _Description;
             InitializeComponent();
             SetRandomBackgroundColor();
-            FlashCardTitleBox.Text = Title;
-            FlashCardDescriptionBox.Text = Description;
+            FlashCardTitleBox.Text = _Title;
+            FlashCardDescriptionBox.Text = _Description;
             FlashCardId = Id;
         }
 
@@ -67,8 +72,11 @@ namespace QuizFlash
 
         private void FlashCardTitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            UnsavedBadge.Visibility = FlashCardTitleBox.Text.ToString() != Title ? Visibility.Visible : Visibility.Hidden;
             if (!string.IsNullOrEmpty(FlashCardTitleBox.Text) && FlashCardTitleBox.Text.Length > 0)
-                FlashCardTitle.Visibility = Visibility.Collapsed;
+            {
+                FlashCardTitle.Visibility = Visibility.Collapsed;         
+            }
             else
                 FlashCardTitle.Visibility = Visibility.Visible;
         }
@@ -81,10 +89,45 @@ namespace QuizFlash
 
         private void FlashCardTextChanged(object sender, TextChangedEventArgs e)
         {
+            UnsavedBadge.Visibility = FlashCardDescriptionBox.Text.ToString() != Description ? Visibility.Visible : Visibility.Hidden;
             if (!string.IsNullOrEmpty(FlashCardDescriptionBox.Text) && FlashCardDescriptionBox.Text.Length > 0)
+            {
                 FlashCardDescription.Visibility = Visibility.Collapsed;
+            }
             else
                 FlashCardDescription.Visibility = Visibility.Visible;
+        }
+
+        private void SaveFlashCard(object sender, RoutedEventArgs e)
+        {
+            Title = FlashCardTitleBox.Text.ToString();
+            Description = FlashCardDescriptionBox.ToString();
+            Database db = new Database();
+            string sql = "UPDATE FlashCards SET Title = @Title, Data = @Description WHERE id = @FlashCardId";
+            MySqlParameter[] parameters =
+            {
+                new MySqlParameter("@Title",Title ),
+                new MySqlParameter("@Description",Description ),
+                new MySqlParameter("@FlashCardId",FlashCardId ),
+            };
+            int result = db.ExecuteNonQuery(sql, parameters);
+            UnsavedBadge.Visibility = Visibility.Collapsed;
+        }
+
+        private void DeleteFlashCard(object sender, RoutedEventArgs e)
+        {
+            Database db = new Database();
+            string sql = "DELETE FROM FlashCards WHERE id = @FlashCardId";
+            int deletingFlashCard = db.ExecuteNonQuery(sql, new MySqlParameter("@FlashCardId", FlashCardId));
+            if(Parent is Panel panelWrapPanel)
+            {
+                panelWrapPanel.Children.Remove(this);
+            }
+        }
+
+        private void ShareFlashCard(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
