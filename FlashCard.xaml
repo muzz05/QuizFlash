@@ -22,10 +22,10 @@
                 <Ellipse Width="8" Height="8" Fill="#353340"/>
             </Canvas>
 
-            <Grid Grid.Row="0" Margin="0,10,0,0">
+            <Grid Grid.Row="0" Margin="0,5,0,0">
                 <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="180"
                            MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center"/>
-                <TextBox x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="170" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left"/>
+                <TextBox TextWrapping="Wrap" x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="170" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left"/>
             </Grid>
             <Line Fill="Black"/>
             <Grid Grid.Row="1">

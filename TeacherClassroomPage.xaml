@@ -8,11 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="600"
       Title="TeacherClassroomPage">
 
-    <Grid>
-        <!-- Add a container where the classroomcontrol will be displayed -->
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
-            <WrapPanel HorizontalAlignment="Left" x:Name="classroomContainer" Width="700"/>
-        </ScrollViewer>
-    </Grid>
+    <Border Margin="15">
+        <Grid>
+            <!-- Add a container where the classroomcontrol will be displayed -->
+        
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+                <WrapPanel HorizontalAlignment="Left" x:Name="classroomContainer" Width="700"/>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Page>
 

@@ -25,25 +25,31 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Margin="10" VerticalAlignment="Top">
-                    <TextBlock Margin="0,10,0,0" x:Name="class_name" Foreground="White" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Text="Applied Physics"/>
-                    <TextBlock Margin="0,10,0,0" x:Name="course_name" Foreground="White" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" Text="PH-122"/>
-                    <TextBlock Margin="0,10,0,0" x:Name="teacher_name" Foreground="White" FontSize="14" FontWeight="Normal" TextWrapping="Wrap" Text="Sir Tahir Jamal"/>
+                    <TextBlock Margin="0,10,0,0" x:Name="class_name" Foreground="#fafafa" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Text="Applied Physics"/>
+                    <TextBlock Margin="0,10,0,0" x:Name="course_name" Foreground="#fafafa" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" Text="PH-122"/>
+                    <TextBlock Margin="0,10,0,0" x:Name="teacher_name" Foreground="#fafafa" FontSize="14" FontWeight="Normal" TextWrapping="Wrap" Text="Sir Tahir Jamal"/>
                 </StackPanel>
             </Border>
 
-            <Border Grid.Row="1" Background="White" CornerRadius="0,0,20,20" Margin="0">
-                <StackPanel Margin="10" VerticalAlignment="Top">
-                    <TextBlock Margin="-5,-8,0,0" x:Name="classmembers" Foreground="black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Class Members :"/>
-
+            <Border Grid.Row="1" Background="#fafafa" CornerRadius="0,0,20,20" Margin="0">
+                <StackPanel Margin="10,8,10,0" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,0,0" x:Name="classmembers" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Student Count:"/>
+                        <TextBlock Margin="5,0,0,0" x:Name="classmembers_data" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,10,0,0" x:Name="classcode" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Classroom Code:"/>
+                        <TextBlock Margin="5,10,0,0" x:Name="classcode_data" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="ABC123"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
             <Grid Grid.RowSpan="2" Margin="0,55,20,10" VerticalAlignment="Center" HorizontalAlignment="Right">
-                <Ellipse x:Name="ellipse" Width="50" Height="50"/>
-                <TextBlock x:Name="ellipse_tb" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="50" Foreground="White" FontSize="18" FontWeight="Bold" Text="" />
+                <Ellipse x:Name="ellipse" Width="50" Height="50" />
+                <TextBlock x:Name="ellipse_tb" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="50" Foreground="#fafafa" FontSize="18" FontWeight="Bold" />
             </Grid>
 
-            <Button Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border CornerRadius="20" Background="Transparent" BorderThickness="0">

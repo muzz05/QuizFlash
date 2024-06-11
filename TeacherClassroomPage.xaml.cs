@@ -23,23 +23,23 @@ namespace QuizFlash
         public TeacherClassroomPage()
         {
             InitializeComponent();
-            AddClassroom("Applied Physics", "PH-122", "Sir Tahir Jamal");
-            AddClassroom("Software Engineering", "SE-205", "Miss Sidra");
-            AddClassroom("Mathematics", "MTH-101", "Dr. Smith");
-            AddClassroom("Computer Science", "CS-301", "Prof. Johnson");
-            AddClassroom("Chemistry", "CH-202", "Dr. Lee");
-            AddClassroom("History", "HI-110", "Prof. Adams");
-            AddClassroom("Literature", "LI-220", "Dr. Brown");
+            AddClassroom("Applied Physics", "PH-122", "Sir Tahir Jamal",49,"XA-9118-PF-09");
+            AddClassroom("Software Engineering", "SE-205", "Miss Sidra",23, "XA-8174-PF-69");
+            AddClassroom("Mathematics", "MTH-101", "Dr. Smith", 89, "LA-PO18-PF-09");
+            AddClassroom("Computer Science", "CS-301", "Prof. Johnson", 69, "NA-9118-PF-06");
+            AddClassroom("Chemistry", "CH-202", "Dr. Lee",34, "PA-1293-PF-08");
+            AddClassroom("History", "HI-110", "Prof. Adams", 43, "LO-9118-LF-00");
+            AddClassroom("Literature", "LI-220", "Dr. Brown", 39, "XA-9118-PF-09");
 
 
         }
 
-        private void AddClassroom(string coursename, string code, string teacher)
+        private void AddClassroom(string coursename, string code, string teacher ,int count,string gcr_code)
         {
 
-            classroomcontrol newClassroom = new classroomcontrol(coursename, code, teacher);
+            classroomcontrol newClassroom = new classroomcontrol(coursename, code, teacher, count,gcr_code);
             // Add the new classroomcontrol instance to the container
-            newClassroom.Margin = new Thickness(15, 15, 15, 15);
+            newClassroom.Margin = new Thickness(0, 0, 15, 15);
             classroomContainer.Children.Add(newClassroom);
 
 

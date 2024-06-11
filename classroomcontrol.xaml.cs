@@ -31,20 +31,30 @@ namespace QuizFlash
             new SolidColorBrush(Color.FromRgb(140, 136, 163)),// #8C88A3 - soft violet
             new SolidColorBrush(Color.FromRgb(164, 157, 191)),// #A49DBF - pastel purple
             new SolidColorBrush(Color.FromRgb(176, 176, 195)),// #B0B0C3 - light grayish blue
-            new SolidColorBrush(Color.FromRgb(193, 195, 209)),// #C1C3D1 - pale lavender
             new SolidColorBrush(Color.FromRgb(210, 212, 224)),// #D2D4E0 - light silver
-            new SolidColorBrush(Color.FromRgb(227, 228, 237))
+            new SolidColorBrush(Color.FromRgb(227, 228, 237)),// #E3E4ED - light pastel blue
 
+            // Added more subtle dark colors
+            new SolidColorBrush(Color.FromRgb(54, 69, 79)),   // #36454F - dark slate gray
+            new SolidColorBrush(Color.FromRgb(79, 93, 117)),  // #4F5D75 - dark blue-gray
+            new SolidColorBrush(Color.FromRgb(58, 58, 58)),   // #3A3A3A - dark charcoal gray
+            new SolidColorBrush(Color.FromRgb(102, 102, 102)),// #666666 - medium dark gray
+            new SolidColorBrush(Color.FromRgb(81, 92, 107)),  // #515C6B - deep muted blue
+            new SolidColorBrush(Color.FromRgb(110, 123, 139)),// #6E7B8B - cool grayish blue
+            new SolidColorBrush(Color.FromRgb(93, 107, 153)), // #5D6B99 - dark desaturated blue
+            new SolidColorBrush(Color.FromRgb(70, 82, 91))   // #46525B - dark muted blue-gray
         };
 
 
 
-        public classroomcontrol(string course, string code, string teacher)
+        public classroomcontrol(string course, string code, string teacher,int class_no,string class_gc_code)
         {
             InitializeComponent();
             class_name.Text = course;
             course_name.Text = code;
             teacher_name.Text = teacher;
+            classmembers_data.Text = class_no.ToString();
+            classcode_data.Text = class_gc_code;
             string[] parts = code.Split('-');
             string result = parts[0].ToUpper();
             ellipse_tb.Text=result;
