@@ -4,18 +4,42 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizFlash"
+      xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"              
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="TeacherClassroomPage">
 
-    <Border Margin="15">
-        <Grid>
-            <!-- Add a container where the classroomcontrol will be displayed -->
-        
-            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
-                <WrapPanel HorizontalAlignment="Left" x:Name="classroomContainer" Width="700"/>
-            </ScrollViewer>
-        </Grid>
+    <Border CornerRadius="20" Margin="15">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+            <WrapPanel x:Name="WrapPanelClassroom" Width="700">
+                <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
+                    <Border.BorderBrush>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Rectangle Width="50" Height="50" Fill="#c3c4cf">
+                                    <Rectangle.Stroke>
+                                        <SolidColorBrush Color="#c3c4cf"/>
+                                    </Rectangle.Stroke>
+                                    <Rectangle.StrokeDashArray>
+                                        <DoubleCollection>2 2 2 2</DoubleCollection>
+                                    </Rectangle.StrokeDashArray>
+                                </Rectangle>
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Border.BorderBrush>
+                    <Grid Height="220" Width="200">
+                        <Button Width="50" Height="50" VerticalAlignment="Center" Click="classroom_add" Cursor="Hand" HorizontalAlignment="Center">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="50" Background="#c3c4cf">
+                                        <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </WrapPanel>
+        </ScrollViewer>
     </Border>
 </Page>
-

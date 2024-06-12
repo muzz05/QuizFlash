@@ -33,15 +33,19 @@ namespace QuizFlash
 
 
         }
+        private void classroom_add(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("coming");
+        }
 
         private void AddClassroom(string coursename, string code, string teacher ,int count,string gcr_code)
         {
 
             classroomcontrol newClassroom = new classroomcontrol(coursename, code, teacher, count,gcr_code);
             // Add the new classroomcontrol instance to the container
+            int index = WrapPanelClassroom.Children.Count - 1;
             newClassroom.Margin = new Thickness(0, 0, 15, 15);
-            classroomContainer.Children.Add(newClassroom);
-
+            WrapPanelClassroom.Children.Insert(index,newClassroom);
 
         }
 
