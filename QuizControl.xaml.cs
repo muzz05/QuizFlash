@@ -26,6 +26,7 @@ namespace QuizFlash
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
+
             // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)
             string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);
             string validUntilDate = ConvertIsoStringToDate(validUntilIsoString);  // New line for date conversion
@@ -49,20 +50,3 @@ namespace QuizFlash
         }
     }
 }
-
-
-
-//public classroomcontrol(string course, string code, string teacher, int class_no, string class_gc_code)
-//{
-//    InitializeComponent();
-//    class_name.Text = course;
-//    course_name.Text = code;
-//    teacher_name.Text = teacher;
-//    classmembers_data.Text = class_no.ToString();
-//    classcode_data.Text = class_gc_code;
-//    string[] parts = code.Split('-');
-//    string result = parts[0].ToUpper();
-//    ellipse_tb.Text = result;
-//    SetRandomBackgroundColor();
-
-//}

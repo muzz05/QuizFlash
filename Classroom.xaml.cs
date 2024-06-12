@@ -18,7 +18,7 @@ namespace QuizFlash
     /// <summary>
     /// Interaction logic for classroomcontrol.xaml
     /// </summary>
-    public partial class classroomcontrol : UserControl
+    public partial class Classroom : UserControl
     {
 
         private static readonly Random random = new Random();
@@ -47,7 +47,7 @@ namespace QuizFlash
 
 
 
-        public classroomcontrol(string course, string code, string teacher,int class_no,string class_gc_code)
+        public Classroom(string course, string code, string teacher,int class_no,string class_gc_code)
         {
             InitializeComponent();
             class_name.Text = course;

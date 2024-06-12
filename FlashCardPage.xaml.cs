@@ -25,7 +25,7 @@ namespace QuizFlash
 
 
             Database db = new Database();
-            string sql = "SELECT * FROM FlashCards WHERE studentId = @StudentId";
+            string sql = "SELECT * FROM Flashcards WHERE studentId = @StudentId";
             DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@StudentId", StudentId));
             for (int i = 0; i < result.Rows.Count; i++)
             {
@@ -38,9 +38,9 @@ namespace QuizFlash
         private void AddFlashCard_Click(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
-            string sql = "INSERT INTO FlashCards(studentId) VALUES(@StudentId)";
+            string sql = "INSERT INTO Flashcards(studentId) VALUES(@StudentId)";
             int result = db.ExecuteNonQuery(sql, new MySqlParameter("@StudentId", StudentId));
-            sql = "SELECT MAX(id) AS MaxId FROM FlashCards WHERE studentId = @StudentId";
+            sql = "SELECT MAX(id) AS MaxId FROM Flashcards WHERE studentId = @StudentId";
             object id = db.ExecuteScalar(sql, new MySqlParameter("@StudentId", StudentId));
             AddFlashCard("", "", Convert.ToInt32(id));
         }

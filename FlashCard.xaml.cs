@@ -101,9 +101,9 @@ namespace QuizFlash
         private void SaveFlashCard(object sender, RoutedEventArgs e)
         {
             Title = FlashCardTitleBox.Text.ToString();
-            Description = FlashCardDescriptionBox.ToString();
+            Description = FlashCardDescriptionBox.Text.ToString();
             Database db = new Database();
-            string sql = "UPDATE FlashCards SET Title = @Title, Data = @Description WHERE id = @FlashCardId";
+            string sql = "UPDATE Flashcards SET Title = @Title, Data = @Description WHERE id = @FlashCardId";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@Title",Title ),
@@ -117,7 +117,7 @@ namespace QuizFlash
         private void DeleteFlashCard(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
-            string sql = "DELETE FROM FlashCards WHERE id = @FlashCardId";
+            string sql = "DELETE FROM Flashcards WHERE id = @FlashCardId";
             int deletingFlashCard = db.ExecuteNonQuery(sql, new MySqlParameter("@FlashCardId", FlashCardId));
             if(Parent is Panel panelWrapPanel)
             {
