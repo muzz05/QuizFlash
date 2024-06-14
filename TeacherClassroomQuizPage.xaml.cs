@@ -23,6 +23,22 @@ namespace QuizFlash
         public TeacherClassroomQuizPage()
         {
             InitializeComponent();
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Software Engineering", 20, 10, 1718256809);
         }
+
+        public void AddQuiz(string quizname, int totalmarks, int questions, long validUntilEpoch)
+        {
+            QuizControl newQuiz = new QuizControl(quizname, totalmarks, questions, validUntilEpoch);
+            newQuiz.Margin = new Thickness(0, 15, 15, 0);
+            TeacherClassroomPanel.Children.Add(newQuiz);
+
+        }
+
     }
 }

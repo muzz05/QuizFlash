@@ -127,7 +127,8 @@ namespace QuizFlash
 
         private void ShareFlashCard(object sender, RoutedEventArgs e)
         {
-
+            FlashCardSharePopup Share = new FlashCardSharePopup(FlashCardId);
+            Share.ShowDialog();
         }
     }
 }

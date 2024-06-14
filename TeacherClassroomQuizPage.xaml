@@ -5,10 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="700"
       Title="TeacherClassroomQuizPage">
 
-    <Grid Margin="40 10">
-        <TextBlock>This is classroom Quiz page for teacher</TextBlock>
+    <Grid Margin="30 0 20 10" HorizontalAlignment="Center">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
+            <WrapPanel x:Name="TeacherClassroomPanel" Width="700">
+
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

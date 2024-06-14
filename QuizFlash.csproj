@@ -247,6 +247,9 @@
     <Compile Include="FlashCardPage.xaml.cs">
       <DependentUpon>FlashCardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlashCardSharePopup.xaml.cs">
+      <DependentUpon>FlashCardSharePopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizControl.xaml.cs">
       <DependentUpon>QuizControl.xaml</DependentUpon>
     </Compile>
@@ -298,6 +301,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FlashCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlashCardSharePopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
