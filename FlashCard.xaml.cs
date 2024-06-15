@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,6 +9,10 @@ namespace QuizFlash
 {
     public partial class Flashcard : UserControl
     {
+        private int FlashCardId;
+        private string Title;
+        private string Description;
+
         private static readonly Random random = new Random();
         private static readonly Brush[] lightColors = new Brush[]
         {
@@ -37,15 +42,18 @@ namespace QuizFlash
             new SolidColorBrush(Color.FromRgb(210, 180, 140)), // Tan
             new SolidColorBrush(Color.FromRgb(188, 143, 143)), // Rosy brown
             new SolidColorBrush(Color.FromRgb(255, 240, 245)), // Lavender blush
-            new SolidColorBrush(Color.FromRgb(245, 245, 220))// Light lavender
+            new SolidColorBrush(Color.FromRgb(245, 245, 220))  // Light lavender
         };
 
-        public Flashcard(string Title, string Description)
+        public Flashcard(string _Title, string _Description, int Id)
         {
+            Title = _Title;
+            Description = _Description;
             InitializeComponent();
             SetRandomBackgroundColor();
-            FlashCardTitle.Text = Title;
-            FlashCardDescription.Text = Description;
+            FlashCardTitleBox.Text = _Title;
+            FlashCardDescriptionBox.Text = _Description;
+            FlashCardId = Id;
         }
 
 
@@ -58,46 +66,69 @@ namespace QuizFlash
 
         private void FlashCardTitleTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            var textBox = textBlock?.Tag as TextBox;
-            if (textBox != null)
-            {
-                textBox.Visibility = Visibility.Visible;
-                textBox.Focus();
-            }
+            FlashCardTitle.Text = "";
+            FlashCardTitleBox.Focus();
         }
 
         private void FlashCardTitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var textBlock = textBox?.Tag as TextBlock;
-            if (textBlock != null)
+            UnsavedBadge.Visibility = FlashCardTitleBox.Text.ToString() != Title ? Visibility.Visible : Visibility.Hidden;
+            if (!string.IsNullOrEmpty(FlashCardTitleBox.Text) && FlashCardTitleBox.Text.Length > 0)
             {
-                textBlock.Text = textBox.Text;
-                textBox.Visibility = string.IsNullOrEmpty(textBox.Text) ? Visibility.Collapsed : Visibility.Visible;
+                FlashCardTitle.Visibility = Visibility.Collapsed;         
             }
+            else
+                FlashCardTitle.Visibility = Visibility.Visible;
         }
 
         private void FlashCardTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var textBlock = sender as TextBlock;
-            var textBox = textBlock?.Tag as TextBox;
-            if (textBox != null)
-            {
-                textBox.Visibility = Visibility.Visible;
-                textBox.Focus();
-            }
+            FlashCardDescription.Text = "";
+            FlashCardDescriptionBox.Focus();
         }
 
         private void FlashCardTextChanged(object sender, TextChangedEventArgs e)
         {
-            var textBox = sender as TextBox;
-            var textBlock = textBox?.Tag as TextBlock;
-            if (textBlock != null)
+            UnsavedBadge.Visibility = FlashCardDescriptionBox.Text.ToString() != Description ? Visibility.Visible : Visibility.Hidden;
+            if (!string.IsNullOrEmpty(FlashCardDescriptionBox.Text) && FlashCardDescriptionBox.Text.Length > 0)
             {
-                textBlock.Text = textBox.Text;
-                textBox.Visibility = string.IsNullOrEmpty(textBox.Text) ? Visibility.Collapsed : Visibility.Visible;
+                FlashCardDescription.Visibility = Visibility.Collapsed;
             }
+            else
+                FlashCardDescription.Visibility = Visibility.Visible;
+        }
+
+        private void SaveFlashCard(object sender, RoutedEventArgs e)
+        {
+            Title = FlashCardTitleBox.Text.ToString();
+            Description = FlashCardDescriptionBox.Text.ToString();
+            Database db = new Database();
+            string sql = "UPDATE Flashcards SET Title = @Title, Data = @Description WHERE id = @FlashCardId";
+            MySqlParameter[] parameters =
+            {
+                new MySqlParameter("@Title",Title ),
+                new MySqlParameter("@Description",Description ),
+                new MySqlParameter("@FlashCardId",FlashCardId ),
+            };
+            int result = db.ExecuteNonQuery(sql, parameters);
+            UnsavedBadge.Visibility = Visibility.Collapsed;
+        }
+
+        private void DeleteFlashCard(object sender, RoutedEventArgs e)
+        {
+            Database db = new Database();
+            string sql = "DELETE FROM Flashcards WHERE id = @FlashCardId";
+            int deletingFlashCard = db.ExecuteNonQuery(sql, new MySqlParameter("@FlashCardId", FlashCardId));
+            if(Parent is Panel panelWrapPanel)
+            {
+                panelWrapPanel.Children.Remove(this);
+            }
+        }
+
+        private void ShareFlashCard(object sender, RoutedEventArgs e)
+        {
+            FlashCardSharePopup Share = new FlashCardSharePopup(FlashCardId);
+            Share.ShowDialog();
         }
     }
 }

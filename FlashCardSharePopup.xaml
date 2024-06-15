@@ -1,0 +1,54 @@
+﻿<Window x:Class="QuizFlash.FlashCardSharePopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        Title="Message" Height="180" Width="300"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Border Background="#363846" CornerRadius="20" BorderThickness="0"  SnapsToDevicePixels="True">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Heading Text -->
+            <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="25">
+               Share Flashcard
+            </TextBlock>
+
+            <Grid Grid.Row="1" Margin="28,0">
+                <Border BorderBrush="#c4c3cf" BorderThickness="1"  CornerRadius="5" Height="40">
+                    <Grid Height="40" Margin="0,0,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Icons:PackIconBoxIcons Kind="SolidShareAlt" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="8,0"/>
+                        <TextBlock x:Name="StudentCode_flashCardTextBlock" Text="Enter Student Code" MouseDown="MouseDownTextBoxShare" Style="{StaticResource textHint}" Background="#363846" VerticalAlignment="Center"/>
+                        <TextBox Name="StudentCode_flashCardTextBox" Style="{StaticResource textBox}" TextChanged="StudentCodeChanged" Background="#363846" VerticalAlignment="Center" Cursor="IBeam"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <TextBlock x:Name="alertMessage" Foreground="#c4c3cf" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10">
+                    
+                </TextBlock>
+            </Grid>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="Cancel" >Cancel</Button>
+                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="ShareFlashCard">Share</Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

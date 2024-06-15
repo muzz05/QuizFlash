@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="QuizFlash.Classroom"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:QuizFlash"
+             mc:Ignorable="d"
+             d:DesignHeight="230" d:DesignWidth="200"
+             Background="Transparent">
+    <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="230" Width="200" Padding="0" Margin="0">
+        <!--<Border.Effect>
+            <DropShadowEffect Color="#b2b2b2" BlurRadius="10" ShadowDepth="2" Opacity="0.3" />
+        </Border.Effect>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" CornerRadius="20,20,0,0" Margin="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#A7D2F7" Offset="0.0" />
+                        <GradientStop Color="#353340" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Margin="10" VerticalAlignment="Top">
+                    <TextBlock Margin="0,10,0,0" x:Name="class_name" Foreground="#fafafa" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Text="Applied Physics"/>
+                    <TextBlock Margin="0,10,0,0" x:Name="course_name" Foreground="#fafafa" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" Text="PH-122"/>
+                    <TextBlock Margin="0,10,0,0" x:Name="teacher_name" Foreground="#fafafa" FontSize="14" FontWeight="Normal" TextWrapping="Wrap" Text="Sir Tahir Jamal"/>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="1" Background="#fafafa" CornerRadius="0,0,20,20" Margin="0">
+                <StackPanel Margin="10,8,10,0" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,0,0" x:Name="classmembers" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Student Count:"/>
+                        <TextBlock Margin="5,0,0,0" x:Name="classmembers_data" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,10,0,0" x:Name="classcode" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Classroom Code:"/>
+                        <TextBlock Margin="5,10,0,0" x:Name="classcode_data" Foreground="Black" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="ABC123"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.RowSpan="2" Margin="0,55,20,10" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Ellipse x:Name="ellipse" Width="50" Height="50" />
+                <TextBlock x:Name="ellipse_tb" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="50" Foreground="#fafafa" FontSize="18" FontWeight="Bold" />
+            </Grid>
+
+            <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="Transparent" BorderThickness="0">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+    </Border>
+</UserControl>

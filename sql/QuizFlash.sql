@@ -20,14 +20,17 @@ CREATE TABLE Students (
     studentCode VARCHAR(255) UNIQUE NOT NULL
 );
 
-CREATE TABLE Quiz (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    totalQuestions INT NOT NULL,
-    totalMarks INT NOT NULL,
-    marksPerQuestion INT NOT NULL,
-    teacherId INT NOT NULL,
-    classroomId INT NOT NULL
-);
+    CREATE TABLE Quiz (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255),
+        totalQuestions INT NOT NULL,
+        totalMarks INT NOT NULL,
+        marksPerQuestion INT NOT NULL,
+        teacherId INT NOT NULL,
+        classroomId INT NOT NULL,
+        createTime BIGINT,
+        dueDate BIGINT
+    );
 
 CREATE TABLE QuestionAnswers (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -89,6 +92,14 @@ CREATE TABLE Department (
     name VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE ClassroomStream (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    classroomId INT NOT NULL,
+    teacherId INT NOT NULL,
+    message VARCHAR(255),
+    createTime BIGINT
+);
+
 -- ADDING DUMMY DATA TO THE TABLES
 
 -- Dummy data for User table
@@ -121,10 +132,11 @@ INSERT INTO Students (userId, studentCode) VALUES
 (10, 'SCODE007');
 
 -- Dummy data for Quiz table
-INSERT INTO Quiz (totalQuestions, totalMarks, marksPerQuestion, teacherId, classroomId) VALUES 
-(10, 50, 5, 1, 1),
-(15, 60, 4, 2, 2),
-(20, 100, 5, 3, 3);
+INSERT INTO Quiz (name, totalQuestions, totalMarks, marksPerQuestion, teacherId, classroomId, createTime, dueDate) VALUES 
+('Math Quiz 1', 10, 50, 5, 1, 1, 1718496000, 1726099200),
+('Science Quiz 1', 15, 60, 4, 2, 2, 1718496000, 1726099200),
+('History Quiz 1', 20, 100, 5, 3, 3, 1718496000, 1726099200);
+
 
 -- Dummy data for QuestionAnswers table with engineering-related questions
 INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES 
@@ -181,4 +193,27 @@ INSERT INTO Department (name) VALUES
 ('Environmental Engineering'),
 ('Industrial Engineering'),
 ('Materials Engineering');
+
+-- Dummy data for ClassroomStream table
+INSERT INTO ClassroomStream (classroomId, teacherId, message, createTime) VALUES
+(1, 1, 'Welcome to Classroom 1! We are excited to start this journey together and look forward to a productive semester.', 1718496000),
+(1, 1, 'Assignment 1 posted. Please review the instructions carefully and submit your work by the due date.', 1718582400),
+(1, 1, 'Reminder: Quiz on Monday. Make sure to study the materials covered in the last three lectures.', 1718668800),
+(1, 1, 'Class rescheduled to 10 AM this Wednesday due to a special event. Apologies for any inconvenience.', 1718755200),
+(1, 1, 'Project submission deadline extended to next Friday. Use this extra time to refine your work.', 1718841600),
+(2, 2, 'Welcome to Classroom 2! This semester we will cover various interesting topics. Stay engaged and active.', 1718496000),
+(2, 2, 'Discussion on Chapter 3 scheduled for tomorrow. Read the chapter and come prepared with questions.', 1718582400),
+(2, 2, 'Lab session details have been updated. Please check the new schedule and make necessary arrangements.', 1718668800),
+(2, 2, 'Group project guidelines are now available. Form your teams and start brainstorming on your project ideas.', 1718755200),
+(2, 2, 'Extra class on Friday to cover additional material before the midterms. Attendance is highly recommended.', 1718841600),
+(3, 3, 'Welcome to Classroom 3! Let\'s make this a great learning experience by actively participating in discussions.', 1718496000),
+(3, 3, 'Mid-term exam schedule has been posted. Please review the dates and prepare accordingly.', 1718582400),
+(3, 3, 'Homework for the weekend: Complete the exercises at the end of Chapter 4. This will help reinforce the concepts.', 1718668800),
+(3, 3, 'Field trip announcement: We will be visiting the science museum next week. Details will be shared soon.', 1718755200),
+(3, 3, 'Online resources shared: Check the portal for additional reading materials and resources to aid your studies.', 1718841600),
+(1, 1, 'New course material uploaded on the portal. Please review the new content before our next class.', 1718928000),
+(2, 2, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1718928000),
+(3, 3, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1718928000),
+(1, 1, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1719014400),
+(2, 2, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1719014400);
 

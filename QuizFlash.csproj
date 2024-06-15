@@ -247,6 +247,12 @@
     <Compile Include="FlashCardPage.xaml.cs">
       <DependentUpon>FlashCardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlashCardSharePopup.xaml.cs">
+      <DependentUpon>FlashCardSharePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuizControl.xaml.cs">
+      <DependentUpon>QuizControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizDesignPage.xaml.cs">
       <DependentUpon>QuizDesignPage.xaml</DependentUpon>
     </Compile>
@@ -268,11 +274,26 @@
     <Compile Include="Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TeacherClassroomAnnouncementPage.xaml.cs">
+      <DependentUpon>TeacherClassroomAnnouncementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherClassroomMainPage.xaml.cs">
+      <DependentUpon>TeacherClassroomMainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherClassroomPage.xaml.cs">
       <DependentUpon>TeacherClassroomPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TeacherClassroomQuizPage.xaml.cs">
+      <DependentUpon>TeacherClassroomQuizPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherClassroomStudentList.xaml.cs">
+      <DependentUpon>TeacherClassroomStudentList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherHomePage.xaml.cs">
       <DependentUpon>TeacherHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classroom.xaml.cs">
+      <DependentUpon>Classroom.xaml</DependentUpon>
     </Compile>
     <Compile Include="UniqueCodeGenerator.cs" />
     <Page Include="FlashCard.xaml">
@@ -280,6 +301,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FlashCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlashCardSharePopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,11 +331,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QuizControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="QuizDesignPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Signup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Classroom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,7 +371,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TeacherClassroomAnnouncementPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherClassroomMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TeacherClassroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherClassroomQuizPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeacherClassroomStudentList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
