@@ -201,6 +201,7 @@
             <Style x:Key="NavigationButtons" TargetType="RadioButton">
 
                         <Setter Property="Background" Value="#282438"/>
+                        <Setter Property="Foreground" Value="#c3c4cf"/>
                         <Setter Property="BorderBrush" Value="Transparent"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Setter Property="Height" Value="40"/>

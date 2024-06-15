@@ -30,7 +30,6 @@
                         </VisualBrush>
                     </Border.BorderBrush>
                     <Grid Height="220" Width="200">
-
                         <Button Width="50" Height="50" VerticalAlignment="Center" Click="AddFlashCard_Click" Cursor="Hand" HorizontalAlignment="Center">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">

@@ -253,6 +253,9 @@
     <Compile Include="QuizControl.xaml.cs">
       <DependentUpon>QuizControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuizDesignControl.xaml.cs">
+      <DependentUpon>QuizDesignControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizDesignPage.xaml.cs">
       <DependentUpon>QuizDesignPage.xaml</DependentUpon>
     </Compile>
@@ -332,6 +335,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuizControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuizDesignControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
