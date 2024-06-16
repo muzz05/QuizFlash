@@ -34,7 +34,7 @@ namespace QuizFlash
 
         private void StudentClassroomCheck(object sender, RoutedEventArgs e)
         {
-            StudentViewFrame.Content = new TeacherClassroomPage();
+            StudentViewFrame.Content = new StudentClassroomPage(StudentId,UserId);
         }
 
         private void StudentFlashCardCheck(object sender, RoutedEventArgs e)
