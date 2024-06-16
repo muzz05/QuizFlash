@@ -24,18 +24,19 @@ namespace QuizFlash
     /// </summary>
     public partial class StudentDataPage : Page
     {
-        private int pageStart = 10;
+        static Database database = new Database();
+        static int minId = Convert.ToInt32(database.ExecuteScalar("Select MIN(id) from users where isTeacher=false"));
+        int nextPageId = minId + 9;
+        int prevPageId = minId;
+        BrushConverter converter = new BrushConverter();
+        ObservableCollection<Member> members = new ObservableCollection<Member>();
         public StudentDataPage()
         {
-            InitializeComponent();
+            InitializeComponent();  
 
-            var converter = new BrushConverter();
-            ObservableCollection<Member> members = new ObservableCollection<Member>();
-            
-            Database database = new Database();
             DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from Users u JOIN Students s On s.userId = u.id LEFT JOIN Department d ON u.departmentId=d.id");
-            int rowCount = 0;
-            for(int i = 0; i < reader.Rows.Count; i++)
+            int rowCount = 1;
+            for (int i = 0; i < reader.Rows.Count; i++)
             {
                 members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                 rowCount++;
@@ -49,21 +50,19 @@ namespace QuizFlash
         }
 
 
-        public void PagingTable(object sender, RoutedEventArgs e) {
-
-            var converter = new BrushConverter();
-            ObservableCollection<Member> members = new ObservableCollection<Member>();
-
-            Database database = new Database();
-            DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>@pageCount;", new MySqlParameter("@pageCount",pageStart));
+        public void NextTable(object sender, RoutedEventArgs e)
+        {           
+            DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", nextPageId));
 
             if (reader.Rows.Count == 0)
             {
-                MessageBox.Show("No more data to show");
+                CustomMessageBox msg = new CustomMessageBox("No more data","No more students to show","Error");
+                msg.Show();
             }
             else
             {
-                int rowCount = 0;
+                members.Clear();
+                int rowCount = 1;
                 for (int i = 0; i < reader.Rows.Count; i++)
                 {
                     members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
@@ -74,10 +73,56 @@ namespace QuizFlash
                     }
                 }
                 studentsDataGrid.ItemsSource = members;
-                pageStart += 10;
+                nextPageId += 9;
+                prevPageId += 9;
             }
         }
-    }
+
+                public void PrevTable(object sender, RoutedEventArgs e)
+                {
+                    if(prevPageId == minId)
+                    {
+                    CustomMessageBox msg = new CustomMessageBox("No more data", "No more students to show", "Error");
+                    msg.Show();
+                    }
+                    else
+                    {
+                        DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", prevPageId - 9));
+                        members.Clear();
+                        int rowCount = 1;
+                        for (int i = 0; i < reader.Rows.Count; i++)
+                        {
+                            members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
+                            rowCount++;
+                            if (rowCount == 10)
+                            {
+                                break;
+                            }
+                        }
+                        studentsDataGrid.ItemsSource = members;
+                        nextPageId -= 9;
+                        prevPageId -= 9;
+                    }   
+        }
+
+        public void SearchStudent(object sender, RoutedEventArgs e)
+        {
+            DataTable search = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.name like @name;", new MySqlParameter("@name", "%" + textBoxFilter.Text + "%"));
+            if(search.Rows.Count == 0)
+            {
+                CustomMessageBox msg = new CustomMessageBox("Invalid Search","No results found","Error");
+                msg.Show();
+            }
+            else
+            {
+                members.Clear();
+                for (int i = 0; i < search.Rows.Count; i++)
+                {
+                    members.Add(new Member { Number = search.Rows[i]["id"].ToString(), Character = search.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = search.Rows[i]["name"].ToString(), Department = search.Rows[i]["departmentName"].ToString(), Email = search.Rows[i]["email"].ToString(), StudentCode = search.Rows[i]["studentCode"].ToString() });
+                }
+                studentsDataGrid.ItemsSource = members;
+            }
+        }
         public class Member
         {
             public string Character { get; set; }
@@ -87,6 +132,7 @@ namespace QuizFlash
             public string Department { get; set; }
             public string Email { get; set; }
             public string StudentCode { get; set; }
-        }      
+        }
+    }
 }
 
