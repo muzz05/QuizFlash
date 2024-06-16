@@ -8,9 +8,6 @@
              d:DesignHeight="230" d:DesignWidth="200"
              Background="Transparent">
     <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="230" Width="200" Padding="0" Margin="0">
-        <!--<Border.Effect>
-            <DropShadowEffect Color="#b2b2b2" BlurRadius="10" ShadowDepth="2" Opacity="0.3" />
-        </Border.Effect>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*" />
@@ -49,7 +46,7 @@
                 <TextBlock x:Name="ellipse_tb" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="50" Foreground="#fafafa" FontSize="18" FontWeight="Bold" />
             </Grid>
 
-            <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Click="RedirectToClassroom">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border CornerRadius="20" Background="Transparent" BorderThickness="0">

@@ -8,9 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="460" d:DesignWidth="700"
       Title="TeacherClassroomMainPage"
-      Background="White">
+      Background="Transparent">
 
-    <Grid Margin="10" Background="#282438">
+    <Grid Margin="10" Background="#353340">
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="78*"/>
@@ -52,6 +52,5 @@
         <Grid Grid.Row="1">
             <Frame x:Name="TeacherClassroomFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
-
     </Grid>
 </Page>

@@ -40,15 +40,15 @@ namespace QuizFlash
             {
                 for (int i = 0; i < ClassroomsData.Rows.Count; i++)
                 {
-                    AddClassroom(ClassroomsData.Rows[i]["name"].ToString(), ClassroomsData.Rows[i]["courseCode"].ToString(), ClassroomsData.Rows[i]["teacherName"].ToString(), Convert.ToInt32(ClassroomsData.Rows[i]["studentCount"]), ClassroomsData.Rows[i]["classCode"].ToString());
+                    AddClassroom(ClassroomsData.Rows[i]["name"].ToString(), ClassroomsData.Rows[i]["courseCode"].ToString(), ClassroomsData.Rows[i]["teacherName"].ToString(), Convert.ToInt32(ClassroomsData.Rows[i]["studentCount"]), ClassroomsData.Rows[i]["classCode"].ToString(),Convert.ToInt32(ClassroomsData.Rows[i]["id"]));
                 }
             }
         }
 
-        private void AddClassroom(string coursename, string code, string teacher, int count, string gcr_code)
+        private void AddClassroom(string coursename, string code, string teacher, int count, string gcr_code, int classroomId)
         {
 
-            Classroom newClassroom = new Classroom(coursename, code, teacher, count, gcr_code);
+            Classroom newClassroom = new Classroom(coursename, code, teacher, count, gcr_code, false, classroomId);
             newClassroom.Margin = new Thickness(0, 0, 15, 15);
             WrapPanelClassroom.Children.Add(newClassroom);
 

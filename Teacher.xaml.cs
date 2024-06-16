@@ -21,6 +21,8 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
+        public Frame TeacherFrame => TeacherViewFrame;
+
         private int TeacherId;
         private int UserId;
         private string UserName;
