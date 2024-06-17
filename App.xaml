@@ -2,12 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="SplashScreen.xaml"
+             StartupUri="QuizDetail_Input.xaml"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
    
     <Application.Resources>
         
+        
          <!--For Kaif-->
+
+
+
+
         <Style x:Key="textHint_flash" TargetType="TextBlock">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Grid.Column" Value="1" />
