@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Icons:PackIconBoxIcons Kind="SolidShareAlt" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="8,0"/>
+                        <Icons:PackIconMaterial Kind="Barcode" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="9,0,5,0" Height="20" Width="20"/>
                         <TextBlock x:Name="StudentCode_flashCardTextBlock" Text="Enter Student Code" MouseDown="MouseDownTextBoxShare" Style="{StaticResource textHint}" Background="#363846" VerticalAlignment="Center"/>
                         <TextBox Name="StudentCode_flashCardTextBox" Style="{StaticResource textBox}" TextChanged="StudentCodeChanged" Background="#363846" VerticalAlignment="Center" Cursor="IBeam"/>
                     </Grid>

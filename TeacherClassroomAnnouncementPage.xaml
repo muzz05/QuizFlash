@@ -5,10 +5,92 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="TeacherClassroomAnnouncementPage">
-
     <Grid Margin="40 10">
-        <TextBlock>This is classroom announcement page for teacher</TextBlock>
+    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
+            <StackPanel x:Name="Annoucements">
+                <Border CornerRadius="20" Background="#282438" Height="200" Width="520" VerticalAlignment="Top" Margin="0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="60*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="35, 20, 0, 20">
+                            <TextBlock FontSize="22" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Applied Physics</TextBlock>
+                            <TextBlock FontSize="16" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Dr. Tahir Jamal</TextBlock>
+                            <Border Background="#c3c4cf" Padding="0, 3" CornerRadius="10" Width="70" HorizontalAlignment="Left" Margin="0,5">
+                                <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center"> MT-116</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <Image Source="Images/announcement.png" Height="200" Grid.Column="1"/>
+
+                    </Grid>
+                </Border>
+                <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="50" Margin="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="80*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
+                            <TextBlock FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
+                        </Border>
+                        <TextBlock Grid.Column="1" Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Share Something with the classroom" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                        <TextBox Background="Transparent" BorderBrush="Transparent" Grid.Column="1"/>
+                    </Grid>
+                </Border>
+                
+                <!--This is the Announcements-->
+                <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="140" Margin="5">
+                    <Grid Height="200" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Height="60">
+
+                            <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
+                                <TextBlock FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
+                            </Border>
+                            <StackPanel Margin="0,10,0,5">
+                                <TextBlock Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Dr. Tahir Jamal" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                                <TextBlock Background="Transparent" FontSize="10" FontWeight="SemiBold" Text="5 Days Ago" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            
+                        </StackPanel>
+                        <TextBlock Grid.Row="1" Background="Transparent" FontSize="14" Foreground="#c3c4cf" Margin="15,2" VerticalAlignment="Center" Width="460" TextWrapping="Wrap">
+                                Dear Students,
+
+Welcome back to another exciting semester! We have several important announcements and reminders to ensure a smooth and productive start to the academic year.
+                        </TextBlock>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="140" Margin="5">
+                    <Grid Height="200" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Height="60">
+
+                            <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
+                                <TextBlock FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
+                            </Border>
+                            <StackPanel Margin="0,10,0,5">
+                                <TextBlock Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Dr. Tahir Jamal" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                                <TextBlock Background="Transparent" FontSize="10" FontWeight="SemiBold" Text="5 Days Ago" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                        <TextBlock Grid.Row="1" Background="Transparent" FontSize="14" Foreground="#c3c4cf" Margin="15,2" VerticalAlignment="Center" Width="460" TextWrapping="Wrap">
+                                Dear Students,
+
+Welcome back to another exciting semester! We have several important announcements and reminders to ensure a smooth and productive start to the academic year.
+                        </TextBlock>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            </ScrollViewer>
     </Grid>
 </Page>
