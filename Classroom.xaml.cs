@@ -21,6 +21,9 @@ namespace QuizFlash
     public partial class Classroom : UserControl
     {
 
+        private int ClassroomId;
+        private bool isTeacher;
+
         private static readonly Random random = new Random();
         private static readonly Brush[] suttleColors = new Brush[]
         {
@@ -47,8 +50,11 @@ namespace QuizFlash
 
 
 
-        public Classroom(string course, string code, string teacher,int class_no,string class_gc_code)
+        public Classroom(string course, string code, string teacher,int class_no,string class_gc_code, bool is_teacher, int classroomId)
         {
+            isTeacher = is_teacher;
+            ClassroomId = classroomId;
+
             InitializeComponent();
             class_name.Text = course;
             course_name.Text = code;
@@ -70,7 +76,19 @@ namespace QuizFlash
 
         }
 
-
+        private void RedirectToClassroom(object sender, RoutedEventArgs e)
+        {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is Teacher teacher)
+                    {
+                        teacher.TeacherViewFrame.Content = new TeacherClassroomMainPage();
+                    }
+                    else if (window is Student student) {
+                        student.StudentViewFrame.Content = new TeacherClassroomMainPage();
+                    }
+                }
+        }
     }
 }
 

@@ -21,6 +21,8 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
+        public Frame TeacherFrame => TeacherViewFrame;
+
         private int TeacherId;
         private int UserId;
         private string UserName;
@@ -49,7 +51,7 @@ namespace QuizFlash
         private void ClassroomTagCheck(object sender, RoutedEventArgs e)
         {
             // This is for Classroom Navigation
-            TeacherViewFrame.Content = new TeacherClassroomPage();
+            TeacherViewFrame.Content = new TeacherClassroomPage(TeacherId, UserId);
         }
 
         private void Logout(object sender, RoutedEventArgs e)

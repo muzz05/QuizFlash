@@ -250,8 +250,14 @@
     <Compile Include="FlashCardPage.xaml.cs">
       <DependentUpon>FlashCardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlashCardSharePopup.xaml.cs">
+      <DependentUpon>FlashCardSharePopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizControl.xaml.cs">
       <DependentUpon>QuizControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuizDesignControl.xaml.cs">
+      <DependentUpon>QuizDesignControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="QuizDesignPage.xaml.cs">
       <DependentUpon>QuizDesignPage.xaml</DependentUpon>
@@ -267,6 +273,9 @@
     </Compile>
     <Compile Include="Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentClassroomPage.xaml.cs">
+      <DependentUpon>StudentClassroomPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentDataPage.xaml.cs">
       <DependentUpon>StudentDataPage.xaml</DependentUpon>
@@ -311,6 +320,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FlashCardSharePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,6 +348,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="QuizControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuizDesignControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -363,6 +380,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Student.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentClassroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

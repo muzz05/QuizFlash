@@ -6,18 +6,14 @@
              xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"              
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
-             d:DesignHeight="230" d:DesignWidth="200"
+             d:DesignHeight="220" d:DesignWidth="180"
              Background="Transparent">
     <Grid>
-        <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="230" Width="200" Padding="0" Margin="0">
-            
-            <!--<Border.Effect>
-            <DropShadowEffect Color="#b2b2b2" BlurRadius="10" ShadowDepth="2" Opacity="0.3" />
-        </Border.Effect>-->
+        <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="220" Width="180" Padding="0" Margin="0">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="7*" />
-                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="7.5*" />
+                    <RowDefinition Height="2.*" />
                 </Grid.RowDefinitions>
 
                 <Border Grid.Row="0" CornerRadius="20,20,0,0" Margin="0">
@@ -36,22 +32,44 @@
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,5,0,0"  Foreground="#fafafa" FontSize="16" FontWeight="Normal" TextWrapping="Wrap" Text="Question Count:"/>
+                            <TextBlock Margin="0,5,0,0"  Foreground="#fafafa" FontSize="16" FontWeight="Normal" TextWrapping="Wrap" Text="Questions:"/>
                             <TextBlock Margin="5,5,0,0" x:Name="QuesCount" Foreground="#fafafa" FontSize="16" FontWeight="Normal" TextWrapping="Wrap" Text="10"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" >
-                            <TextBlock Margin="0,5,0,0" FontSize="16" FontWeight="Normal" TextWrapping="Wrap" Text="Due Date:" Foreground="#fafafa" />
-                            <TextBlock Margin="5,5,0,0" x:Name="ValidUntil" FontSize="16" FontWeight="Normal" TextWrapping="Wrap" Text="25/07/2024" Foreground="#fafafa" />
+                            <TextBlock Margin="0,5,0,0" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="Due Date:" Foreground="#fafafa" />
+                            <TextBlock Margin="5,5,0,0" x:Name="ValidUntil" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Text="25/07/2024" Foreground="#fafafa" />
                         </StackPanel>
                         
                     </StackPanel>
                 </Border>
 
 
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="180">
+                    <Border CornerRadius="10" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="10,0,15,0">
 
-                <Border CornerRadius="10" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="0,0,5,0">
-                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground="#fafafa" Height="30" Width="80">
+                        <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground="#fafafa" Height="28" Width="78">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="10" BorderThickness="0">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#00BFFF" Offset="0.0" />
+                                                <GradientStop Color="#6A1B9A" Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="Result" FontSize="16" Margin="0,0,5,0"/>
+                                            <Icons:PackIconFontAwesome  Kind="PollSolid" Foreground="#fafafa" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                    <Border CornerRadius="10" HorizontalAlignment="Stretch" Margin="0,0,15,0">
+                    
+                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#fafafa" Height="28" Width="70">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border CornerRadius="10" BorderThickness="0">
@@ -71,6 +89,7 @@
                         </Button.Template>
                     </Button>
                 </Border>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

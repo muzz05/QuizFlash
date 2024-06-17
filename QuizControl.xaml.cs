@@ -23,6 +23,7 @@ namespace QuizFlash
     {
         public QuizControl(string quizname, int totalmarks, int questions, long validUntilEpoch)
         {
+            InitializeComponent();
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
@@ -31,7 +32,6 @@ namespace QuizFlash
             string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);
             string validUntilDate = ConvertIsoStringToDate(validUntilIsoString);  // New line for date conversion
             ValidUntil.Text= validUntilDate;
-            InitializeComponent();
         }
 
         private string ConvertEpochToIsoString(long epochTimestamp)

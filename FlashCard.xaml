@@ -60,7 +60,7 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
-                                <Icons:PackIconBoxIcons  x:Name="edit_icon" Kind="SolidShareAlt" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <Icons:PackIconBoxIcons  x:Name="share_icon" Kind="SolidShareAlt" Foreground="{Binding ElementName=border_of_flashcard, Path=Background}" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>

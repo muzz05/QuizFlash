@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Teacher Dashboard" Height="500" Width="800">
+        Title="Teacher Dashboard" Height="500" Width="880">
     <Grid Background="#282438">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -85,7 +85,7 @@
         <Grid Grid.Column="1" Grid.Row="1"  Background="#282438">
             <Grid Background="Transparent" Margin="15,5,15,15" >
                 <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
-                <Frame x:Name="TeacherViewFrame" NavigationUIVisibility="Hidden"/>
+                <Frame x:Name="TeacherViewFrame" x:FieldModifier="public" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
     </Grid>
