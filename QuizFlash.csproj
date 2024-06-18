@@ -240,6 +240,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Announcements.xaml.cs">
+      <DependentUpon>Announcements.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassroomTeacherMsgBox.xaml.cs">
       <DependentUpon>ClassroomTeacherMsgBox.xaml</DependentUpon>
     </Compile>
@@ -308,6 +311,10 @@
       <DependentUpon>Classroom.xaml</DependentUpon>
     </Compile>
     <Compile Include="UniqueCodeGenerator.cs" />
+    <Page Include="Announcements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClassroomTeacherMsgBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

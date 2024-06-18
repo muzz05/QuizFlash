@@ -9,7 +9,7 @@
       Title="TeacherClassroomAnnouncementPage">
     <Grid Margin="40 10">
     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
-            <StackPanel x:Name="Annoucements">
+            <StackPanel x:Name="AnnoucementsPanel">
                 <Border CornerRadius="20" Background="#282438" Height="200" Width="520" VerticalAlignment="Top" Margin="0,10">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
                 </Border>
                 
                 <!--This is the Announcements-->
-                <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="140" Margin="5">
+                <!--<Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="140" Margin="5" Width="510">
                     <Grid Height="200" VerticalAlignment="Top">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60"/>
@@ -89,7 +89,7 @@ Welcome back to another exciting semester! We have several important announcemen
 Welcome back to another exciting semester! We have several important announcements and reminders to ensure a smooth and productive start to the academic year.
                         </TextBlock>
                     </Grid>
-                </Border>
+                </Border>-->
             </StackPanel>
             </ScrollViewer>
     </Grid>
