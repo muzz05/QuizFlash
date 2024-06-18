@@ -23,13 +23,15 @@ namespace QuizFlash
         public TeacherClassroomQuizPage()
         {
             InitializeComponent();
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
-            AddQuiz("Software Engineering", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
+            AddQuiz("Applied Physics", 20, 10, 1718256809);
         }
 
         public void AddQuiz(string quizname, int totalmarks, int questions, long validUntilEpoch)

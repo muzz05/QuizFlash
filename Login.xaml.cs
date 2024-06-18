@@ -118,6 +118,9 @@ namespace QuizFlash
                         object TeacherIdResult = db.ExecuteScalar(sql, TeacherUserId);
                         Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherIdResult), dbUserId, dbUsername);
 
+                        // Adding Data to Global Variables
+                        GlobalVariables.TeacherId = Convert.ToInt32(TeacherIdResult);
+
                         // Adding Data to the Logged Devices
                         AddDataToLoggedDevices(dbUserId);
 
@@ -133,12 +136,20 @@ namespace QuizFlash
                         object StudentIdResult = db.ExecuteScalar(sql, StudentUserId);
                         Student studentWindow = new Student(Convert.ToInt32(StudentIdResult), dbUserId, dbUsername);
 
+                        // Adding Data to Global Variables
+                        GlobalVariables.StudentId = Convert.ToInt32(StudentIdResult);
+
                         // Adding Data to the Logged Devices
                         AddDataToLoggedDevices(dbUserId);
 
 
                         studentWindow.Show();
                     }
+
+                    // Adding Data to Global Variables
+                    GlobalVariables.UserId = dbUserId;
+                    GlobalVariables.IsTeacher = isTeacher;
+                    GlobalVariables.Username = dbUsername;
 
                     this.Close();
                 }

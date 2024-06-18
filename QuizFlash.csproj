@@ -256,6 +256,7 @@
     <Compile Include="FlashCardSharePopup.xaml.cs">
       <DependentUpon>FlashCardSharePopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="QuizControl.xaml.cs">
       <DependentUpon>QuizControl.xaml</DependentUpon>
     </Compile>

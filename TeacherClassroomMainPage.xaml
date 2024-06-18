@@ -27,7 +27,8 @@
                 FontWeight="Bold"
                 Padding="5"
                 Margin="30,0,0,0"
-                Cursor="Hand">
+                Cursor="Hand"
+                Click="GoBackToClassroomPage">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>

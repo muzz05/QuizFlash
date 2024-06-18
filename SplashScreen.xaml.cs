@@ -68,6 +68,11 @@ namespace QuizFlash
                 bool isTeacher = Convert.ToBoolean(CheckingRole.Rows[0]["isTeacher"]);
                 string name = CheckingRole.Rows[0]["name"].ToString();
 
+                // Adding Data to Global Variables
+                GlobalVariables.UserId = userId;
+                GlobalVariables.IsTeacher = isTeacher;
+                GlobalVariables.Username = name;
+
                 if (isTeacher)
                 {
                     sql = "SELECT id FROM Teachers WHERE userId = @UserIdOfTeacher";
@@ -77,6 +82,8 @@ namespace QuizFlash
                     object TeacherIdResult = db.ExecuteScalar(sql, TeacherUserId);
                     Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherIdResult), userId, name);
 
+                    // Adding Data to Global Variables
+                    GlobalVariables.TeacherId = Convert.ToInt32(TeacherIdResult);
 
                     teacherWindow.Show();
                 }
@@ -89,6 +96,8 @@ namespace QuizFlash
                     object StudentIdResult = db.ExecuteScalar(sql, StudentUserId);
                     Student studentWindow = new Student(Convert.ToInt32(StudentIdResult), userId, name);
 
+                    // Adding Data to Global Variables
+                    GlobalVariables.StudentId = Convert.ToInt32(StudentIdResult);
 
                     studentWindow.Show();
                 }
