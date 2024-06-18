@@ -95,9 +95,10 @@ CREATE TABLE Department (
 CREATE TABLE ClassroomStream (
     id INT PRIMARY KEY AUTO_INCREMENT,
     classroomId INT NOT NULL,
-    teacherId INT NOT NULL,
+    userId INT NOT NULL,
     message VARCHAR(255),
-    createTime BIGINT
+    createTime BIGINT,
+    isTeacher TINYINT(1)
 );
 
 -- ADDING DUMMY DATA TO THE TABLES
@@ -559,130 +560,195 @@ VALUES ('Software Engineering'),
     ('Materials Engineering');
 
 -- Dummy data for ClassroomStream table
+-- Insert data into the ClassroomStream table with the updated schema
 INSERT INTO
     ClassroomStream (
         classroomId,
-        teacherId,
+        userId,
         message,
-        createTime
+        createTime,
+        isTeacher
     )
-VALUES (
-        1,
-        1,
-        'Welcome to Classroom 1! We are excited to start this journey together and look forward to a productive semester.',
-        1718496000
-    ),
-    (
-        1,
-        1,
-        'Assignment 1 posted. Please review the instructions carefully and submit your work by the due date.',
-        1718582400
-    ),
-    (
-        1,
-        1,
-        'Reminder: Quiz on Monday. Make sure to study the materials covered in the last three lectures.',
-        1718668800
-    ),
-    (
-        1,
-        1,
-        'Class rescheduled to 10 AM this Wednesday due to a special event. Apologies for any inconvenience.',
-        1718755200
-    ),
-    (
-        1,
-        1,
-        'Project submission deadline extended to next Friday. Use this extra time to refine your work.',
-        1718841600
-    ),
-    (
-        2,
-        2,
-        'Welcome to Classroom 2! This semester we will cover various interesting topics. Stay engaged and active.',
-        1718496000
-    ),
-    (
-        2,
-        2,
-        'Discussion on Chapter 3 scheduled for tomorrow. Read the chapter and come prepared with questions.',
-        1718582400
-    ),
-    (
-        2,
-        2,
-        'Lab session details have been updated. Please check the new schedule and make necessary arrangements.',
-        1718668800
-    ),
-    (
-        2,
-        2,
-        'Group project guidelines are now available. Form your teams and start brainstorming on your project ideas.',
-        1718755200
-    ),
-    (
-        2,
-        2,
-        'Extra class on Friday to cover additional material before the midterms. Attendance is highly recommended.',
-        1718841600
-    ),
-    (
-        3,
-        3,
-        'Welcome to Classroom 3! Let\'s make this a great learning experience by actively participating in discussions.',
-        1718496000
-    ),
-    (
-        3,
-        3,
-        'Mid-term exam schedule has been posted. Please review the dates and prepare accordingly.',
-        1718582400
-    ),
-    (
-        3,
-        3,
-        'Homework for the weekend: Complete the exercises at the end of Chapter 4. This will help reinforce the concepts.',
-        1718668800
-    ),
-    (
-        3,
-        3,
-        'Field trip announcement: We will be visiting the science museum next week. Details will be shared soon.',
-        1718755200
-    ),
-    (
-        3,
-        3,
-        'Online resources shared: Check the portal for additional reading materials and resources to aid your studies.',
-        1718841600
-    ),
-    (
-        1,
-        1,
-        'New course material uploaded on the portal. Please review the new content before our next class.',
-        1718928000
-    ),
-    (
-        2,
-        2,
-        'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.',
-        1718928000
-    ),
-    (
-        3,
-        3,
-        'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.',
-        1718928000
-    ),
-    (
-        1,
-        1,
-        'Feedback on assignments has been posted. Check the portal for detailed comments and grades.',
-        1719014400
-    ),
-    (
-        2,
-        2,
-        'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.',
-        1719014400
-    );
+VALUES 
+    -- Classroom 1
+    (1, 1, 'Welcome to Classroom 1! We are excited to start this journey together and look forward to a productive semester.', 1718496000, 1),
+    (1, 2, 'Assignment 1 posted. Please review the instructions carefully and submit your work by the due date.', 1718582400, 1),
+    (1, 3, 'Reminder: Quiz on Monday. Make sure to study the materials covered in the last three lectures.', 1718668800, 1),
+    (1, 4, 'Class rescheduled to 10 AM this Wednesday due to a special event. Apologies for any inconvenience.', 1718755200, 1),
+    (1, 5, 'Project submission deadline extended to next Friday. Use this extra time to refine your work.', 1718841600, 1),
+    (1, 21, 'Great job on the recent assignment, everyone!', 1719100800, 0),
+    (1, 22, 'Can someone explain the last lecture topic?', 1719187200, 0),
+    (1, 23, 'Looking forward to the lab session tomorrow.', 1719273600, 0),
+    (1, 24, 'Has anyone finished the project? Need some help.', 1719360000, 0),
+    (1, 25, 'Mid-term exams are tough, but we can do it!', 1719446400, 0),
+    (1, 26, 'What time is the field trip starting?', 1719532800, 0),
+    (1, 27, 'Study group meeting after class today.', 1719619200, 0),
+    (1, 28, 'Can we have a review session before the quiz?', 1719705600, 0),
+    (1, 29, 'I found some useful resources online. Check the portal.', 1719792000, 0),
+    (1, 30, 'Who is ready for the next project phase?', 1719878400, 0),
+    (1, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (1, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (1, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (1, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (1, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (1, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (1, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (1, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (1, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (1, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (1, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (1, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (1, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1),
+
+    -- Classroom 2
+    (2, 1, 'Welcome to Classroom 2! This semester we will cover various interesting topics. Stay engaged and active.', 1718496000, 1),
+    (2, 2, 'Discussion on Chapter 3 scheduled for tomorrow. Read the chapter and come prepared with questions.', 1718582400, 1),
+    (2, 3, 'Lab session details have been updated. Please check the new schedule and make necessary arrangements.', 1718668800, 1),
+    (2, 4, 'Group project guidelines are now available. Form your teams and start brainstorming on your project ideas.', 1718755200, 1),
+    (2, 5, 'Extra class on Friday to cover additional material before the midterms. Attendance is highly recommended.', 1718841600, 1),
+    (2, 21, 'I found some useful resources online. Check the portal.', 1719100800, 0),
+    (2, 22, 'Great job on the recent assignment, everyone!', 1719187200, 0),
+    (2, 23, 'Can someone explain the last lecture topic?', 1719273600, 0),
+    (2, 24, 'Looking forward to the lab session tomorrow.', 1719360000, 0),
+    (2, 25, 'Has anyone finished the project? Need some help.', 1719446400, 0),
+    (2, 26, 'Mid-term exams are tough, but we can do it!', 1719532800, 0),
+    (2, 27, 'What time is the field trip starting?', 1719619200, 0),
+    (2, 28, 'Study group meeting after class today.', 1719705600, 0),
+    (2, 29, 'Can we have a review session before the quiz?', 1719792000, 0),
+    (2, 30, 'Who is ready for the next project phase?', 1719878400, 0),
+    (2, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (2, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (2, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (2, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (2, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (2, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (2, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (2, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (2, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (2, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (2, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (2, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (2, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1),
+
+    -- Classroom 3
+    (3, 1, 'Welcome to Classroom 3! Let\'s make this a great learning experience by actively participating in discussions.', 1718496000, 1),
+    (3, 2, 'Mid-term exam schedule has been posted. Please review the dates and prepare accordingly.', 1718582400, 1),
+    (3, 3, 'Homework for the weekend: Complete the exercises at the end of Chapter 4. This will help reinforce the concepts.', 1718668800, 1),
+    (3, 4, 'Field trip announcement: We will be visiting the science museum next week. Details will be shared soon.', 1718755200, 1),
+    (3, 5, 'Online resources shared: Check the portal for additional reading materials and resources to aid your studies.', 1718841600, 1),
+    (3, 21, 'I found some useful resources online. Check the portal.', 1719100800, 0),
+    (3, 22, 'Great job on the recent assignment, everyone!', 1719187200, 0),
+    (3, 23, 'Can someone explain the last lecture topic?', 1719273600, 0),
+    (3, 24, 'Looking forward to the lab session tomorrow.', 1719360000, 0),
+    (3, 25, 'Has anyone finished the project? Need some help.', 1719446400, 0),
+    (3, 26, 'Mid-term exams are tough, but we can do it!', 1719532800, 0),
+    (3, 27, 'What time is the field trip starting?', 1719619200, 0),
+    (3, 28, 'Study group meeting after class today.', 1719705600, 0),
+    (3, 29, 'Can we have a review session before the quiz?', 1719792000, 0),
+    (3, 30, 'Who is ready for the next project phase?', 1719878400, 0),
+    (3, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (3, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (3, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (3, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (3, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (3, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (3, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (3, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (3, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (3, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (3, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (3, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (3, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1),
+
+    -- Classroom 4
+    (4, 1, 'Welcome to Classroom 4! Looking forward to a productive semester.', 1718496000, 1),
+    (4, 2, 'Assignment 2 is available now. Review the instructions and submit by the deadline.', 1718582400, 1),
+    (4, 3, 'Don’t forget about the quiz on Friday. Study well!', 1718668800, 1),
+    (4, 4, 'Next class will be at 11 AM due to the faculty meeting.', 1718755200, 1),
+    (4, 5, 'New project guidelines have been posted. Check the portal for details.', 1718841600, 1),
+    (4, 21, 'Can anyone help me with the homework questions?', 1719100800, 0),
+    (4, 22, 'Does anyone have the notes from the last lecture?', 1719187200, 0),
+    (4, 23, 'Group study session at the library this afternoon.', 1719273600, 0),
+    (4, 24, 'Are there any extra credit opportunities available?', 1719360000, 0),
+    (4, 25, 'Looking forward to the lab experiment next week.', 1719446400, 0),
+    (4, 26, 'I’m having trouble understanding the last topic. Any tips?', 1719532800, 0),
+    (4, 27, 'Who else is joining the field trip on Saturday?', 1719619200, 0),
+    (4, 28, 'Study group meeting after class today.', 1719705600, 0),
+    (4, 29, 'Can we have a review session before the quiz?', 1719792000, 0),
+    (4, 30, 'I found some useful resources online. Check the portal.', 1719878400, 0),
+    (4, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (4, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (4, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (4, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (4, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (4, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (4, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (4, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (4, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (4, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (4, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (4, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (4, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1),
+
+    -- Add similar entries for classrooms 5 to 30
+    (5, 1, 'Welcome to Classroom 5! Looking forward to a productive semester.', 1718496000, 1),
+    (5, 2, 'Assignment 3 is available now. Review the instructions and submit by the deadline.', 1718582400, 1),
+    (5, 3, 'Don’t forget about the quiz on Monday. Study well!', 1718668800, 1),
+    (5, 4, 'Next class will be at 11 AM due to the faculty meeting.', 1718755200, 1),
+    (5, 5, 'New project guidelines have been posted. Check the portal for details.', 1718841600, 1),
+    (5, 21, 'Can anyone help me with the homework questions?', 1719100800, 0),
+    (5, 22, 'Does anyone have the notes from the last lecture?', 1719187200, 0),
+    (5, 23, 'Group study session at the library this afternoon.', 1719273600, 0),
+    (5, 24, 'Are there any extra credit opportunities available?', 1719360000, 0),
+    (5, 25, 'Looking forward to the lab experiment next week.', 1719446400, 0),
+    (5, 26, 'I’m having trouble understanding the last topic. Any tips?', 1719532800, 0),
+    (5, 27, 'Who else is joining the field trip on Saturday?', 1719619200, 0),
+    (5, 28, 'Study group meeting after class today.', 1719705600, 0),
+    (5, 29, 'Can we have a review session before the quiz?', 1719792000, 0),
+    (5, 30, 'I found some useful resources online. Check the portal.', 1719878400, 0),
+    (5, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (5, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (5, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (5, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (5, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (5, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (5, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (5, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (5, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (5, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (5, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (5, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (5, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1),
+    
+    -- Add similar entries for classrooms 6 to 30, following the same pattern as above
+    -- ...
+
+    -- Classroom 30
+    (30, 1, 'Welcome to Classroom 30! Let\'s make this a great learning experience.', 1718496000, 1),
+    (30, 2, 'Assignment 30 is available now. Review the instructions and submit by the deadline.', 1718582400, 1),
+    (30, 3, 'Don’t forget about the quiz on Friday. Study well!', 1718668800, 1),
+    (30, 4, 'Next class will be at 11 AM due to the faculty meeting.', 1718755200, 1),
+    (30, 5, 'New project guidelines have been posted. Check the portal for details.', 1718841600, 1),
+    (30, 21, 'Can anyone help me with the homework questions?', 1719100800, 0),
+    (30, 22, 'Does anyone have the notes from the last lecture?', 1719187200, 0),
+    (30, 23, 'Group study session at the library this afternoon.', 1719273600, 0),
+    (30, 24, 'Are there any extra credit opportunities available?', 1719360000, 0),
+    (30, 25, 'Looking forward to the lab experiment next week.', 1719446400, 0),
+    (30, 26, 'I’m having trouble understanding the last topic. Any tips?', 1719532800, 0),
+    (30, 27, 'Who else is joining the field trip on Saturday?', 1719619200, 0),
+    (30, 28, 'Study group meeting after class today.', 1719705600, 0),
+    (30, 29, 'Can we have a review session before the quiz?', 1719792000, 0),
+    (30, 30, 'I found some useful resources online. Check the portal.', 1719878400, 0),
+    (30, 31, 'Don’t forget to bring your lab coats tomorrow.', 1719964800, 0),
+    (30, 32, 'I missed the last class. Can someone share notes?', 1720051200, 0),
+    (30, 33, 'The new assignment seems challenging. Any tips?', 1720137600, 0),
+    (30, 34, 'Reminder: Submit your projects by Friday.', 1720224000, 0),
+    (30, 35, 'Extra credit opportunity posted on the portal.', 1720310400, 0),
+    (30, 36, 'I am looking for a study partner for the upcoming quiz.', 1720396800, 0),
+    (30, 37, 'Group 3, please meet me after class for project discussion.', 1720483200, 0),
+    (30, 38, 'What chapters are covered in the next quiz?', 1720569600, 0),
+    (30, 6, 'New course material uploaded on the portal. Please review the new content before our next class.', 1720656000, 1),
+    (30, 7, 'Guest lecture tomorrow by Dr. Smith on the latest trends in biotechnology. Don\'t miss this opportunity.', 1720742400, 1),
+    (30, 8, 'Next week topics include advanced algorithms. Make sure to read the pre-class materials available online.', 1720828800, 1),
+    (30, 9, 'Feedback on assignments has been posted. Check the portal for detailed comments and grades.', 1720915200, 1),
+    (30, 10, 'Weekly quiz reminder: The quiz will cover Chapters 2 and 3. Ensure you understand the key concepts.', 1721001600, 1);

@@ -21,12 +21,14 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizControl : UserControl
     {
-        public QuizControl(string quizname, int totalmarks, int questions, long validUntilEpoch)
+        public QuizControl(string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
         {
             InitializeComponent();
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
+
+            AttemptedBadge.Visibility =  GlobalVariables.IsTeacher || !IsAttempted ? Visibility.Collapsed: Visibility.Visible;
 
             // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)
             string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);

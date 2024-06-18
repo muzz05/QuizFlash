@@ -17,10 +17,10 @@
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="35, 20, 0, 20">
-                            <TextBlock FontSize="22" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Applied Physics</TextBlock>
-                            <TextBlock FontSize="16" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Dr. Tahir Jamal</TextBlock>
+                            <TextBlock x:Name="ClassroomNameAnnouncement" FontSize="22" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5" TextWrapping="Wrap"> Applied Physics</TextBlock>
+                            <TextBlock  x:Name="TeacherNameAnnouncement" FontSize="16" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Dr. Tahir Jamal</TextBlock>
                             <Border Background="#c3c4cf" Padding="0, 3" CornerRadius="10" Width="70" HorizontalAlignment="Left" Margin="0,5">
-                                <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center"> MT-116</TextBlock>
+                                <TextBlock x:Name="CourseCodeAnnouncement" FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center"> MT-116</TextBlock>
                             </Border>
                         </StackPanel>
                         <Image Source="Images/announcement.png" Height="200" Grid.Column="1"/>
@@ -34,7 +34,7 @@
                             <ColumnDefinition Width="80*"/>
                         </Grid.ColumnDefinitions>
                         <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
-                            <TextBlock FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
+                            <TextBlock x:Name="OwnUsernameInitials" FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
                         </Border>
                         <TextBlock Grid.Column="1" Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Share Something with the classroom" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
                         <TextBox Background="Transparent" BorderBrush="Transparent" Grid.Column="1"/>

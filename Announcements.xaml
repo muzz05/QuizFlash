@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
-             d:DesignHeight="170" d:DesignWidth="510">
-    <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="170" Width="510">
-        <Grid Height="200" VerticalAlignment="Top">
+             d:DesignHeight="200" d:DesignWidth="510">
+    <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="auto" Width="510">
+        <Grid VerticalAlignment="Top" Margin="0,0,0,15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Height="60">
 
-                <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
+                <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="35" Width="35" Margin="10,5" Grid.Column="0">
                     <TextBlock x:Name="UserBadgeText" FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
                 </Border>
                 <StackPanel Margin="0,10,0,5">

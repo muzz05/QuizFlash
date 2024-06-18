@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,20 +25,40 @@ namespace QuizFlash
         public TeacherClassroomQuizPage()
         {
             InitializeComponent();
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
-            AddQuiz("Applied Physics", 20, 10, 1718256809);
+
+            Database db = new Database();
+
+            string sql;
+
+            if (GlobalVariables.IsTeacher)
+            {
+                sql = "SELECT * FROM Quiz WHERE classroomId = @ClassroomId";
+                DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    AddQuiz(result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), false);
+                }
+            }
+            else
+            {
+                sql = "SELECT q.* , EXISTS(SELECT 1 FROM StudentResponse WHERE studentId = @StudentId AND quizId = q.id) AS isAttempted FROM Quiz q WHERE q.classroomId = @ClassroomId";
+                MySqlParameter[] quizParams =
+                {
+                    new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId),
+                    new MySqlParameter("@StudentId", GlobalVariables.StudentId)
+                };
+                DataTable result = db.ExecuteQuery(sql, quizParams);
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    AddQuiz(result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), Convert.ToBoolean(result.Rows[i]["isAttempted"]));
+                }
+            }
+
         }
 
-        public void AddQuiz(string quizname, int totalmarks, int questions, long validUntilEpoch)
+        public void AddQuiz(string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
         {
-            QuizControl newQuiz = new QuizControl(quizname, totalmarks, questions, validUntilEpoch);
+            QuizControl newQuiz = new QuizControl(quizname, totalmarks, questions, validUntilEpoch,IsAttempted);
             newQuiz.Margin = new Thickness(0, 15, 15, 0);
             TeacherClassroomPanel.Children.Add(newQuiz);
 
