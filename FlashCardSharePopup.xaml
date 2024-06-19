@@ -46,8 +46,8 @@
 
             <!-- Buttons -->
             <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="Cancel" >Cancel</Button>
-                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="ShareFlashCard">Share</Button>
+                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="Cancel" Cursor="Hand">Cancel</Button>
+                <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Height="32" Click="ShareFlashCard" Cursor="Hand">Share</Button>
             </StackPanel>
         </Grid>
     </Border>
