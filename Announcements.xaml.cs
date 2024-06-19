@@ -32,7 +32,7 @@ namespace QuizFlash
 
         private string ConvertEpochToRelativeTime(long epochTimestamp)
         {
-            var dateTime = DateTimeOffset.FromUnixTimeMilliseconds(epochTimestamp * 1000);
+            var dateTime = DateTimeOffset.FromUnixTimeSeconds(epochTimestamp);
             var timeSpan = DateTime.UtcNow - dateTime.UtcDateTime;
 
             if (timeSpan.TotalDays >= 1)
