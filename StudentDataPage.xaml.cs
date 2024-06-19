@@ -67,7 +67,7 @@ namespace QuizFlash
                 {
                     members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                     rowCount++;
-                    if (rowCount == 10)
+                    if (rowCount == 9)
                     {
                         break;
                     }
@@ -84,6 +84,7 @@ namespace QuizFlash
                     {
                     CustomMessageBox msg = new CustomMessageBox("No more data", "No more students to show", "Error");
                     msg.Show();
+                    return;
                     }
                     else
                     {
@@ -94,7 +95,7 @@ namespace QuizFlash
                         {
                             members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                             rowCount++;
-                            if (rowCount == 10)
+                            if (rowCount == 9)
                             {
                                 break;
                             }
