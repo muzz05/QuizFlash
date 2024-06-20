@@ -278,6 +278,9 @@
     <Compile Include="QuizDetail_Input.xaml.cs">
       <DependentUpon>QuizDetail_Input.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuizDisplayPage.xaml.cs">
+      <DependentUpon>QuizDisplayPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResultTablePage.xaml.cs">
       <DependentUpon>ResultTablePage.xaml</DependentUpon>
     </Compile>
@@ -380,6 +383,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="QuizDetail_Input.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuizDisplayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
