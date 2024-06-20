@@ -1,6 +1,6 @@
 ﻿namespace QuizFlash
 {
-    public static class GlobalVariables
+    public class GlobalVariables
     {
         public static int TeacherId { get; set; }
 

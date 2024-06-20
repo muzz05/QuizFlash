@@ -8,23 +8,14 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizDisplayPage">
     <Border Background="#353340">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <TextBlock x:Name="quizTitle" Style="{StaticResource TitleText}" Text="Quiz 1" HorizontalAlignment="Center" Width="auto" Height="50"/>
-            <TextBlock x:Name="question" Text="What does SQL stand for?" Style="{StaticResource NormalText}" VerticalAlignment="Center" Grid.Row="1" FontSize="16" />
-            <RadioButton x:Name="option_1" Style="{StaticResource NavigationButtons}" Content="Structured Quantity Language" Grid.Row="2"/>
-            <RadioButton x:Name="option_2" Style="{StaticResource NavigationButtons}" Content="Structured Query Language"  Grid.Row="3"/>
-            <RadioButton x:Name="option_3" Style="{StaticResource NavigationButtons}" Content="Structured Question Language" Grid.Row="4"/>
-            <RadioButton x:Name="option_4" Style="{StaticResource NavigationButtons}" Content="Structured Quality Language" Grid.Row="5"/>
-        </Grid>
+        <StackPanel>
+            <TextBlock x:Name="quizTitle" Style="{StaticResource TitleText}"  Text="Quiz 1" Margin="10" HorizontalAlignment="Center" Width="auto" Height="50"/>
+            <TextBlock x:Name="question_text" Text="1. What does SQL stand for?" Style="{StaticResource NormalText}" Margin="10" VerticalAlignment="Center" Grid.Row="1" FontSize="16" />
+            <RadioButton x:Name="option_1" Style="{StaticResource NavigationButtons}" Content="Structured Quantity Language" Width="250" Checked="option_1_Checked" Grid.Row="2"/>
+            <RadioButton x:Name="option_2" Style="{StaticResource NavigationButtons}" Content="Structured Query Language" Width="250" Checked="option_2_Checked" Grid.Row="3"/>
+            <RadioButton x:Name="option_3" Style="{StaticResource NavigationButtons}" Content="Structured Question Language" Width="250" Checked="option_3_Checked" Grid.Row="4"/>
+            <RadioButton x:Name="option_4" Style="{StaticResource NavigationButtons}" Content="Structured Quality Language" Width="250" Checked="option_4_Checked" Grid.Row="5"/>
+            <Button x:Name="next_button" Style="{StaticResource buttonCircle}" Background="#22202f" Foreground="#c3c4cf" Content="Next" Width="100" Height="Auto" Click="next_button_Click" Margin="10" HorizontalAlignment="Center"/>
+        </StackPanel>
     </Border>
 </Page>
