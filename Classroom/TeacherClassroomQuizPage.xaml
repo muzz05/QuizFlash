@@ -28,7 +28,7 @@
                         </VisualBrush>
                     </Border.BorderBrush>
                     <Grid Height="220" Width="180">
-                        <Button Width="50" Height="50" VerticalAlignment="Center" Cursor="Hand" HorizontalAlignment="Center">
+                        <Button Width="50" Height="50" VerticalAlignment="Center" Cursor="Hand" HorizontalAlignment="Center" x:Name="addquizbutton" Click="addquizbutton_Click">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border CornerRadius="50" Background="#c3c4cf">

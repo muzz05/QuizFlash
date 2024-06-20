@@ -42,8 +42,8 @@
 
                     <!-- Total Marks -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Total Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <TextBox x:Name="totalmarks" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
+                        <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="26,0"/>
+                        <TextBox x:Name="permarks" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
                     </StackPanel>
 
                     <!-- Due Date -->

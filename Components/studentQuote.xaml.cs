@@ -16,13 +16,15 @@ using System.Windows.Shapes;
 namespace QuizFlash
 {
     /// <summary>
-    /// Interaction logic for StudentHomePage.xaml
+    /// Interaction logic for studentQuote.xaml
     /// </summary>
-    public partial class StudentHomePage : Page
+    public partial class studentQuote : UserControl
     {
-        public StudentHomePage()
+        public studentQuote(string quotes)
         {
+
             InitializeComponent();
+            quote.Text = quotes;
         }
     }
 }

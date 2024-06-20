@@ -16,13 +16,17 @@ using System.Windows.Shapes;
 namespace QuizFlash
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StudentHomepageInfoCard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StudentHomepageInfoCard : UserControl
     {
-        public MainWindow()
+        public StudentHomepageInfoCard(string className, string announcement)
         {
             InitializeComponent();
+            classname.Text = className;
+            this.announcement.Text = announcement;
         }
     }
 }
+
+
