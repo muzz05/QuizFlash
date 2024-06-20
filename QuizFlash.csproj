@@ -252,6 +252,9 @@
     <Compile Include="Components\Announcements.xaml.cs">
       <DependentUpon>Announcements.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\studentQuote.xaml.cs">
+      <DependentUpon>studentQuote.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherSection\ClassroomTeacherMsgBox.xaml.cs">
       <DependentUpon>ClassroomTeacherMsgBox.xaml</DependentUpon>
     </Compile>
@@ -332,6 +335,10 @@
     <Compile Include="UniqueCodeGenerator.cs" />
     <Compile Include="Utilities.cs" />
     <Page Include="Components\Announcements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\studentQuote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

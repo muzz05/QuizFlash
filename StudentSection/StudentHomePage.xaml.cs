@@ -21,17 +21,20 @@ namespace QuizFlash
     /// </summary>
     public partial class StudentHomePage : Page
     {
+
+
         public StudentHomePage()
-        { 
+        {
             InitializeComponent();
+
+
             var cards = new[]
             {
-                    new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
-                    new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
-                    new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
-                    new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
-                    new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24")
-
+                new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
+                new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
+                new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
+                new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
+                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24")
             };
 
             foreach (var card in cards)
@@ -40,16 +43,103 @@ namespace QuizFlash
                 infocards.Children.Add(card);
             }
 
+
+           string[] quotes = new string[]
+            {
+            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
+            "Education is not the filling of a pail, but the lighting of a fire. - William Butler Yeats",
+            "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+            "Education is the passport to the future, for tomorrow belongs to those who prepare for it today. - Malcolm X",
+            "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau",
+            "An investment in knowledge pays the best interest. - Benjamin Franklin",
+            "The journey of a thousand miles begins with one step. - Lao Tzu",
+            "Education is not preparation for life; education is life itself. - John Dewey",
+            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
+            "Learning is not attained by chance, it must be sought for with ardor and attended to with diligence. - Abigail Adams",
+            "Success is not in what you have, but who you are. - Bo Bennett",
+            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
+            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
+            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
+            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
+            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
+            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington",
+            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
+            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
+            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+            "Success is not in what you have, but who you are. - Bo Bennett",
+            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
+            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
+            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
+            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
+            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
+            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington",
+            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
+            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
+            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+            "Success is not in what you have, but who you are. - Bo Bennett",
+            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
+            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
+            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
+            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
+            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
+            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington",
+            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
+            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
+            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+            "Success is not in what you have, but who you are. - Bo Bennett",
+            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
+            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
+            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
+            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
+            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
+            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington",
+            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
+            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
+            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
+            "Success is not in what you have, but who you are. - Bo Bennett",
+            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
+            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
+            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
+            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
+            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
+            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
+            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
+            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington"
+        };
+
+
+
+
+
+            Random random = new Random();
+            int index = random.Next(quotes.Length);
+            string randomQuote = quotes[index];
+
+            studentQuote quo = new studentQuote(randomQuote);
+            
+            quote_panel.Children.Add(quo);
         }
+
     }
 }
-
-
-//private void AddClassroom(string coursename, string code, string teacher, int count, string gcr_code, int classroomId)
-//{
-
-//    Classroom newClassroom = new Classroom(coursename, code, teacher, count, gcr_code, false, classroomId);
-//    newClassroom.Margin = new Thickness(0, 0, 15, 15);
-//    WrapPanelClassroom.Children.Add(newClassroom);
-
-//}

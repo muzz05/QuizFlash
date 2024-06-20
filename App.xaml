@@ -24,6 +24,8 @@
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="MaxWidth" Value="170" />
             <!-- Ensure text does not exceed the width of the card -->
+            
+            
             <Style.Triggers>
                 <Trigger Property="Text" Value="">
                     <Setter Property="HorizontalAlignment" Value="Left" />
