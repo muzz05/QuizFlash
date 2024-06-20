@@ -249,216 +249,208 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Announcements.xaml.cs">
+    <Compile Include="Components\Announcements.xaml.cs">
       <DependentUpon>Announcements.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ClassroomTeacherMsgBox.xaml.cs">
+    <Compile Include="TeacherSection\ClassroomTeacherMsgBox.xaml.cs">
       <DependentUpon>ClassroomTeacherMsgBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
-    <Compile Include="FlashCard.xaml.cs">
+    <Compile Include="Components\FlashCard.xaml.cs">
       <DependentUpon>FlashCard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FlashCardPage.xaml.cs">
+    <Compile Include="StudentSection\FlashCardPage.xaml.cs">
       <DependentUpon>FlashCardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FlashCardSharePopup.xaml.cs">
+    <Compile Include="StudentSection\FlashCardSharePopup.xaml.cs">
       <DependentUpon>FlashCardSharePopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
-    <Compile Include="QuizControl.xaml.cs">
+    <Compile Include="Components\QuizControl.xaml.cs">
       <DependentUpon>QuizControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizDesignControl.xaml.cs">
+    <Compile Include="Components\QuizDesignControl.xaml.cs">
       <DependentUpon>QuizDesignControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizDesignPage.xaml.cs">
+    <Compile Include="Quiz\QuizDesignPage.xaml.cs">
       <DependentUpon>QuizDesignPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizDetail_Input.xaml.cs">
+    <Compile Include="Quiz\QuizDetail_Input.xaml.cs">
       <DependentUpon>QuizDetail_Input.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizDisplayPage.xaml.cs">
+    <Compile Include="Quiz\QuizDisplayPage.xaml.cs">
       <DependentUpon>QuizDisplayPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ResultTablePage.xaml.cs">
+    <Compile Include="Classroom\ResultTablePage.xaml.cs">
       <DependentUpon>ResultTablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Signup.xaml.cs">
+    <Compile Include="CommonWindows\Signup.xaml.cs">
       <DependentUpon>Signup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SplashScreen.xaml.cs">
+    <Compile Include="CommonWindows\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Student.xaml.cs">
+    <Compile Include="StudentSection\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentClassroomPage.xaml.cs">
+    <Compile Include="StudentSection\StudentClassroomPage.xaml.cs">
       <DependentUpon>StudentClassroomPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentDataPage.xaml.cs">
+    <Compile Include="TeacherSection\StudentDataPage.xaml.cs">
       <DependentUpon>StudentDataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentHomePage.xaml.cs">
+    <Compile Include="StudentSection\StudentHomePage.xaml.cs">
       <DependentUpon>StudentHomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentHomepageInfoCard.xaml.cs">
+    <Compile Include="Components\StudentHomepageInfoCard.xaml.cs">
       <DependentUpon>StudentHomepageInfoCard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Teacher.xaml.cs">
+    <Compile Include="TeacherSection\Teacher.xaml.cs">
       <DependentUpon>Teacher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherClassroomAnnouncementPage.xaml.cs">
+    <Compile Include="Classroom\TeacherClassroomAnnouncementPage.xaml.cs">
       <DependentUpon>TeacherClassroomAnnouncementPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherClassroomMainPage.xaml.cs">
+    <Compile Include="Classroom\TeacherClassroomMainPage.xaml.cs">
       <DependentUpon>TeacherClassroomMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherClassroomPage.xaml.cs">
+    <Compile Include="TeacherSection\TeacherClassroomPage.xaml.cs">
       <DependentUpon>TeacherClassroomPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherClassroomQuizPage.xaml.cs">
+    <Compile Include="Classroom\TeacherClassroomQuizPage.xaml.cs">
       <DependentUpon>TeacherClassroomQuizPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherClassroomStudentList.xaml.cs">
+    <Compile Include="Classroom\TeacherClassroomStudentList.xaml.cs">
       <DependentUpon>TeacherClassroomStudentList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeacherHomePage.xaml.cs">
+    <Compile Include="TeacherSection\TeacherHomePage.xaml.cs">
       <DependentUpon>TeacherHomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classroom.xaml.cs">
+    <Compile Include="Components\Classroom.xaml.cs">
       <DependentUpon>Classroom.xaml</DependentUpon>
     </Compile>
     <Compile Include="UniqueCodeGenerator.cs" />
     <Compile Include="Utilities.cs" />
-    <Page Include="Announcements.xaml">
+    <Page Include="Components\Announcements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ClassroomTeacherMsgBox.xaml">
+    <Page Include="TeacherSection\ClassroomTeacherMsgBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlashCard.xaml">
+    <Page Include="Components\FlashCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlashCardPage.xaml">
+    <Page Include="StudentSection\FlashCardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FlashCardSharePopup.xaml">
+    <Page Include="StudentSection\FlashCardSharePopup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="CommonWindows\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="CommonWindows\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomMessageBox.xaml.cs">
+    <Compile Include="CommonWindows\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="QuizControl.xaml">
+    <Page Include="Components\QuizControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizDesignControl.xaml">
+    <Page Include="Components\QuizDesignControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizDesignPage.xaml">
+    <Page Include="Quiz\QuizDesignPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizDetail_Input.xaml">
+    <Page Include="Quiz\QuizDetail_Input.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizDisplayPage.xaml">
+    <Page Include="Quiz\QuizDisplayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ResultTablePage.xaml">
+    <Page Include="Classroom\ResultTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Signup.xaml">
+    <Page Include="CommonWindows\Signup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Classroom.xaml">
+    <Page Include="Components\Classroom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomMessageBox.xaml">
+    <Page Include="CommonWindows\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SplashScreen.xaml">
+    <Page Include="CommonWindows\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Student.xaml">
+    <Page Include="StudentSection\Student.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentClassroomPage.xaml">
+    <Page Include="StudentSection\StudentClassroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentDataPage.xaml">
+    <Page Include="TeacherSection\StudentDataPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentHomePage.xaml">
+    <Page Include="StudentSection\StudentHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentHomepageInfoCard.xaml">
+    <Page Include="Components\StudentHomepageInfoCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Teacher.xaml">
+    <Page Include="TeacherSection\Teacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherClassroomAnnouncementPage.xaml">
+    <Page Include="Classroom\TeacherClassroomAnnouncementPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherClassroomMainPage.xaml">
+    <Page Include="Classroom\TeacherClassroomMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherClassroomPage.xaml">
+    <Page Include="TeacherSection\TeacherClassroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherClassroomQuizPage.xaml">
+    <Page Include="Classroom\TeacherClassroomQuizPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherClassroomStudentList.xaml">
+    <Page Include="Classroom\TeacherClassroomStudentList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeacherHomePage.xaml">
+    <Page Include="TeacherSection\TeacherHomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -481,7 +473,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Fonts\Lato-Black.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -491,36 +482,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StudentSection\" />
-    <Folder Include="TeacherSection\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\students.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\classroom.png" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Icons\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\flash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Logo2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\p1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
