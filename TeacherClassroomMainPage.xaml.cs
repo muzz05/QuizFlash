@@ -20,6 +20,7 @@ namespace QuizFlash
     /// </summary>
     public partial class TeacherClassroomMainPage : Page
     {
+
         public TeacherClassroomMainPage()
         {
             InitializeComponent();
@@ -40,6 +41,21 @@ namespace QuizFlash
         private void NavigateToStudentList(object sender, RoutedEventArgs e)
         {
             TeacherClassroomFrame.Content = new TeacherClassroomStudentList();
+        }
+
+        private void GoBackToClassroomPage(object sender, RoutedEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is Teacher teacher)
+                {
+                    teacher.TeacherViewFrame.Content = new TeacherClassroomPage(GlobalVariables.TeacherId, GlobalVariables.UserId);
+                }
+                else if (window is Student student)
+                {
+                    student.StudentViewFrame.Content = new StudentClassroomPage(GlobalVariables.StudentId, GlobalVariables.UserId);
+                }
+            }
         }
     }
 }

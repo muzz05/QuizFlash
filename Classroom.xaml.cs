@@ -78,6 +78,8 @@ namespace QuizFlash
 
         private void RedirectToClassroom(object sender, RoutedEventArgs e)
         {
+            GlobalVariables.ActiveClassroomId = ClassroomId;
+
                 foreach (Window window in Application.Current.Windows)
                 {
                     if (window is Teacher teacher)

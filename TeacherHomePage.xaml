@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="Transparent"
       Title="TeacherHomePage">
-    <Border Background="Transparent"/>
+    <TextBlock>Hello</TextBlock>
 </Page>

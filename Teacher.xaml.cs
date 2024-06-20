@@ -21,7 +21,6 @@ namespace QuizFlash
     /// </summary>
     public partial class Teacher : Window
     {
-        public Frame TeacherFrame => TeacherViewFrame;
 
         private int TeacherId;
         private int UserId;
@@ -34,6 +33,7 @@ namespace QuizFlash
             UserName = _TeacherName;
             InitializeComponent();
             TeacherNameTextBox.Text = UserName;
+            TeacherHomeRadioButton.IsChecked = true;
         }
 
         private void StudentTabCheck(object sender, RoutedEventArgs e)

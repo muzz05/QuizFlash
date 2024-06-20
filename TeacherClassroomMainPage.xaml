@@ -15,6 +15,29 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="78*"/>
         </Grid.RowDefinitions>
+            <Button
+                HorizontalAlignment="Left"
+                Width="20"
+                Height="20"
+                Background="White"
+                Foreground="#353340"
+                BorderThickness="0"
+                BorderBrush="Transparent"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                Padding="5"
+                Margin="30,0,0,0"
+                Cursor="Hand"
+                Click="GoBackToClassroomPage">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Fill="{TemplateBinding Background}" Height="20" VerticalAlignment="Top" />
+                            <Icons:PackIconVaadinIcons Kind="ArrowBackward" HorizontalAlignment="Center" VerticalAlignment="Center" Height="12" Width="12"/>
+                    </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Grid.Row="0">
             <RadioButton x:Name="DefaultNavigation" Style="{StaticResource ClassroomNavigation}" Width="90" Margin="0 0 10 0" Checked="NavigateToQuizzes">
                 <Grid>
