@@ -28,9 +28,11 @@
         <!--Header-->
         <Grid Background="#282438" Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="18" Width="60" Margin="0,0,10,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Center">
+                    <TextBlock x:Name="StudentCodeBadge" FontSize="10" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Code</TextBlock>
+                </Border>
                 <TextBlock x:Name="StudentNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the student name</TextBlock>
                 <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
-
             </StackPanel>
         </Grid>
 

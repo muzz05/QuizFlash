@@ -111,33 +111,36 @@ namespace QuizFlash
                 {
                     if (isTeacher)
                     {
-                        sql = "SELECT id FROM Teachers WHERE userId = @UserIdOfTeacher";
+                        sql = "SELECT id, teacherCode FROM Teachers WHERE userId = @UserIdOfTeacher";
                         MySqlParameter TeacherUserId = new MySqlParameter();
                         TeacherUserId.ParameterName = "@UserIdOfTeacher";
                         TeacherUserId.Value = dbUserId;
-                        object TeacherIdResult = db.ExecuteScalar(sql, TeacherUserId);
-                        Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherIdResult), dbUserId, dbUsername);
+                        DataTable TeacherResult = db.ExecuteQuery(sql, TeacherUserId);
 
                         // Adding Data to Global Variables
-                        GlobalVariables.TeacherId = Convert.ToInt32(TeacherIdResult);
+                        GlobalVariables.TeacherId = Convert.ToInt32(TeacherResult.Rows[0]["id"]);
+                        GlobalVariables.UserCode = TeacherResult.Rows[0]["teacherCode"].ToString();
+
+                        Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherResult.Rows[0]["id"]), dbUserId, dbUsername);
 
                         // Adding Data to the Logged Devices
                         AddDataToLoggedDevices(dbUserId);
-
 
                         teacherWindow.Show();
                     } 
                     else
                     {
-                        sql = "SELECT id FROM Students WHERE userId = @UserIdOfStudent";
+                        sql = "SELECT id, studentCode FROM Students WHERE userId = @UserIdOfStudent";
                         MySqlParameter StudentUserId = new MySqlParameter();
                         StudentUserId.ParameterName = "@UserIdOfStudent";
                         StudentUserId.Value = dbUserId;
-                        object StudentIdResult = db.ExecuteScalar(sql, StudentUserId);
-                        Student studentWindow = new Student(Convert.ToInt32(StudentIdResult), dbUserId, dbUsername);
+                        DataTable StudentResult = db.ExecuteQuery(sql, StudentUserId);
 
                         // Adding Data to Global Variables
-                        GlobalVariables.StudentId = Convert.ToInt32(StudentIdResult);
+                        GlobalVariables.StudentId = Convert.ToInt32(StudentResult.Rows[0]["studentCode"]);
+                        GlobalVariables.UserCode = StudentResult.Rows[0]["studentCode"].ToString();
+
+                        Student studentWindow = new Student(Convert.ToInt32(StudentResult.Rows[0]["studentCode"]), dbUserId, dbUsername);
 
                         // Adding Data to the Logged Devices
                         AddDataToLoggedDevices(dbUserId);

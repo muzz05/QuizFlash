@@ -34,6 +34,7 @@ namespace QuizFlash
             InitializeComponent();
             TeacherNameTextBox.Text = UserName;
             TeacherHomeRadioButton.IsChecked = true;
+            TeacherCodeBadge.Text = GlobalVariables.UserCode;
         }
 
         private void StudentTabCheck(object sender, RoutedEventArgs e)
