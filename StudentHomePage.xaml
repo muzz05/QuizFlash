@@ -7,5 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
       Title="StudentHomePage">
-    <Border Background="Transparent"/>
+    <Grid Background="Transparent" Margin="0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="7,7,0,0">
+            
+        </WrapPanel>
+        
+    </Grid>
 </Page>
