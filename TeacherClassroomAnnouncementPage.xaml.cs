@@ -35,7 +35,7 @@ namespace QuizFlash
             ClassroomNameAnnouncement.Text = result.Rows[0]["classroomName"].ToString();
             TeacherNameAnnouncement.Text = result.Rows[0]["name"].ToString();
             CourseCodeAnnouncement.Text = result.Rows[0]["courseCode"].ToString();
-            OwnUsernameInitials.Text = GetInitials(result.Rows[0]["name"].ToString());
+            OwnUsernameInitials.Text = GetInitials(GlobalVariables.Username);
 
             // Getting the Announcement Info
             sql = "SELECT cs.*, u.name FROM ClassroomStream cs JOIN Users u ON u.id = cs.userId WHERE classroomId = @ClassroomID ORDER BY cs.id DESC";

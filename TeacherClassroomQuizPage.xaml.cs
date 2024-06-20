@@ -26,6 +26,8 @@ namespace QuizFlash
         {
             InitializeComponent();
 
+            AddQuizButton.Visibility = GlobalVariables.IsTeacher ? Visibility.Visible : Visibility.Collapsed;
+
             Database db = new Database();
 
             string sql;
@@ -58,9 +60,10 @@ namespace QuizFlash
 
         public void AddQuiz(string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
         {
+            int index = TeacherClassroomQuizPanel.Children.Count - 1;
             QuizControl newQuiz = new QuizControl(quizname, totalmarks, questions, validUntilEpoch,IsAttempted);
             newQuiz.Margin = new Thickness(0, 15, 15, 0);
-            TeacherClassroomPanel.Children.Add(newQuiz);
+            TeacherClassroomQuizPanel.Children.Insert(index,newQuiz);
 
         }
 
