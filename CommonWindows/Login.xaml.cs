@@ -137,10 +137,10 @@ namespace QuizFlash
                         DataTable StudentResult = db.ExecuteQuery(sql, StudentUserId);
 
                         // Adding Data to Global Variables
-                        GlobalVariables.StudentId = Convert.ToInt32(StudentResult.Rows[0]["studentCode"]);
+                        GlobalVariables.StudentId = Convert.ToInt32(StudentResult.Rows[0]["id"]);
                         GlobalVariables.UserCode = StudentResult.Rows[0]["studentCode"].ToString();
 
-                        Student studentWindow = new Student(Convert.ToInt32(StudentResult.Rows[0]["studentCode"]), dbUserId, dbUsername);
+                        Student studentWindow = new Student(Convert.ToInt32(StudentResult.Rows[0]["id"]), dbUserId, dbUsername);
 
                         // Adding Data to the Logged Devices
                         AddDataToLoggedDevices(dbUserId);
@@ -211,6 +211,16 @@ namespace QuizFlash
                 };
                 int FinalResult = db.ExecuteNonQuery (sql, LoggedDevicesParams);
             }
+        }
+
+        private void minimizeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 
     }

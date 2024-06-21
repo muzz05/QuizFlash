@@ -8,86 +8,94 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Title="Teacher Dashboard" Height="500" Width="880">
-    <Grid Background="#282438">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="80*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
-        </Grid.RowDefinitions>
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="Teacher Dashboard" Height="590" Width="1120">
+    <Border Background="#282438" CornerRadius="20">
+        <Grid Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="18*"/>
+                <ColumnDefinition Width="82*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
+            </Grid.RowDefinitions>
 
-        <!--Logo Section-->
-        <StackPanel Background="#282438" Orientation="Horizontal" Width="160" HorizontalAlignment="Center">
-            <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Height="18"/>
-            <TextBlock HorizontalAlignment="Center" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="19" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
-        </StackPanel>
-
-        <!--Header-->
-        <Grid Background="#282438" Grid.Column="1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="18" Width="60" Margin="0,0,10,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Center">
-                    <TextBlock x:Name="StudentCodeBadge" FontSize="10" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Code</TextBlock>
-                </Border>
-                <TextBlock x:Name="StudentNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the student name</TextBlock>
-                <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
+            <!--Logo Section-->
+            <StackPanel Orientation="Horizontal" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Height="19"/>
+                <TextBlock HorizontalAlignment="Center" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="21" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
             </StackPanel>
-        </Grid>
 
-        <!--Navigation-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
-            <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentHomePageCheck" x:Name="StudentHomeRadioButton">
-                <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="90*"/>
-                    </Grid.ColumnDefinitions>
-                    <Icons:PackIconTypicons Kind="Home" Foreground="#c4c3cf" Height="13" Width="13"/>
-                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
-                </Grid>
-            </RadioButton>
-            <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentClassroomCheck" >
-                <Grid HorizontalAlignment="left" Width="120" Margin="25,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="90*"/>
-                    </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2"/>
-                    <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="90">Classroom</TextBlock>
-                </Grid>
-            </RadioButton>
-            <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentFlashCardCheck"  >
-                <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="90*"/>
-                    </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="Cards" Foreground="#c4c3cf" Height="13" Width="13"/>
-                    <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Flash Cards</TextBlock>
-                </Grid>
-            </RadioButton>
-            <Grid Margin="0,225">
-                <Button Style="{StaticResource NavigationButtonLogout}" Click="Logout" >
-                    <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
+            <!--Header-->
+            <Grid Grid.Column="1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="18" Width="60" Margin="0,0,10,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Center">
+                        <TextBlock x:Name="StudentCodeBadge" FontSize="10" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Code</TextBlock>
+                    </Border>
+                    <TextBlock x:Name="StudentNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the student name</TextBlock>
+                    <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20,10,10,0">
+                        <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12" MouseDown="minimizeWindow" Cursor="Hand"/>
+                        <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12" MouseDown="closeWindow" Cursor="Hand"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!--Navigation-->
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentHomePageCheck" x:Name="StudentHomeRadioButton">
+                    <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="90*"/>
                         </Grid.ColumnDefinitions>
-                        <Icons:PackIconEvaIcons Kind="LogOut" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
-                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Logout</TextBlock>
+                        <Icons:PackIconTypicons Kind="Home" Foreground="#c4c3cf" Height="13" Width="13"/>
+                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
                     </Grid>
-                </Button>
-            </Grid>
-        </StackPanel>
+                </RadioButton>
+                <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentClassroomCheck" >
+                    <Grid HorizontalAlignment="left" Width="120" Margin="25,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="90*"/>
+                        </Grid.ColumnDefinitions>
+                        <Icons:PackIconMaterial Kind="GoogleClassroom" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2"/>
+                        <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" Margin="10, 0, 0, 0" HorizontalAlignment="Left" Width="90">Classroom</TextBlock>
+                    </Grid>
+                </RadioButton>
+                <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentFlashCardCheck"  >
+                    <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="90*"/>
+                        </Grid.ColumnDefinitions>
+                        <Icons:PackIconMaterial Kind="Cards" Foreground="#c4c3cf" Height="13" Width="13"/>
+                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Flash Cards</TextBlock>
+                    </Grid>
+                </RadioButton>
+                <Grid Margin="0,300">
+                    <Button Style="{StaticResource NavigationButtonLogout}" Click="Logout" >
+                        <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="90*"/>
+                            </Grid.ColumnDefinitions>
+                            <Icons:PackIconEvaIcons Kind="LogOut" Foreground="#c4c3cf" Height="13" Width="13" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                            <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Logout</TextBlock>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </StackPanel>
 
-        <!--Main View-->
-        <Grid Grid.Column="1" Grid.Row="1"  Background="#282438">
-            <Grid Background="Transparent" Margin="15,5,15,15" >
-                <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
-                <Frame x:Name="StudentViewFrame" NavigationUIVisibility="Hidden"/>
+            <!--Main View-->
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid Background="Transparent" Margin="15,5,15,15" >
+                    <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
+                    <Frame x:Name="StudentViewFrame" NavigationUIVisibility="Hidden"/>
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

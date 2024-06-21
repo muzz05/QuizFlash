@@ -39,8 +39,8 @@
         <Border Background="#353340 " Grid.Column="1" CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" BorderBrush="Transparent">
             <StackPanel VerticalAlignment="Top" Height="600">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,10,0">
-                    <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12"/>
-                    <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12"/>
+                    <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12" MouseDown="minimizeWindow" Cursor="Hand"/>
+                    <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12" MouseDown="closeWindow" Cursor="Hand"/>
                 </StackPanel>
                 <TextBlock  Text="Registration" Foreground="#c4c3cf" Style="{StaticResource TitleText}" FontSize="25" Margin="0,10,0,15"/>
 

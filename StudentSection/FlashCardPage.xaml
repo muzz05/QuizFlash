@@ -7,13 +7,13 @@
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
       Background="Transparent"
-      d:DesignHeight="460" d:DesignWidth="700"
+      d:DesignHeight="460" d:DesignWidth="880"
       Title="FlashCardPage">
 
     <Border CornerRadius="20" Margin="15">
         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
 
-            <WrapPanel x:Name="WrapPanelFlashCards" Width="700">
+            <WrapPanel x:Name="WrapPanelFlashCards" Width="880">
                 <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
                     <Border.BorderBrush>
                         <VisualBrush>

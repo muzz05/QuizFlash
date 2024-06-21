@@ -71,5 +71,15 @@ namespace QuizFlash
             int result = db.ExecuteNonQuery(sql, new MySqlParameter("@MACAddress", firstMacAddress), new MySqlParameter("@UserId", UserId));
             this.Close();
         }
+
+        private void minimizeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

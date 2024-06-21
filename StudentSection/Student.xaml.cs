@@ -66,5 +66,15 @@ namespace QuizFlash
 
             this.Close();
         }
+
+        private void minimizeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

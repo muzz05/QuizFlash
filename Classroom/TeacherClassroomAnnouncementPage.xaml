@@ -5,39 +5,39 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuizFlash"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="790"
       Title="TeacherClassroomAnnouncementPage">
     <Grid Margin="40 10">
     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
             <StackPanel x:Name="AnnoucementsPanel">
-                <Border CornerRadius="20" Background="#282438" Height="200" Width="520" VerticalAlignment="Top" Margin="0,10">
+                <Border CornerRadius="20" Background="#282438" Height="240" Width="700" VerticalAlignment="Top" Margin="0,10" HorizontalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40*"/>
                             <ColumnDefinition Width="60*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="35, 20, 0, 20">
-                            <TextBlock x:Name="ClassroomNameAnnouncement" FontSize="22" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5" TextWrapping="Wrap"> Applied Physics</TextBlock>
-                            <TextBlock  x:Name="TeacherNameAnnouncement" FontSize="16" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Dr. Tahir Jamal</TextBlock>
-                            <Border Background="#c3c4cf" Padding="0, 3" CornerRadius="10" Width="70" HorizontalAlignment="Left" Margin="0,5">
-                                <TextBlock x:Name="CourseCodeAnnouncement" FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center"> MT-116</TextBlock>
+                            <TextBlock x:Name="ClassroomNameAnnouncement" FontSize="24" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 8" TextWrapping="Wrap"> Applied Physics</TextBlock>
+                            <TextBlock  x:Name="TeacherNameAnnouncement" FontSize="18" FontWeight="Bold" Foreground="#c4c3cf" Margin="0, 5"> Dr. Tahir Jamal</TextBlock>
+                            <Border Background="#c3c4cf" Padding="0, 3" CornerRadius="10" Width="70" HorizontalAlignment="Left" Margin="0,8">
+                                <TextBlock x:Name="CourseCodeAnnouncement" FontSize="14" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center"> MT-116</TextBlock>
                             </Border>
                         </StackPanel>
-                        <Image Source="Images/announcement.png" Height="200" Grid.Column="1"/>
+                        <Image Source="../Images/announcement.png" Height="220" Grid.Column="1"/>
 
                     </Grid>
                 </Border>
                 <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="50" Margin="5">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="80*"/>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="83*"/>
                         </Grid.ColumnDefinitions>
                         <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
                             <TextBlock x:Name="OwnUsernameInitials" FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
                         </Border>
                         <TextBlock x:Name="AnnouncementPlaceHolderTextBlock" Grid.Column="1" Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Share Something with the classroom" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center" MouseDown="AnnouncementTextMouseDown"/>
-                        <TextBox x:Name="AnnouncementTextBox" Background="Transparent" BorderBrush="Transparent" Grid.Column="1" FontSize="15" BorderThickness="0" VerticalAlignment="Center" Foreground="#c3c4cf" CaretBrush="#c3c4cf" HorizontalAlignment="Center" Cursor="IBeam" Width="460" TextChanged="AnnouncmentTextBoxChanged" KeyDown="AnnouncementTextBox_KeyDown"/>
+                        <TextBox x:Name="AnnouncementTextBox" Background="Transparent" BorderBrush="Transparent" Grid.Column="1" FontSize="15" BorderThickness="0" VerticalAlignment="Center" Foreground="#c3c4cf" CaretBrush="#c3c4cf" HorizontalAlignment="Center" Cursor="IBeam" Width="620" TextChanged="AnnouncmentTextBoxChanged" KeyDown="AnnouncementTextBox_KeyDown"/>
                     </Grid>
                 </Border>
             </StackPanel>

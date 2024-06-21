@@ -7,12 +7,15 @@
         xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
-        Title="Teacher Dashboard" Height="500" Width="880">
-    <Grid Background="#282438">
+        Title="Teacher Dashboard" Height="590" Width="1120">
+    <Border Background="#282438" CornerRadius="20">
+    <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="82*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -20,24 +23,28 @@
         </Grid.RowDefinitions>
 
         <!--Logo Section-->
-        <StackPanel Background="#282438" Orientation="Horizontal" Width="160" HorizontalAlignment="Center">
-            <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Height="18"/>
-            <TextBlock HorizontalAlignment="Center" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="19" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
+        <StackPanel Orientation="Horizontal" Width="160" HorizontalAlignment="Center">
+            <Icons:PackIconEvaIcons Kind="Flash" Foreground="#FFC07F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Height="19"/>
+            <TextBlock HorizontalAlignment="Center" Foreground="#c4c3cf" Margin="10,10,10,12" FontSize="21" FontWeight="Bold" VerticalAlignment="Center">QuizFlash</TextBlock>
         </StackPanel>
 
         <!--Header-->
-        <Grid Background="#282438" Grid.Column="1">
+        <Grid Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="18" Width="60" Margin="0,0,10,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Center">
                     <TextBlock x:Name="TeacherCodeBadge" FontSize="10" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Code</TextBlock>
                 </Border>
                 <TextBlock x:Name="TeacherNameTextBox" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" >This will have the teacher name</TextBlock>
                 <Image HorizontalAlignment="Right" RenderOptions.BitmapScalingMode="HighQuality" Source="/Images/Icons/user.png" Grid.Column="0" Height="25" Width="25" Margin="0, 0, 10, 0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20,10,10,0">
+                    <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12" MouseDown="minimizeWindow" Cursor="Hand"/>
+                    <Icons:PackIconEvaIcons Kind="Close" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10"  Height="12" Width="12" MouseDown="closeWindow" Cursor="Hand"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
 
         <!--Navigation-->
-        <StackPanel Grid.Column="0" Grid.Row="1" Background="#282438">
+        <StackPanel Grid.Column="0" Grid.Row="1">
             <RadioButton x:Name="TeacherHomeRadioButton" Style="{StaticResource NavigationButtons}" Checked="TeacherHomePageCheck">
                 <Grid HorizontalAlignment="left" Width="120" Height="13" Margin="25,0,0,0">
                     <Grid.ColumnDefinitions>
@@ -68,7 +75,7 @@
                     <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Students</TextBlock>
                 </Grid>
             </RadioButton>
-            <Grid Margin="0,230">
+            <Grid Margin="0,300">
 
                 <Button Style="{StaticResource NavigationButtonLogout}" Click="Logout" >
                     <Grid HorizontalAlignment="left" Width="120" Height="20" Margin="25,0,0,0">
@@ -84,11 +91,12 @@
         </StackPanel>
 
         <!--Main View-->
-        <Grid Grid.Column="1" Grid.Row="1"  Background="#282438">
+        <Grid Grid.Column="1" Grid.Row="1">
             <Grid Background="Transparent" Margin="15,5,15,15" >
                 <Border BorderThickness="0" CornerRadius="15" Background="#353340"/>
                 <Frame x:Name="TeacherViewFrame" x:FieldModifier="public" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
     </Grid>
+</Border>
 </Window>

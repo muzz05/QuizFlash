@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:QuizFlash"
       xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"              
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="450" d:DesignWidth="880"
       Title="TeacherClassroomPage">
 
     <Border CornerRadius="20" Margin="15">
         <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
-            <WrapPanel x:Name="WrapPanelClassroom" Width="700">
+            <WrapPanel x:Name="WrapPanelClassroom" Width="880">
                 <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
                     <Border.BorderBrush>
                         <VisualBrush>
