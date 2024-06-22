@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="880"
       Title="StudentHomePage">
+
     <Grid Background="Transparent" Margin="0" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -21,8 +22,40 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="0" x:Name="quote_panel" Orientation="Vertical" 
-                       Margin="30,15,10,10"/>
+                       Margin="30,12,10,10"/>
         </Grid>
+
+        <Border  HorizontalAlignment="Left" x:Name="cardBorder" Width="380" Height="335" Grid.Column="1" CornerRadius="10" Background="#272537" Margin="30,70,70,0">
+            <Border.Effect>
+                <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
+            </Border.Effect>
+            <Grid Width="380" Height="335">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+
+                
+                    <TextBlock x:Name="llogged_dev" Text="Device Management" FontSize="22"  Margin="0,0,0,3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#ffefba" Offset="0.1" />
+                                <GradientStop Color="#ffffff" Offset="0.8" />
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+
+
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+                        <WrapPanel Grid.Row="1" x:Name="devices" Orientation="Vertical" Width="380" >
+
+                        </WrapPanel>
+                    </ScrollViewer>
+
+
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

@@ -102,7 +102,7 @@ namespace QuizFlash
         private void addquizbutton_Click(object sender, RoutedEventArgs e)
         {
             QuizDetail_Input quiz=new QuizDetail_Input();
-            quiz.Show();
+            quiz.ShowDialog();
         }
     }
 }
