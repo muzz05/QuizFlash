@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizFlash.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,38 @@ namespace QuizFlash
         public TeacherClassroomStudentList()
         {
             InitializeComponent();
+            AddClassroomUser("Jane Smith", true);
+            AddClassroomUser("John Doe", false);
+            AddClassroomUser("Emily Jones", false);
+            AddClassroomUser("Michael Brown", false);
+            AddClassroomUser("Sarah Davis", false);
+            AddClassroomUser("David Miller", false);
+            AddClassroomUser("Linda Wilson", false);
+            AddClassroomUser("James Moore", false);
+            AddClassroomUser("Patricia Taylor", false);
+            AddClassroomUser("Robert Anderson", false);
+            AddClassroomUser("Barbara Thomas", false);
+            AddClassroomUser("William Jackson", false);
+            AddClassroomUser("Elizabeth White", false);
+            AddClassroomUser("Charles Harris", false);
+            AddClassroomUser("Mary Martin", false);
+            AddClassroomUser("Joseph Thompson", false);
+            AddClassroomUser("Nancy Garcia", false);
+            AddClassroomUser("Richard Martinez", false);
+            AddClassroomUser("Margaret Robinson", false);
+            AddClassroomUser("Thomas Clark", false);
+            AddClassroomUser("Dorothy Rodriguez", false);
+            AddClassroomUser("Christopher Lewis", false);
+            AddClassroomUser("Susan Lee", false);
+            AddClassroomUser("Daniel Walker", false);
+            AddClassroomUser("Jessica Hall", false);
+
+        }
+
+        public void AddClassroomUser(string username, bool isTeacher)
+        {
+            ClassroomStudents newStudent = new ClassroomStudents(username, isTeacher);
+            studentListPanel.Children.Add(newStudent);
         }
     }
 }
