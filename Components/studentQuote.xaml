@@ -5,19 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
-             d:DesignHeight="90" d:DesignWidth="570">
-    <Border x:Name="cardBorder" CornerRadius="10" Background="#272537" BorderThickness="0" BorderBrush="Transparent"  Margin="0">
-        <Border.Effect>
+             d:DesignHeight="90" d:DesignWidth="300">
+    <Border x:Name="cardBorder" CornerRadius="12" Background="#325274 " BorderThickness="0" BorderBrush="Transparent"  Margin="10,10,0,0">
+        <!--<Border.Effect>
             <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
-        </Border.Effect>
-        <Grid Height="90" Cursor="Hand" Width="570" Margin="0" >
-            <TextBlock x:Name="quote" FontSize="14" FontWeight="SemiBold"  Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock.Foreground>
+        </Border.Effect>-->
+        <Grid Height="90" Cursor="Hand" Width="300" Margin="0" >
+            <TextBlock x:Name="quote" FontSize="14" FontWeight="SemiBold"  Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf">
+                This is a dummy quote
+                <!--<TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#ffefba" Offset="0.1" />
                         <GradientStop Color="#ffffff" Offset="0.8" />
                     </LinearGradientBrush>
-                </TextBlock.Foreground>
+                </TextBlock.Foreground>-->
             </TextBlock>
         </Grid>
     </Border>

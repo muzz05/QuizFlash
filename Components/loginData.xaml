@@ -5,9 +5,8 @@
              xmlns:Icons="http://metro.mahapps.com/winfx/xaml/iconpacks"              
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash"
-             mc:Ignorable="d" d:DesignWidth="370" Height="45">
-
-
+             Background="Transparent"
+             mc:Ignorable="d" d:DesignWidth="280" Height="45">
     <UserControl.Resources>
         <Style TargetType="Button" x:Key="NoHoverButtonStyle">
             <Setter Property="Background" Value="Transparent"/>
@@ -28,66 +27,68 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-
-    <Grid Width="370" Height="45">
+    <Border CornerRadius="14" Background="#6959cc">
+        
+    <Grid Width="280" Height="45" Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Height="45" Margin="0,0,0,0">
-            <Border CornerRadius="10" Width="30" Height="30" Margin="5,0,0,0">
-                <Border.Background>
+            <Border CornerRadius="10" Width="30" Height="30" Margin="5,0,0,0" Background="#c3c4cf">
+                <!--<Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#ffefba" Offset="0.1" />
                         <GradientStop Color="#ffffff" Offset="0.8" />
                     </LinearGradientBrush>
-                </Border.Background>
+                </Border.Background>-->
                 <Icons:PackIconMaterial Kind="Devices" Width="20" Height="20" Foreground="#272537" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
 
             <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock Text="Redmi Note 11" x:Name="devName" FontSize="14">
-                    <TextBlock.Foreground>
+                <TextBlock Text="Redmi Note 11" x:Name="devName" FontSize="14" Foreground="#c3c4cf" FontWeight="SemiBold">
+                    <!--<TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
                             <GradientStop Color="#ffffff" Offset="0.8" />
                         </LinearGradientBrush>
-                    </TextBlock.Foreground>
+                    </TextBlock.Foreground>-->
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="-5,0,0,0">
-                    <Label Content="Last Login:" FontSize="12" Margin="0,-4,0,0">
-                        <Label.Foreground>
+                    <Label Content="Last Login:" FontSize="12" Margin="0,-4,0,0" Foreground="#c3c4cf">
+                        <!--<Label.Foreground>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#ffefba" Offset="0.1" />
                                 <GradientStop Color="#ffffff" Offset="0.8" />
                             </LinearGradientBrush>
-                        </Label.Foreground>
+                        </Label.Foreground>-->
                     </Label>
 
-                    <TextBlock Text="7/4/2024" x:Name="LastDate" FontSize="12" Height="15" Margin="0,-4,0,0">
-                        <TextBlock.Foreground>
+                    <TextBlock Text="7/4/2024" x:Name="LastDate" FontSize="12" Height="15" Margin="0,-4,0,0" Foreground="#c3c4cf">
+                        <!--<TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#ffefba" Offset="0.1" />
                                 <GradientStop Color="#ffffff" Offset="0.8" />
                             </LinearGradientBrush>
-                        </TextBlock.Foreground>
+                        </TextBlock.Foreground>-->
                     </TextBlock>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
 
-        <Border Grid.Column="1" CornerRadius="10" Width="30" Height="30" VerticalAlignment="Center">
-            <Button Width="30" Height="30" Cursor="Hand" Background="Transparent" BorderThickness="0" Style="{StaticResource NoHoverButtonStyle}">
-                <Icons:PackIconModern Kind="Delete" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Icons:PackIconModern.Foreground>
+        <Border Grid.Column="1" CornerRadius="10" Width="40" Height="30" VerticalAlignment="Center">
+                <Button Width="30" Height="30" Cursor="Hand" Background="Transparent" BorderThickness="0" Style="{StaticResource NoHoverButtonStyle}" Margin="0,0,10,0">
+                <Icons:PackIconModern Kind="Delete" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf">
+                    <!--<Icons:PackIconModern.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
                             <GradientStop Color="#ffffff" Offset="0.8" />
                         </LinearGradientBrush>
-                    </Icons:PackIconModern.Foreground>
+                    </Icons:PackIconModern.Foreground>-->
                 </Icons:PackIconModern>
             </Button>
         </Border>
     </Grid>
+    </Border>
 </UserControl>

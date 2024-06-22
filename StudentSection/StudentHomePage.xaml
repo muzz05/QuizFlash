@@ -7,11 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="880"
       Title="StudentHomePage">
-
-    <Grid Background="Transparent" Margin="0" >
+    
+    <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="7,7,0,0">
 
@@ -25,24 +26,24 @@
                        Margin="30,12,10,10"/>
         </Grid>
 
-        <Border  HorizontalAlignment="Left" x:Name="cardBorder" Width="380" Height="335" Grid.Column="1" CornerRadius="10" Background="#272537" Margin="30,70,70,0">
-            <Border.Effect>
+        <Border  HorizontalAlignment="Left" x:Name="cardBorder" Width="380" Height="335" Grid.Column="1" CornerRadius="10" Background="Transparent" Margin="5,70,70,0">
+            <!--<Border.Effect>
                 <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
-            </Border.Effect>
-            <Grid Width="380" Height="335">
+            </Border.Effect>-->
+            <Grid Width="300" Height="335">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="8*"/>
                 </Grid.RowDefinitions>
 
                 
-                    <TextBlock x:Name="llogged_dev" Text="Device Management" FontSize="22"  Margin="0,0,0,3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock.Foreground>
+                    <TextBlock x:Name="llogged_dev" Text="Device Management" FontSize="22"  Margin="0,0,0,3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf" FontWeight="SemiBold">
+                        <!--<TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#ffefba" Offset="0.1" />
                                 <GradientStop Color="#ffffff" Offset="0.8" />
                             </LinearGradientBrush>
-                        </TextBlock.Foreground>
+                        </TextBlock.Foreground>-->
                     </TextBlock>
 
 
