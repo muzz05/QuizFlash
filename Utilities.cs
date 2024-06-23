@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizFlash
 {
-    public static class Utilities
+    public class Utilities
     {
 
         // To Get the Initials of a name
@@ -31,6 +31,26 @@ namespace QuizFlash
             return dateTimeOffset.ToUnixTimeSeconds();
         }
 
+        //Determining the grade of a student based on marks
+        public static string GetGrade(int marks)
+        {
+            switch (marks)
+            {
+                case int n when (n >= 90):
+                    return "A+";
+                case int n when (n >= 80):
+                    return "A";
+                case int n when (n >= 70):
+                    return "B";
+                case int n when (n >= 60):
+                    return "C";
+                case int n when (n >= 50):
+                    return "D";
+                default:
+                    return "F";
+            }
+        }
+
         // To Convert Epoch to Relative time (just now, 2 hours ago etc.)
         private static string ConvertEpochToRelativeTime(long epochTimestamp)
         {
@@ -52,7 +72,7 @@ namespace QuizFlash
             return "just now";
         }
 
-        // To Convert Eoch to ISO String
+        // To Convert Epoch to ISO String
         private static string ConvertEpochToIsoString(long epochTimestamp)
         {
             var dateTime = DateTimeOffset.FromUnixTimeMilliseconds(epochTimestamp * 1000);

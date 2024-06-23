@@ -43,6 +43,10 @@ namespace QuizFlash
         {
             DateTime parsedDateTime = DateTime.Parse(isoString);
             return parsedDateTime.ToString("d");  
+        }        
+
+        private void result_page_redirect(object sender, RoutedEventArgs e)
+        {            
         }
     }
 }

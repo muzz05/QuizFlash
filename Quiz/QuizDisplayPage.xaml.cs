@@ -58,6 +58,7 @@ namespace QuizFlash
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
             string query = $"Insert into studentresponse (quizId, questionId, studentId, isCorrect, checked) values({Convert.ToInt32(quizTitle.Text.Substring(5))},{Convert.ToInt32(question_text.Text[0])},{GlobalVariables.StudentId},{response==correct},{true})";
+            database.ExecuteNonQuery(query);
         }
     }
 }

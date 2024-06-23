@@ -50,7 +50,7 @@
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="180">
                     <Border CornerRadius="10" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="10,0,15,0">
 
-                        <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground="#fafafa" Height="28" Width="78">
+                        <Button Grid.Row="1" VerticalAlignment="Center" Click="result_page_redirect" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground="#fafafa" Height="28" Width="78">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border CornerRadius="10" BorderThickness="0">

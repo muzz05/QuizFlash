@@ -31,11 +31,12 @@ namespace QuizFlash
         static int minId = Convert.ToInt32(database.ExecuteScalar("Select MIN(studentId) from result where quizId=1"));
         int nextPageId = minId + 9;
         int prevPageId = minId;
-        public ResultTablePage()
+        public ResultTablePage(string quiz_name)
         {
             InitializeComponent();
-            string query = "SELECT r.studentId, u.name, d.name as departmentName, r.marksObtained FROM users u JOIN result r ON u.Id = r.studentId JOIN department d ON u.departmentId = d.id where r.quizId=1;";
+            string query = "SELECT r.studentId, r.quizId, u.name, d.name as departmentName, r.marksObtained FROM users u JOIN result r ON u.Id = r.studentId JOIN department d ON u.departmentId = d.id where r.quizId=1;";
             var reader = database.ExecuteQuery(query);
+            quizTitle.Text = $"{quiz_name} Quiz {reader.Rows[0]["quizId"]}";
             for (int i = 0; i < reader.Rows.Count; i++)
             {
                 results.Add(new Result
@@ -46,7 +47,7 @@ namespace QuizFlash
                     Department = reader.Rows[i]["departmentName"].ToString(),
                     StudentCode = reader.Rows[i]["studentId"].ToString(),
                     MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                    Grade = GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
+                    Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
                 });
                 if (i == 8) break;
             }
@@ -77,7 +78,7 @@ namespace QuizFlash
                         Department = reader.Rows[i]["departmentName"].ToString(),
                         StudentCode = reader.Rows[i]["studentId"].ToString(),
                         MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                        Grade = GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
+                        Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
                     });
                     rowCount++;
                     if (rowCount == 9)
@@ -114,7 +115,7 @@ namespace QuizFlash
                         Department = reader.Rows[i]["departmentName"].ToString(),
                         StudentCode = reader.Rows[i]["studentId"].ToString(),
                         MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                        Grade = GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
+                        Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
                     });
                     rowCount++;
                     if (rowCount == 9)
@@ -126,25 +127,7 @@ namespace QuizFlash
                 nextPageId -= 9;
                 prevPageId -= 9;
             }
-        }
-        public string GetGrade(int marks)
-        {
-            switch (marks)
-            {
-                case int n when (n >= 90):
-                    return "A+";
-                case int n when (n >= 80):
-                    return "A";
-                case int n when (n >= 70):
-                    return "B";
-                case int n when (n >= 60):
-                    return "C";
-                case int n when (n >= 50):
-                    return "D";
-                default:
-                    return "F";
-            }
-        }
+        }        
         public class Result
         {
             public sbyte Number { get; set; }

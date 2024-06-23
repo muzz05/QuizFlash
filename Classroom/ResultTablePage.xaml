@@ -27,7 +27,7 @@
 
 
                 <!--Page Title-->
-                <TextBlock Foreground="#c3c4cf" Text="Quiz Result" Grid.Row="1" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                <TextBlock Foreground="#c3c4cf" x:Name="quizTitle" Text="Quiz Result" Grid.Row="1" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center"/>
 
                 <!--Seprator-->
                 <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
