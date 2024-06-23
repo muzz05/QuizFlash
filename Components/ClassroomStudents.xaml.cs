@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace QuizFlash.Components
     /// </summary>
     public partial class ClassroomStudents : UserControl
     {
-        public ClassroomStudents(string username, bool isUserTeacher)
+        public int ClassroomStudentId;
+        public ClassroomStudents(int id, string username, bool isUserTeacher, string code)
         {
+            ClassroomStudentId = id;
             InitializeComponent();
+            StudentNameOrTeacher.Text = code;
             UserBadgeText.Text = Utilities.GetInitials(username);
             UserNameText.Text = username;
             isTeacherBadge.Visibility = isUserTeacher ? Visibility.Visible : Visibility.Collapsed;
@@ -33,6 +37,29 @@ namespace QuizFlash.Components
             else
             {
                 removeStudent.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void RemoveStudentFromClassroom(object sender, MouseButtonEventArgs e)
+        {
+            Database db = new Database();
+            string sql = "DELETE FROM ClassroomStudents WHERE studentId = @StudentId AND classroomId = @ClassroomId";
+            MySqlParameter[] deleteparams =
+            {
+                new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId),
+                new MySqlParameter("@StudentId", ClassroomStudentId)
+            };
+            int result = db.ExecuteNonQuery(sql, deleteparams);
+            if (result > 0) {
+                if (Parent is Panel panelStackPanel)
+                {
+                    panelStackPanel.Children.Remove(this);
+                }
+            }
+            else
+            {
+                CustomMessageBox errorOccured = new CustomMessageBox("Error Occured", "Some Error Occured in removing Student from Classroom", "Error");
+                errorOccured.ShowDialog();
             }
         }
     }

@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Width="700" HorizontalAlignment="Center">
-            <Button Style="{StaticResource MessageBoxButtons}" Height="36" Cursor="Hand" FontSize="12" FontWeight="SemiBold" Margin="43,0,0,0">Leave Classroom</Button>
+            <Button Style="{StaticResource MessageBoxButtons}" Height="36" Cursor="Hand" FontSize="12" FontWeight="SemiBold" Margin="43,0,0,0" Click="LeaveClassroom">Leave Classroom</Button>
             <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="25" Width="80" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     
@@ -23,23 +23,22 @@
                 <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" >Students</TextBlock>
                 </StackPanel>
             </Border>
-            <StackPanel Orientation="Horizontal" Margin="180,0,0,0">
-                <Border CornerRadius="5" Height="35" Background="#252837">
-                    <Grid Height="35" Margin="0,0,20,0">
+            <StackPanel Orientation="Horizontal" Margin="180,0,0,0" x:Name="AddStudentStackPanel">
+                <Border CornerRadius="5" Height="35" Background="#252837" Width="130">
+                    <Grid Height="35" Margin="0,0,20,0" Width="130">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="StudentCode_flashCardTextBlock" Text="Enter Student Code" Style="{StaticResource textHint}" Background="#252837" VerticalAlignment="Center" FontWeight="Light" FontSize="12"/>
-                        <TextBox Name="StudentCode_flashCardTextBox" Style="{StaticResource textBox}" Background="#252837" VerticalAlignment="Center" Cursor="IBeam" Margin="6,0,0,0" CaretBrush="#c3c4cf"/>
+                        <TextBlock x:Name="StudentCode_ClassroomTextBlock" Text="Enter Student Code" Style="{StaticResource textHint}" Background="#252837" VerticalAlignment="Center" FontWeight="Light" FontSize="12" MouseDown="StudentCode_MouseDown"/>
+                        <TextBox x:Name="StudentCode_ClassroomTextBox" Style="{StaticResource textBox}" Background="#252837" VerticalAlignment="Center" Cursor="IBeam" Margin="6,0,0,0" CaretBrush="#c3c4cf" TextChanged="StudentCode_TextChanged"/>
                     </Grid>
                 </Border>
-                <Button Style="{StaticResource MessageBoxButtons}" Height="36" Cursor="Hand" FontSize="12" FontWeight="SemiBold" Margin="10,0,0,0">Add Student</Button>
+                <Button Style="{StaticResource MessageBoxButtons}" Height="36" Cursor="Hand" FontSize="12" FontWeight="SemiBold" Margin="10,0,0,0" Click="AddStudentToClassroom">Add Student</Button>
             </StackPanel>
         </StackPanel>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
             <StackPanel x:Name="studentListPanel">
-                <!-- Students will be added here dynamically -->
             </StackPanel>
         </ScrollViewer>
     </Grid>
