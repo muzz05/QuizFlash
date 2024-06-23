@@ -75,29 +75,34 @@ namespace QuizFlash
 
                 if (isTeacher)
                 {
-                    sql = "SELECT id FROM Teachers WHERE userId = @UserIdOfTeacher";
+                    sql = "SELECT id, teacherCode FROM Teachers WHERE userId = @UserIdOfTeacher";
                     MySqlParameter TeacherUserId = new MySqlParameter();
                     TeacherUserId.ParameterName = "@UserIdOfTeacher";
                     TeacherUserId.Value = userId;
-                    object TeacherIdResult = db.ExecuteScalar(sql, TeacherUserId);
-                    Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherIdResult), userId, name);
+                    DataTable TeacherResult = db.ExecuteQuery(sql, TeacherUserId);
 
                     // Adding Data to Global Variables
-                    GlobalVariables.TeacherId = Convert.ToInt32(TeacherIdResult);
+                    GlobalVariables.TeacherId = Convert.ToInt32(TeacherResult.Rows[0]["id"]);
+                    GlobalVariables.UserCode = TeacherResult.Rows[0]["teacherCode"].ToString();
+
+                    Teacher teacherWindow = new Teacher(Convert.ToInt32(TeacherResult.Rows[0]["id"]), userId, name);
 
                     teacherWindow.Show();
                 }
                 else
                 {
-                    sql = "SELECT id FROM Students WHERE userId = @UserIdOfStudent";
+                    sql = "SELECT id, studentCode FROM Students WHERE userId = @UserIdOfStudent";
                     MySqlParameter StudentUserId = new MySqlParameter();
                     StudentUserId.ParameterName = "@UserIdOfStudent";
                     StudentUserId.Value = userId;
-                    object StudentIdResult = db.ExecuteScalar(sql, StudentUserId);
-                    Student studentWindow = new Student(Convert.ToInt32(StudentIdResult), userId, name);
+                    DataTable StudentResult = db.ExecuteQuery(sql, StudentUserId);
 
                     // Adding Data to Global Variables
-                    GlobalVariables.StudentId = Convert.ToInt32(StudentIdResult);
+                    GlobalVariables.StudentId = Convert.ToInt32(StudentResult.Rows[0]["id"]);
+                    GlobalVariables.UserCode = StudentResult.Rows[0]["studentCode"].ToString();
+
+                    Student studentWindow = new Student(Convert.ToInt32(StudentResult.Rows[0]["id"]), userId, name);
+
 
                     studentWindow.Show();
                 }

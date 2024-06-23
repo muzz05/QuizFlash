@@ -12,10 +12,13 @@
 
         public static string Username { get; set; }
 
+        public static string UserCode { get; set; }
+
         public static int ActiveClassroomId { get; set; }
 
         public static string ActiveClassroomTeacherName { get; set; }
 
         public static string ActiveClassroomName { get; set; }
+        
     }
 }

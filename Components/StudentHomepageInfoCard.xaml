@@ -6,46 +6,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="230">
-    <Border x:Name="cardBorder" CornerRadius="10" Background="#272537" BorderThickness="0" BorderBrush="Transparent"  Margin="0">
-        <Border.Effect>
+             d:DesignHeight="80" d:DesignWidth="230">
+    <Border x:Name="cardBorder" CornerRadius="12" Background="#2F4F4F" BorderThickness="0" BorderBrush="Transparent"  Margin="0">
+        <!--<Border.Effect>
             <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
-        </Border.Effect>
+        </Border.Effect>-->
 
-        <Grid Height="60" Cursor="Hand" Width="230" Margin="0">
+        <Grid Height="80" Cursor="Hand" Width="230" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Margin="8">
-                <TextBlock x:Name="classname" Text="Applied Physics" FontSize="14" FontWeight="SemiBold"  Margin="0,0,0,3">
-                    <TextBlock.Foreground>
+                <TextBlock x:Name="classname" Text="Applied Physics" FontSize="14" FontWeight="SemiBold"  Margin="0,0,0,3" Foreground="#c3c4cf">
+                    <!--<TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
                             <GradientStop Color="#ffffff" Offset="0.8" />
                         </LinearGradientBrush>
-                    </TextBlock.Foreground>
+                    </TextBlock.Foreground>-->
                 </TextBlock>
 
-                <TextBlock x:Name="announcement" Text="Chapter#1 test on 9/6/2024" FontSize="12" FontWeight="Normal" TextWrapping="Wrap">
-                    <TextBlock.Foreground>
+                <TextBlock x:Name="announcement" Text="Chapter#1 Test 9/6/2024" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Foreground="#c3c4cf">
+                    <!--<TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
                             <GradientStop Color="#ffffff" Offset="0.8" />
                         </LinearGradientBrush>
-                    </TextBlock.Foreground>
+                    </TextBlock.Foreground>-->
                 </TextBlock>
-
+                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="14" Width="50" Margin="0,5,0,0" Grid.Column="0" x:Name="DueDateBadge" VerticalAlignment="Top">
+                    <TextBlock FontSize="8" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">9/12/2024</TextBlock>
+                </Border>
             </StackPanel>
 
-            <Icons:PackIconVaadinIcons Kind="ArrowRight"  Grid.Column="1"  Height="30" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Icons:PackIconVaadinIcons.Foreground>
+            <Icons:PackIconVaadinIcons Kind="ArrowRight"  Grid.Column="1"  Height="30" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf">
+                <!--<Icons:PackIconVaadinIcons.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#ffefba" Offset="0.1" />
                         <GradientStop Color="#ffffff" Offset="0.8" />
                     </LinearGradientBrush>
-                </Icons:PackIconVaadinIcons.Foreground>
+                </Icons:PackIconVaadinIcons.Foreground>-->
             </Icons:PackIconVaadinIcons>
 
             <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">

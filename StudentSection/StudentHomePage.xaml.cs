@@ -34,7 +34,12 @@ namespace QuizFlash
                 new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
                 new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
                 new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
-                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24")
+                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
+                new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
+                new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
+
+
+
             };
 
             foreach (var card in cards)
@@ -44,7 +49,25 @@ namespace QuizFlash
             }
 
 
-           string[] quotes = new string[]
+
+            var device_detail = new[]
+            {
+                new loginData("iPhone 12", "6/22/2024"),
+                new loginData("Samsung Galaxy S21", "6/21/2024"),
+                new loginData("Google Pixel 6", "6/20/2024"),
+                new loginData("OnePlus 9", "6/19/2024")
+            };
+
+            foreach (var dev in device_detail) { 
+            
+                dev.Margin = new Thickness(6);
+                devices.Children.Add(dev);
+            
+            }
+
+
+
+            string[] quotes = new string[]
             {
             "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
             "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",

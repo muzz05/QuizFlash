@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="510">
-    <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="auto" Width="510">
+             d:DesignHeight="200" d:DesignWidth="700">
+    <Border CornerRadius="7" BorderThickness="0.5" BorderBrush="#c3c4cf" Height="auto" Width="690">
         <Grid VerticalAlignment="Top" Margin="0,0,0,15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -18,14 +18,14 @@
                     <TextBlock x:Name="UserBadgeText" FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
                 </Border>
                 <StackPanel Margin="0,10,0,5">
-                    <TextBlock x:Name="UserNameText" Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Dr. Tahir Jamal" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="AnnouncementTimeText" Background="Transparent" FontSize="10" FontWeight="SemiBold" Text="5 Days Ago" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="UserNameText" Background="Transparent" FontSize="16" FontWeight="SemiBold" Text="Dr. Tahir Jamal" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="AnnouncementTimeText" Background="Transparent" FontSize="9" FontWeight="SemiBold" Text="5 Days Ago" Foreground="#c3c4cf" Margin="13,2,10,0" VerticalAlignment="Center"/>
                 </StackPanel>
-                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="16" Width="45" Margin="0,15,0,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Top">
-                    <TextBlock FontSize="9" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Teacher</TextBlock>
+                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="18" Width="48" Margin="0,15,0,0" Grid.Column="0" x:Name="isTeacherBadge" VerticalAlignment="Top">
+                    <TextBlock FontSize="10" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center">Teacher</TextBlock>
                 </Border>
             </StackPanel>
-            <TextBlock x:Name="AnnouncementText" Grid.Row="1" Background="Transparent" FontSize="14" Foreground="#c3c4cf" Margin="15,2" VerticalAlignment="Center" Width="460" TextWrapping="Wrap">
+            <TextBlock x:Name="AnnouncementText" Grid.Row="1" Background="Transparent" FontSize="15" Foreground="#c3c4cf" Margin="15,5" VerticalAlignment="Center" Width="560" TextWrapping="Wrap">
                                 Dear Students,
 
 Welcome back to another exciting semester! We have several important announcements and reminders to ensure a smooth and productive start to the academic year.

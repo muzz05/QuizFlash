@@ -31,6 +31,7 @@ namespace QuizFlash
             InitializeComponent();
             StudentNameTextBox.Text = UserName;
             StudentHomeRadioButton.IsChecked = true;
+            StudentCodeBadge.Text = GlobalVariables.UserCode;
         }
 
         private void StudentClassroomCheck(object sender, RoutedEventArgs e)
@@ -63,6 +64,16 @@ namespace QuizFlash
             string sql = "DELETE FROM LoggedDevices WHERE MacAddress = @MACAddress AND userId = @UserId";
             int result = db.ExecuteNonQuery(sql, new MySqlParameter("@MACAddress", firstMacAddress), new MySqlParameter("@UserId", UserId));
 
+            this.Close();
+        }
+
+        private void minimizeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void closeWindow(object sender, MouseButtonEventArgs e)
+        {
             this.Close();
         }
     }
