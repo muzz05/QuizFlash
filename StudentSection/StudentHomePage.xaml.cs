@@ -1,7 +1,9 @@
 ﻿using QuizFlash;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace QuizFlash
 {
@@ -23,51 +26,7 @@ namespace QuizFlash
     {
 
 
-        public StudentHomePage()
-        {
-            InitializeComponent();
-
-
-            var cards = new[]
-            {
-                new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
-                new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
-                new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
-                new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
-                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
-                new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
-                new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
-
-
-
-            };
-
-            foreach (var card in cards)
-            {
-                card.Margin = new Thickness(8);
-                infocards.Children.Add(card);
-            }
-
-
-
-            var device_detail = new[]
-            {
-                new loginData("iPhone 12", "6/22/2024"),
-                new loginData("Samsung Galaxy S21", "6/21/2024"),
-                new loginData("Google Pixel 6", "6/20/2024"),
-                new loginData("OnePlus 9", "6/19/2024")
-            };
-
-            foreach (var dev in device_detail) { 
-            
-                dev.Margin = new Thickness(6);
-                devices.Children.Add(dev);
-            
-            }
-
-
-
-            string[] quotes = new string[]
+        private string[] quotes = new string[]
             {
             "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
             "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
@@ -152,16 +111,81 @@ namespace QuizFlash
         };
 
 
+        public StudentHomePage()
+        {
+            InitializeComponent();
+
+            Database db = new Database();
+            string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
+            DataTable AllDevices = db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId));
+            for (int i = 0; i < AllDevices.Rows.Count; i++)
+            {
+                AddLoggedDevices(Convert.ToInt32(AllDevices.Rows[i]["id"]), AllDevices.Rows[i]["deviceName"].ToString(), Convert.ToInt32(AllDevices.Rows[i]["lastLogin"]), Convert.ToInt32(AllDevices.Rows[i]["deviceType"]));
+            }
+
+
+            var cards = new[]
+            {
+                new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
+                new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
+                new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
+                new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
+                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
+                new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
+                new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
 
 
 
+            };
+
+            foreach (var card in cards)
+            {
+                card.Margin = new Thickness(8);
+                infocards.Children.Add(card);
+            }
+
+
+
+            //var device_detail = new[]
+            //{
+            //    new loginData("iPhone 12", 1719163903, 0),
+            //    new loginData("Samsung Galaxy S21", 1719168903,2),
+            //    new loginData("Google Pixel 6", 1719168103,0),
+            //    new loginData("OnePlus 9", 1719368103,1)
+            //};
+
+            //foreach (var dev in device_detail) { 
+            
+            //    dev.Margin = new Thickness(6);
+            //    devices.Children.Add(dev);
+            
+            //}
+
+
+            AddQuote();
+        }
+
+        private void AddQuote()
+        {
             Random random = new Random();
             int index = random.Next(quotes.Length);
             string randomQuote = quotes[index];
 
             studentQuote quo = new studentQuote(randomQuote);
-            
+
             quote_panel.Children.Add(quo);
+        }
+
+        private void AddLoggedDevices(int id, string deviceName, int lastLogin, int deviceType)
+        {
+            loginData newDevice = new loginData(id, deviceName, lastLogin, deviceType);
+            newDevice.Margin = new Thickness(6);
+            devices.Children.Add(newDevice);
+        }
+
+        private void AddRecentQuiz()
+        {
+
         }
 
     }

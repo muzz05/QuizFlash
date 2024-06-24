@@ -26,7 +26,7 @@ namespace QuizFlash
     {
         static Database database = new Database();
         static int minId = Convert.ToInt32(database.ExecuteScalar("Select MIN(id) from users where isTeacher=false"));
-        int nextPageId = minId + 9;
+        int nextPageId = minId + 6;
         int prevPageId = minId;
         BrushConverter converter = new BrushConverter();
         ObservableCollection<Member> members = new ObservableCollection<Member>();
@@ -40,7 +40,7 @@ namespace QuizFlash
             {
                 members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                 rowCount++;
-                if (rowCount == 10)
+                if (rowCount == 7)
                 {
                     break;
                 }
@@ -67,14 +67,14 @@ namespace QuizFlash
                 {
                     members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                     rowCount++;
-                    if (rowCount == 9)
+                    if (rowCount == 7)
                     {
                         break;
                     }
                 }
                 studentsDataGrid.ItemsSource = members;
-                nextPageId += 9;
-                prevPageId += 9;
+                nextPageId += 6;
+                prevPageId += 6;
             }
         }
 
@@ -88,21 +88,21 @@ namespace QuizFlash
                     }
                     else
                     {
-                        DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", prevPageId - 9));
+                        DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", prevPageId - 6));
                         members.Clear();
                         int rowCount = 1;
                         for (int i = 0; i < reader.Rows.Count; i++)
                         {
                             members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
                             rowCount++;
-                            if (rowCount == 9)
+                            if (rowCount == 7)
                             {
                                 break;
                             }
                         }
                         studentsDataGrid.ItemsSource = members;
-                        nextPageId -= 9;
-                        prevPageId -= 9;
+                        nextPageId -= 6;
+                        prevPageId -= 6;
                     }   
         }
 
@@ -134,6 +134,8 @@ namespace QuizFlash
             public string Email { get; set; }
             public string StudentCode { get; set; }
         }
+
+
     }
 }
 
