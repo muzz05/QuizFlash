@@ -53,6 +53,28 @@ namespace QuizFlash
             return "just now";
         }
 
+        // This is to get the relative time of the future
+        public static string ConvertEpochToRelativeTimeFuture(long epochTimestamp)
+        {
+            var dateTime = DateTimeOffset.FromUnixTimeSeconds(epochTimestamp).UtcDateTime;
+            var now = DateTime.UtcNow;
+            var timeSpan = dateTime - now;
+
+            if (timeSpan.TotalDays >= 1)
+            {
+                return $"in {(int)timeSpan.TotalDays} days";
+            }
+            if (timeSpan.TotalHours >= 1)
+            {
+                return $"in {(int)timeSpan.TotalHours} hours";
+            }
+            if (timeSpan.TotalMinutes >= 1)
+            {
+                return $"in {(int)timeSpan.TotalMinutes} minutes";
+            }
+            return "just now";
+        }
+
         // To Convert Eoch to ISO String
         public static string ConvertEpochToIsoString(long epochTimestamp)
         {
@@ -75,7 +97,7 @@ namespace QuizFlash
                 string hostName = Dns.GetHostName();
                 return hostName;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "Unknown";
             }
@@ -113,7 +135,7 @@ namespace QuizFlash
 
                 return osType;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 3;
             }

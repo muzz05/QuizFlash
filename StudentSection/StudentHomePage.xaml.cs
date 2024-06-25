@@ -113,36 +113,52 @@ namespace QuizFlash
 
         public StudentHomePage()
         {
-            InitializeComponent();
-
             Database db = new Database();
+
+
             string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
             DataTable AllDevices = db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId));
+
+            sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName FROM ClassroomStudents cs JOIN Classroom c ON cs.classroomId = c.id JOIN Quiz q ON q.classroomId = c.id WHERE cs.studentId = @StudentId AND q.dueDate > @CurrentDate";
+            MySqlParameter[] resultParams =
+            {
+                new MySqlParameter("@StudentId", GlobalVariables.StudentId),
+                new MySqlParameter("@CurrentDate", Utilities.GetCurrentTimeInEpoch()),
+            };
+            DataTable QuizesResult = db.ExecuteQuery(sql, resultParams);
+
+            InitializeComponent();
+
             for (int i = 0; i < AllDevices.Rows.Count; i++)
             {
                 AddLoggedDevices(Convert.ToInt32(AllDevices.Rows[i]["id"]), AllDevices.Rows[i]["deviceName"].ToString(), Convert.ToInt32(AllDevices.Rows[i]["lastLogin"]), Convert.ToInt32(AllDevices.Rows[i]["deviceType"]));
             }
 
-
-            var cards = new[]
+            for (int i = 0; i < QuizesResult.Rows.Count; i++)
             {
-                new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
-                new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
-                new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
-                new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
-                new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
-                new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
-                new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
-
-
-
-            };
-
-            foreach (var card in cards)
-            {
-                card.Margin = new Thickness(8);
-                infocards.Children.Add(card);
+                AddRecentQuiz(QuizesResult.Rows[i]["classroomName"].ToString(), QuizesResult.Rows[i]["quizName"].ToString(), Convert.ToInt64(QuizesResult.Rows[i]["dueDate"]));
             }
+
+
+            //var cards = new[]
+            //{
+            //    new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
+            //    new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
+            //    new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
+            //    new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
+            //    new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
+            //    new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
+            //    new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
+
+
+
+            //};
+
+            //foreach (var card in cards)
+            //{
+            //    card.Margin = new Thickness(8);
+            //    infocards.Children.Add(card);
+            //}
 
 
 
@@ -155,10 +171,10 @@ namespace QuizFlash
             //};
 
             //foreach (var dev in device_detail) { 
-            
+
             //    dev.Margin = new Thickness(6);
             //    devices.Children.Add(dev);
-            
+
             //}
 
 
@@ -183,9 +199,11 @@ namespace QuizFlash
             devices.Children.Add(newDevice);
         }
 
-        private void AddRecentQuiz()
+        private void AddRecentQuiz(string className, string announcement, long epoch)
         {
-
+            StudentHomepageInfoCard newCard = new StudentHomepageInfoCard(className, announcement, epoch);
+            newCard.Margin = new Thickness(8);
+            infocards.Children.Add(newCard);
         }
 
     }
