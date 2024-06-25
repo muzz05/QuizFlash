@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 
 namespace QuizFlash
 {
+
     public partial class Signup : Window
 
     {
@@ -25,14 +26,19 @@ namespace QuizFlash
         public int DepartmentId;
         public bool isTeacher;
 
+        public static readonly RoutedCommand EnterCommand1 = new RoutedCommand();
+
         public Signup()
         {
+
             Database db = new Database();
             string sql = "SELECT * FROM Department";
             MySqlParameter parameters = new MySqlParameter();
 
             DataTable DepartmentsData = db.ExecuteQuery(sql, parameters);
             InitializeComponent();
+            CommandBindings.Add(new CommandBinding(EnterCommand1,HandleSignup ));
+           
 
             // Adding Department Data to the Combo Box
             for (int i = 0; i < DepartmentsData.Rows.Count; i++)
@@ -42,6 +48,7 @@ namespace QuizFlash
                 DepartmentsDataItem.Tag = Convert.ToInt32(DepartmentsData.Rows[i]["id"]);
                 comboBoxDepartments.Items.Add(DepartmentsDataItem);
             }
+
 
 
         }

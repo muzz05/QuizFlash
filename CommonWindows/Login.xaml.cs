@@ -23,9 +23,11 @@ namespace QuizFlash
     /// </summary>
     public partial class Login : Window
     {
+        public static readonly RoutedCommand EnterCommand = new RoutedCommand();
         public Login()
         {
             InitializeComponent();
+            CommandBindings.Add(new CommandBinding(EnterCommand, HandleLogin));
         }
 
 
