@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,16 +56,22 @@ namespace QuizFlash
             };
 
             db.ExecuteNonQuery(sql, parameters);
-
-
-            CustomMessageBox info = new CustomMessageBox("Quiz Details Saved",
-                $"Quiz Name: {quizName}\nQuestions: {questions}\nTotal Marks: {perQmarks}\nDue Date: {dueDate.Value.ToShortDateString()}",
-                "Done");
-            info.Width = 450;
-            info.Height = 250;
-            info.Show();
-
+            DataTable quizId=db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
             this.Close();
+
+            for(int i=0; i<Convert.ToInt32(questions); i++  )
+            {
+                QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["quizId"]));
+            }
+
+            //CustomMessageBox info = new CustomMessageBox("Quiz Details Saved",
+            //    $"Quiz Name: {quizName}\nQuestions: {questions}\nTotal Marks: {perQmarks}\nDue Date: {dueDate.Value.ToShortDateString()}",
+            //    "Done");
+            //info.Width = 450;
+            //info.Height = 250;
+            //info.Show();
+
+            //this.Close();
         }
 
         private long ConvertToEpoch(DateTime date)
