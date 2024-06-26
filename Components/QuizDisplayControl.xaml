@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="QuizFlash.Components.QuizDisplayControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuizFlash.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="#353340">
+        <StackPanel>
+            <TextBlock x:Name="question_text" Text="1. What does SQL stand for?" Style="{StaticResource NormalText}" Margin="10" VerticalAlignment="Center" Grid.Row="1" FontSize="16" />
+            <RadioButton x:Name="option_1" Style="{StaticResource NavigationButtons}" Content="Structured Quantity Language" Width="250" Checked="option_1_Checked" Grid.Row="2"/>
+            <RadioButton x:Name="option_2" Style="{StaticResource NavigationButtons}" Content="Structured Query Language" Width="250" Checked="option_2_Checked" Grid.Row="3"/>
+            <RadioButton x:Name="option_3" Style="{StaticResource NavigationButtons}" Content="Structured Question Language" Width="250" Checked="option_3_Checked" Grid.Row="4"/>
+            <RadioButton x:Name="option_4" Style="{StaticResource NavigationButtons}" Content="Structured Quality Language" Width="250" Checked="option_4_Checked" Grid.Row="5"/>
+        </StackPanel>
+    </Border>
+</UserControl>
