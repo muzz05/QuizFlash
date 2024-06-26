@@ -20,9 +20,27 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDesignControl : UserControl
     {
+        public int correct;
         public QuizDesignControl()
         {
             InitializeComponent();
+        }
+        private void optionAcheck(object sender, RoutedEventArgs e)
+        {
+            correct = 1;
+        }
+
+        private void optionBcheck(object sender, RoutedEventArgs e)
+        {
+            correct = 2;
+        }
+        private void optionCcheck(object sender, RoutedEventArgs e)
+        {
+            correct = 3;
+        }
+        private void optionDcheck(object sender, RoutedEventArgs e)
+        {
+            correct = 4;
         }
     }
 }

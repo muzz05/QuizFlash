@@ -7,51 +7,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border Background="#282438" CornerRadius="20">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Quiz Maker" Style="{StaticResource TitleText}" Margin="10" HorizontalAlignment="Center"/>
-            <Separator Height="1" Grid.Row="1" Background="#c3c4cf" Margin="0 10 0 10"/>
-            <TextBlock Text="Enter the question" FontSize="18" Style="{StaticResource NormalText}" Margin="5" HorizontalAlignment="Center" Grid.Row="2" />
-            <TextBox x:Name="questionTextBox" Style="{StaticResource filterTextBox}" Margin="0" Width="500" Grid.Row="3"/>
-            <TextBlock Text="Enter the options" FontSize="18" Style="{StaticResource NormalText}" HorizontalAlignment="Center" Margin="5" Grid.Row="4" />
+        <StackPanel>
+        <TextBlock Text="Enter the question" FontSize="18" Style="{StaticResource NormalText}" Margin="5" HorizontalAlignment="Center" />
+        <TextBox x:Name="questionTextBox" Style="{StaticResource filterTextBox}" Margin="0" Width="500"/>
+        <TextBlock Text="Enter the options" FontSize="18" Style="{StaticResource NormalText}" HorizontalAlignment="Center" Margin="5"/>
 
-            <StackPanel Width="400" Margin="0 10" Orientation="Horizontal" Grid.Row="5">
-                <TextBlock Text="Option A:" Style="{StaticResource NormalText}" Margin="10 0"/>
-                <TextBox x:Name="optionATextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
-            </StackPanel>
-            <StackPanel Width="400" Margin="0 10" Orientation="Horizontal" Grid.Row="6">
-                <TextBlock Text="Option B:" Style="{StaticResource NormalText}" Margin="10 0"/>
-                <TextBox x:Name="optionBTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
-            </StackPanel>
-            <StackPanel Width="400" Margin="0 10" Orientation="Horizontal" Grid.Row="7">
-                <TextBlock Text="Option C:" Style="{StaticResource NormalText}" Margin="10 0"/>
-                <TextBox x:Name="optionCTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
-            </StackPanel>
-            <StackPanel Width="400" Margin="0 10" Orientation="Horizontal" Grid.Row="8">
-                <TextBlock Text="Option D:" Style="{StaticResource NormalText}" Margin="10 0"/>
-                <TextBox x:Name="optionDTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
-            </StackPanel>
-            <TextBlock Text="Select the correct option" FontSize="18" Style="{StaticResource NormalText}"  HorizontalAlignment="Center" Margin="5" Grid.Row="9"/>
-            <StackPanel Width="450" Orientation="Horizontal" Margin="0 10" Grid.Row="10">
-                <RadioButton Content="Option A" Style="{StaticResource NavigationButtons}" Width="100"/>
-                <RadioButton Content="Option B" Style="{StaticResource NavigationButtons}" Width="100"/>
-                <RadioButton Content="Option C" Style="{StaticResource NavigationButtons}" Width="100"/>
-                <RadioButton Content="Option D" Style="{StaticResource NavigationButtons}" Width="100"/>
-            </StackPanel>
-            <Button Content="Save" Style="{StaticResource button}" Width="100" Margin="5" HorizontalAlignment="Center" Grid.Row="11"/>
-        </Grid>
+        <StackPanel Width="400" Margin="0 10" Orientation="Horizontal">
+            <TextBlock Text="Option A:" Style="{StaticResource NormalText}" Margin="10 0"/>
+            <TextBox x:Name="optionATextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
+        </StackPanel>
+        <StackPanel Width="400" Margin="0 10" Orientation="Horizontal">
+            <TextBlock Text="Option B:" Style="{StaticResource NormalText}" Margin="10 0"/>
+            <TextBox x:Name="optionBTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
+        </StackPanel>
+        <StackPanel Width="400" Margin="0 10" Orientation="Horizontal">
+            <TextBlock Text="Option C:" Style="{StaticResource NormalText}" Margin="10 0"/>
+            <TextBox x:Name="optionCTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
+        </StackPanel>
+        <StackPanel Width="400" Margin="0 10" Orientation="Horizontal">
+            <TextBlock Text="Option D:" Style="{StaticResource NormalText}" Margin="10 0"/>
+            <TextBox x:Name="optionDTextBox" Style="{StaticResource filterTextBox}" Margin="0 0" Width="300"/>
+        </StackPanel>
+        <TextBlock Text="Select the correct option" FontSize="18" Style="{StaticResource NormalText}"  HorizontalAlignment="Center" Margin="5"/>
+        <StackPanel Width="450" Orientation="Horizontal" Margin="0 10" Grid.Row="10">
+            <RadioButton Content="Option A" Style="{StaticResource NavigationButtons}" Checked="optionAcheck"  Width="100"/>
+            <RadioButton Content="Option B" Style="{StaticResource NavigationButtons}" Checked="optionBcheck" Width="100"/>
+            <RadioButton Content="Option C" Style="{StaticResource NavigationButtons}" Checked="optionCcheck" Width="100"/>
+            <RadioButton Content="Option D" Style="{StaticResource NavigationButtons}" Checked="optionDcheck" Width="100"/>
+        </StackPanel>
+        </StackPanel>
     </Border>
 </UserControl>

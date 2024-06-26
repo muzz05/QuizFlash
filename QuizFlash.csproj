@@ -261,6 +261,9 @@
     <Compile Include="Components\ClassroomStudents.xaml.cs">
       <DependentUpon>ClassroomStudents.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\QuizDisplayControl.xaml.cs">
+      <DependentUpon>QuizDisplayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\studentQuote.xaml.cs">
       <DependentUpon>studentQuote.xaml</DependentUpon>
     </Compile>
@@ -353,6 +356,10 @@
     <Page Include="Components\ClassroomStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\QuizDisplayControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Components\studentQuote.xaml">
       <SubType>Designer</SubType>

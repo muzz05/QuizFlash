@@ -21,52 +21,49 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDesignPage : Page
     {
-        string correct;
         int quizId;
         public QuizDesignPage(int quizId)
         {
             InitializeComponent();
             this.quizId = quizId;
         }
-
-        private void optionAcheck(object sender, RoutedEventArgs e)
-        {
-            correct = "A";
-        }
-
-        private void optionBcheck(object sender, RoutedEventArgs e)
-        {
-            correct = "B";
-        }
-        private void optionCcheck(object sender, RoutedEventArgs e)
-        {
-            correct = "C";
-        }
-        private void optionDcheck(object sender, RoutedEventArgs e)
-        {
-            correct = "D";
-        }
+        
         private void save_question(object sender, RoutedEventArgs e)
         {
             Database database = new Database();
-            string question = questionTextBox.Text;
-            string option1 = optionATextBox.Text;
-            string option2 = optionBTextBox.Text;
-            string option3 = optionCTextBox.Text;
-            string option4 = optionDTextBox.Text;
 
-            string sql = "INSERT INTO Questions (quizId, question, option1, option2, option3, option4, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
-            MySqlParameter[] parameters = {
-                                           new MySqlParameter("@quizId", quizId),    
-                                           new MySqlParameter("@question",question), 
-                                           new MySqlParameter("@option1", question), 
-                                           new MySqlParameter("@option2", question), 
-                                           new MySqlParameter("@option3", question),
-                                           new MySqlParameter("@option4", question),
-                                           new MySqlParameter("@correct", Convert.ToChar(correct)) 
-                                           };
-            database.ExecuteNonQuery(sql, parameters);
-            this.NavigationService.Navigate(new QuizDesignPage(quizId));
+            foreach(var control in quizDesignPanel.Children)
+            {
+                if(control is QuizDesignControl quizDesignControl)
+                {
+                    string question = quizDesignControl.questionTextBox.Text;
+                    string option1 = quizDesignControl.optionATextBox.Text;
+                    string option2 = quizDesignControl.optionBTextBox.Text;
+                    string option3 = quizDesignControl.optionCTextBox.Text;
+                    string option4 = quizDesignControl.optionDTextBox.Text;
+
+                    string sql = "INSERT INTO questionanswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
+                    MySqlParameter[] parameters = {
+                                                   new MySqlParameter("@quizId", quizId),    
+                                                   new MySqlParameter("@question",question), 
+                                                   new MySqlParameter("@option1", option1), 
+                                                   new MySqlParameter("@option2", option2), 
+                                                   new MySqlParameter("@option3", option3),
+                                                   new MySqlParameter("@option4", option4),
+                                                   new MySqlParameter("@correct", quizDesignControl.correct) 
+                                                   };
+
+                        database.ExecuteNonQuery(sql, parameters);
+                }
+            }
+
+            foreach(Window window in Application.Current.Windows)
+            {
+                if(window is Teacher teacher)
+                {
+                    teacher.TeacherViewFrame.Content= new TeacherClassroomQuizPage();
+                }
+            }
         }
     }
 }
