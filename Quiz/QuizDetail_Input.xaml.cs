@@ -64,7 +64,7 @@ namespace QuizFlash
             for (int i=0; i<Convert.ToInt32(questions); i++)
             {
                 QuizDesignControl quizDesignControl = new QuizDesignControl();
-                addQuestion.questionPanel.Children.Add(quizDesignControl);
+                addQuestion.quizDesignPanel.Children.Add(quizDesignControl);
             }
 
             //CustomMessageBox info = new CustomMessageBox("Quiz Details Saved",
