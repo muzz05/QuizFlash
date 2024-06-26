@@ -43,7 +43,7 @@
                         <GradientStop Color="#ffffff" Offset="0.8" />
                     </LinearGradientBrush>
                 </Border.Background>-->
-                <Icons:PackIconMaterial Kind="Devices" Width="20" Height="20" Foreground="#272537" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Icons:PackIconFontAwesome x:Name="DeviceIcon" Kind="LaptopCodeSolid" Width="18" Height="18" Foreground="#272537" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
 
             <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
@@ -79,7 +79,7 @@
 
         <Border Grid.Column="1" CornerRadius="10" Width="40" Height="30" VerticalAlignment="Center">
                 <Button Width="30" Height="30" Cursor="Hand" Background="Transparent" BorderThickness="0" Style="{StaticResource NoHoverButtonStyle}" Margin="0,0,10,0">
-                <Icons:PackIconModern Kind="Delete" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf">
+                <Icons:PackIconModern Kind="Delete" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf" MouseDown="RemoveLoggedDevice">
                     <!--<Icons:PackIconModern.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />

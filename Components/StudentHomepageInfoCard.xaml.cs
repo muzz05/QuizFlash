@@ -20,9 +20,10 @@ namespace QuizFlash
     /// </summary>
     public partial class StudentHomepageInfoCard : UserControl
     {
-        public StudentHomepageInfoCard(string className, string announcement)
+        public StudentHomepageInfoCard(string className, string announcement, long epoch)
         {
             InitializeComponent();
+            RecentQuizDateBadge.Text = "Due " + Utilities.ConvertEpochToRelativeTimeFuture(epoch);
             classname.Text = className;
             this.announcement.Text = announcement;
         }

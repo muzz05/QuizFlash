@@ -69,6 +69,8 @@ namespace QuizFlash
             Database db = new Database();
             string sql = "DELETE FROM LoggedDevices WHERE MacAddress = @MACAddress AND userId = @UserId";
             int result = db.ExecuteNonQuery(sql, new MySqlParameter("@MACAddress", firstMacAddress), new MySqlParameter("@UserId", UserId));
+            Login loginWindow = new Login();
+            loginWindow.Show();
             this.Close();
         }
 

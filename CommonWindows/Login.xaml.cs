@@ -23,9 +23,11 @@ namespace QuizFlash
     /// </summary>
     public partial class Login : Window
     {
+        public static readonly RoutedCommand EnterCommand = new RoutedCommand();
         public Login()
         {
             InitializeComponent();
+            CommandBindings.Add(new CommandBinding(EnterCommand, HandleLogin));
         }
 
 
@@ -185,11 +187,14 @@ namespace QuizFlash
 
             // Database Queries
 
-            string sql = "SELECT id,MacAddress FROM LoggedDevices WHERE userId = @UserId";
-            MySqlParameter UserId = new MySqlParameter();
-            UserId.ParameterName = "@UserId";
-            UserId.Value = userId;
-            DataTable result = db.ExecuteQuery(sql, UserId);
+            string sql = "SELECT id,MacAddress FROM LoggedDevices WHERE userId = @UserId AND MacAddress = @MACAddress";
+            
+            MySqlParameter[] Checking = {
+                   new MySqlParameter("@UserId", userId),
+                   new MySqlParameter("@MACAddress", firstMacAddress),
+            };
+
+            DataTable result = db.ExecuteQuery(sql, Checking);
 
             if (result.Rows.Count != 0)
             {
@@ -202,12 +207,14 @@ namespace QuizFlash
             }
             else
             {
-                sql = "INSERT INTO LoggedDevices(lastLogin, MacAddress,  userId) VALUES(@LastLoginEPOC, @MACAddress, @UserId)";
+                sql = "INSERT INTO LoggedDevices(lastLogin, MacAddress,  userId, deviceName, deviceType) VALUES(@LastLoginEPOC, @MACAddress, @UserId, @DeviceName, @DeviceType)";
                 MySqlParameter[] LoggedDevicesParams =
                 {
                     new MySqlParameter("@LastLoginEPOC", epochTime),
                     new MySqlParameter("@MACAddress", firstMacAddress),
-                    new MySqlParameter("@UserId", userId)
+                    new MySqlParameter("@UserId", userId),
+                    new MySqlParameter("@DeviceName", Utilities.GetDeviceName()),
+                    new MySqlParameter("@DeviceType", Utilities.GetOperatingSystemType())
                 };
                 int FinalResult = db.ExecuteNonQuery (sql, LoggedDevicesParams);
             }

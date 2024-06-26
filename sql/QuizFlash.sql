@@ -39,7 +39,7 @@ CREATE TABLE QuestionAnswers (
     optionB VARCHAR(255) NOT NULL,
     optionC VARCHAR(255) NOT NULL,
     optionD VARCHAR(255) NOT NULL,
-    correct CHAR(1) NOT NULL
+    correct TINYINT(4) NOT NULL
 );
 
 CREATE TABLE StudentResponse (
@@ -83,7 +83,9 @@ CREATE TABLE Result (
 CREATE TABLE LoggedDevices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
-    MacAddress NVARCHAR (255) NOT NULL,
+    deviceName VARCHAR(255) NOT NULL,
+    deviceType TINYINT(1) NOT NULL,
+    MacAddress VARCHAR (255) NOT NULL,
     lastLogin INT DEFAULT 0
 );
 
@@ -273,7 +275,7 @@ VALUES (
         'B) Python',
         'C) C++',
         'D) Ruby',
-        'B'
+        1
     ),
     (
         1,
@@ -282,7 +284,7 @@ VALUES (
         'B) Ohm',
         'C) Volt',
         'D) Ampere',
-        'B'
+        1
     ),
     (
         2,
@@ -291,7 +293,7 @@ VALUES (
         'B) Steel',
         'C) Copper',
         'D) Plastic',
-        'B'
+        1
     ),
     (
         2,
@@ -300,7 +302,7 @@ VALUES (
         'B) Newton''s Third Law',
         'C) Carnot Cycle',
         'D) Pascal''s Law',
-        'C'
+        2
     );
 
 -- Dummy data for StudentResponse table

@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 namespace QuizFlash
 {
-    /// <summary>
-    /// Interaction logic for SplashScreen.xaml
-    /// </summary>
     public partial class SplashScreen : Window
     {
         public SplashScreen()
@@ -31,7 +28,7 @@ namespace QuizFlash
         private async void SplashScreen_Loaded(object sender, RoutedEventArgs e)
         {
             // Wait asynchronously for 5 seconds
-            await Task.Delay(5000);
+            await Task.Delay(2000);
 
             CheckingLoggedDevices();
 
