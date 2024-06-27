@@ -71,7 +71,7 @@
                     </Border>
                     <Border CornerRadius="10" HorizontalAlignment="Stretch" Margin="0,0,15,0">
                     
-                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#fafafa" Height="28" Width="70">
+                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="quizRedirect" Foreground="#fafafa" Height="28" Width="70">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border CornerRadius="10" BorderThickness="0">

@@ -33,20 +33,20 @@ namespace QuizFlash.Components
         }        
         private void option_1_Checked(object sender, RoutedEventArgs e)
         {
-            response = 1;
+            response = 0;
         }
 
         private void option_2_Checked(object sender, RoutedEventArgs e)
         {
-            response = 2;
+            response = 1;
         }
         private void option_3_Checked(object sender, RoutedEventArgs e)
         {
-            response = 3;
+            response = 2;
         }
         private void option_4_Checked(object sender, RoutedEventArgs e)
         {
-            response = 4;
+            response = 3;
         }       
     }
 }

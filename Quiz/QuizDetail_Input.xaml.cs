@@ -59,7 +59,14 @@ namespace QuizFlash
             DataTable quizId=db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
             this.Close();
 
-            QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["Id"]));
+            QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["id"]));
+            foreach (Window window in Application.Current.Windows)
+            {
+                if(window is Teacher teacher)
+                {
+                    teacher.TeacherViewFrame.Content = addQuestion;
+                }
+            }
 
             for (int i=0; i<Convert.ToInt32(questions); i++)
             {
