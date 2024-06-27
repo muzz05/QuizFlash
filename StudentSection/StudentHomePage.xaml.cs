@@ -128,6 +128,7 @@ namespace QuizFlash
             DataTable QuizesResult = db.ExecuteQuery(sql, resultParams);
 
             InitializeComponent();
+            AddUserInfo(GlobalVariables.Username,GlobalVariables.IsTeacher,30 ,12, 7, 80);
 
             for (int i = 0; i < AllDevices.Rows.Count; i++)
             {
@@ -206,5 +207,23 @@ namespace QuizFlash
             infocards.Children.Add(newCard);
         }
 
+
+
+
+
+        private void AddUserInfo(string name, bool isTeacher, int classNo,int flashcardNum, int totalQuiz, int successRate)
+        {
+            string studentOrTeacher = isTeacher ? "Teacher" : "Student";
+            UserInfo newInfo = new UserInfo(name, studentOrTeacher, classNo,flashcardNum, totalQuiz, successRate);
+            newInfo.Margin = new Thickness(5,5,25,5);
+            userInfo.Children.Add(newInfo);
+
+
+        }
+
+
     }
+
+
 }
+

@@ -348,6 +348,9 @@
       <DependentUpon>Classroom.xaml</DependentUpon>
     </Compile>
     <Compile Include="UniqueCodeGenerator.cs" />
+    <Compile Include="UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Page Include="Components\Announcements.xaml">
       <SubType>Designer</SubType>
@@ -485,6 +488,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TeacherSection\TeacherHomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

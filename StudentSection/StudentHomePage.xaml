@@ -12,7 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="17*" />
         </Grid.ColumnDefinitions>
         <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="7,7,0,0">
 
@@ -56,7 +56,12 @@
 
 
             </Grid>
+            
         </Border>
+
+        <WrapPanel Grid.Column="2" x:Name="userInfo" VerticalAlignment="Center" HorizontalAlignment="Center" >
+
+        </WrapPanel>
 
     </Grid>
 </Page>

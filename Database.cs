@@ -6,7 +6,7 @@ namespace QuizFlash
 {
     public class Database : IDisposable
     {
-        private readonly string remoteConnection = "server=192.168.100.6;user=root;database=quizflash;password=";
+        private readonly string remoteConnection = "server=10.57.126.24;user=root;database=quizflash;password=";
         private readonly string connectionString = "server=127.0.0.1;user=root;database=quizflash;password=";
 
         private MySqlConnection connection;
