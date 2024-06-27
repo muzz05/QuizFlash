@@ -27,20 +27,20 @@ namespace QuizFlash
         }
         private void optionAcheck(object sender, RoutedEventArgs e)
         {
-            correct = 1;
+            correct = 0;
         }
 
         private void optionBcheck(object sender, RoutedEventArgs e)
         {
-            correct = 2;
+            correct = 1;
         }
         private void optionCcheck(object sender, RoutedEventArgs e)
         {
-            correct = 3;
+            correct = 2;
         }
         private void optionDcheck(object sender, RoutedEventArgs e)
         {
-            correct = 4;
+            correct = 3;
         }
     }
 }

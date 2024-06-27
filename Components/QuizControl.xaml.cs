@@ -19,9 +19,11 @@ namespace QuizFlash
 
     public partial class QuizControl : UserControl
     {
-        public QuizControl(string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
+        int quizId;
+        public QuizControl(int quizId,string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
         {
             InitializeComponent();
+            this.quizId = quizId;
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
@@ -47,6 +49,17 @@ namespace QuizFlash
 
         private void result_page_redirect(object sender, RoutedEventArgs e)
         {            
+        }
+
+        private void quizRedirect(object sender, RoutedEventArgs e)
+        {
+            foreach(Window window in Application.Current.Windows)
+            {
+                if(window is Student student)
+                {
+                    student.StudentViewFrame.Content = new QuizDisplayPage(quizId, QuizName.Text);                    
+                }
+            }
         }
     }
 }

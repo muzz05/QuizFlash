@@ -8,12 +8,14 @@
       d:DesignHeight="580" d:DesignWidth="800"
       Title="QuizDesignPage">
     <Border Background="#282438" CornerRadius="20">
-        <StackPanel>
-        <StackPanel x:Name="quizDesignPanel">
-            <TextBlock Text="Quiz Maker" Style="{StaticResource TitleText}" Margin="10" HorizontalAlignment="Center"/>
-            <Separator Height="1" Grid.Row="1" Background="#c3c4cf" Margin="0 10 0 10"/>
-        </StackPanel>
-        <Button Content="Save" Style="{StaticResource button}" Width="100" Margin="5" Click="save_question" HorizontalAlignment="Center"/>
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+            <StackPanel>
+                <StackPanel x:Name="quizDesignPanel">
+                    <TextBlock Text="Quiz Maker" Style="{StaticResource TitleText}" Margin="10" HorizontalAlignment="Center"/>
+                    <Separator Height="1" Grid.Row="1" Background="#c3c4cf" Margin="0 10 0 10"/>
+                </StackPanel>
+                <Button Content="Save" Style="{StaticResource button}" Width="100" Margin="5" Click="save_question" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </ScrollViewer>
     </Border>
 </Page>
