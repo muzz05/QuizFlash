@@ -59,7 +59,7 @@
             
         </Border>
 
-        <WrapPanel Grid.Column="2" x:Name="userInfo" VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <WrapPanel Grid.Column="2" x:Name="userInfo" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,25,0,0">
 
         </WrapPanel>
 

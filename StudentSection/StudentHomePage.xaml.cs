@@ -128,7 +128,7 @@ namespace QuizFlash
             DataTable QuizesResult = db.ExecuteQuery(sql, resultParams);
 
             InitializeComponent();
-            AddUserInfo(GlobalVariables.Username,GlobalVariables.IsTeacher,30 ,12, 7, 80);
+            AddUserInfo();
 
             for (int i = 0; i < AllDevices.Rows.Count; i++)
             {
@@ -139,45 +139,6 @@ namespace QuizFlash
             {
                 AddRecentQuiz(QuizesResult.Rows[i]["classroomName"].ToString(), QuizesResult.Rows[i]["quizName"].ToString(), Convert.ToInt64(QuizesResult.Rows[i]["dueDate"]));
             }
-
-
-            //var cards = new[]
-            //{
-            //    new StudentHomepageInfoCard("Software Engineering", "Grand Quiz on 7/9/24"),
-            //    new StudentHomepageInfoCard("Applied Physics", "Chapter 1 Test on 9/6/24"),
-            //    new StudentHomepageInfoCard("Mathematics", "Midterm Exam on 8/15/24"),
-            //    new StudentHomepageInfoCard("History", "Presentation on 9/1/24"),
-            //    new StudentHomepageInfoCard("Software Engineering", "Final Exam on 9/1/24"),
-            //    new StudentHomepageInfoCard("CIS", "Final Exam on 9/1/24"),
-            //    new StudentHomepageInfoCard("Islamiat", "Final Exam on 11/1/24")
-
-
-
-            //};
-
-            //foreach (var card in cards)
-            //{
-            //    card.Margin = new Thickness(8);
-            //    infocards.Children.Add(card);
-            //}
-
-
-
-            //var device_detail = new[]
-            //{
-            //    new loginData("iPhone 12", 1719163903, 0),
-            //    new loginData("Samsung Galaxy S21", 1719168903,2),
-            //    new loginData("Google Pixel 6", 1719168103,0),
-            //    new loginData("OnePlus 9", 1719368103,1)
-            //};
-
-            //foreach (var dev in device_detail) { 
-
-            //    dev.Margin = new Thickness(6);
-            //    devices.Children.Add(dev);
-
-            //}
-
 
             AddQuote();
         }
@@ -208,16 +169,11 @@ namespace QuizFlash
         }
 
 
-
-
-
-        private void AddUserInfo(string name, bool isTeacher, int classNo,int flashcardNum, int totalQuiz, int successRate)
+        private void AddUserInfo()
         {
-            string studentOrTeacher = isTeacher ? "Teacher" : "Student";
-            UserInfo newInfo = new UserInfo(name, studentOrTeacher, classNo,flashcardNum, totalQuiz, successRate);
-            newInfo.Margin = new Thickness(5,5,25,5);
+            UserInfo newInfo = new UserInfo();
+            newInfo.Margin = new Thickness(5,0,25,5);
             userInfo.Children.Add(newInfo);
-
 
         }
 

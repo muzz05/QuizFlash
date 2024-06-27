@@ -23,9 +23,9 @@
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2" >
                 <Image  HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"  Source="/Images/Icons/user.png" Height="70" Width="70" />
-                <TextBlock x:Name="studentName"  Text="Muhammad Kaif" Margin="5" FontSize="14" FontWeight="SemiBold"/>
+                <TextBlock x:Name="studentName"  Text="Muhammad Kaif" Margin="5" FontSize="14" FontWeight="SemiBold" Foreground="#333333"/>
                 <Border  Background="#c3c4cf" Padding="3" CornerRadius="7" Height="16" Width="67" Margin="0,3,0,0" Grid.Column="0"  VerticalAlignment="Top">
-                    <TextBlock FontSize="8" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="isStudentorTeacher">Student</TextBlock>
+                    <TextBlock FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="isStudentorTeacher" Foreground="#333333">Student</TextBlock>
                 </Border>
             </StackPanel>
 
@@ -35,11 +35,11 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="GoogleClassroom" Height="25" Width="30" VerticalAlignment="Center" Margin="10,0,5,0" Grid.Column="0"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0">
-                        <TextBlock Text="Total Classrooms" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333"/>
-                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="classroomNo" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000" Text="15"/>
+                    <Icons:PackIconMaterial Kind="GoogleClassroom" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0" HorizontalAlignment="Center">
+                        <TextBlock Text="Total Classrooms" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
+                            <TextBlock FontSize="10" x:Name="classroomNo" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -51,11 +51,11 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="Cards" Height="25" Width="30" VerticalAlignment="Center" Margin="10,0,5,0" Grid.Column="0"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0">
+                    <Icons:PackIconMaterial Kind="Cards" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,15,0">
                         <TextBlock Text="Total FlashCards" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333"/>
-                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="flashcardNo"  FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000" Text="15"/>
+                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
+                            <TextBlock FontSize="10" x:Name="flashcardNo"  FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -68,29 +68,32 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Icons:PackIconMaterial  Kind="CommentQuestionOutline" Height="25" Width="30" VerticalAlignment="Center" Margin="10,0,5,0" Grid.Column="0" Foreground="Black" />
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0">
-                        <TextBlock Text="Total Quizes" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333"/>
-                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="quizAttempted" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#000" Text="15"/>
+                    <Icons:PackIconMaterial  Kind="CommentQuestionOutline" Height="25" Width="25" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#333333" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,38,0" HorizontalAlignment="Center">
+                        <TextBlock Text="Total Quizes" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
+                            <TextBlock FontSize="10" x:Name="quizAttempted" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <Border Background="#e0eff2" CornerRadius="10" Grid.Row="4" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,3">
+            <Border Background="#e0eff2" CornerRadius="10" Grid.Row="4" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,10">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Icons:PackIconUnicons Kind="Percentage"  Height="20" Width="30" VerticalAlignment="Center" Margin="10,0,5,0" Grid.Column="0" Foreground="Black" />
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,5">
-                        <TextBlock Text="Quiz Success Rate" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333"/>
-                        <Border Height="5" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" CornerRadius="1.5" Background="Transparent" BorderBrush="#333" BorderThickness="1">
-                            <ProgressBar x:Name="quizProgress" Height="5" Width="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Value="30" Foreground="Lime"/>
+                    <Icons:PackIconFontAwesome Kind="PercentageSolid"  Height="20" Width="20" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#333333" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,5" HorizontalAlignment="Center">
+                        <TextBlock Text="Quiz Success" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <StackPanel Orientation="Horizontal">
+                        <Border Height="4" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" CornerRadius="1.5" Background="Transparent" BorderBrush="#333" BorderThickness="0.5">
+                            <ProgressBar x:Name="quizProgress" Height="4" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Value="30" Foreground="Lime"/>
                         </Border>
+                            <TextBlock FontSize="10" x:Name="QuizPercentage" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15%" Margin="4,1,0,0"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Border>
