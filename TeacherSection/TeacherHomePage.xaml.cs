@@ -19,13 +19,8 @@ using MySql.Data.MySqlClient;
 
 namespace QuizFlash
 {
-    /// <summary>
-    /// Interaction logic for StudentHomePage.xaml
-    /// </summary>
     public partial class TeacherHomePage : Page
     {
-
-
         private string[] quotes = new string[]
             {
             "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
@@ -113,11 +108,22 @@ namespace QuizFlash
 
         public TeacherHomePage()
         {
+            InitializeComponent();
+            Loaded += TeacherHomePage_Loaded;
+        }
+
+        private async void TeacherHomePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            await LoadDataAsync();
+            AddQuote();
+        }
+
+        private async Task LoadDataAsync()
+        {
             Database db = new Database();
 
-
             string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
-            DataTable AllDevices = db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId));
+            DataTable allDevices = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId)));
 
             sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName FROM Classroom c JOIN Quiz q ON q.classroomId = c.id WHERE c.TeacherId = @TeacherId AND q.dueDate > @CurrentDate";
             MySqlParameter[] resultParams =
@@ -125,23 +131,19 @@ namespace QuizFlash
                 new MySqlParameter("@TeacherId", GlobalVariables.TeacherId),
                 new MySqlParameter("@CurrentDate", Utilities.GetCurrentTimeInEpoch()),
             };
-            DataTable QuizesResult = db.ExecuteQuery(sql, resultParams);
+            DataTable quizesResult = await Task.Run(() => db.ExecuteQuery(sql, resultParams));
 
-            InitializeComponent();
-
-            for (int i = 0; i < AllDevices.Rows.Count; i++)
+            foreach (DataRow row in allDevices.Rows)
             {
-                AddLoggedDevices(Convert.ToInt32(AllDevices.Rows[i]["id"]), AllDevices.Rows[i]["deviceName"].ToString(), Convert.ToInt32(AllDevices.Rows[i]["lastLogin"]), Convert.ToInt32(AllDevices.Rows[i]["deviceType"]));
+                AddLoggedDevices(Convert.ToInt32(row["id"]), row["deviceName"].ToString(), Convert.ToInt32(row["lastLogin"]), Convert.ToInt32(row["deviceType"]));
             }
 
             AddUserInfo();
 
-            for (int i = 0; i < QuizesResult.Rows.Count; i++)
+            foreach (DataRow row in quizesResult.Rows)
             {
-                AddRecentQuiz(QuizesResult.Rows[i]["classroomName"].ToString(), QuizesResult.Rows[i]["quizName"].ToString(), Convert.ToInt64(QuizesResult.Rows[i]["dueDate"]));
+                AddRecentQuiz(row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["dueDate"]));
             }
-
-            AddQuote();
         }
 
         private void AddQuote()
@@ -169,18 +171,11 @@ namespace QuizFlash
             infocards.Children.Add(newCard);
         }
 
-
         private void AddUserInfo()
         {
             UserInfo newInfo = new UserInfo();
             newInfo.Margin = new Thickness(5, 0, 25, 5);
             userInfo.Children.Add(newInfo);
-
         }
-
-
     }
-
-
 }
-
