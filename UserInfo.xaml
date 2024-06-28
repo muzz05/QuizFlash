@@ -51,9 +51,9 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="Cards" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,15,0">
-                        <TextBlock Text="Total FlashCards" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333"/>
+                    <Icons:PackIconMaterial x:Name="ChangeableIcon" Kind="Cards" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,15,0" x:Name="changeablepanel">
+                        <TextBlock Text="Total FlashCards" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333" x:Name="ChangeableTextBox"/>
                         <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
                             <TextBlock FontSize="10" x:Name="flashcardNo"  FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
                         </Border>
@@ -78,7 +78,7 @@
                 </Grid>
             </Border>
 
-            <Border Background="#e0eff2" CornerRadius="10" Grid.Row="4" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,10">
+            <Border Background="#e0eff2" CornerRadius="10" Grid.Row="4" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,10" x:Name="SuccessRateQuiz">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>

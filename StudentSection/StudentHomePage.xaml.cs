@@ -128,12 +128,13 @@ namespace QuizFlash
             DataTable QuizesResult = db.ExecuteQuery(sql, resultParams);
 
             InitializeComponent();
-            AddUserInfo();
 
             for (int i = 0; i < AllDevices.Rows.Count; i++)
             {
                 AddLoggedDevices(Convert.ToInt32(AllDevices.Rows[i]["id"]), AllDevices.Rows[i]["deviceName"].ToString(), Convert.ToInt32(AllDevices.Rows[i]["lastLogin"]), Convert.ToInt32(AllDevices.Rows[i]["deviceType"]));
             }
+
+            AddUserInfo();
 
             for (int i = 0; i < QuizesResult.Rows.Count; i++)
             {
