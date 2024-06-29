@@ -25,104 +25,167 @@ namespace QuizFlash
     public partial class StudentDataPage : Page
     {
         static Database database = new Database();
-        static int minId = Convert.ToInt32(database.ExecuteScalar("Select MIN(id) from users where isTeacher=false"));
-        int nextPageId = minId + 6;
-        int prevPageId = minId;
+
+        int threshold = 6;
+        int totalStudents = 0;
+        int currentStudent = 0;
+
         BrushConverter converter = new BrushConverter();
         ObservableCollection<Member> members = new ObservableCollection<Member>();
         public StudentDataPage()
         {
-            InitializeComponent();  
+            InitializeComponent();
 
-            DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from Users u JOIN Students s On s.userId = u.id LEFT JOIN Department d ON u.departmentId=d.id");
-            int rowCount = 1;
-            for (int i = 0; i < reader.Rows.Count; i++)
-            {
-                members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
-                rowCount++;
-                if (rowCount == 7)
-                {
-                    break;
-                }
-            }
-            studentsDataGrid.ItemsSource = members;
+            GetPaginatedDataFromDb(0, "",0);
+        }
 
+        private void TxtSearch_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxFilter.Text) && textBoxFilter.Text.Length > 0)
+                SearchTextBlock.Visibility = Visibility.Collapsed;
+            else
+                SearchTextBlock.Visibility = Visibility.Visible;
+        }
+
+        private void TextSearch_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SearchTextBlock.Visibility = Visibility.Hidden;
+            textBoxFilter.Focus();
         }
 
 
         public void NextTable(object sender, RoutedEventArgs e)
-        {           
-            DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", nextPageId));
-
-            if (reader.Rows.Count == 0)
+        {
+            if(textBoxFilter.Text == "")
             {
-                CustomMessageBox msg = new CustomMessageBox("No more data","No more students to show","Error");
-                msg.Show();
+                GetPaginatedDataFromDb(totalStudents, "",0);
             }
             else
             {
-                members.Clear();
-                int rowCount = 1;
-                for (int i = 0; i < reader.Rows.Count; i++)
-                {
-                    members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
-                    rowCount++;
-                    if (rowCount == 7)
-                    {
-                        break;
-                    }
-                }
-                studentsDataGrid.ItemsSource = members;
-                nextPageId += 6;
-                prevPageId += 6;
+                GetPaginatedDataFromDb(totalStudents, textBoxFilter.Text,0);
             }
         }
 
-                public void PrevTable(object sender, RoutedEventArgs e)
+        public void PrevTable(object sender, RoutedEventArgs e)
+        {
+            if(totalStudents < currentStudent + threshold)
+            {
+                CustomMessageBox msg = new CustomMessageBox("No more data", "No more students to show", "Error");
+                msg.ShowDialog();
+            }
+            else
+            {
+                if (totalStudents >= currentStudent + threshold) totalStudents -= currentStudent + threshold;
+                if (textBoxFilter.Text == "")
                 {
-                    if(prevPageId == minId)
-                    {
+                    GetPaginatedDataFromDb(totalStudents, "",0);
+                }
+                else
+                {
+                    GetPaginatedDataFromDb(totalStudents, textBoxFilter.Text,0);
+                }
+            }
+            
+        }
+
+        public void GetPaginatedDataFromDb(int from, string query, int operation)
+        {
+            string sql;
+            DataTable reader;
+            
+
+            if (query == "")
+            {
+                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id LIMIT @From, @Threshold";
+                MySqlParameter[] getParams =
+                {
+                    new MySqlParameter("@From", from),
+                    new MySqlParameter("@Threshold", threshold),
+                };
+                reader = database.ExecuteQuery(sql, getParams);
+
+                if (reader.Rows.Count <= 0)
+                {
                     CustomMessageBox msg = new CustomMessageBox("No more data", "No more students to show", "Error");
-                    msg.Show();
+                    msg.ShowDialog();
                     return;
-                    }
-                    else
-                    {
-                        DataTable reader = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.id>=@pageCount;", new MySqlParameter("@pageCount", prevPageId - 6));
-                        members.Clear();
-                        int rowCount = 1;
-                        for (int i = 0; i < reader.Rows.Count; i++)
-                        {
-                            members.Add(new Member { Number = reader.Rows[i]["id"].ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
-                            rowCount++;
-                            if (rowCount == 7)
-                            {
-                                break;
-                            }
-                        }
-                        studentsDataGrid.ItemsSource = members;
-                        nextPageId -= 6;
-                        prevPageId -= 6;
-                    }   
+                }
+                else
+                {
+                    members.Clear();
+
+                }
+
+                for (int i = 0; i < reader.Rows.Count; i++)
+                {
+                    members.Add(new Member { Number = (i + totalStudents + 1).ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
+                }
+                if (operation == 0)
+                {
+                    totalStudents += reader.Rows.Count;
+                }else if( operation == 1)
+                {
+                    totalStudents -= reader.Rows.Count;
+                }
+                else if (operation == 2)
+                {
+                    totalStudents = reader.Rows.Count;
+                    currentStudent = reader.Rows.Count;
+                }
+
+            }
+            else
+            {
+                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id WHERE u.name like @name LIMIT @From, @Threshold";
+                MySqlParameter[] getParams =
+                {
+                    new MySqlParameter("@From", from),
+                    new MySqlParameter("@Threshold", threshold),
+                    new MySqlParameter("@name", "%" + query + "%"),
+                };
+                reader = database.ExecuteQuery(sql, getParams);
+
+                if(reader.Rows.Count <= 0)
+                {
+                    CustomMessageBox msg = new CustomMessageBox("No more data", "No more students to show for this search", "Error");
+                    msg.ShowDialog();
+                    return;
+                }
+                else
+                {
+                    members.Clear();
+
+                }
+
+
+
+                for (int i = 0; i < reader.Rows.Count; i++)
+                {
+                    members.Add(new Member { Number = (i + totalStudents + 1).ToString(), Character = reader.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = reader.Rows[i]["name"].ToString(), Department = reader.Rows[i]["departmentName"].ToString(), Email = reader.Rows[i]["email"].ToString(), StudentCode = reader.Rows[i]["studentCode"].ToString() });
+                }
+                if (operation == 0)
+                {
+                    totalStudents += reader.Rows.Count;
+                }
+                else if (operation == 1)
+                {
+                    totalStudents -= reader.Rows.Count;
+                }
+                else if (operation == 2)
+                {
+                    totalStudents = reader.Rows.Count;
+                    currentStudent = reader.Rows.Count;
+                }
+            }
+
+            studentsDataGrid.ItemsSource = members;
+            currentStudent = reader.Rows.Count;
         }
 
         public void SearchStudent(object sender, RoutedEventArgs e)
         {
-            DataTable search = database.ExecuteQuery("Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id where u.name like @name;", new MySqlParameter("@name", "%" + textBoxFilter.Text + "%"));
-            if(search.Rows.Count == 0)
-            {
-                CustomMessageBox msg = new CustomMessageBox("Invalid Search","No results found","Error");
-                msg.Show();
-            }
-            else
-            {
-                members.Clear();
-                for (int i = 0; i < search.Rows.Count; i++)
-                {
-                    members.Add(new Member { Number = search.Rows[i]["id"].ToString(), Character = search.Rows[i]["name"].ToString()[0].ToString(), BgColor = (Brush)converter.ConvertFromString("#22202f"), Name = search.Rows[i]["name"].ToString(), Department = search.Rows[i]["departmentName"].ToString(), Email = search.Rows[i]["email"].ToString(), StudentCode = search.Rows[i]["studentCode"].ToString() });
-                }
-                studentsDataGrid.ItemsSource = members;
-            }
+            totalStudents = 0;
+            GetPaginatedDataFromDb(0, textBoxFilter.Text, 3);
         }
         public class Member
         {
@@ -135,7 +198,11 @@ namespace QuizFlash
             public string StudentCode { get; set; }
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxFilter.Text = "";
+            StudentSearcherButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+        }
     }
 }
 

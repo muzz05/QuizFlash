@@ -28,13 +28,13 @@
                     <!-- Class Name -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
                         <TextBlock Text="Class Name: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <TextBox x:Name="classnametb" Style="{StaticResource filterTextBox}" Width="240" Height="35" Margin="8,0,0,0"/>
+                        <TextBox x:Name="classnametb" Style="{StaticResource filterTextBox}" Width="240" Height="35" Margin="8,0,0,0" Cursor="IBeam"/>
                     </StackPanel>
 
                     <!-- Course Code -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
                         <TextBlock Text="Course Code: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <TextBox x:Name="coursecodetb" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
+                        <TextBox x:Name="coursecodetb" Style="{StaticResource filterTextBox}" Width="240" Height="35" Cursor="IBeam"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -47,19 +47,19 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100">
+                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100" Cursor="Hand" Click="CloseWindow">
                         <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterialDesign Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="20" Width="20"/>
-                            <TextBlock Text="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <Icons:PackIconMaterialDesign Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="15" Width="15"/>
+                            <TextBlock Text="Cancel" Foreground="#c4c3cf" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100">
+                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100" Cursor="Hand" Click="AddClassroomToDB">
                         <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterialDesign Kind="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Height="20" Width="20"/>
-                            <TextBlock Text="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <Icons:PackIconMaterialDesign Kind="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Height="13" Width="15"/>
+                            <TextBlock Text="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

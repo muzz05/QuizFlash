@@ -80,16 +80,16 @@ namespace QuizFlash
         {
             GlobalVariables.ActiveClassroomId = ClassroomId;
 
-                foreach (Window window in Application.Current.Windows)
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is Teacher teacher)
                 {
-                    if (window is Teacher teacher)
-                    {
-                        teacher.TeacherViewFrame.Content = new TeacherClassroomMainPage();
-                    }
-                    else if (window is Student student) {
-                        student.StudentViewFrame.Content = new TeacherClassroomMainPage();
-                    }
+                    teacher.TeacherViewFrame.Content = new TeacherClassroomMainPage();
                 }
+                else if (window is Student student) {
+                    student.StudentViewFrame.Content = new TeacherClassroomMainPage();
+                }
+            }
         }
     }
 }

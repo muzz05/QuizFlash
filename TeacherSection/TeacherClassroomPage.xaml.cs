@@ -60,7 +60,8 @@ namespace QuizFlash
         }
         private void classroom_add(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("coming");
+            ClassroomTeacherMsgBox classroomTeacherMsgBox = new ClassroomTeacherMsgBox();
+            classroomTeacherMsgBox.ShowDialog();
         }
 
         private void AddClassroom(string coursename, string code, string teacher ,int count,string gcr_code, int classroomId)

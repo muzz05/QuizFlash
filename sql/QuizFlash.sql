@@ -55,7 +55,7 @@ CREATE TABLE Classroom (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     teacherId INT NOT NULL,
-    studentCount INT NOT NULL,
+    studentCount INT DEFAULT 0,
     courseCode VARCHAR(255),
     classCode VARCHAR(255) NOT NULL
 );

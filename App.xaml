@@ -285,6 +285,7 @@
                     <Setter Property="Foreground" Value="#c4c3cf"/>
                     <Setter Property="FontSize" Value="10"/>
                     <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Cursor" Value="Hand"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
@@ -491,7 +492,7 @@
             <Setter Property="HeadersVisibility" Value="Column" />
             <Setter Property="Margin" Value="0 10 0 0" />
             <Setter Property="Grid.Row" Value="5" />
-            <Setter Property="Height" Value="365"/>
+            <Setter Property="Height" Value="364"/>
             <Setter Property="SelectionMode" Value="Single" />
             <Setter Property="SelectionUnit" Value="FullRow" />
             <Setter Property="CanUserAddRows" Value="False" />
