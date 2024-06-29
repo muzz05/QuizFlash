@@ -27,6 +27,11 @@ namespace QuizFlash
             classname.Text = className;
             this.announcement.Text = announcement;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 

@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="300">
-    <Border x:Name="cardBorder" CornerRadius="12" Background="#325274 " BorderThickness="0" BorderBrush="Transparent"  Margin="10,10,0,0">
+    <Border x:Name="cardBorder" CornerRadius="12" Background="#2A3B4F" BorderThickness="0" BorderBrush="Transparent"  Margin="10,10,0,0">
         <!--<Border.Effect>
             <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
         </Border.Effect>-->
         <Grid Height="90" Cursor="Hand" Width="300" Margin="0" >
-            <TextBlock x:Name="quote" FontSize="14" FontWeight="SemiBold"  Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf">
+            <TextBlock x:Name="quote" FontSize="14" FontWeight="Normal"  Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fafafa">
                 This is a dummy quote
                 <!--<TextBlock.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

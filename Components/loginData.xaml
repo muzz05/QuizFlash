@@ -27,7 +27,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Border CornerRadius="14" Background="#6959cc">
+    <Border CornerRadius="14" Background=" #4A90E2">
         
     <Grid Width="280" Height="45" Background="Transparent">
         <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Height="45" Margin="0,0,0,0">
-            <Border CornerRadius="10" Width="30" Height="30" Margin="5,0,0,0" Background="#c3c4cf">
+            <Border CornerRadius="10" Width="30" Height="30" Margin="5,0,0,0" Background="#fafafa">
                 <!--<Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Color="#ffefba" Offset="0.1" />
@@ -47,7 +47,7 @@
             </Border>
 
             <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock Text="Redmi Note 11" x:Name="devName" FontSize="14" Foreground="#c3c4cf" FontWeight="SemiBold">
+                <TextBlock Text="Redmi Note 11" x:Name="devName" FontSize="14" Foreground="#fafafa" FontWeight="SemiBold">
                     <!--<TextBlock.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
@@ -56,7 +56,7 @@
                     </TextBlock.Foreground>-->
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="-5,0,0,0">
-                    <Label Content="Last Login:" FontSize="12" Margin="0,-4,0,0" Foreground="#c3c4cf">
+                    <Label Content="Last Login:" FontSize="12" Margin="0,-4,0,0" Foreground="#fafafa">
                         <!--<Label.Foreground>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#ffefba" Offset="0.1" />
@@ -65,7 +65,7 @@
                         </Label.Foreground>-->
                     </Label>
 
-                    <TextBlock Text="7/4/2024" x:Name="LastDate" FontSize="12" Height="15" Margin="0,-4,0,0" Foreground="#c3c4cf">
+                    <TextBlock Text="7/4/2024" x:Name="LastDate" FontSize="12" Height="15" Margin="0,-4,0,0" Foreground="#fafafa">
                         <!--<TextBlock.Foreground>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Color="#ffefba" Offset="0.1" />
@@ -79,7 +79,7 @@
 
         <Border Grid.Column="1" CornerRadius="10" Width="40" Height="30" VerticalAlignment="Center">
                 <Button Width="30" Height="30" Cursor="Hand" Background="Transparent" BorderThickness="0" Style="{StaticResource NoHoverButtonStyle}" Margin="0,0,10,0">
-                <Icons:PackIconModern Kind="Delete" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#c3c4cf" MouseDown="RemoveLoggedDevice">
+                <Icons:PackIconModern Kind="Delete" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fafafa" MouseDown="RemoveLoggedDevice">
                     <!--<Icons:PackIconModern.Foreground>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Color="#ffefba" Offset="0.1" />
