@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Border CornerRadius="20 0 0 20" BorderBrush="Transparent">
+        <Border CornerRadius="20 0 0 20" BorderBrush="Transparent" BorderThickness="0">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#272537 " Offset="0" />
@@ -47,7 +47,7 @@
             </Grid>
         </Border>
 
-        <Border Background="#353340 " Grid.Column="1" CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" BorderBrush="Transparent">
+        <Border Background="#353340 " Grid.Column="1" CornerRadius="0 20 20 0" MouseDown="Border_MouseDown" BorderBrush="Transparent" BorderThickness="0">
             <StackPanel VerticalAlignment="Top" Height="600">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,10,0">
                     <Icons:PackIconCodicons Kind="ChromeMinimize" HorizontalAlignment="Right" Foreground="#c4c3cf" Margin="10,10,10,10" Height="12" Width="12" MouseDown="minimizeWindow" Cursor="Hand"/>
@@ -64,8 +64,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Account" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock  Cursor="IBeam" x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" Grid.Column="1" Height="20" Margin="10,0,0,0" VerticalAlignment="Top" />
-                        <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" />
+                        <TextBlock  Cursor="IBeam" x:Name="textUsername_signup" MouseDown="textUsername_signup_MouseDown" Text="Username" Style="{StaticResource textHint}" Grid.Column="1" Height="20" Margin="10,0,0,0" VerticalAlignment="Top" Background="Transparent"/>
+                        <TextBox Name="txtUsername_signup" TextChanged="txtUsername_signup_TextChanged" Style="{StaticResource textBox}" Margin="6 0 0 0" CaretBrush="#c3c4cf"/>
                     </Grid>
                 </Border>
 
@@ -76,8 +76,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterialDesign Kind="Email" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock   x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" Cursor="IBeam"/>
-                        <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" />
+                        <TextBlock   x:Name="textEmail_signup" MouseDown="textEmail_signup_MouseDown" Text="Email" Style="{StaticResource textHint}" Cursor="IBeam" Background="Transparent"/>
+                        <TextBox Name="txtEmail_signup" TextChanged="txtEmail_signup_TextChanged" Style="{StaticResource textBox}" Margin="6 0 0 0" CaretBrush="#c3c4cf"/>
                     </Grid>
                 </Border>
 
@@ -88,8 +88,8 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Icons:PackIconMaterial Kind="Key" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="5,0,5,0"/>
-                        <TextBlock  x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" Cursor="IBeam"/>
-                        <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" />
+                        <TextBlock  x:Name="textPassword_signup" MouseDown="textPassword_signup_MouseDown" Text="Password" Style="{StaticResource textHint}" Cursor="IBeam" Background="Transparent"/>
+                        <PasswordBox x:Name="passwordBox_signup" PasswordChanged="PasswordBox_signup_PasswordChanged" Style="{StaticResource textBox}" Margin="6 0 0 0" CaretBrush="#c3c4cf"/>
 
                     </Grid>
                 </Border>
@@ -106,7 +106,7 @@
                         <TextBlock x:Name="dropdowndept" Text="Department" Panel.ZIndex="3" Style="{StaticResource textHint}" Background="#353340" MouseDown="OpenComboBox" Cursor="Hand" Height="25"/>
                         <!--Customized ComboBox-->
 
-                        <ComboBox x:Name="comboBoxDepartments"  Grid.Column="1" Background="#353340" Margin="10,4,0,0" SelectionChanged="CmbDepartments_SelectionChanged" Height="15" VerticalAlignment="Top">
+                        <ComboBox x:Name="comboBoxDepartments"  Grid.Column="1" Background="#353340" Margin="10,4,0,0" SelectionChanged="CmbDepartments_SelectionChanged" Height="20" VerticalAlignment="Top">
                             <ComboBox.Resources>
                                 <Style TargetType="ComboBox">
                                     <Setter Property="Template">
@@ -117,7 +117,7 @@
                                                         <ContentPresenter />
                                                     </ToggleButton>
                                                     <Popup Name="Popup" Placement="Bottom" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="Slide">
-                                                        <Grid MaxHeight="150" Width="200">
+                                                        <Grid MaxHeight="150" Width="230" Margin="0 0 10 0">
                                                             <Border BorderBrush="White" BorderThickness="1" Background="#353340">
                                                                 <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
                                                                     <ItemsPresenter />

@@ -54,6 +54,7 @@ namespace QuizFlash
 
         private void TextPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            textPassword.Visibility = Visibility.Hidden;
             passwordBoxLogin.Focus();
         }
 
@@ -68,6 +69,7 @@ namespace QuizFlash
 
         private void TextEmail_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            textEmail.Visibility = Visibility.Hidden;
             emailBoxLogin.Focus();
         }
 
