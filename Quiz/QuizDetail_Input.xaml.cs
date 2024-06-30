@@ -4,6 +4,7 @@ using System.Data;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace QuizFlash
 {
@@ -14,6 +15,18 @@ namespace QuizFlash
         {
             InitializeComponent(); 
         }
+
+        private void PART_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            Popup popup = button?.Template?.FindName("PART_Popup", button) as Popup;
+            if (popup != null)
+            {
+                popup.IsOpen = !popup.IsOpen;
+            }
+        }
+
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             string quizName = quizname.Text;
@@ -39,9 +52,11 @@ namespace QuizFlash
 
             long epochTimestamp = ConvertToEpoch(dueDate.Value);
 
+            MessageBox.Show(epochTimestamp.ToString());
+
             Database db = new Database();
 
-            string sql="INSERT INTO quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
+            string sql = "INSERT INTO quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@name",quizName),
@@ -56,32 +71,24 @@ namespace QuizFlash
             };
 
             db.ExecuteNonQuery(sql, parameters);
-            DataTable quizId=db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
+            DataTable quizId = db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
             this.Close();
 
             QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["id"]));
             foreach (Window window in Application.Current.Windows)
             {
-                if(window is Teacher teacher)
+                if (window is Teacher teacher)
                 {
                     teacher.TeacherViewFrame.Content = addQuestion;
                 }
             }
 
-            for (int i=0; i<Convert.ToInt32(questions); i++)
+            for (int i = 0; i < Convert.ToInt32(questions); i++)
             {
                 QuizDesignControl quizDesignControl = new QuizDesignControl();
                 addQuestion.quizDesignPanel.Children.Add(quizDesignControl);
             }
 
-            //CustomMessageBox info = new CustomMessageBox("Quiz Details Saved",
-            //    $"Quiz Name: {quizName}\nQuestions: {questions}\nTotal Marks: {perQmarks}\nDue Date: {dueDate.Value.ToShortDateString()}",
-            //    "Done");
-            //info.Width = 450;
-            //info.Height = 250;
-            //info.Show();
-
-            //this.Close();
         }
 
         private long ConvertToEpoch(DateTime date)

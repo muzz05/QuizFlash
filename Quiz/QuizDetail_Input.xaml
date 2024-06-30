@@ -3,20 +3,102 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Message" Height="370" Width="400"
+        Title="Message" Height="340" Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
-    
 
 
+    <Window.Resources>
+        <!-- Style for the DatePicker -->
+        <Style TargetType="DatePicker">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="210" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="#353340"
+                            BorderBrush="#707070"
+                            BorderThickness="1"
+                            CornerRadius="7"
+                            Margin="10,0,0,0"
+                                    Height="30">
+                                <TextBox x:Name="PART_TextBox"
+                                 Background="Transparent"
+                                 Foreground="#c3c4cf"
+                                 FontSize="16"
+                                 Padding="5"
+                                 Height="30"
+                                 BorderThickness="0"
+                                 IsReadOnly="True"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:d}}" />
+                            </Border>
+                            <Button Grid.Column="1" x:Name="PART_Button"
+                            Width="30"
+                            Height="30"
+                            Background="#353340"
+                            Foreground="White"
+                            Padding="0"
+                            Click="PART_Button_Click"
+                                    HorizontalAlignment="Left">
+                                <Icons:PackIconBootstrapIcons Kind="Calendar2DateFill" />
+                            </Button>
+                            <Popup x:Name="PART_Popup"
+                           PlacementTarget="{Binding ElementName=PART_Button}"
+                           StaysOpen="False"
+                           AllowsTransparency="True">
+                                <Calendar x:Name="PART_Calendar"
+                                  SelectedDate="{Binding Path=SelectedDate, RelativeSource={RelativeSource TemplatedParent}}"
+                                  DisplayDate="{Binding Path=SelectedDate, RelativeSource={RelativeSource TemplatedParent}}"
+                                  SelectionMode="SingleRange"
+                                  IsTodayHighlighted="True"/>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <!-- Styles for Buttons and TextBlocks -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#353340"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Window.Resources>
     <Border Background="#363846" CornerRadius="20" BorderThickness="0" SnapsToDevicePixels="True" Padding="15">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="7*"/>
+                <RowDefinition Height="6.5*"/>
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
@@ -26,7 +108,7 @@
             </TextBlock>
 
             <!-- Entry Fields -->
-            <Grid Grid.Row="1" Margin="0,10,0,20" VerticalAlignment="Center">
+            <Grid Grid.Row="1" Margin="0,10,0,10" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <!-- Quiz Name -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
@@ -47,14 +129,11 @@
                     </StackPanel>
 
                     <!-- Due Date -->
-                    <StackPanel x:Name="sp_date" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
                         <TextBlock Text="Due Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <DatePicker x:Name="duedate" SelectedDateFormat="Short" IsDropDownOpen="False" Width="240" Height="35"/>
+                        <DatePicker x:Name="duedate" SelectedDateFormat="Short" Width="250" Height="30" Background="Transparent"/>
                     </StackPanel>
-               </StackPanel>
-                
-
-              <StackPanel/>
+                </StackPanel>
             </Grid>
 
             <!-- Buttons -->
@@ -65,19 +144,19 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100" Click="CancelButton_Click">
+                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100" Cursor="Hand" Click="CancelButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterial Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="20" Width="20"/>
-                            <TextBlock Text="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <Icons:PackIconMaterialDesign Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="15" Width="15"/>
+                            <TextBlock Text="Cancel" Foreground="#c4c3cf" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100" Click="SaveButton_Click">
+                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100" Cursor="Hand" Click="SaveButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterial Kind="ContentSave" Foreground="#c4c3cf" VerticalAlignment="Center" Height="20" Width="20"/>
-                            <TextBlock Text="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <Icons:PackIconMaterialDesign Kind="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Height="13" Width="15"/>
+                            <TextBlock Text="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
