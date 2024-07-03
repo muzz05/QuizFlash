@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:QuizFlash"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
-    <Border x:Name="cardBorder" CornerRadius="12" Background="#5D8AA8" BorderThickness="0" BorderBrush="Transparent"  Margin="0">
+    <Border x:Name="cardBorder" CornerRadius="12" Background="#2B2A3A" BorderThickness="0" BorderBrush="#3E3C4E"  Margin="0">
         <Grid  Height="450" Cursor="Hand" Width="200" Margin="0,-10,0,0">
 
             <Grid.RowDefinitions>
@@ -23,76 +23,76 @@
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Center" Grid.ColumnSpan="2" >
                 <Image  HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"  Source="/Images/Icons/user.png" Height="70" Width="70" />
-                <TextBlock x:Name="studentName"  Text="Muhammad Kaif" Margin="5" FontSize="14" FontWeight="SemiBold" Foreground="#333333"/>
+                <TextBlock x:Name="studentName"  Text="Muhammad Kaif" Margin="5" FontSize="14" FontWeight="SemiBold" Foreground="#c3c4cf"/>
                 <Border  Background="#c3c4cf" Padding="3" CornerRadius="7" Height="16" Width="67" Margin="0,3,0,0" Grid.Column="0"  VerticalAlignment="Top">
-                    <TextBlock FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="isStudentorTeacher" Foreground="#333333">Student</TextBlock>
+                    <TextBlock FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="isStudentorTeacher" Foreground="#4a4a4e">Student</TextBlock>
                 </Border>
             </StackPanel>
 
-            <Border Background="#fef2fb" CornerRadius="10" Grid.Row="1" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,3,5,3">
+            <Border Background="#3E3C4E" CornerRadius="10" Grid.Row="1" Height="55" Width="170" Grid.ColumnSpan="2" Margin="5,3,5,3">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial Kind="GoogleClassroom" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
+                    <Icons:PackIconMaterial Kind="GoogleClassroom" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#c3c4cf"/>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,10,0" HorizontalAlignment="Center">
-                        <TextBlock Text="Total Classrooms" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <TextBlock Text="Total Classrooms" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#c3c4cf"/>
                         <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="classroomNo" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
+                            <TextBlock FontSize="10" x:Name="classroomNo" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#4a4a4e" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <Border Background="#ffe5e7" CornerRadius="10" Grid.Row="2" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,3">
+            <Border Background="#3E3C4E" CornerRadius="10" Grid.Row="2" Height="55" Width="170" Grid.ColumnSpan="2" Margin="5,4,5,3">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Icons:PackIconMaterial x:Name="ChangeableIcon" Kind="Cards" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#333333"/>
+                    <Icons:PackIconMaterial x:Name="ChangeableIcon" Kind="Cards" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="16,0,0,0" Grid.Column="0" Foreground="#c3c4cf"/>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,15,0" x:Name="changeablepanel">
-                        <TextBlock Text="Total FlashCards" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333" x:Name="ChangeableTextBox"/>
+                        <TextBlock Text="Total FlashCards" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#c3c4cf" x:Name="ChangeableTextBox"/>
                         <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="flashcardNo"  FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
+                            <TextBlock FontSize="10" x:Name="flashcardNo"  FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#4a4a4e" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <Border Background="#fee9b4" CornerRadius="10" Grid.Row="3" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,3,5,3">
+            <Border Background="#3E3C4E" CornerRadius="10" Grid.Row="3" Height="55" Width="170" Grid.ColumnSpan="2" Margin="5,3,5,3">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Icons:PackIconMaterial  Kind="CommentQuestionOutline" Height="25" Width="25" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#333333" />
+                    <Icons:PackIconMaterial  Kind="CommentQuestionOutline" Height="25" Width="25" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#c3c4cf" />
                     <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,38,0" HorizontalAlignment="Center">
-                        <TextBlock Text="Total Quizes" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <TextBlock Text="Total Quizes" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#c3c4cf"/>
                         <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" Width="50" Height="18">
-                            <TextBlock FontSize="10" x:Name="quizAttempted" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15"/>
+                            <TextBlock FontSize="10" x:Name="quizAttempted" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#4a4a4e" Text="15"/>
                         </Border>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <Border Background="#e0eff2" CornerRadius="10" Grid.Row="4" Height="55" Width="180" Grid.ColumnSpan="2" Margin="5,4,5,10" x:Name="SuccessRateQuiz">
+            <Border Background="#3E3C4E" CornerRadius="10" Grid.Row="4" Height="55" Width="170" Grid.ColumnSpan="2" Margin="5,4,5,10" x:Name="SuccessRateQuiz">
                 <Grid Height="55" Width="180">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Icons:PackIconFontAwesome Kind="PercentageSolid"  Height="20" Width="20" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#333333" />
+                    <Icons:PackIconFontAwesome Kind="PercentageSolid"  Height="20" Width="20" VerticalAlignment="Center" Margin="15,0,0,0" Grid.Column="0" Foreground="#c3c4cf" />
                     <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,10,5" HorizontalAlignment="Center">
-                        <TextBlock Text="Quiz Success" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#333333"/>
+                        <TextBlock Text="Quiz Success" VerticalAlignment="Top" Margin="0,0,0,2" FontSize="12" FontWeight="DemiBold" Foreground="#c3c4cf"/>
                         <StackPanel Orientation="Horizontal">
-                        <Border Height="4" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" CornerRadius="1.5" Background="Transparent" BorderBrush="#333" BorderThickness="0.5">
+                        <Border Height="4" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3,0,0" CornerRadius="1.5" Background="#3E3C4E" BorderBrush="#333" BorderThickness="0.5">
                             <ProgressBar x:Name="quizProgress" Height="4" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,1,0,0" Value="30" Foreground="Lime"/>
                         </Border>
-                            <TextBlock FontSize="10" x:Name="QuizPercentage" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#333333" Text="15%" Margin="4,1,0,0"/>
+                            <TextBlock FontSize="10" x:Name="QuizPercentage" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#c3c4cf" Text="15%" Margin="4,1,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

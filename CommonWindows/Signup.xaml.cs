@@ -184,7 +184,7 @@ namespace QuizFlash
             if (checkEmail != null)
             {
                 CustomMessageBox ErrorSignupEmail = new CustomMessageBox("Unsuccessfull Signup", "User with the same email already exists", "Error");
-                ErrorSignupEmail.Show();
+                ErrorSignupEmail.ShowDialog();
                 return;
             }
 
@@ -235,7 +235,7 @@ namespace QuizFlash
             else
             {
                 CustomMessageBox ErrorSignup = new CustomMessageBox("Unsuccessfull Signup", "Some Error Occured in Signup", "Error");
-                ErrorSignup.Show();
+                ErrorSignup.ShowDialog();
             }
         }
 

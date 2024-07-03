@@ -125,7 +125,7 @@ namespace QuizFlash
             string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
             DataTable allDevices = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId)));
 
-            sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName FROM Classroom c JOIN Quiz q ON q.classroomId = c.id WHERE c.TeacherId = @TeacherId AND q.dueDate > @CurrentDate";
+            sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName, c.id as classroomId FROM Classroom c JOIN Quiz q ON q.classroomId = c.id WHERE c.TeacherId = @TeacherId AND q.dueDate > @CurrentDate";
             MySqlParameter[] resultParams =
             {
                 new MySqlParameter("@TeacherId", GlobalVariables.TeacherId),
@@ -133,16 +133,17 @@ namespace QuizFlash
             };
             DataTable quizesResult = await Task.Run(() => db.ExecuteQuery(sql, resultParams));
 
+            AddUserInfo();
+
             foreach (DataRow row in allDevices.Rows)
             {
                 AddLoggedDevices(Convert.ToInt32(row["id"]), row["deviceName"].ToString(), Convert.ToInt32(row["lastLogin"]), Convert.ToInt32(row["deviceType"]));
             }
 
-            AddUserInfo();
 
             foreach (DataRow row in quizesResult.Rows)
             {
-                AddRecentQuiz(row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["dueDate"]));
+                AddRecentQuiz(Convert.ToInt32(row["classroomId"]), row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["dueDate"]));
             }
         }
 
@@ -164,9 +165,9 @@ namespace QuizFlash
             devices.Children.Add(newDevice);
         }
 
-        private void AddRecentQuiz(string className, string announcement, long epoch)
+        private void AddRecentQuiz(int classroomId, string className, string announcement, long epoch)
         {
-            StudentHomepageInfoCard newCard = new StudentHomepageInfoCard(className, announcement, epoch);
+            StudentHomepageInfoCard newCard = new StudentHomepageInfoCard(classroomId, className, announcement, epoch);
             newCard.Margin = new Thickness(8);
             infocards.Children.Add(newCard);
         }

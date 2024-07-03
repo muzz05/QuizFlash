@@ -11,10 +11,10 @@
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="17*" />
         </Grid.ColumnDefinitions>
-        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="7,7,0,0">
+        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="10,13,0,0">
 
         </WrapPanel>
         <Grid Grid.Column="1">
@@ -23,10 +23,10 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <WrapPanel Grid.Row="0" x:Name="quote_panel" Orientation="Vertical" 
-                       Margin="30,12,10,10"/>
+           Margin="40,12,0,10"/>
         </Grid>
 
-        <Border  HorizontalAlignment="Left" x:Name="cardBorder" Width="380" Height="335" Grid.Column="1" CornerRadius="10" Background="Transparent" Margin="5,70,70,0">
+        <Border  HorizontalAlignment="Center" x:Name="cardBorder" Width="300" Height="335" Grid.Column="1" CornerRadius="10" Background="#2B2A3A" Margin="0,100,0,0" Grid.Row="1">
             <!--<Border.Effect>
                 <DropShadowEffect Color="#c3c4cf" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
             </Border.Effect>-->

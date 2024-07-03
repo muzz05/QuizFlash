@@ -55,7 +55,7 @@
                         <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" FontWeight="SemiBold" Grid.Column="1" Foreground="#c4c3cf" HorizontalAlignment="Left" Width="100">Home</TextBlock>
                     </Grid>
                 </RadioButton>
-                <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentClassroomCheck" >
+                <RadioButton Style="{StaticResource NavigationButtons}" Checked="StudentClassroomCheck" x:Name="classroomNavigatorButton">
                     <Grid HorizontalAlignment="left" Width="120" Margin="25,0,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>

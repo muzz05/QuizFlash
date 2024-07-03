@@ -32,35 +32,36 @@ namespace QuizFlash
             AddQuizButton.Visibility = GlobalVariables.IsTeacher ? Visibility.Visible : Visibility.Collapsed;
 
 
-            // Example 1
-            AddQuiz(1, "Math Quiz 1", 100, 10, DateTimeOffset.Now.AddDays(7).ToUnixTimeSeconds(), false);
+            //// Example 1
+            //AddQuiz(1, "Math Quiz 1", 100, 10, DateTimeOffset.Now.AddDays(7).ToUnixTimeSeconds(), false);
 
-            // Example 2
-            AddQuiz(2, "Science Quiz 2", 50, 5, DateTimeOffset.Now.AddDays(14).ToUnixTimeSeconds(), true);
+            //// Example 2
+            //AddQuiz(2, "Science Quiz 2", 50, 5, DateTimeOffset.Now.AddDays(14).ToUnixTimeSeconds(), true);
 
-            // Example 3
-            AddQuiz(3, "History Quiz 3", 75, 15, DateTimeOffset.Now.AddDays(30).ToUnixTimeSeconds(), false);
+            //// Example 3
+            //AddQuiz(3, "History Quiz 3", 75, 15, DateTimeOffset.Now.AddDays(30).ToUnixTimeSeconds(), false);
 
-            // Example 4
-            AddQuiz(4, "Geo Quiz 4", 60, 12, DateTimeOffset.Now.AddDays(10).ToUnixTimeSeconds(), true);
+            //// Example 4
+            //AddQuiz(4, "Geo Quiz 4", 60, 12, DateTimeOffset.Now.AddDays(10).ToUnixTimeSeconds(), true);
 
-            // Example 5
-            AddQuiz(5, "Physics Quiz 5", 80, 20, DateTimeOffset.Now.AddDays(21).ToUnixTimeSeconds(), false);
+            //// Example 5
+            //AddQuiz(5, "Physics Quiz 5", 80, 20, DateTimeOffset.Now.AddDays(21).ToUnixTimeSeconds(), false);
 
-            // Example 6
-            AddQuiz(6, "Chem Quiz 6", 90, 18, DateTimeOffset.Now.AddDays(25).ToUnixTimeSeconds(), true);
+            //// Example 6
+            //AddQuiz(6, "Chem Quiz 6", 90, 18, DateTimeOffset.Now.AddDays(25).ToUnixTimeSeconds(), true);
 
-            // Example 7
-            AddQuiz(7, "Biology Quiz 7", 70, 14, DateTimeOffset.Now.AddDays(12).ToUnixTimeSeconds(), false);
+            //// Example 7
+            //AddQuiz(7, "Biology Quiz 7", 70, 14, DateTimeOffset.Now.AddDays(12).ToUnixTimeSeconds(), false);
 
-            // Example 8
-            AddQuiz(8, "Literature Quiz 8", 85, 17, DateTimeOffset.Now.AddDays(19).ToUnixTimeSeconds(), true);
+            //// Example 8
+            //AddQuiz(8, "Literature Quiz 8", 85, 17, DateTimeOffset.Now.AddDays(19).ToUnixTimeSeconds(), true);
 
-            // Example 9
-            AddQuiz(9, "Art Quiz 9", 55, 11, DateTimeOffset.Now.AddDays(16).ToUnixTimeSeconds(), false);
+            //// Example 9
+            //AddQuiz(9, "Art Quiz 9", 55, 11, DateTimeOffset.Now.AddDays(16).ToUnixTimeSeconds(), false);
 
-            // Example 10
-            AddQuiz(10, "Music Quiz 10", 65, 13, DateTimeOffset.Now.AddDays(22).ToUnixTimeSeconds(), true);
+            //// Example 10
+            //AddQuiz(10, "Music Quiz 10", 65, 13, DateTimeOffset.Now.AddDays(22).ToUnixTimeSeconds(), true);
+
             Database db = new Database();
 
             string sql;

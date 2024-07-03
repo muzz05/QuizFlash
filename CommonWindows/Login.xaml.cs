@@ -98,7 +98,7 @@ namespace QuizFlash
             if (resultTable.Rows.Count == 0)
             {
                 CustomMessageBox errorEmail = new CustomMessageBox("Unsuccessful Login", "Please enter a valid email address", "Error");
-                errorEmail.Show();
+                errorEmail.ShowDialog();
             }
             else
             {
@@ -163,7 +163,7 @@ namespace QuizFlash
                 else
                 {
                     CustomMessageBox errorPassword = new CustomMessageBox("Unsuccessful Login", "Please enter the correct password", "Error");
-                    errorPassword.Show();
+                    errorPassword.ShowDialog();
                 }
             }
         }

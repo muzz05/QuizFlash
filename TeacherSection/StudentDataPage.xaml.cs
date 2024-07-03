@@ -96,7 +96,7 @@ namespace QuizFlash
 
             if (query == "")
             {
-                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id LIMIT @From, @Threshold";
+                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from Users u JOIN Students s On s.userId = u.id left join Department d on u.departmentId=d.id LIMIT @From, @Threshold";
                 MySqlParameter[] getParams =
                 {
                     new MySqlParameter("@From", from),
@@ -136,7 +136,7 @@ namespace QuizFlash
             }
             else
             {
-                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from users u JOIN Students s On s.userId = u.id left join department d on u.departmentId=d.id WHERE u.name like @name LIMIT @From, @Threshold";
+                sql = "Select s.studentCode, u.id, u.name, u.email,d.name as departmentName from Users u JOIN Students s On s.userId = u.id left join Department d on u.departmentId=d.id WHERE u.name like @name LIMIT @From, @Threshold";
                 MySqlParameter[] getParams =
                 {
                     new MySqlParameter("@From", from),

@@ -20,17 +20,35 @@ namespace QuizFlash
     /// </summary>
     public partial class StudentHomepageInfoCard : UserControl
     {
-        public StudentHomepageInfoCard(string className, string announcement, long epoch)
+
+        public int AssociatedClassroomId;
+
+        public StudentHomepageInfoCard(int classroomId, string className, string announcement, long epoch)
         {
+            AssociatedClassroomId = classroomId;
             InitializeComponent();
             RecentQuizDateBadge.Text = "Due " + Utilities.ConvertEpochToRelativeTimeFuture(epoch);
             classname.Text = className;
             this.announcement.Text = announcement;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RedirectToQuiz(object sender, RoutedEventArgs e)
         {
+            GlobalVariables.ActiveClassroomId = AssociatedClassroomId;
 
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is Teacher teacher)
+                {
+                    teacher.classroomNavigatorButton.IsChecked = true;
+                    teacher.TeacherViewFrame.Content = new TeacherClassroomMainPage();
+                }
+                else if (window is Student student)
+                {
+                    student.classroomNavigatorButton.IsChecked = true;
+                    student.StudentViewFrame.Content = new TeacherClassroomMainPage();
+                }
+            }
         }
     }
 }
