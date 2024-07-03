@@ -32,21 +32,25 @@ QuizFlash features a robust authentication system with secure login and registra
 - **Class Creation:** Easily create and manage classes to organize student groups efficiently.
 - **Quiz Management:** Design quizzes with multiple-choice questions (MCQs) to engage students in interactive learning experiences.
 - **Student Management:** View and manage student lists with pagination support for comprehensive classroom administration.
-- **Announcements:** Post announcements within classrooms to communicate important updates and reminders effectively.
 
 ### Student Features
 
 - **Quiz Attempt:** Access and attempt quizzes created by teachers to assess knowledge and learning progress.
 - **Flashcard Creation:** Create personalized flashcards to reinforce learning and memorization.
 - **Flashcard Sharing:** Share created flashcards with peers to facilitate collaborative studying.
-- **Announcements:** Stay informed about class updates and announcements posted by teachers.
+
+### Common Features
+
+- **Analytics on Homepage:** Both users can view their analytics of the apps such as quiz success rate, flashcard count and much more.
+- **Quiz Announcements on Homepage:** Both users can see their upcoming quizzes in advance.
+- **Announcements:** Both users can add anouncements in classroom which can be seen by all the users in the classroom.
 
 ## Installation
 
 To start using QuizFlash:
 
 1. **Download the Application:**
-   - Download the latest release version from the [Releases](https://github.com/yourusername/quizflash/releases) page.
+   - Download the latest release version from the [Releases](https://github.com/muzz05/QuizFlash/releases) page.
 
 2. **Installation:**
    - Unzip the downloaded file to your preferred location on your computer.
