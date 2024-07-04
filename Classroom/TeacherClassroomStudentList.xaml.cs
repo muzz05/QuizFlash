@@ -125,6 +125,11 @@ namespace QuizFlash
         // Leave Classroom
         private void LeaveClassroom(object sender, RoutedEventArgs e)
         {
+            Button button = (Button)sender;
+            button.Content = "Loading...";
+            button.IsEnabled = false;
+
+
             Database db = new Database();
 
             if(GlobalVariables.IsTeacher){

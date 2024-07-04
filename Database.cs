@@ -14,7 +14,7 @@ namespace QuizFlash
 
         public Database()
         {
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection(remoteConnection);
         }
 
         // Open the database connection

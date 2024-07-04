@@ -26,8 +26,6 @@ namespace QuizFlash
         public int DepartmentId;
         public bool isTeacher;
 
-        public static readonly RoutedCommand EnterCommand1 = new RoutedCommand();
-
         public Signup()
         {
 
@@ -37,7 +35,6 @@ namespace QuizFlash
 
             DataTable DepartmentsData = db.ExecuteQuery(sql, parameters);
             InitializeComponent();
-            CommandBindings.Add(new CommandBinding(EnterCommand1,HandleSignup ));
            
 
             // Adding Department Data to the Combo Box
@@ -170,6 +167,9 @@ namespace QuizFlash
         // THIS IS FOR LOGICAL PART
         private void HandleSignup(object sender, RoutedEventArgs e)
         {
+            SignupButtom.Content = "Loading...";
+            SignupButtom.IsEnabled = false;
+
             Database db = new Database();
 
             string email = txtEmail_signup.Text;

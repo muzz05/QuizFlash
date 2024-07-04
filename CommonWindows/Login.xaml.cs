@@ -82,6 +82,9 @@ namespace QuizFlash
         }
         private void HandleLogin(object sender, RoutedEventArgs e)
         {
+            LoginButton.Content = "Loading...";
+            LoginButton.IsEnabled = false;
+
             Database db = new Database();
 
             string password = passwordBoxLogin.Password;
@@ -99,6 +102,7 @@ namespace QuizFlash
             {
                 CustomMessageBox errorEmail = new CustomMessageBox("Unsuccessful Login", "Please enter a valid email address", "Error");
                 errorEmail.ShowDialog();
+                LoginButton.IsEnabled = false;
             }
             else
             {

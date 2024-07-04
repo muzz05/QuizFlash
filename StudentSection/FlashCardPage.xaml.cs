@@ -38,7 +38,7 @@ namespace QuizFlash
         private void AddFlashCard_Click(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
-            string sql = "INSERT INTO Flashcards(studentId) VALUES(@StudentId)";
+            string sql = "INSERT INTO Flashcards(studentId, data, title) VALUES(@StudentId, '', '')";
             int result = db.ExecuteNonQuery(sql, new MySqlParameter("@StudentId", StudentId));
             sql = "SELECT MAX(id) AS MaxId FROM Flashcards WHERE studentId = @StudentId";
             object id = db.ExecuteScalar(sql, new MySqlParameter("@StudentId", StudentId));

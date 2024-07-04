@@ -73,7 +73,7 @@
                         <PasswordBox x:Name="passwordBoxLogin" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" CaretBrush="#c3c4cf" Margin="6 0 0 0" VerticalAlignment="Center"/>
                     </Grid>
                 </Border>
-                <Button Content="Sign In" Command="local:Login.EnterCommand" Click="HandleLogin" Style="{StaticResource mainButton}" Cursor="Hand" />
+                <Button Content="Sign In" Command="local:Login.EnterCommand" Click="HandleLogin" Style="{StaticResource mainButton}" Cursor="Hand" x:Name="LoginButton"/>
             </StackPanel>
         </Border>
 

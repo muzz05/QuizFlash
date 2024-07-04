@@ -12,16 +12,6 @@
         WindowStyle="None"
         Title="Signup" Height="500" Width="700" WindowStartupLocation="CenterScreen">
 
-    <Window.CommandBindings>
-        <CommandBinding Command="local:Signup.EnterCommand1" Executed="HandleSignup"/>
-    </Window.CommandBindings>
-    <Window.InputBindings>
-        <KeyBinding Command="local:Signup.EnterCommand1" Key="Enter"/>
-    </Window.InputBindings>
-
-
-
-
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -184,7 +174,7 @@
                         </Grid>
                     </StackPanel>
                 </Border>
-                <Button Content="Sign Up" Command="local:Signup.EnterCommand1" Margin="0,0,20,0" Style="{StaticResource mainButton}" Click="HandleSignup" Cursor="Hand"/>
+                <Button x:Name="SignupButtom" Content="Sign Up" Margin="0,0,20,0" Style="{StaticResource mainButton}" Click="HandleSignup" Cursor="Hand"/>
             </StackPanel>
         </Border>
 
