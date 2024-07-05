@@ -23,11 +23,9 @@ namespace QuizFlash
     /// </summary>
     public partial class Login : Window
     {
-        public static readonly RoutedCommand EnterCommand = new RoutedCommand();
         public Login()
         {
             InitializeComponent();
-            CommandBindings.Add(new CommandBinding(EnterCommand, HandleLogin));
         }
 
 
@@ -90,6 +88,16 @@ namespace QuizFlash
             string password = passwordBoxLogin.Password;
             string email = emailBoxLogin.Text;
 
+            if(password == "" || email == "")
+            {
+                LoginButton.Content = "Login";
+                LoginButton.IsEnabled = true;
+
+                CustomMessageBox errorEmail = new CustomMessageBox("Unsuccessful Login", "Cannot leave any field empty", "Error");
+                errorEmail.ShowDialog();
+                return;
+            }
+
             string sql = "SELECT * FROM Users WHERE email = @Email";
 
             MySqlParameter emailParam = new MySqlParameter();
@@ -100,9 +108,11 @@ namespace QuizFlash
 
             if (resultTable.Rows.Count == 0)
             {
+                LoginButton.Content = "Login";
+                LoginButton.IsEnabled = true;
+
                 CustomMessageBox errorEmail = new CustomMessageBox("Unsuccessful Login", "Please enter a valid email address", "Error");
                 errorEmail.ShowDialog();
-                LoginButton.IsEnabled = false;
             }
             else
             {
@@ -166,6 +176,9 @@ namespace QuizFlash
                 }
                 else
                 {
+                    LoginButton.Content = "Login";
+                    LoginButton.IsEnabled = true;
+
                     CustomMessageBox errorPassword = new CustomMessageBox("Unsuccessful Login", "Please enter the correct password", "Error");
                     errorPassword.ShowDialog();
                 }

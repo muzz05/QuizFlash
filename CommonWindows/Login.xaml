@@ -10,13 +10,6 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Title="Login Window" Height="320" Width="590">
 
-    <Window.CommandBindings>
-        <CommandBinding Command="local:Login.EnterCommand" Executed="HandleLogin"/>
-    </Window.CommandBindings>
-    <Window.InputBindings>
-        <KeyBinding Command="local:Login.EnterCommand" Key="Enter"/>
-    </Window.InputBindings>
-
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -73,7 +66,7 @@
                         <PasswordBox x:Name="passwordBoxLogin" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" CaretBrush="#c3c4cf" Margin="6 0 0 0" VerticalAlignment="Center"/>
                     </Grid>
                 </Border>
-                <Button Content="Sign In" Command="local:Login.EnterCommand" Click="HandleLogin" Style="{StaticResource mainButton}" Cursor="Hand" x:Name="LoginButton"/>
+                <Button Content="Sign In" Click="HandleLogin" Style="{StaticResource mainButton}" Cursor="Hand" x:Name="LoginButton"/>
             </StackPanel>
         </Border>
 

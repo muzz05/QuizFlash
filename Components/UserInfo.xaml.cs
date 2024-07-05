@@ -21,6 +21,8 @@ namespace QuizFlash
 
         private async Task LoadUserDataAsync()
         {
+            UserInfoGrid.Visibility = Visibility.Hidden;
+
             Database db = new Database();
 
             int quizCountInt = 0;
@@ -61,6 +63,8 @@ namespace QuizFlash
                 object flashcardCount = await Task.Run(() => db.ExecuteScalar(sql));
                 flashcardCountInt = Convert.ToInt32(flashcardCount);
             }
+
+            UserInfoGrid.Visibility = Visibility.Visible;
 
             studentName.Text = GlobalVariables.Username;
             isStudentorTeacher.Text = GlobalVariables.IsTeacher ? "Teacher" : "Student";
