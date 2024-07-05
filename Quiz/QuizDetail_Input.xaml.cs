@@ -52,11 +52,9 @@ namespace QuizFlash
 
             long epochTimestamp = ConvertToEpoch(dueDate.Value);
 
-            MessageBox.Show(epochTimestamp.ToString());
-
             Database db = new Database();
 
-            string sql = "INSERT INTO quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
+            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@name",quizName),
@@ -71,7 +69,7 @@ namespace QuizFlash
             };
 
             db.ExecuteNonQuery(sql, parameters);
-            DataTable quizId = db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
+            DataTable quizId = db.ExecuteQuery("SELECT id FROM Quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
             this.Close();
 
             QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["id"]));

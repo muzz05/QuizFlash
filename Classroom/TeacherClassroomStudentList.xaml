@@ -19,7 +19,7 @@
             <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="25" Width="80" Grid.Column="0" VerticalAlignment="Center" Margin="15,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     
-                <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="TotalStudentCount"  Margin="2,0,5,0">35</TextBlock>
+                <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="TotalStudentCount"  Margin="5,0,5,0">35</TextBlock>
                 <TextBlock FontSize="12" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" >Students</TextBlock>
                 </StackPanel>
             </Border>

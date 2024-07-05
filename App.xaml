@@ -6,7 +6,7 @@
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
    
     <Application.Resources>
-        
+        <BitmapImage x:Key="AppIcon" UriSource="favicon-final.ico"/>
         
          <!--For Kaif-->
 
@@ -284,7 +284,8 @@
                     <Setter Property="Background" Value="#222432" />
                     <Setter Property="Foreground" Value="#c4c3cf"/>
                     <Setter Property="FontSize" Value="10"/>
-                    <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="5"/>
                     <Setter Property="Cursor" Value="Hand"/>
                     <Setter Property="Template">
                         <Setter.Value>

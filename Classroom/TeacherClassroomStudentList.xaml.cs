@@ -91,7 +91,7 @@ namespace QuizFlash
                 Database db = new Database();
                 string sql = "SELECT s.id, s.studentCode, u.name FROM Students s JOIN Users u ON u.id = s.userId WHERE studentCode = @StudentCode";
                 DataTable StudentInfo = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_ClassroomTextBox.Text));
-                if (StudentInfo != null) {
+                if (StudentInfo.Rows.Count  != 0) {
                     sql = "INSERT INTO ClassroomStudents(classroomId, studentId) VALUES(@ClassroomId, @StudentId)";
                     MySqlParameter[] insertparams =
                     {
@@ -99,6 +99,11 @@ namespace QuizFlash
                         new MySqlParameter("@StudentId", Convert.ToInt32(StudentInfo.Rows[0]["id"]))
                     };
                     int result = db.ExecuteNonQuery(sql, insertparams);
+
+                    sql = "UPDATE Classroom SET studentCount = studentCount + 1 WHERE id = @ClassroomId";
+                    int updatingClassroom = db.ExecuteNonQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+
+
                     if (result > 0) {
                         AddClassroomStudent(Convert.ToInt32(StudentInfo.Rows[0]["id"]), StudentInfo.Rows[0]["name"].ToString(), StudentInfo.Rows[0]["studentCode"].ToString());
                         TotalStudentCount.Text = (Convert.ToInt32(TotalStudentCount.Text) + 1).ToString();
@@ -154,6 +159,9 @@ namespace QuizFlash
                         new MySqlParameter("@StudentId", GlobalVariables.StudentId)
                     };
                 int removeStudent = db.ExecuteNonQuery(sql, deleteparams);
+
+                sql = "UPDATE Classroom SET studentCount = studentCount - 1 WHERE id = @ClassroomId";
+                int updatingClassroom = db.ExecuteNonQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
 
                 foreach (Window window in Application.Current.Windows)
                 {

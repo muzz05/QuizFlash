@@ -31,7 +31,7 @@ namespace QuizFlash
             quizTitle.Text = name;
             quizId = id;
 
-            string query = "Select * from questionanswers where quizId=@quizId";
+            string query = "Select * from QuestionAnswers where quizId=@quizId";
             DataTable quiz = database.ExecuteQuery(query, new MySqlParameter("@quizId", id));
 
             for (int i = 0; i < quiz.Rows.Count; i++)
@@ -48,7 +48,7 @@ namespace QuizFlash
             {
                 questionCount++;
                 if (control is QuizDisplayControl quizDisplayControl)
-                { string query = "Insert into studentresponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
+                { string query = "Insert into StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
                     MySqlParameter[] parameters =
                     {
                         new MySqlParameter("@quizId",quizId),

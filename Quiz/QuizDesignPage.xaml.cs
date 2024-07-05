@@ -42,7 +42,7 @@ namespace QuizFlash
                     string option3 = quizDesignControl.optionCTextBox.Text;
                     string option4 = quizDesignControl.optionDTextBox.Text;
 
-                    string sql = "INSERT INTO questionanswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
+                    string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
                     MySqlParameter[] parameters = {
                                                    new MySqlParameter("@quizId", quizId),    
                                                    new MySqlParameter("@question",question), 
