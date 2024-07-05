@@ -7,8 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="880"
       Title="StudentHomePage">
-    
-    <Grid Background="Transparent">
+
+    <Grid>
+
+
+        <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Visible" Height="400" Width="880">
+            <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Background="Transparent"  x:Name="MainContentStudentHomePage">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="400"/>
@@ -63,5 +70,6 @@
 
         </WrapPanel>
 
+    </Grid>
     </Grid>
 </Page>

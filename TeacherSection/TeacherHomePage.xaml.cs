@@ -11,6 +11,9 @@ namespace QuizFlash
 {
     public partial class TeacherHomePage : Page
     {
+
+        private bool isLoading;
+
         private string[] quotes = new string[]
         {
             "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
@@ -47,8 +50,17 @@ namespace QuizFlash
 
         private async void TeacherHomePage_Loaded(object sender, RoutedEventArgs e)
         {
+            SetLoadingState(true);
             await LoadDataAsync();
+            SetLoadingState(false);
             AddQuote();
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            MainContentTeacherHomePage.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private async Task LoadDataAsync()
