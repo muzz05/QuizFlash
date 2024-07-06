@@ -26,18 +26,23 @@ namespace QuizFlash.Components
             InitializeComponent();
             List<string> options = new List<string> { option1, option2, option3, option4 };
             List<RadioButton> buttons = new List<RadioButton> { option_1, option_2, option_3, option_4};
+            string correct_ans = options[answer];
+
             Random random = new Random();
 
             for (int i = 0; i < 4; i++)
             {
                 int index = random.Next(options.Count);
                 buttons[i].Content = options[index];
+                if (options[index] == correct_ans)
+                {
+                    correct = i;
+                }
                 options.RemoveAt(index);
             }
 
             ques_Number.Text= questionNumber.ToString();
             question_text.Text = question;           
-            correct = answer;
         }        
         private void option_1_Checked(object sender, RoutedEventArgs e)
         {
