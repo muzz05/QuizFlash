@@ -34,12 +34,15 @@ namespace QuizFlash
             string query = "Select * from questionanswers where quizId=@quizId";
             DataTable quiz = database.ExecuteQuery(query, new MySqlParameter("@quizId", id));
             Random random = new Random();
-            
-            while(quiz.Rows.Count>0)                    
+
+            int i = 1;
+            while (quiz.Rows.Count>0)                    
             {
-                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[i]["question"].ToString(), quiz.Rows[i]["optionA"].ToString(), quiz.Rows[i]["optionB"].ToString(), quiz.Rows[i]["optionC"].ToString(), quiz.Rows[i]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[i]["correct"]));
+                int index = random.Next(quiz.Rows.Count);
+                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[index]["question"].ToString(), quiz.Rows[index]["optionA"].ToString(), quiz.Rows[index]["optionB"].ToString(), quiz.Rows[index]["optionC"].ToString(), quiz.Rows[index]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[index]["correct"]),i);
                 quizDisplayPanel.Children.Add(quizDisplayControl);
                 quiz.Rows.RemoveAt(index);
+                i++;
             }
         }
 

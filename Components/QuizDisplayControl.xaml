@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Background="#c3c4cf" CornerRadius="100" HorizontalAlignment="Center" Height="25" Width="25" Grid.Column="0" Padding="5" VerticalAlignment="Top">
-                    <TextBlock x:Name="QuestionNumber" FontSize="13" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">1</TextBlock>
+                    <TextBlock x:Name="ques_Number" FontSize="13" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">1</TextBlock>
                 </Border>
                 <TextBlock x:Name="question_text" Text="What does SQL stand for?" Style="{StaticResource NormalText}" VerticalAlignment="Center" Grid.Column="1" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Width="340" TextWrapping="Wrap" TextAlignment="Left"/>
             </Grid>

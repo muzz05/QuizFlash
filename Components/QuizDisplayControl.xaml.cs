@@ -35,6 +35,7 @@ namespace QuizFlash.Components
                 options.RemoveAt(index);
             }
 
+            ques_Number.Text= questionNumber.ToString();
             question_text.Text = question;           
             correct = answer;
         }        
