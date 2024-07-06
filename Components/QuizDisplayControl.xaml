@@ -5,14 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuizFlash.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Border Background="#353340">
+             d:DesignHeight="280" d:DesignWidth="380">
+    <Border Background="Transparent" BorderBrush="Transparent" Margin="25,10,0,0">
         <StackPanel>
-            <TextBlock x:Name="question_text" Text="1. What does SQL stand for?" Style="{StaticResource NormalText}" Margin="10" VerticalAlignment="Center" Grid.Row="1" FontSize="16" />
-            <RadioButton x:Name="option_1" Style="{StaticResource NavigationButtons}" Content="Structured Quantity Language" Width="250" Checked="option_1_Checked" Grid.Row="2"/>
-            <RadioButton x:Name="option_2" Style="{StaticResource NavigationButtons}" Content="Structured Query Language" Width="250" Checked="option_2_Checked" Grid.Row="3"/>
-            <RadioButton x:Name="option_3" Style="{StaticResource NavigationButtons}" Content="Structured Question Language" Width="250" Checked="option_3_Checked" Grid.Row="4"/>
-            <RadioButton x:Name="option_4" Style="{StaticResource NavigationButtons}" Content="Structured Quality Language" Width="250" Checked="option_4_Checked" Grid.Row="5"/>
+            <Grid Grid.Row="1" Margin="0,20,0,10" HorizontalAlignment="Center" Width="360">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Background="#c3c4cf" CornerRadius="100" HorizontalAlignment="Center" Height="25" Width="25" Grid.Column="0" Padding="5" VerticalAlignment="Top">
+                    <TextBlock x:Name="QuestionNumber" FontSize="13" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20">1</TextBlock>
+                </Border>
+                <TextBlock x:Name="question_text" Text="What does SQL stand for?" Style="{StaticResource NormalText}" VerticalAlignment="Center" Grid.Column="1" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Left" Width="340" TextWrapping="Wrap" TextAlignment="Left"/>
+            </Grid>
+
+            <RadioButton x:Name="option_1" Style="{StaticResource QuizAnswerButtons}" Content="Structured Quantity Language" Checked="option_1_Checked" />
+            <RadioButton x:Name="option_2" Style="{StaticResource QuizAnswerButtons}" Content="Structured Query Language" Checked="option_2_Checked" />
+            <RadioButton x:Name="option_3" Style="{StaticResource QuizAnswerButtons}" Content="Structured Question Language" Checked="option_3_Checked" />
+            <RadioButton x:Name="option_4" Style="{StaticResource QuizAnswerButtons}" Content="Structured Quality Language" Checked="option_4_Checked" />
         </StackPanel>
     </Border>
 </UserControl>

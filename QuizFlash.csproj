@@ -267,6 +267,9 @@
     <Compile Include="Components\ClassroomStudents.xaml.cs">
       <DependentUpon>ClassroomStudents.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Loader.xaml.cs">
+      <DependentUpon>Loader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\QuizDisplayControl.xaml.cs">
       <DependentUpon>QuizDisplayControl.xaml</DependentUpon>
     </Compile>
@@ -363,6 +366,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\ClassroomStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Loader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -552,6 +559,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon-final.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Audio\soundeffect.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />

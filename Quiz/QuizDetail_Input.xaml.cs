@@ -49,8 +49,6 @@ namespace QuizFlash
 
             long epochTimestamp = ConvertToEpoch(dueDate.Value);
 
-            MessageBox.Show(epochTimestamp.ToString());
-
             Database db = new Database();
 
             string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";

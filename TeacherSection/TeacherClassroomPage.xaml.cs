@@ -25,6 +25,7 @@ namespace QuizFlash
 
         private int TeacherId;
         private int UserId;
+        private bool isLoading;
 
         public TeacherClassroomPage(int teacherId, int userId)
         {
@@ -33,14 +34,27 @@ namespace QuizFlash
 
             InitializeComponent();
 
-            //AddClassroom("Applied Physics", "PH-122", "Sir Tahir Jamal",49,"XA-9118-PF-09");
-            //AddClassroom("Software Engineering", "SE-205", "Miss Sidra",23, "XA-8174-PF-69");
-            //AddClassroom("Mathematics", "MTH-101", "Dr. Smith", 89, "LA-PO18-PF-09");
-            //AddClassroom("Computer Science", "CS-301", "Prof. Johnson", 69, "NA-9118-PF-06");
-            //AddClassroom("Chemistry", "CH-202", "Dr. Lee",34, "PA-1293-PF-08");
-            //AddClassroom("History", "HI-110", "Prof. Adams", 43, "LO-9118-LF-00");
-            //AddClassroom("Literature", "LI-220", "Dr. Brown", 39, "XA-9118-PF-09");
+            Loaded += TeacherClassroomPage_Loaded;
 
+            
+        }
+
+        private async void TeacherClassroomPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            TeacherClassroomGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
 
             MySqlParameter[] classroomFetchParams =
@@ -49,7 +63,8 @@ namespace QuizFlash
                 new MySqlParameter("@TeacherId", TeacherId)
             };
 
-            DataTable ClassroomsData = db.ExecuteQuery("SELECT c.*, u.name as TeacherName FROM Classroom c JOIN Users u ON u.id = @UserId WHERE c.teacherId = @TeacherId", classroomFetchParams);
+            DataTable ClassroomsData = await Task.Run(() => db.ExecuteQuery("SELECT c.*, u.name as TeacherName FROM Classroom c JOIN Users u ON u.id = @UserId WHERE c.teacherId = @TeacherId", classroomFetchParams));
+            
             if (ClassroomsData.Rows.Count > 0)
             {
                 for (int i = 0; i < ClassroomsData.Rows.Count; i++)
@@ -58,6 +73,7 @@ namespace QuizFlash
                 }
             }
         }
+
         private void classroom_add(object sender, RoutedEventArgs e)
         {
             ClassroomTeacherMsgBox classroomTeacherMsgBox = new ClassroomTeacherMsgBox();
@@ -68,7 +84,6 @@ namespace QuizFlash
         {
 
             Classroom newClassroom = new Classroom(coursename, code, teacher, count,gcr_code, true, classroomId);
-            // Add the new classroomcontrol instance to the container
             int index = WrapPanelClassroom.Children.Count - 1;
             newClassroom.Margin = new Thickness(0, 0, 15, 15);
             WrapPanelClassroom.Children.Insert(index,newClassroom);

@@ -25,6 +25,7 @@ namespace QuizFlash
 
         private int StudentId;
         private int UserId;
+        private bool isLoading;
 
         public StudentClassroomPage(int studentId, int userId)
         {
@@ -33,14 +34,35 @@ namespace QuizFlash
 
             InitializeComponent();
 
+            Loaded += StudentClassroomPage_Loaded;
+
+            
+        }
+
+        private async void StudentClassroomPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            StudentClassroomGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
 
-            DataTable ClassroomsData = db.ExecuteQuery("SELECT c.*, u.name as TeacherName FROM Classroom c JOIN Teachers t ON t.id = c.teacherId JOIN Users u ON u.id = t.userId JOIN ClassroomStudents cs ON cs.classroomId = c.id WHERE cs.studentId = @StudentId", new MySqlParameter("@StudentId", StudentId));
+            DataTable ClassroomsData = await Task.Run(() => db.ExecuteQuery("SELECT c.*, u.name as TeacherName FROM Classroom c JOIN Teachers t ON t.id = c.teacherId JOIN Users u ON u.id = t.userId JOIN ClassroomStudents cs ON cs.classroomId = c.id WHERE cs.studentId = @StudentId", new MySqlParameter("@StudentId", StudentId)));
             if (ClassroomsData.Rows.Count > 0)
             {
                 for (int i = 0; i < ClassroomsData.Rows.Count; i++)
                 {
-                    AddClassroom(ClassroomsData.Rows[i]["name"].ToString(), ClassroomsData.Rows[i]["courseCode"].ToString(), ClassroomsData.Rows[i]["teacherName"].ToString(), Convert.ToInt32(ClassroomsData.Rows[i]["studentCount"]), ClassroomsData.Rows[i]["classCode"].ToString(),Convert.ToInt32(ClassroomsData.Rows[i]["id"]));
+                    AddClassroom(ClassroomsData.Rows[i]["name"].ToString(), ClassroomsData.Rows[i]["courseCode"].ToString(), ClassroomsData.Rows[i]["teacherName"].ToString(), Convert.ToInt32(ClassroomsData.Rows[i]["studentCount"]), ClassroomsData.Rows[i]["classCode"].ToString(), Convert.ToInt32(ClassroomsData.Rows[i]["id"]));
                 }
             }
         }

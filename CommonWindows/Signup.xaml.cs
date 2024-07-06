@@ -177,12 +177,25 @@ namespace QuizFlash
             string name = txtUsername_signup.Text;
             string UserCode = UniqueCodeGenerator.GenerateUniqueCode();
 
+            if (password == "" || email == "" || name == "" )
+            {
+                SignupButtom.Content = "Signup";
+                SignupButtom.IsEnabled = true;
+
+                CustomMessageBox errorEmail = new CustomMessageBox("Unsuccessful Signup", "Cannot leave any field empty", "Error");
+                errorEmail.ShowDialog();
+                return;
+            }
+
             // Checking if a user with the same Email exists
 
             string sql = "SELECT email FROM Users WHERE email = @Email";
             object checkEmail = db.ExecuteScalar(sql, new MySqlParameter("@Email", email));
             if (checkEmail != null)
             {
+                SignupButtom.Content = "Signup";
+                SignupButtom.IsEnabled = true;
+
                 CustomMessageBox ErrorSignupEmail = new CustomMessageBox("Unsuccessfull Signup", "User with the same email already exists", "Error");
                 ErrorSignupEmail.ShowDialog();
                 return;
@@ -234,6 +247,9 @@ namespace QuizFlash
             }
             else
             {
+                SignupButtom.Content = "Signup";
+                SignupButtom.IsEnabled = true;
+
                 CustomMessageBox ErrorSignup = new CustomMessageBox("Unsuccessfull Signup", "Some Error Occured in Signup", "Error");
                 ErrorSignup.ShowDialog();
             }

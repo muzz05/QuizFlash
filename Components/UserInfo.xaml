@@ -8,7 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <Border x:Name="cardBorder" CornerRadius="12" Background="#2B2A3A" BorderThickness="0" BorderBrush="#3E3C4E"  Margin="0">
-        <Grid  Height="450" Cursor="Hand" Width="200" Margin="0,-10,0,0">
+        <Grid>
+
+            <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="450" Width="200">
+                <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+            
+            <Grid  Height="450" Cursor="Hand" Width="200" Margin="0,-10,0,0" x:Name="UserInfoGrid">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
@@ -100,6 +106,7 @@
 
 
 
+        </Grid>
         </Grid>
     </Border>
 </UserControl>

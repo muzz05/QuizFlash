@@ -7,14 +7,21 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="880"
       Title="StudentHomePage">
+    <Grid>
+        
 
-    <Grid Background="Transparent">
+    <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Visible" Height="400" Width="880">
+            <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+    
+    <Grid Background="Transparent" x:Name="MainContentTeacherHomePage">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="17*" />
         </Grid.ColumnDefinitions>
-        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="10,13,0,0">
+
+        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="15,22,0,0">
 
         </WrapPanel>
         <Grid Grid.Column="1">
@@ -63,5 +70,6 @@
 
         </WrapPanel>
 
+    </Grid>
     </Grid>
 </Page>
