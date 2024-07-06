@@ -21,7 +21,7 @@
             <ColumnDefinition Width="17*" />
         </Grid.ColumnDefinitions>
 
-        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="10,13,0,0">
+        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="15,22,0,0">
 
         </WrapPanel>
         <Grid Grid.Column="1">

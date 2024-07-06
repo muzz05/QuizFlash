@@ -22,15 +22,35 @@ namespace QuizFlash
     /// </summary>
     public partial class TeacherClassroomAnnouncementPage : Page
     {
+
+        private bool isLoading;
         public TeacherClassroomAnnouncementPage()
         {
             InitializeComponent();
+            Loaded += TeacherClassroomAnnouncementPage_Loaded;
+        }
 
+        private async void TeacherClassroomAnnouncementPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            ClassroomAnnouncementGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
 
             // Getting the Classroom Info
             string sql = "SELECT c.name AS classroomName, c.courseCode, u.name FROM Classroom c JOIN Teachers t ON c.teacherId = t.id JOIN Users u ON u.id = t.userId WHERE c.id = @ClassroomId";
-            DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+            DataTable result = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
 
             ClassroomNameAnnouncement.Text = result.Rows[0]["classroomName"].ToString();
             TeacherNameAnnouncement.Text = result.Rows[0]["name"].ToString();
@@ -39,7 +59,7 @@ namespace QuizFlash
 
             // Getting the Announcement Info
             sql = "SELECT cs.*, u.name FROM ClassroomStream cs JOIN Users u ON u.id = cs.userId WHERE classroomId = @ClassroomID ORDER BY cs.id DESC";
-            DataTable announcementsResult = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+            DataTable announcementsResult = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
 
             for (int i = 0; i < announcementsResult.Rows.Count; i++)
             {

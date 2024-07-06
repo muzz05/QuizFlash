@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,26 +14,42 @@ namespace QuizFlash
 
         private int StudentId;
         private int UserId;
+        private bool isLoading;
 
         public FlashCardPage(int _studentId, int _userId )
         {
             this.StudentId = _studentId;
             this.UserId = _userId;
 
-            // Getting the Already made flashcards
-
             InitializeComponent();
 
+            Loaded += FlashCardPage_Loaded;
 
+        }
+
+        private async void FlashCardPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            FlashcardGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
             string sql = "SELECT * FROM Flashcards WHERE studentId = @StudentId";
-            DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@StudentId", StudentId));
+            DataTable result = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@StudentId", StudentId)));
             for (int i = 0; i < result.Rows.Count; i++)
             {
                 AddFlashCard(result.Rows[i]["title"].ToString(), result.Rows[i]["data"].ToString(), Convert.ToInt32(result.Rows[i]["id"]));
             }
-
-
         }
 
         private void AddFlashCard_Click(object sender, RoutedEventArgs e)

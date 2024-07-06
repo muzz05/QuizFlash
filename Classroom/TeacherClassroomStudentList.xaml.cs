@@ -24,26 +24,48 @@ namespace QuizFlash
     /// </summary>
     public partial class TeacherClassroomStudentList : Page
     {
+
+        private bool isLoading;
+
         public TeacherClassroomStudentList()
         {
             InitializeComponent();
+            Loaded += TeacherClassroomStudentList_Loaded;
 
             AddStudentStackPanel.Visibility = GlobalVariables.IsTeacher ? Visibility.Visible : Visibility.Collapsed;
 
+        }
+
+        private async void TeacherClassroomStudentList_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            ClassroomStudentListGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
 
             string sql = "SELECT COUNT(cs.studentId) AS StudentCount FROM ClassroomStudents cs JOIN Students s ON cs.studentId = s.id JOIN Users u ON u.id = s.userId WHERE cs.classroomId = @ClassroomId";
-            object StudentCount = db.ExecuteScalar(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+            object StudentCount = await Task.Run(() => db.ExecuteScalar(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
             TotalStudentCount.Text = StudentCount.ToString();
 
 
             sql = "SELECT t.id, t.teacherCode, u.name FROM Classroom c JOIN Teachers t ON c.teacherId = t.id JOIN Users u ON t.userId = u.id WHERE c.id = @ClassroomId";
-            DataTable TeacherInfo = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+            DataTable TeacherInfo = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
 
             AddClassroomTeacher(Convert.ToInt32(TeacherInfo.Rows[0]["id"]), TeacherInfo.Rows[0]["name"].ToString(), TeacherInfo.Rows[0]["teacherCode"].ToString());
-            
+
             sql = "SELECT cs.studentId, s.studentCode, u.name FROM ClassroomStudents cs JOIN Students s ON cs.studentId = s.id JOIN Users u ON u.id = s.userId WHERE cs.classroomId = @ClassroomId ORDER BY u.name DESC";
-            DataTable StudentInfo = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+            DataTable StudentInfo = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
 
             if (StudentInfo != null)
             {
@@ -52,8 +74,9 @@ namespace QuizFlash
                     AddClassroomStudent(Convert.ToInt32(StudentInfo.Rows[i]["studentId"]), StudentInfo.Rows[i]["name"].ToString(), StudentInfo.Rows[i]["studentCode"].ToString());
                 }
             }
-
         }
+
+
 
         private void StudentCode_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
@@ -92,26 +115,45 @@ namespace QuizFlash
                 string sql = "SELECT s.id, s.studentCode, u.name FROM Students s JOIN Users u ON u.id = s.userId WHERE studentCode = @StudentCode";
                 DataTable StudentInfo = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_ClassroomTextBox.Text));
                 if (StudentInfo.Rows.Count  != 0) {
-                    sql = "INSERT INTO ClassroomStudents(classroomId, studentId) VALUES(@ClassroomId, @StudentId)";
-                    MySqlParameter[] insertparams =
+
+                    sql = "SELECT 1 FROM ClassroomStudents WHERE studentId = @StudentId AND classroomId = @ClassroomId";
+                    MySqlParameter[] Checkparams =
                     {
                         new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId),
                         new MySqlParameter("@StudentId", Convert.ToInt32(StudentInfo.Rows[0]["id"]))
                     };
-                    int result = db.ExecuteNonQuery(sql, insertparams);
 
-                    sql = "UPDATE Classroom SET studentCount = studentCount + 1 WHERE id = @ClassroomId";
-                    int updatingClassroom = db.ExecuteNonQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+                    object checkResult = db.ExecuteScalar(sql, Checkparams);
 
-
-                    if (result > 0) {
-                        AddClassroomStudent(Convert.ToInt32(StudentInfo.Rows[0]["id"]), StudentInfo.Rows[0]["name"].ToString(), StudentInfo.Rows[0]["studentCode"].ToString());
-                        TotalStudentCount.Text = (Convert.ToInt32(TotalStudentCount.Text) + 1).ToString();
+                    if(checkResult != null)
+                    {
+                        CustomMessageBox repeatedCode = new CustomMessageBox("Repeated Code", "Student with this code already exists", "Error");
+                        repeatedCode.ShowDialog();
                     }
                     else
                     {
-                        CustomMessageBox errorOccured = new CustomMessageBox("Error Occured", "Some Error Occured in adding Student to Classroom", "Error");
-                        errorOccured.ShowDialog();
+                        sql = "INSERT INTO ClassroomStudents(classroomId, studentId) VALUES(@ClassroomId, @StudentId)";
+                        MySqlParameter[] insertparams =
+                        {
+                            new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId),
+                            new MySqlParameter("@StudentId", Convert.ToInt32(StudentInfo.Rows[0]["id"]))
+                        };
+                        int result = db.ExecuteNonQuery(sql, insertparams);
+
+                        sql = "UPDATE Classroom SET studentCount = studentCount + 1 WHERE id = @ClassroomId";
+                        int updatingClassroom = db.ExecuteNonQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+
+
+                        if (result > 0)
+                        {
+                            AddClassroomStudent(Convert.ToInt32(StudentInfo.Rows[0]["id"]), StudentInfo.Rows[0]["name"].ToString(), StudentInfo.Rows[0]["studentCode"].ToString());
+                            TotalStudentCount.Text = (Convert.ToInt32(TotalStudentCount.Text) + 1).ToString();
+                        }
+                        else
+                        {
+                            CustomMessageBox errorOccured = new CustomMessageBox("Error Occured", "Some Error Occured in adding Student to Classroom", "Error");
+                            errorOccured.ShowDialog();
+                        }
                     }
                 }
                 else
@@ -122,7 +164,7 @@ namespace QuizFlash
             }
             else
             {
-                CustomMessageBox noCode = new CustomMessageBox("Empty Feild", "You cannot leave this entry empty", "Error");
+                CustomMessageBox noCode = new CustomMessageBox("Empty Field", "You cannot leave this entry empty", "Error");
                 noCode.ShowDialog();
             }
         }

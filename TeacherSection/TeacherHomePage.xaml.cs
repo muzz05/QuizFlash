@@ -16,28 +16,18 @@ namespace QuizFlash
 
         private string[] quotes = new string[]
         {
-            "Education is the most powerful weapon which you can use to change the world. - Nelson Mandela",
-            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-            "The roots of education are bitter, but the fruit is sweet. - Aristotle",
-            "Education is not the filling of a pail, but the lighting of a fire. - William Butler Yeats",
-            "Success is walking from failure to failure with no loss of enthusiasm. - Winston Churchill",
-            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
-            "Education is the passport to the future, for tomorrow belongs to those who prepare for it today. - Malcolm X",
-            "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau",
-            "An investment in knowledge pays the best interest. - Benjamin Franklin",
-            "The journey of a thousand miles begins with one step. - Lao Tzu",
-            "Education is not preparation for life; education is life itself. - John Dewey",
-            "Success is not how high you have climbed, but how you make a positive difference to the world. - Roy T. Bennett",
-            "Learning is not attained by chance, it must be sought for with ardor and attended to with diligence. - Abigail Adams",
-            "Success is not in what you have, but who you are. - Bo Bennett",
-            "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
-            "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
-            "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
-            "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
-            "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
-            "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
-            "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
+            "A teacher affects eternity; he can never tell where his influence stops. - Henry Adams",
+            "Teaching is the greatest act of optimism. - Colleen Wilcox",
+            "Good teaching is one-fourth preparation and three-fourths theater. - Gail Godwin",
+            "A good teacher can inspire hope, ignite the imagination, and instill a love of learning. - Brad Henry",
+            "Teaching kids to count is fine, but teaching them what counts is best. - Bob Talbert",
+            "A good teacher is like a candle – it consumes itself to light the way for others. - Mustafa Kemal Atatürk",
+            "The best teachers are those who show you where to look but don’t tell you what to see. - Alexandra K. Trenfor",
+            "Great teachers empathize with kids, respect them, and believe that each one has something special that can be built upon. - Ann Lieberman",
+            "A teacher’s job is to take a bunch of live wires and see that they are well-grounded. - Darwin D. Martin",
+            "Education is not the filling of a pail, but the lighting of a fire. - W.B. Yeats"
         };
+
 
         public TeacherHomePage()
         {

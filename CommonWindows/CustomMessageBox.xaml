@@ -20,12 +20,12 @@
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#282438" Offset="1.0"/>
-                    <GradientStop Color="#353340" Offset="0.0"/>
+                    <!--<GradientStop Color="#353340" Offset="0.0"/>-->
                 </LinearGradientBrush>
             </Border.Background>
 
             <Border.Effect>
-                <DropShadowEffect ShadowDepth="0.1" BlurRadius="5" Color="#FAFAFA" Opacity="0.5"/>
+                <DropShadowEffect ShadowDepth="0.1" BlurRadius="8" Color="#c3c4cf" Opacity="0.4"/>
             </Border.Effect>
 
             <Grid Width="230" Height="140">
@@ -40,7 +40,7 @@
                     Unsuccessful Login
                 </TextBlock>
 
-                <Grid Grid.Row="1" Margin="5,0">
+                <Grid Grid.Row="1" Margin="15,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
                         <ColumnDefinition Width="80*"/>
