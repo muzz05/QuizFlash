@@ -281,8 +281,8 @@
 
 
                 <Style x:Key="MessageBoxButtons" TargetType="Button">
-                    <Setter Property="Background" Value="#222432" />
-                    <Setter Property="Foreground" Value="#c4c3cf"/>
+                    <Setter Property="Background" Value="#c3c4cf" />
+            <Setter Property="Foreground" Value="#222432"/>
                     <Setter Property="FontSize" Value="10"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="5"/>
@@ -298,7 +298,7 @@
                     </Setter>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#252837" />
+                            <Setter Property="Background" Value="#fafafa" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>

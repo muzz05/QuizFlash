@@ -31,15 +31,12 @@ namespace QuizFlash
             "Learning is not attained by chance, it must be sought for with ardor and attended to with diligence. - Abigail Adams",
             "Success is not in what you have, but who you are. - Bo Bennett",
             "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice. - Brian Herbert",
-            "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
             "Education is the key to unlocking the world, a passport to freedom. - Oprah Winfrey",
             "Success is liking yourself, liking what you do, and liking how you do it. - Maya Angelou",
             "The beautiful thing about learning is that no one can take it away from you. - B.B. King",
-            "Success is not measured by what you accomplish, but by the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds. - Orison Swett Marden",
             "Education breeds confidence. Confidence breeds hope. Hope breeds peace. - Confucius",
             "Success is stumbling from failure to failure with no loss of enthusiasm. - Winston Churchill",
             "The goal of education is the advancement of knowledge and the dissemination of truth. - John F. Kennedy",
-            "Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome. - Booker T. Washington"
         };
 
         public TeacherHomePage()
