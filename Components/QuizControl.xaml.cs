@@ -102,7 +102,8 @@ namespace QuizFlash
             {
                 if(window is Student student)
                 {
-                    student.StudentViewFrame.Content = new QuizDisplayPage(quizId, QuizName.Text);                    
+                    DataTable marksPerQuestion = database.ExecuteQuery("Select marksPerQuestion from Quiz where id=@quizId", new MySqlParameter("@quizId",quizId));
+                    student.StudentViewFrame.Content = new QuizDisplayPage(quizId, QuizName.Text, Convert.ToInt32(marksPerQuestion.Rows[0]["marksPerQuestion"]));                    
                 }
             }
         }

@@ -23,15 +23,16 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDisplayPage : Page
     {
-        int response, correct, quizId;
+        int response, correct, quizId, marksPerQuestion;
         Database database = new Database();
-        public QuizDisplayPage(int id, string name)
+        public QuizDisplayPage(int id, string name, int marksPerQuestion)
         {
             InitializeComponent();
             quizTitle.Text = name;
             quizId = id;
+            this.marksPerQuestion = marksPerQuestion;
 
-            string query = "Select * from questionanswers where quizId=@quizId";
+            string query = "Select * from QuestionAnswers where quizId=@quizId";
             DataTable quiz = database.ExecuteQuery(query, new MySqlParameter("@quizId", id));
             Random random = new Random();
 
@@ -48,7 +49,7 @@ namespace QuizFlash
 
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
-            int questionCount = 0;
+            int questionCount = 0, marksObtained=0;
             foreach (var control in quizDisplayPanel.Children)
             {
                 questionCount++;
@@ -63,9 +64,22 @@ namespace QuizFlash
                         new MySqlParameter("@response",quizDisplayControl.response)
                     };
 
+                    marksObtained+=quizDisplayControl.response == quizDisplayControl.correct ? marksPerQuestion : 0;
+
                     database.ExecuteNonQuery(query, parameters);
                 }
             }
+
+            string query1 = "Insert into Result (quizId, studentId, marksObtained) values(@quizId,@studentId,@marksObtained)";
+
+            MySqlParameter[] parameters1 =
+            {
+                new MySqlParameter("@quizId",quizId),
+                new MySqlParameter("@studentId",GlobalVariables.StudentId),
+                new MySqlParameter("@marksObtained",marksObtained)
+            };
+            database.ExecuteNonQuery(query1, parameters1);
+
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is Student student)
