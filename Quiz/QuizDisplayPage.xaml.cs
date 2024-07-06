@@ -31,13 +31,16 @@ namespace QuizFlash
             quizTitle.Text = name;
             quizId = id;
 
-            string query = "Select * from questionanswers where quizId=@quizId";
+            string query = "Select * from QuestionAnswers where quizId=@quizId"; 
             DataTable quiz = database.ExecuteQuery(query, new MySqlParameter("@quizId", id));
-
-            for (int i = 0; i < quiz.Rows.Count; i++)
+            Random random = new Random();
+            
+            while(quiz.Rows.Count>0)                    
             {
-                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[i]["question"].ToString(), quiz.Rows[i]["optionA"].ToString(), quiz.Rows[i]["optionB"].ToString(), quiz.Rows[i]["optionC"].ToString(), quiz.Rows[i]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[i]["correct"]));
+                int index = random.Next(quiz.Rows.Count);
+                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[index]["question"].ToString(), quiz.Rows[index]["optionA"].ToString(), quiz.Rows[index]["optionB"].ToString(), quiz.Rows[index]["optionC"].ToString(), quiz.Rows[index]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[index]["correct"]));
                 quizDisplayPanel.Children.Add(quizDisplayControl);
+                quiz.Rows.RemoveAt(index);
             }
         }
 
@@ -48,7 +51,7 @@ namespace QuizFlash
             {
                 questionCount++;
                 if (control is QuizDisplayControl quizDisplayControl)
-                { string query = "Insert into studentresponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
+                { string query = "Insert into StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
                     MySqlParameter[] parameters =
                     {
                         new MySqlParameter("@quizId",quizId),
@@ -65,7 +68,7 @@ namespace QuizFlash
             {
                 if (window is Student student)
                 {
-                    student.StudentViewFrame.Content = new TeacherClassroomQuizPage();
+                    student.StudentViewFrame.Content = new TeacherClassroomMainPage();
                 }
             }
         }

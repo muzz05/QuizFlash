@@ -12,7 +12,7 @@
             <StackPanel>
                 <TextBlock x:Name="quizTitle" Style="{StaticResource TitleText}"  Text="Quiz 1" Margin="10" HorizontalAlignment="Center" Width="auto" Height="50"/>
                 <StackPanel x:Name="quizDisplayPanel"/>
-                <Button x:Name="next_button" Style="{StaticResource buttonCircle}" Background="#22202f" Foreground="#c3c4cf" Content="Next" Width="100" Height="Auto" Click="next_button_Click" Margin="10" HorizontalAlignment="Center"/>
+                <Button x:Name="next_button" Style="{StaticResource buttonCircle}" Background="#22202f" Foreground="#c3c4cf" Content="Save" Width="100" Height="Auto" Click="next_button_Click" Margin="10" HorizontalAlignment="Center"/>
             </StackPanel>
         </ScrollViewer>
     </Border>

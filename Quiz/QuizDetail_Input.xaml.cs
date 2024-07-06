@@ -30,19 +30,16 @@ namespace QuizFlash
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             string quizName = quizname.Text;
-            string questions = no_ques.Text;
             string perQmarks = permarks.Text;
             DateTime? dueDate = duedate.SelectedDate;
-            int a=Int32.Parse(questions);
-            int b=Int32.Parse(perQmarks);
-            int totalmarks = a * b;
+            int marksPerQuestion=Int32.Parse(perQmarks);
             long time = Utilities.GetCurrentTimeInEpoch();
             int tid=GlobalVariables.TeacherId;
             int cid = GlobalVariables.ActiveClassroomId;
 
 
 
-            if (string.IsNullOrWhiteSpace(quizName) || string.IsNullOrWhiteSpace(questions) ||
+            if (string.IsNullOrWhiteSpace(quizName) ||
                 string.IsNullOrWhiteSpace(perQmarks) || dueDate == null)
             {
                 CustomMessageBox msg = new CustomMessageBox("Input Error", "Please fill in all fields.", "Error");
@@ -56,12 +53,12 @@ namespace QuizFlash
 
             Database db = new Database();
 
-            string sql = "INSERT INTO quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
+            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@name",quizName),
-                new MySqlParameter("@totalques",questions),
-                new MySqlParameter("@totalmark",totalmarks),
+                new MySqlParameter("@totalques",1),
+                new MySqlParameter("@totalmark",1),
                 new MySqlParameter("@marksperQ",perQmarks),
                 new MySqlParameter("@teacherid",GlobalVariables.TeacherId),
                 new MySqlParameter("@classid",GlobalVariables.ActiveClassroomId),
@@ -71,23 +68,18 @@ namespace QuizFlash
             };
 
             db.ExecuteNonQuery(sql, parameters);
-            DataTable quizId = db.ExecuteQuery("SELECT id FROM quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
+            DataTable quizId = db.ExecuteQuery("SELECT id FROM Quiz WHERE createTime=@createtime", new MySqlParameter("@createtime", time));
             this.Close();
 
-            QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["id"]));
+            QuizDesignPage addQuestion = new QuizDesignPage(Convert.ToInt32(quizId.Rows[0]["id"]),marksPerQuestion);
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is Teacher teacher)
                 {
                     teacher.TeacherViewFrame.Content = addQuestion;
                 }
-            }
-
-            for (int i = 0; i < Convert.ToInt32(questions); i++)
-            {
-                QuizDesignControl quizDesignControl = new QuizDesignControl();
-                addQuestion.quizDesignPanel.Children.Add(quizDesignControl);
-            }
+            }                
+                addQuestion.quizDesignPanel.Children.Add(new QuizDesignControl());            
 
         }
 

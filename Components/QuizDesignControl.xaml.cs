@@ -41,6 +41,6 @@ namespace QuizFlash
         private void optionDcheck(object sender, RoutedEventArgs e)
         {
             correct = 3;
-        }
+        }        
     }
 }

@@ -116,12 +116,6 @@
                         <TextBox x:Name="quizname" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
                     </StackPanel>
 
-                    <!-- Questions -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Questions: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <TextBox x:Name="no_ques" Style="{StaticResource filterTextBox}" Width="240" Height="35" Margin="8,0,0,0"/>
-                    </StackPanel>
-
                     <!-- Total Marks -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
                         <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="26,0"/>

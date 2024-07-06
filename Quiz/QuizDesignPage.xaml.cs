@@ -21,11 +21,12 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDesignPage : Page
     {
-        int quizId;
-        public QuizDesignPage(int quizId)
+        int quizId,marks;
+        public QuizDesignPage(int quizId, int marksPerQuestion)
         {
             InitializeComponent();
             this.quizId = quizId;
+            marks = marksPerQuestion;
         }
         
         private void save_question(object sender, RoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace QuizFlash
                     string option3 = quizDesignControl.optionCTextBox.Text;
                     string option4 = quizDesignControl.optionDTextBox.Text;
 
-                    string sql = "INSERT INTO questionanswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
+                    string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
                     MySqlParameter[] parameters = {
                                                    new MySqlParameter("@quizId", quizId),    
                                                    new MySqlParameter("@question",question), 
@@ -57,6 +58,9 @@ namespace QuizFlash
                 }
             }
 
+            int questions = quizDesignPanel.Children.Count - 2; // -2 because of the text block and the separator
+            database.ExecuteNonQuery("Update Quiz Set totalQuestions=@questions, totalMarks=@marks where id=@quizId;", new MySqlParameter[] {new MySqlParameter("@questions",questions), new MySqlParameter("@quizId",quizId), new MySqlParameter("@marks",marks*questions)});
+
             foreach(Window window in Application.Current.Windows)
             {
                 if(window is Teacher teacher)
@@ -64,6 +68,11 @@ namespace QuizFlash
                     teacher.TeacherViewFrame.Content= new TeacherClassroomQuizPage();
                 }
             }
+        }
+
+        private void add_question(object sender, RoutedEventArgs e)
+        {
+            quizDesignPanel.Children.Add(new QuizDesignControl());
         }
     }
 }

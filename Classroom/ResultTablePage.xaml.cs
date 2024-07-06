@@ -27,36 +27,23 @@ namespace QuizFlash
     public partial class ResultTablePage : Page
     {
         ObservableCollection<Result> results = new ObservableCollection<Result>();
-        static Database database = new Database();
-        static int minId = Convert.ToInt32(database.ExecuteScalar("Select MIN(studentId) from result where quizId=1"));
-        int nextPageId = minId + 9;
-        int prevPageId = minId;
-        public ResultTablePage(string quiz_name)
+        Database database = new Database();
+
+        int from = 0, to = 6, quizId=0;
+
+        public ResultTablePage(int quizId, string quiz_name)
         {
             InitializeComponent();
-            string query = "SELECT r.studentId, r.quizId, u.name, d.name as departmentName, r.marksObtained FROM users u JOIN result r ON u.Id = r.studentId JOIN department d ON u.departmentId = d.id where r.quizId=1;";
-            var reader = database.ExecuteQuery(query);
-            quizTitle.Text = $"{quiz_name} Quiz {reader.Rows[0]["quizId"]}";
-            for (int i = 0; i < reader.Rows.Count; i++)
-            {
-                results.Add(new Result
-                {
-                    Number = Convert.ToSByte(Convert.ToInt32(reader.Rows[i]["studentId"]) - 20),
-                    Character = reader.Rows[i]["name"].ToString()[0],
-                    Name = reader.Rows[i]["name"].ToString(),
-                    Department = reader.Rows[i]["departmentName"].ToString(),
-                    StudentCode = reader.Rows[i]["studentId"].ToString(),
-                    MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                    Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
-                });
-                if (i == 8) break;
-            }
-            resultDataGrid.ItemsSource = results;
+            this.quizId = quizId;
+            quizTitle.Text = " Results for " + quiz_name;
+            
+            NextTable(null, null);
+            
         }
 
         public void NextTable(object sender, RoutedEventArgs e)
-        {
-            DataTable reader = database.ExecuteQuery("SELECT r.studentId, u.name, d.name as departmentName, r.marksObtained FROM users u JOIN result r ON u.Id = r.studentId JOIN department d ON u.departmentId = d.id where r.quizId=1 and r.studentId>=@pageCount;", new MySqlParameter("@pageCount", nextPageId));
+            {
+            DataTable reader = database.ExecuteQuery("SELECT s.studentCode, q.marksPerQuestion, q.totalQuestions, u.name, d.name as departmentName, r.marksObtained FROM Students s JOIN Result r ON s.id = r.studentId JOIN Users u ON u.id = s.userId JOIN Quiz q ON q.id = r.quizId JOIN Department d ON u.departmentId = d.id where r.quizId=@quizId LIMIT @from,@to;", new MySqlParameter[] { new MySqlParameter("quizId", quizId), new MySqlParameter("@to", to), new MySqlParameter("@from", from) });
 
             if (reader.Rows.Count == 0)
             {
@@ -67,67 +54,61 @@ namespace QuizFlash
             else
             {
                 results.Clear();
-                int rowCount = 0;
+                int totalMarks = Convert.ToInt32(reader.Rows[0]["marksPerQuestion"]) * Convert.ToInt32(reader.Rows[0]["totalQuestions"]);
+                Console.WriteLine(totalMarks);
                 for (int i = 0; i < reader.Rows.Count; i++)
                 {
                     results.Add(new Result
                     {
-                        Number = Convert.ToSByte(Convert.ToInt32(reader.Rows[i]["studentId"]) - 20),
+                        Number = Convert.ToSByte(from+i+1),
                         Character = reader.Rows[i]["name"].ToString()[0],
                         Name = reader.Rows[i]["name"].ToString(),
                         Department = reader.Rows[i]["departmentName"].ToString(),
-                        StudentCode = reader.Rows[i]["studentId"].ToString(),
+                        StudentCode = reader.Rows[i]["studentCode"].ToString(),
                         MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                        Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
-                    });
-                    rowCount++;
-                    if (rowCount == 9)
-                    {
-                        break;
-                    }
+                        Grade = Utilities.GetGrade(Convert.ToDouble(reader.Rows[i]["marksObtained"]) / totalMarks * 100)
+                    });                    
                 }
                 resultDataGrid.ItemsSource = results;
-                nextPageId += 9;
-                prevPageId += 9;
+                from += 6;
+                to += 6;
             }
         }
 
-        public void PrevTable(object sender, RoutedEventArgs e)
-        {
-            if (prevPageId == minId)
+            public void PrevTable(object sender, RoutedEventArgs e)
             {
-                CustomMessageBox msg = new CustomMessageBox("No more data", "No more results to show", "Error");
-                msg.Show();
-                return;
-            }
-            else
-            {
-                results.Clear();
-                DataTable reader = database.ExecuteQuery("SELECT r.studentId, u.name, d.name as departmentName, r.marksObtained FROM users u JOIN result r ON u.Id = r.studentId JOIN department d ON u.departmentId = d.id where r.quizId=1 and r.studentId>=@pageCount;", new MySqlParameter("@pageCount", prevPageId-9));
-                int rowCount = 0;
-                for (int i = 0; i < reader.Rows.Count; i++)
-                {
-                    results.Add(new Result
+                to -= 6;
+                from -= 6;
+                if (to<0 || from < 0) 
                     {
-                        Number = Convert.ToSByte(Convert.ToInt32(reader.Rows[i]["studentId"]) - 20),
-                        Character = reader.Rows[i]["name"].ToString()[0],
-                        Name = reader.Rows[i]["name"].ToString(),
-                        Department = reader.Rows[i]["departmentName"].ToString(),
-                        StudentCode = reader.Rows[i]["studentId"].ToString(),
-                        MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
-                        Grade = Utilities.GetGrade(Convert.ToInt32(reader.Rows[i]["marksObtained"]))
-                    });
-                    rowCount++;
-                    if (rowCount == 9)
-                    {
-                        break;
+                        from = 0;
+                        to = 6;
+                        CustomMessageBox msg = new CustomMessageBox("No more data", "No more results to show", "Error");
+                        msg.Show();
+                        return;
                     }
+                else
+                    {
+                    results.Clear();
+                    DataTable reader = database.ExecuteQuery("SELECT s.studentCode, q.marksPerQuestion, q.totalQuestions, u.name, d.name as departmentName, r.marksObtained FROM Students s JOIN Result r ON s.id = r.studentId JOIN Users u ON u.id = s.userId JOIN Quiz q ON q.id = r.quizId JOIN Department d ON u.departmentId = d.id where r.quizId=@quizId LIMIT @from,@to;", new MySqlParameter[] { new MySqlParameter("quizId", quizId), new MySqlParameter("@to", to), new MySqlParameter("@from", from) });
+
+                    int totalMarks = Convert.ToInt32(reader.Rows[0]["marksPerQuestion"]) * Convert.ToInt32(reader.Rows[0]["totalQuestions"]);
+                    for (int i = 0; i < reader.Rows.Count; i++)
+                            {
+                                results.Add(new Result
+                                {
+                                    Number = Convert.ToSByte(from+i+1),
+                                    Character = reader.Rows[i]["name"].ToString()[0],
+                                    Name = reader.Rows[i]["name"].ToString(),
+                                    Department = reader.Rows[i]["departmentName"].ToString(),
+                                    StudentCode = reader.Rows[i]["studentCode"].ToString(),
+                                    MarksObtained = Convert.ToInt32(reader.Rows[i]["marksObtained"]),
+                                    Grade = Utilities.GetGrade((Convert.ToDouble(reader.Rows[i]["marksObtained"])/totalMarks) * 100 )
+                                });                   
+                            }
+                    resultDataGrid.ItemsSource = results;
                 }
-                resultDataGrid.ItemsSource = results;
-                nextPageId -= 9;
-                prevPageId -= 9;
-            }
-        }        
+            }        
         public class Result
         {
             public sbyte Number { get; set; }
