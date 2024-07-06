@@ -21,9 +21,10 @@ namespace QuizFlash.Components
     public partial class QuizDisplayControl : UserControl
     {
         public int response, correct;
-        public QuizDisplayControl(string question, string option1, string option2, string option3, string option4, int answer)
+        public QuizDisplayControl(string question, string option1, string option2, string option3, string option4, int answer, int questionNumber)
         {
             InitializeComponent();
+            QuestionNumber.Text = questionNumber.ToString();
             question_text.Text = question;
             option_1.Content = option1;
             option_2.Content = option2;

@@ -8,46 +8,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="230">
     <Border x:Name="cardBorder" CornerRadius="12" Background="#2B2A3A" BorderThickness="0" BorderBrush="Transparent"  Margin="0">
-        <!--<Border.Effect>
-            <DropShadowEffect Color="#fafafa" BlurRadius="10" ShadowDepth="3" Opacity="0.3" />
-        </Border.Effect>-->
 
-        <Grid Height="80" Cursor="Hand" Width="230" Margin="0">
+        <Grid Height="auto" Cursor="Hand" Width="230" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="8">
-                <TextBlock x:Name="classname" Text="Applied Physics" FontSize="14" FontWeight="SemiBold"  Margin="0,0,0,3" Foreground="#fafafa">
-                    <!--<TextBlock.Foreground>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#ffefba" Offset="0.1" />
-                            <GradientStop Color="#ffffff" Offset="0.8" />
-                        </LinearGradientBrush>
-                    </TextBlock.Foreground>-->
+            <StackPanel Margin="8,15">
+                <TextBlock x:Name="classname" Text="Applied Physics" FontSize="14" FontWeight="SemiBold"  Margin="0,0,0,8" Foreground="#fafafa" TextWrapping="Wrap" Width="160">
                 </TextBlock>
 
-                <TextBlock x:Name="announcement" Text="Chapter#1 Test 9/6/2024" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Foreground="#fafafa">
-                    <!--<TextBlock.Foreground>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#ffefba" Offset="0.1" />
-                            <GradientStop Color="#ffffff" Offset="0.8" />
-                        </LinearGradientBrush>
-                    </TextBlock.Foreground>-->
+                <TextBlock x:Name="announcement" Text="Chapter#1 Test 9/6/2024" FontSize="12" FontWeight="Normal" TextWrapping="Wrap" Foreground="#fafafa" Width="200" Margin="3,0,0,5">
                 </TextBlock>
-                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="16" Width="67" Margin="0,5,0,0" Grid.Column="0" x:Name="DueDateBadge" VerticalAlignment="Top">
+                <Border Background="#c3c4cf" Padding="3" CornerRadius="7" HorizontalAlignment="Left" Height="16" Width="67" Margin="3,5,0,0" Grid.Column="0" x:Name="DueDateBadge" VerticalAlignment="Top">
                     <TextBlock FontSize="8" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="RecentQuizDateBadge">9/12/2024</TextBlock>
                 </Border>
             </StackPanel>
 
             <Icons:PackIconVaadinIcons Kind="ArrowRight"  Grid.Column="1"  Height="30" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#fafafa">
-                <!--<Icons:PackIconVaadinIcons.Foreground>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#ffefba" Offset="0.1" />
-                        <GradientStop Color="#ffffff" Offset="0.8" />
-                    </LinearGradientBrush>
-                </Icons:PackIconVaadinIcons.Foreground>-->
             </Icons:PackIconVaadinIcons>
 
             <Button Cursor="Hand" Background="Transparent" Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2" Click="RedirectToQuiz">
@@ -58,26 +37,6 @@
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
-                <!--<Button.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation Storyboard.TargetName="cardBorder" Storyboard.TargetProperty="BorderThickness" To="1" Duration="0:0:0.2"/>
-                                <ColorAnimation Storyboard.TargetName="cardBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="#ffefba" Duration="0:0:0.2" >
-                                    
-                                </ColorAnimation>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ThicknessAnimation Storyboard.TargetName="cardBorder" Storyboard.TargetProperty="BorderThickness" To="0" Duration="0:0:0.2"/>
-                                <ColorAnimation Storyboard.TargetName="cardBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="Transparent" Duration="0:0:0.2"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Button.Triggers>-->
             </Button>
 
         </Grid>

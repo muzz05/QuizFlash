@@ -36,7 +36,7 @@ namespace QuizFlash
 
             for (int i = 0; i < quiz.Rows.Count; i++)
             {
-                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[i]["question"].ToString(), quiz.Rows[i]["optionA"].ToString(), quiz.Rows[i]["optionB"].ToString(), quiz.Rows[i]["optionC"].ToString(), quiz.Rows[i]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[i]["correct"]));
+                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[i]["question"].ToString(), quiz.Rows[i]["optionA"].ToString(), quiz.Rows[i]["optionB"].ToString(), quiz.Rows[i]["optionC"].ToString(), quiz.Rows[i]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[i]["correct"]), i+1);
                 quizDisplayPanel.Children.Add(quizDisplayControl);
             }
         }

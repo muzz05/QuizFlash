@@ -78,7 +78,6 @@ namespace QuizFlash
             {
                 new MySqlParameter("@StudentId", GlobalVariables.StudentId),
                 new MySqlParameter("@CurrentDate", Utilities.GetCurrentTimeInEpoch()),
-                new MySqlParameter("@StudentId", GlobalVariables.StudentId),
             };
             DataTable quizesResult = await Task.Run(() => db.ExecuteQuery(sql, resultParams));
 
