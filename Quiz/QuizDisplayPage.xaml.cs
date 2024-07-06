@@ -40,7 +40,7 @@ namespace QuizFlash
             while (quiz.Rows.Count>0)                    
             {
                 int index = random.Next(quiz.Rows.Count);
-                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[index]["question"].ToString(), quiz.Rows[index]["optionA"].ToString(), quiz.Rows[index]["optionB"].ToString(), quiz.Rows[index]["optionC"].ToString(), quiz.Rows[index]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[index]["correct"]),i);
+                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(Convert.ToInt32(quiz.Rows[index]["id"]), quiz.Rows[index]["question"].ToString(), quiz.Rows[index]["optionA"].ToString(), quiz.Rows[index]["optionB"].ToString(), quiz.Rows[index]["optionC"].ToString(), quiz.Rows[index]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[index]["correct"]),i);
                 quizDisplayPanel.Children.Add(quizDisplayControl);
                 quiz.Rows.RemoveAt(index);
                 i++;
@@ -58,7 +58,7 @@ namespace QuizFlash
                     MySqlParameter[] parameters =
                     {
                         new MySqlParameter("@quizId",quizId),
-                        new MySqlParameter("@questionId",questionCount),
+                        new MySqlParameter("@questionId",quizDisplayControl.questionId),
                         new MySqlParameter("@studentId",GlobalVariables.StudentId),
                         new MySqlParameter("@correctness",quizDisplayControl.response==quizDisplayControl.correct),
                         new MySqlParameter("@response",quizDisplayControl.response)

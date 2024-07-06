@@ -50,6 +50,10 @@ namespace QuizFlash.Components
                 new MySqlParameter("@StudentId", ClassroomStudentId)
             };
             int result = db.ExecuteNonQuery(sql, deleteparams);
+
+            sql = "UPDATE Classroom SET studentCount = studentCount - 1 WHERE id = @ClassroomId";
+            int updatingClassroom = db.ExecuteNonQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+
             if (result > 0) {
                 if (Parent is Panel panelStackPanel)
                 {
