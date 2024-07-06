@@ -30,9 +30,9 @@
 
             <Grid Width="230" Height="140">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="30*"/>
                     <RowDefinition Height="40*"/>
-                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Heading Text -->
@@ -55,14 +55,16 @@
                 </Grid>
 
                 <!-- Buttons -->
-                <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,10" Click="CloseMessageBox" Cursor="Hand">OK</Button>
+                <StackPanel  VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="165,0,0,0" Width="40" Height="40">
+                    <Button Style="{StaticResource customMsgBoxButtons}" Margin="0,0,0,10" Click="CloseMessageBox" Cursor="Hand" Height="27" Width="40" VerticalAlignment="Center" >OK
+
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
     </Grid>
-    
-    
+
+
     <Window.Resources>
         <Storyboard x:Key="ScaleDownAnimation">
             <DoubleAnimation
