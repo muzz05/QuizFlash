@@ -7,12 +7,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="QuizDisplayPage">
-    <Border Background="#353340">
+    <Border Background="Transparent">
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
             <StackPanel>
                 <TextBlock x:Name="quizTitle" Style="{StaticResource TitleText}"  Text="Quiz 1" Margin="10" HorizontalAlignment="Center" Width="auto" Height="50"/>
-                <StackPanel x:Name="quizDisplayPanel"/>
-                <Button x:Name="next_button" Style="{StaticResource buttonCircle}" Background="#22202f" Foreground="#c3c4cf" Content="Next" Width="100" Height="Auto" Click="next_button_Click" Margin="10" HorizontalAlignment="Center"/>
+                <WrapPanel x:Name="quizDisplayPanel" Width="800">
+                    
+                </WrapPanel>
+                <Button x:Name="next_button" Style="{StaticResource MessageBoxButtons}" Background="#22202f" Foreground="#c3c4cf" Content="Submit Quiz" Width="130" Click="next_button_Click" Margin="10,30,0,20" HorizontalAlignment="Center" FontSize="14"/>
             </StackPanel>
         </ScrollViewer>
     </Border>

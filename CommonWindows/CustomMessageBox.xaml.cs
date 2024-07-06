@@ -41,7 +41,7 @@ namespace QuizFlash
 
         private void playSimpleSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\Rizwan\Desktop\GitHub\QuizFlash\Audio\soundeffect.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"..\..\Audio\soundeffect.wav");
             simpleSound.Play();
         }
 

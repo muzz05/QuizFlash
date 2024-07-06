@@ -21,14 +21,22 @@ namespace QuizFlash.Components
     public partial class QuizDisplayControl : UserControl
     {
         public int response, correct;
-        public QuizDisplayControl(string question, string option1, string option2, string option3, string option4, int answer)
+        public QuizDisplayControl(string question, string option1, string option2, string option3, string option4, int answer, int questionNumber)
         {
             InitializeComponent();
-            question_text.Text = question;
-            option_1.Content = option1;
-            option_2.Content = option2;
-            option_3.Content = option3;
-            option_4.Content = option4;
+            List<string> options = new List<string> { option1, option2, option3, option4 };
+            List<RadioButton> buttons = new List<RadioButton> { option_1, option_2, option_3, option_4};
+            Random random = new Random();
+
+            for (int i = 0; i < 4; i++)
+            {
+                int index = random.Next(options.Count);
+                buttons[i].Content = options[index];
+                options.RemoveAt(index);
+            }
+
+            ques_Number.Text= questionNumber.ToString();
+            question_text.Text = question;           
             correct = answer;
         }        
         private void option_1_Checked(object sender, RoutedEventArgs e)

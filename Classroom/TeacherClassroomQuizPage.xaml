@@ -9,37 +9,43 @@
       d:DesignHeight="450" d:DesignWidth="790"
       Title="TeacherClassroomQuizPage">
 
-    <Grid Margin="20,0,0,0" HorizontalAlignment="Center">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
-            <WrapPanel x:Name="TeacherClassroomQuizPanel" Width="780" HorizontalAlignment="Center">
-                <Border CornerRadius="20" Height="220" Width="180" BorderThickness="1" Margin="0,15,15,0" x:Name="AddQuizButton">
-                    <Border.BorderBrush>
-                        <VisualBrush>
-                            <VisualBrush.Visual>
-                                <Rectangle Width="50" Height="50" Fill="#c3c4cf">
-                                    <Rectangle.Stroke>
-                                        <SolidColorBrush Color="#c3c4cf"/>
-                                    </Rectangle.Stroke>
-                                    <Rectangle.StrokeDashArray>
-                                        <DoubleCollection>2 2 2 2</DoubleCollection>
-                                    </Rectangle.StrokeDashArray>
-                                </Rectangle>
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </Border.BorderBrush>
-                    <Grid Height="220" Width="180">
-                        <Button Width="50" Height="50" VerticalAlignment="Center" Cursor="Hand" HorizontalAlignment="Center" x:Name="addquizbutton" Click="addquizbutton_Click">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="50" Background="#c3c4cf">
-                                        <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Grid>
-                </Border>
-            </WrapPanel>
-        </ScrollViewer>
+    <Grid>
+
+        <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="350" Width="790">
+            <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Margin="20,0,0,0" HorizontalAlignment="Center" x:Name="ClassroomQuizGrid">
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
+                <WrapPanel x:Name="TeacherClassroomQuizPanel" Width="780" HorizontalAlignment="Center">
+                    <Border CornerRadius="20" Height="220" Width="180" BorderThickness="1" Margin="0,15,15,0" x:Name="AddQuizButton">
+                        <Border.BorderBrush>
+                            <VisualBrush>
+                                <VisualBrush.Visual>
+                                    <Rectangle Width="50" Height="50" Fill="#c3c4cf">
+                                        <Rectangle.Stroke>
+                                            <SolidColorBrush Color="#c3c4cf"/>
+                                        </Rectangle.Stroke>
+                                        <Rectangle.StrokeDashArray>
+                                            <DoubleCollection>2 2 2 2</DoubleCollection>
+                                        </Rectangle.StrokeDashArray>
+                                    </Rectangle>
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.BorderBrush>
+                        <Grid Height="220" Width="180">
+                            <Button Width="50" Height="50" VerticalAlignment="Center" Cursor="Hand" HorizontalAlignment="Center" x:Name="addquizbutton" Click="addquizbutton_Click">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="50" Background="#c3c4cf">
+                                            <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </WrapPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

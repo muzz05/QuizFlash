@@ -33,19 +33,19 @@ namespace QuizFlash
         }
 
         //Determining the grade of a student based on marks
-        public static string GetGrade(int marks)
+        public static string GetGrade(double marks)
         {
             switch (marks)
             {
-                case int n when (n >= 90):
+                case double n when (n >= 90):
                     return "A+";
-                case int n when (n >= 80):
+                case double n when (n >= 80):
                     return "A";
-                case int n when (n >= 70):
+                case double n when (n >= 70):
                     return "B";
-                case int n when (n >= 60):
+                case double n when (n >= 60):
                     return "C";
-                case int n when (n >= 50):
+                case double n when (n >= 50):
                     return "D";
                 default:
                     return "F";

@@ -8,6 +8,9 @@ namespace QuizFlash
 {
     public partial class UserInfo : UserControl
     {
+
+        private bool isLoading;
+
         public UserInfo()
         {
             InitializeComponent();
@@ -16,7 +19,16 @@ namespace QuizFlash
 
         private async void UserInfo_Loaded(object sender, RoutedEventArgs e)
         {
+            SetLoadingState(true);
             await LoadUserDataAsync();
+            SetLoadingState(false);
+        }
+
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            UserInfoGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private async Task LoadUserDataAsync()

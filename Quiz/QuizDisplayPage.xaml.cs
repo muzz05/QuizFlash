@@ -23,27 +23,33 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDisplayPage : Page
     {
-        int response, correct, quizId;
+        int response, correct, quizId, marksPerQuestion;
         Database database = new Database();
-        public QuizDisplayPage(int id, string name)
+        public QuizDisplayPage(int id, string name, int marksPerQuestion)
         {
             InitializeComponent();
             quizTitle.Text = name;
             quizId = id;
+            this.marksPerQuestion = marksPerQuestion;
 
             string query = "Select * from QuestionAnswers where quizId=@quizId";
             DataTable quiz = database.ExecuteQuery(query, new MySqlParameter("@quizId", id));
+            Random random = new Random();
 
-            for (int i = 0; i < quiz.Rows.Count; i++)
+            int i = 1;
+            while (quiz.Rows.Count>0)                    
             {
-                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[i]["question"].ToString(), quiz.Rows[i]["optionA"].ToString(), quiz.Rows[i]["optionB"].ToString(), quiz.Rows[i]["optionC"].ToString(), quiz.Rows[i]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[i]["correct"]));
+                int index = random.Next(quiz.Rows.Count);
+                QuizDisplayControl quizDisplayControl = new QuizDisplayControl(quiz.Rows[index]["question"].ToString(), quiz.Rows[index]["optionA"].ToString(), quiz.Rows[index]["optionB"].ToString(), quiz.Rows[index]["optionC"].ToString(), quiz.Rows[index]["optionD"].ToString(), Convert.ToInt32(quiz.Rows[index]["correct"]),i);
                 quizDisplayPanel.Children.Add(quizDisplayControl);
+                quiz.Rows.RemoveAt(index);
+                i++;
             }
         }
 
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
-            int questionCount = 0;
+            int questionCount = 0, marksObtained=0;
             foreach (var control in quizDisplayPanel.Children)
             {
                 questionCount++;
@@ -58,14 +64,27 @@ namespace QuizFlash
                         new MySqlParameter("@response",quizDisplayControl.response)
                     };
 
+                    marksObtained+=quizDisplayControl.response == quizDisplayControl.correct ? marksPerQuestion : 0;
+
                     database.ExecuteNonQuery(query, parameters);
                 }
             }
+
+            string query1 = "Insert into Result (quizId, studentId, marksObtained) values(@quizId,@studentId,@marksObtained)";
+
+            MySqlParameter[] parameters1 =
+            {
+                new MySqlParameter("@quizId",quizId),
+                new MySqlParameter("@studentId",GlobalVariables.StudentId),
+                new MySqlParameter("@marksObtained",marksObtained)
+            };
+            database.ExecuteNonQuery(query1, parameters1);
+
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is Student student)
                 {
-                    student.StudentViewFrame.Content = new TeacherClassroomQuizPage();
+                    student.StudentViewFrame.Content = new TeacherClassroomMainPage();
                 }
             }
         }

@@ -25,43 +25,33 @@ namespace QuizFlash
     /// </summary>
     public partial class TeacherClassroomQuizPage : Page
     {
+
+        private bool isLoading;
         public TeacherClassroomQuizPage()
         {
             InitializeComponent();
 
             AddQuizButton.Visibility = GlobalVariables.IsTeacher ? Visibility.Visible : Visibility.Collapsed;
 
+            Loaded += TeacherClassroomQuizPage_Loaded;
+        }
 
-            //// Example 1
-            //AddQuiz(1, "Math Quiz 1", 100, 10, DateTimeOffset.Now.AddDays(7).ToUnixTimeSeconds(), false);
+        private async void TeacherClassroomQuizPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetLoadingState(true);
+            await LoadAsyncData();
+            SetLoadingState(false);
+        }
 
-            //// Example 2
-            //AddQuiz(2, "Science Quiz 2", 50, 5, DateTimeOffset.Now.AddDays(14).ToUnixTimeSeconds(), true);
+        private void SetLoadingState(bool loading)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            ClassroomQuizGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
 
-            //// Example 3
-            //AddQuiz(3, "History Quiz 3", 75, 15, DateTimeOffset.Now.AddDays(30).ToUnixTimeSeconds(), false);
-
-            //// Example 4
-            //AddQuiz(4, "Geo Quiz 4", 60, 12, DateTimeOffset.Now.AddDays(10).ToUnixTimeSeconds(), true);
-
-            //// Example 5
-            //AddQuiz(5, "Physics Quiz 5", 80, 20, DateTimeOffset.Now.AddDays(21).ToUnixTimeSeconds(), false);
-
-            //// Example 6
-            //AddQuiz(6, "Chem Quiz 6", 90, 18, DateTimeOffset.Now.AddDays(25).ToUnixTimeSeconds(), true);
-
-            //// Example 7
-            //AddQuiz(7, "Biology Quiz 7", 70, 14, DateTimeOffset.Now.AddDays(12).ToUnixTimeSeconds(), false);
-
-            //// Example 8
-            //AddQuiz(8, "Literature Quiz 8", 85, 17, DateTimeOffset.Now.AddDays(19).ToUnixTimeSeconds(), true);
-
-            //// Example 9
-            //AddQuiz(9, "Art Quiz 9", 55, 11, DateTimeOffset.Now.AddDays(16).ToUnixTimeSeconds(), false);
-
-            //// Example 10
-            //AddQuiz(10, "Music Quiz 10", 65, 13, DateTimeOffset.Now.AddDays(22).ToUnixTimeSeconds(), true);
-
+        private async Task LoadAsyncData()
+        {
             Database db = new Database();
 
             string sql;
@@ -69,10 +59,10 @@ namespace QuizFlash
             if (GlobalVariables.IsTeacher)
             {
                 sql = "SELECT * FROM Quiz WHERE classroomId = @ClassroomId";
-                DataTable result = db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId));
+                DataTable result = await Task.Run(() =>db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
                 for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]),result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), false);
+                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), false);
                 }
             }
             else
@@ -83,13 +73,12 @@ namespace QuizFlash
                     new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId),
                     new MySqlParameter("@StudentId", GlobalVariables.StudentId)
                 };
-                DataTable result = db.ExecuteQuery(sql, quizParams);
+                DataTable result = await Task.Run(() => db.ExecuteQuery(sql, quizParams));
                 for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]),result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), Convert.ToBoolean(result.Rows[i]["isAttempted"]));
+                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), Convert.ToBoolean(result.Rows[i]["isAttempted"]));
                 }
             }
-
         }
 
         public void AddQuiz(int quizId,string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
