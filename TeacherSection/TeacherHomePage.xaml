@@ -20,10 +20,10 @@
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="17*" />
         </Grid.ColumnDefinitions>
-
-        <WrapPanel x:Name="infocards" Orientation="Vertical" Width="250" Margin="15,22,0,0">
-
-        </WrapPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+                <WrapPanel x:Name="infocards" Orientation="Vertical" Width="240" Margin="15,22,0,0">
+                </WrapPanel>
+            </ScrollViewer>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
