@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -27,8 +29,21 @@ namespace QuizFlash
         {
             FlashCardId = flashCardId;
             InitializeComponent();
+            playSimpleSound();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Storyboard scaleDownStoryboard = (Storyboard)this.Resources["ScaleDownAnimation"];
+            scaleDownStoryboard.Begin();
+        }
+
+
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"..\..\Audio\soundeffect.wav");
+            simpleSound.Play();
+        }
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
