@@ -28,7 +28,7 @@
                     <TextBlock HorizontalAlignment="left" Foreground="#8c8c91"  FontSize="12" FontWeight="Bold" VerticalAlignment="Center">Loading Resources...</TextBlock>
                     <ProgressBar Width="200" HorizontalAlignment="Left" IsIndeterminate="True" Value="0" Margin="0,10"/>
                 </StackPanel>
-                <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  Margin="0,26,0,0" FontSize="8" VerticalAlignment="Center">copyright © 2024 by Muzzammil, Kaif, and Haider.</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  Margin="0,26,0,0" FontSize="8" VerticalAlignment="Center">Copyright © 2024 by Muzzammil, Kaif, and Haider.</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#8c8c91"  FontSize="8" VerticalAlignment="Center">All rights reserved.</TextBlock>
 
             </StackPanel>

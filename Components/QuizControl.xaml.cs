@@ -24,6 +24,7 @@ namespace QuizFlash
     {
         int quizId;
         Database database=new Database();
+        long quizEpochTime;
         public QuizControl(int quizId, string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
         {
             InitializeComponent();
@@ -31,9 +32,12 @@ namespace QuizFlash
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
+            quizEpochTime = validUntilEpoch;
 
             AttemptedBadge.Visibility =  GlobalVariables.IsTeacher || !IsAttempted ? Visibility.Collapsed: Visibility.Visible;
             quizStartButton.Visibility = GlobalVariables.IsTeacher || IsAttempted ? Visibility.Collapsed : Visibility.Visible;
+
+            textBlock.Text= Utilities.GetCurrentTimeInEpoch() > validUntilEpoch ? "Expired" : "Attempted";
             // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)
             string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);
             string validUntilDate = ConvertIsoStringToDate(validUntilIsoString); 
@@ -98,6 +102,13 @@ namespace QuizFlash
 
         private void quizRedirect(object sender, RoutedEventArgs e)
         {
+            if(Utilities.GetCurrentTimeInEpoch() > quizEpochTime)
+            {
+                CustomMessageBox customMessageBox = new CustomMessageBox("Quiz Expired", "This quiz has expired", "Error");
+                customMessageBox.ShowDialog();
+                return;
+            }
+
             foreach(Window window in Application.Current.Windows)
             {
                 if(window is Student student)

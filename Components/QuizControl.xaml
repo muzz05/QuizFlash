@@ -41,7 +41,7 @@
                             <TextBlock Margin="5,5,0,0" x:Name="ValidUntil" FontSize="10" FontWeight="Normal" TextWrapping="Wrap" Text="25/07/2024" Foreground="#fafafa" />
                         </StackPanel>
                         <Border CornerRadius="10" Grid.Row="1" Margin="80,10,0,0" Background="#008080" Width="60" Padding="5,3" x:Name="AttemptedBadge">
-                            <TextBlock Foreground="#fafafa" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center">Attempted</TextBlock>
+                            <TextBlock x:Name="textBlock" Foreground="#fafafa" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center">Attempted</TextBlock>
                         </Border>
                     </StackPanel>
                 </Border>
