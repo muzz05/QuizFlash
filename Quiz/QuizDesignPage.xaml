@@ -7,16 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="580" d:DesignWidth="800"
       Title="QuizDesignPage">
-    <Border Background="#282438" CornerRadius="20">
+    <Border Background="Transparent" CornerRadius="20" Margin="0,0,0,20">
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
             <StackPanel>
                 <StackPanel x:Name="quizDesignPanel">
-                    <TextBlock Text="Quiz Maker" Style="{StaticResource TitleText}" Margin="10" HorizontalAlignment="Center"/>
-                    <Separator Height="1" Grid.Row="1" Background="#c3c4cf" Margin="0 10 0 10"/>
+                    <!--<TextBlock Text="Quiz Maker" Style="{StaticResource TitleText}" Margin="10" HorizontalAlignment="Center"/>
+                        <Separator Height="1" Grid.Row="1" Background="#c3c4cf" Margin="0 10 0 10"/>-->
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button Content="Add" Style="{StaticResource button}" Width="100" Margin="5" Click="add_question" HorizontalAlignment="Center"/>
-                    <Button Content="Save" Style="{StaticResource button}" Width="100" Margin="5" Click="save_question" HorizontalAlignment="Center"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,20,0,0">
+                    <Button Content="Add" Style="{StaticResource MessageBoxButtons}" Width="80" Margin="5" Click="add_question" HorizontalAlignment="Center" FontSize="14"/>
+                    <Button Content="Save" Style="{StaticResource MessageBoxButtons}" Width="80" Margin="5" Click="save_question" HorizontalAlignment="Center" FontSize="14"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

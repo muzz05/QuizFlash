@@ -77,7 +77,7 @@ namespace QuizFlash
                     teacher.TeacherViewFrame.Content = addQuestion;
                 }
             }                
-                addQuestion.quizDesignPanel.Children.Add(new QuizDesignControl());            
+                addQuestion.quizDesignPanel.Children.Add(new QuizDesignControl(1));            
 
         }
 

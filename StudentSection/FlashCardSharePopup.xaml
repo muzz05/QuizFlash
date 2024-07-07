@@ -15,7 +15,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="30*"/>
-                <RowDefinition Height="10*"/>
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
 
@@ -24,24 +23,11 @@
                Share Flashcard
             </TextBlock>
 
-            <Grid Grid.Row="1" Margin="28,0">
-                <Border BorderBrush="#c4c3cf" BorderThickness="1"  CornerRadius="5" Height="40">
-                    <Grid Height="40" Margin="0,0,20,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Icons:PackIconMaterial Kind="Barcode" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="9,0,5,0" Height="20" Width="20"/>
-                        <TextBlock x:Name="StudentCode_flashCardTextBlock" Text="Enter Student Code" MouseDown="MouseDownTextBoxShare" Style="{StaticResource textHint}" Background="#363846" VerticalAlignment="Center"/>
-                        <TextBox Name="StudentCode_flashCardTextBox" Style="{StaticResource textBox}" TextChanged="StudentCodeChanged" Background="#363846" VerticalAlignment="Center" Cursor="IBeam"/>
-                    </Grid>
-                </Border>
-            </Grid>
-
-            <Grid Grid.Row="2">
-                <TextBlock x:Name="alertMessage" Foreground="#c4c3cf" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="10">
-                    
-                </TextBlock>
+            <Grid Grid.Row="1" Margin="0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                    <TextBlock Text="Code: " Foreground="#fafafa" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBox x:Name="studentcodeflashcard" Style="{StaticResource filterTextBox}" Width="180" Height="35"/>
+                </StackPanel>
             </Grid>
 
             <!-- Buttons -->

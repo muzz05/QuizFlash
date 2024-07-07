@@ -21,12 +21,13 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDesignPage : Page
     {
-        int quizId,marks;
+        int quizId, marks, questionCount;
         public QuizDesignPage(int quizId, int marksPerQuestion)
         {
             InitializeComponent();
             this.quizId = quizId;
             marks = marksPerQuestion;
+            questionCount = 1;
         }
         
         private void save_question(object sender, RoutedEventArgs e)
@@ -58,21 +59,22 @@ namespace QuizFlash
                 }
             }
 
-            int questions = quizDesignPanel.Children.Count - 2; // -2 because of the text block and the separator
+            int questions = quizDesignPanel.Children.Count;
             database.ExecuteNonQuery("Update Quiz Set totalQuestions=@questions, totalMarks=@marks where id=@quizId;", new MySqlParameter[] {new MySqlParameter("@questions",questions), new MySqlParameter("@quizId",quizId), new MySqlParameter("@marks",marks*questions)});
 
             foreach(Window window in Application.Current.Windows)
             {
                 if(window is Teacher teacher)
                 {
-                    teacher.TeacherViewFrame.Content= new TeacherClassroomQuizPage();
+                    teacher.TeacherViewFrame.Content= new TeacherClassroomMainPage();
                 }
             }
         }
 
         private void add_question(object sender, RoutedEventArgs e)
         {
-            quizDesignPanel.Children.Add(new QuizDesignControl());
+            questionCount++;
+            quizDesignPanel.Children.Add(new QuizDesignControl(questionCount));
         }
     }
 }

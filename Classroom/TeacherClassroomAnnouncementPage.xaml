@@ -38,7 +38,7 @@
                                 <ColumnDefinition Width="7*"/>
                                 <ColumnDefinition Width="83*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="30" Width="30" Margin="10,5" Grid.Column="0">
+                            <Border Background="#c3c4cf" Padding="5" CornerRadius="100" HorizontalAlignment="Left" Height="35" Width="35" Margin="10,5" Grid.Column="0">
                                 <TextBlock x:Name="OwnUsernameInitials" FontSize="15" FontWeight="Bold" Foreground="#4a4a4e" HorizontalAlignment="Center" VerticalAlignment="Center"> TJ</TextBlock>
                             </Border>
                             <TextBlock x:Name="AnnouncementPlaceHolderTextBlock" Grid.Column="1" Background="Transparent" FontSize="15" FontWeight="SemiBold" Text="Share Something with the classroom" Foreground="#c3c4cf" Margin="10,2" VerticalAlignment="Center" MouseDown="AnnouncementTextMouseDown"/>

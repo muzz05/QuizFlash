@@ -21,9 +21,10 @@ namespace QuizFlash
     public partial class QuizDesignControl : UserControl
     {
         public int correct;
-        public QuizDesignControl()
+        public QuizDesignControl(int questionN)
         {
             InitializeComponent();
+            ques_Number.Text = questionN.ToString();
         }
         private void optionAcheck(object sender, RoutedEventArgs e)
         {

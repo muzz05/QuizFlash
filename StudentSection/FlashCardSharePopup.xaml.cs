@@ -29,36 +29,22 @@ namespace QuizFlash
             InitializeComponent();
         }
 
-        private void StudentCodeChanged(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(StudentCode_flashCardTextBox.Text) && StudentCode_flashCardTextBox.Text.Length > 0)
-                StudentCode_flashCardTextBlock.Visibility = Visibility.Collapsed;
-            else
-                StudentCode_flashCardTextBlock.Visibility = Visibility.Visible;
-        }
-
-        private void MouseDownTextBoxShare(object sender, MouseButtonEventArgs e)
-        {
-            StudentCode_flashCardTextBox.Focus();
-        }
-
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private async void  ShareFlashCard(object sender, RoutedEventArgs e)
+        private void ShareFlashCard(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
             string sql = "SELECT * FROM Students WHERE studentCode = @StudentCode";
 
-            DataTable CheckingStudent = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_flashCardTextBox.Text.ToString()));
+            DataTable CheckingStudent = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", studentcodeflashcard.Text.ToString().ToUpper()));
             if(CheckingStudent.Rows.Count == 0)
             {
-                alertMessage.Text = "Please Enter the correct student code";
-                await Task.Delay(4000);
-                alertMessage.Text = "";
+                CustomMessageBox error = new CustomMessageBox("Incorrect Code", "Please enter the correct student code", "Error");
+                error.ShowDialog();
             }
             else
             {
@@ -69,7 +55,12 @@ namespace QuizFlash
                     new MySqlParameter("@FlashCardId", FlashCardId)
                 };
                 object result = db.ExecuteNonQuery(sql, AddingFlashcardParameter);
-                this.Close();
+                if(result != null)
+                {
+                    this.Close();
+                    CustomMessageBox success = new CustomMessageBox("Share Success", "Flashcard has been shared successfully", "Success");
+                    success.ShowDialog();
+                }
             }
 
         }
