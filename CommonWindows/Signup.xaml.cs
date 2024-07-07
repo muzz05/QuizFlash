@@ -23,7 +23,7 @@ namespace QuizFlash
 
     {
 
-        public int DepartmentId;
+        public int DepartmentId = 0;
         public bool isTeacher;
 
         public Signup()
@@ -177,7 +177,7 @@ namespace QuizFlash
             string name = txtUsername_signup.Text;
             string UserCode = UniqueCodeGenerator.GenerateUniqueCode();
 
-            if (password == "" || email == "" || name == "" )
+            if (password == "" || email == "" || name == "" || DepartmentId == 0)
             {
                 SignupButtom.Content = "Signup";
                 SignupButtom.IsEnabled = true;

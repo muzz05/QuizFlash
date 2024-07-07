@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -27,38 +29,37 @@ namespace QuizFlash
         {
             FlashCardId = flashCardId;
             InitializeComponent();
+            playSimpleSound();
         }
 
-        private void StudentCodeChanged(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(StudentCode_flashCardTextBox.Text) && StudentCode_flashCardTextBox.Text.Length > 0)
-                StudentCode_flashCardTextBlock.Visibility = Visibility.Collapsed;
-            else
-                StudentCode_flashCardTextBlock.Visibility = Visibility.Visible;
+            Storyboard scaleDownStoryboard = (Storyboard)this.Resources["ScaleDownAnimation"];
+            scaleDownStoryboard.Begin();
         }
 
-        private void MouseDownTextBoxShare(object sender, MouseButtonEventArgs e)
+
+        private void playSimpleSound()
         {
-            StudentCode_flashCardTextBox.Focus();
+            SoundPlayer simpleSound = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "soundeffect.wav"));
+            simpleSound.Play();
         }
-
 
         private void Cancel(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private async void  ShareFlashCard(object sender, RoutedEventArgs e)
+        private void ShareFlashCard(object sender, RoutedEventArgs e)
         {
             Database db = new Database();
             string sql = "SELECT * FROM Students WHERE studentCode = @StudentCode";
 
-            DataTable CheckingStudent = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_flashCardTextBox.Text.ToString()));
+            DataTable CheckingStudent = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", studentcodeflashcard.Text.ToString().ToUpper()));
             if(CheckingStudent.Rows.Count == 0)
             {
-                alertMessage.Text = "Please Enter the correct student code";
-                await Task.Delay(4000);
-                alertMessage.Text = "";
+                CustomMessageBox error = new CustomMessageBox("Incorrect Code", "Please enter the correct student code", "Error");
+                error.ShowDialog();
             }
             else
             {
@@ -69,7 +70,12 @@ namespace QuizFlash
                     new MySqlParameter("@FlashCardId", FlashCardId)
                 };
                 object result = db.ExecuteNonQuery(sql, AddingFlashcardParameter);
-                this.Close();
+                if(result != null)
+                {
+                    this.Close();
+                    CustomMessageBox success = new CustomMessageBox("Share Success", "Flashcard has been shared successfully", "Success");
+                    success.ShowDialog();
+                }
             }
 
         }

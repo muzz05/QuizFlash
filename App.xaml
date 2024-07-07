@@ -424,14 +424,17 @@
 
 
         <Style x:Key="filterTextBox" TargetType="TextBox">
-            <Setter Property="Background" Value="#353340" />
+            <Setter Property="Background" Value="#252837" />
             <Setter Property="Foreground" Value="#c3c4cf" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="CaretBrush" Value="#c3c4cf"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Cursor" Value="IBeam"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                        <Border x:Name="border" CornerRadius="7" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="#707070" SnapsToDevicePixels="True" Padding="5,5">
+                        <Border x:Name="border" CornerRadius="7" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="Transparent" SnapsToDevicePixels="True" Padding="5,5">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                         </Border>
                     </ControlTemplate>

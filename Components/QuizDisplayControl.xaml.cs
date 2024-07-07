@@ -20,7 +20,7 @@ namespace QuizFlash.Components
     /// </summary>
     public partial class QuizDisplayControl : UserControl
     {
-        public int response, correct, questionId;
+        public int response = 1000, correct, questionId;
         public QuizDisplayControl(int id, string question, string option1, string option2, string option3, string option4, int answer, int questionNumber)
         {
             InitializeComponent();

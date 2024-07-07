@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -23,7 +25,21 @@ namespace QuizFlash
         public ClassroomTeacherMsgBox()
         {
             InitializeComponent();
+            playSimpleSound();
+            
 
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Storyboard scaleDownStoryboard = (Storyboard)this.Resources["ScaleDownAnimation"];
+            scaleDownStoryboard.Begin();
+        }
+
+
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "soundeffect.wav"));
+            simpleSound.Play();
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)

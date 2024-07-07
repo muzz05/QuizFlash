@@ -34,15 +34,15 @@ namespace QuizFlash
             scaleDownStoryboard.Begin();
         }
 
-        private void CloseMessageBox(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
         private void playSimpleSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"..\..\Audio\soundeffect.wav");
+            SoundPlayer simpleSound = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"soundeffect.wav"));
             simpleSound.Play();
+        }
+        private void CloseMessageBox(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
 

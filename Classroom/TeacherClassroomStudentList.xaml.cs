@@ -113,7 +113,7 @@ namespace QuizFlash
             {
                 Database db = new Database();
                 string sql = "SELECT s.id, s.studentCode, u.name FROM Students s JOIN Users u ON u.id = s.userId WHERE studentCode = @StudentCode";
-                DataTable StudentInfo = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_ClassroomTextBox.Text));
+                DataTable StudentInfo = db.ExecuteQuery(sql, new MySqlParameter("@StudentCode", StudentCode_ClassroomTextBox.Text.ToUpper()));
                 if (StudentInfo.Rows.Count  != 0) {
 
                     sql = "SELECT 1 FROM ClassroomStudents WHERE studentId = @StudentId AND classroomId = @ClassroomId";

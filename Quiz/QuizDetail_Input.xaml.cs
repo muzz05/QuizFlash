@@ -1,10 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Media;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 
 namespace QuizFlash
 {
@@ -13,7 +15,22 @@ namespace QuizFlash
 
         public QuizDetail_Input()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            playSimpleSound();
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Storyboard scaleDownStoryboard = (Storyboard)this.Resources["ScaleDownAnimation"];
+            scaleDownStoryboard.Begin();
+        }
+
+
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "soundeffect.wav"));
+            simpleSound.Play();
         }
 
         private void PART_Button_Click(object sender, RoutedEventArgs e)
@@ -77,7 +94,7 @@ namespace QuizFlash
                     teacher.TeacherViewFrame.Content = addQuestion;
                 }
             }                
-                addQuestion.quizDesignPanel.Children.Add(new QuizDesignControl());            
+                addQuestion.quizDesignPanel.Children.Add(new QuizDesignControl(1));            
 
         }
 

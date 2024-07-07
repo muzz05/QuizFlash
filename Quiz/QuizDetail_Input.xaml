@@ -8,7 +8,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent">
+        Background="Transparent"
+        Loaded="Window_Loaded">
 
 
     <Window.Resources>
@@ -22,9 +23,7 @@
                                 <ColumnDefinition Width="210" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0" Background="#353340"
-                            BorderBrush="#707070"
-                            BorderThickness="1"
+                            <Border Grid.Column="0" Background="#252837"
                             CornerRadius="7"
                             Margin="10,0,0,0"
                                     Height="30">
@@ -42,12 +41,13 @@
                             <Button Grid.Column="1" x:Name="PART_Button"
                             Width="30"
                             Height="30"
-                            Background="#353340"
-                            Foreground="White"
+                            Background="#252837"
+                            Foreground="#c3c4cf"
                             Padding="0"
+                                    BorderBrush="Transparent"
                             Click="PART_Button_Click"
                                     HorizontalAlignment="Left">
-                                <Icons:PackIconBootstrapIcons Kind="Calendar2DateFill" />
+                                <Icons:PackIconBootstrapIcons Kind="Calendar2DateFill" Height="14" Width="14"/>
                             </Button>
                             <Popup x:Name="PART_Popup"
                            PlacementTarget="{Binding ElementName=PART_Button}"
@@ -93,9 +93,44 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="5"/>
         </Style>
+        
+        <Storyboard x:Key="ScaleDownAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="quizInputBorder"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                From="1"
+                To="0.95"
+                Duration="0:0:0.3"
+                AutoReverse="True"
+                RepeatBehavior="1x"/>
+            <DoubleAnimation
+                Storyboard.TargetName="quizInputBorder"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                From="1"
+                To="0.95"
+                Duration="0:0:0.3"
+                AutoReverse="True"
+                RepeatBehavior="1x"/>
+        </Storyboard>
     </Window.Resources>
-    <Border Background="#363846" CornerRadius="20" BorderThickness="0" SnapsToDevicePixels="True" Padding="15">
-        <Grid>
+    
+    
+    
+    
+    
+
+
+    <Grid Height="320" Width="390">
+        <Border x:Name="quizInputBorder" Background="#363846" CornerRadius="20" BorderThickness="0" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <ScaleTransform ScaleX="1" ScaleY="1"/>
+            </Border.RenderTransform>
+
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0.1" BlurRadius="8" Color="#c3c4cf" Opacity="0.4"/>
+            </Border.Effect>
+            <Grid Height="290" Width="390">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="6.5*"/>
@@ -103,12 +138,12 @@
             </Grid.RowDefinitions>
 
             <!-- Heading Text -->
-            <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="19">
+            <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20">
                 Enter Quiz Details
             </TextBlock>
 
             <!-- Entry Fields -->
-            <Grid Grid.Row="1" Margin="0,10,0,10" VerticalAlignment="Center">
+            <Grid Grid.Row="1" Margin="0,10,0,0" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <!-- Quiz Name -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
@@ -157,4 +192,6 @@
             </Grid>
         </Grid>
     </Border>
+    </Grid>
+
 </Window>
