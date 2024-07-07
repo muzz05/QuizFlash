@@ -29,7 +29,7 @@ namespace QuizFlash
 
         private void playSimpleSound()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"..\..\Audio\soundeffect.wav");
+            SoundPlayer simpleSound = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "soundeffect.wav"));
             simpleSound.Play();
         }
 

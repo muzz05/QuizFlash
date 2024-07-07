@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>QuizFlash</id>
+    <version>0.0.0</version>
+    <title>QuizFlash</title>
+    <authors>MHK Coorporations </authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/muzz05/QuizFlash</projectUrl>
+    <description>This is an interactive Learning Management System (Desktop Application) built on WPF</description>
+    <releaseNotes>This is the First Release of QuizFlash</releaseNotes>
+    <copyright>Copyright 2024</copyright>
+    <tags>LMS Quiz FlashCard</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\*.*" target="lib\net45"/>
+    <file src="bin\Release\Audio\*.*" target="lib\net45"/>
+  </files>
+</package>
