@@ -28,6 +28,8 @@ namespace QuizFlash.Components
             List<string> options_fromDb = new List<string> { option1, option2, option3, option4 };
             List<string> options = new List<string> { option1, option2, option3, option4 };
             List<RadioButton> buttons = new List<RadioButton> { option_1, option_2, option_3, option_4};
+            string correct_ans = options[answer];
+
             Random random = new Random();
 
             for (int i = 0; i < 4; i++)
@@ -40,7 +42,6 @@ namespace QuizFlash.Components
 
             ques_Number.Text= questionNumber.ToString();
             question_text.Text = question;           
-            correct = answer;
         }        
         private void option_1_Checked(object sender, RoutedEventArgs e)
         {
