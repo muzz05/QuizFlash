@@ -50,6 +50,27 @@ namespace QuizFlash
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
             int questionCount = 0, marksObtained=0;
+            bool isAllQuestionAttempted = true;
+
+            // cheking if all the questions are attempted
+
+            foreach (var control in quizDisplayPanel.Children)
+            {
+                if (control is QuizDisplayControl quizDisplayControl)
+                {
+                    if(quizDisplayControl.response == 1000)
+                    {
+                        isAllQuestionAttempted = false;
+                        break;
+                    }
+                }
+            }
+
+            if (isAllQuestionAttempted)
+            {
+
+            
+
             foreach (var control in quizDisplayPanel.Children)
             {
                 questionCount++;
@@ -86,6 +107,12 @@ namespace QuizFlash
                 {
                     student.StudentViewFrame.Content = new TeacherClassroomMainPage();
                 }
+            }
+            }
+            else
+            {
+                CustomMessageBox error = new CustomMessageBox("Attempt All Question", "You cannot leave any question unsolved", "Error");
+                error.ShowDialog();
             }
         }
     }

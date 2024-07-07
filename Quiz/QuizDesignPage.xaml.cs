@@ -33,8 +33,37 @@ namespace QuizFlash
         private void save_question(object sender, RoutedEventArgs e)
         {
             Database database = new Database();
+            bool isFieldEmpty = false;
 
-            foreach(var control in quizDesignPanel.Children)
+            foreach (var control in quizDesignPanel.Children)
+            {
+                if (control is QuizDesignControl quizDesignControl)
+                {
+
+                    string question = quizDesignControl.questionTextBox.Text;
+                    string option1 = quizDesignControl.optionATextBox.Text;
+                    string option2 = quizDesignControl.optionBTextBox.Text;
+                    string option3 = quizDesignControl.optionCTextBox.Text;
+                    string option4 = quizDesignControl.optionDTextBox.Text;
+
+                    if(question == "" || option1 == "" || option2 == "" || option3 == "" || option4 == "")
+                    {
+                        isFieldEmpty = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isFieldEmpty)
+            {
+                CustomMessageBox error = new CustomMessageBox("Empty Field", "You cannot leave any question or options empty", "Error");
+                error.ShowDialog();
+            }
+            else
+            {
+
+
+            foreach (var control in quizDesignPanel.Children)
             {
                 if(control is QuizDesignControl quizDesignControl)
                 {
@@ -68,6 +97,7 @@ namespace QuizFlash
                 {
                     teacher.TeacherViewFrame.Content= new TeacherClassroomMainPage();
                 }
+            }
             }
         }
 
