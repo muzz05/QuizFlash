@@ -56,7 +56,7 @@ To start using QuizFlash:
    - Unzip the downloaded file to your preferred location on your computer.
 
 3. **Run the Application:**
-   - Navigate to the extracted folder and double-click on `QuizFlash.exe` to launch the application.
+   - Navigate to the extracted folder and double-click on `setup.exe` to launch the application.
 
 ## Getting Started
 
