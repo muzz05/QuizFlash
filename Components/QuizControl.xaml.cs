@@ -40,7 +40,7 @@ namespace QuizFlash
             if(Utilities.GetCurrentTimeInEpoch() > validUntilEpoch)
             {
                 AttemptedBadge.Visibility = Visibility.Visible;
-                AttemptedBadge.Background = Brushes.Red;
+                AttemptedBadge.Background = new BrushConverter().ConvertFromString("#FF6666") as Brush;
                 textBlock.Text = "Expired";
             }
             // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)

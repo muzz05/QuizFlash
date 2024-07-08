@@ -10,7 +10,7 @@
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/muzz05/QuizFlash</projectUrl>
     <description>This is an interactive Learning Management System (Desktop Application) built on WPF</description>
-    <releaseNotes>This is the First Release of QuizFlash</releaseNotes>
+    <releaseNotes>This is the Release of Version 1.0.1 which includes many bug fixes</releaseNotes>
     <copyright>Copyright 2024</copyright>
     <tags>LMS Quiz FlashCard</tags>
   </metadata>
