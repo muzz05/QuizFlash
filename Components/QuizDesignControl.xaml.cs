@@ -20,7 +20,7 @@ namespace QuizFlash
     /// </summary>
     public partial class QuizDesignControl : UserControl
     {
-        public int correct;
+        public int correct=0;
         public QuizDesignControl(int questionN)
         {
             InitializeComponent();

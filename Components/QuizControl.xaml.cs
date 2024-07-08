@@ -37,7 +37,12 @@ namespace QuizFlash
             AttemptedBadge.Visibility =  GlobalVariables.IsTeacher || !IsAttempted ? Visibility.Collapsed: Visibility.Visible;
             quizStartButton.Visibility = GlobalVariables.IsTeacher || IsAttempted ? Visibility.Collapsed : Visibility.Visible;
 
-            textBlock.Text= Utilities.GetCurrentTimeInEpoch() > validUntilEpoch ? "Expired" : "Attempted";
+            if(Utilities.GetCurrentTimeInEpoch() > validUntilEpoch)
+            {
+                AttemptedBadge.Visibility = Visibility.Visible;
+                AttemptedBadge.Background = Brushes.Red;
+                textBlock.Text = "Expired";
+            }
             // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)
             string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);
             string validUntilDate = ConvertIsoStringToDate(validUntilIsoString); 

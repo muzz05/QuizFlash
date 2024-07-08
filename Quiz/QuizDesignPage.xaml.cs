@@ -32,36 +32,7 @@ namespace QuizFlash
         
         private void save_question(object sender, RoutedEventArgs e)
         {
-            Database database = new Database();
-            bool isFieldEmpty = false;
-
-            foreach (var control in quizDesignPanel.Children)
-            {
-                if (control is QuizDesignControl quizDesignControl)
-                {
-
-                    string question = quizDesignControl.questionTextBox.Text;
-                    string option1 = quizDesignControl.optionATextBox.Text;
-                    string option2 = quizDesignControl.optionBTextBox.Text;
-                    string option3 = quizDesignControl.optionCTextBox.Text;
-                    string option4 = quizDesignControl.optionDTextBox.Text;
-
-                    if(question == "" || option1 == "" || option2 == "" || option3 == "" || option4 == "")
-                    {
-                        isFieldEmpty = true;
-                        break;
-                    }
-                }
-            }
-
-            if (isFieldEmpty)
-            {
-                CustomMessageBox error = new CustomMessageBox("Empty Field", "You cannot leave any question or options empty", "Error");
-                error.ShowDialog();
-            }
-            else
-            {
-
+            Database database = new Database();           
 
             foreach (var control in quizDesignPanel.Children)
             {
@@ -73,8 +44,16 @@ namespace QuizFlash
                     string option3 = quizDesignControl.optionCTextBox.Text;
                     string option4 = quizDesignControl.optionDTextBox.Text;
 
-                    string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
-                    MySqlParameter[] parameters = {
+
+                    if (string.IsNullOrWhiteSpace(question) || string.IsNullOrWhiteSpace(option1) || string.IsNullOrWhiteSpace(option2) || string.IsNullOrWhiteSpace(option3) || string.IsNullOrWhiteSpace(option4))
+                    {
+                            CustomMessageBox error = new CustomMessageBox("Empty Field", "You cannot leave any question or options empty", "Error");
+                            error.ShowDialog();
+                            return;
+                    }
+
+                        string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
+                        MySqlParameter[] parameters = {
                                                    new MySqlParameter("@quizId", quizId),    
                                                    new MySqlParameter("@question",question), 
                                                    new MySqlParameter("@option1", option1), 
@@ -98,8 +77,8 @@ namespace QuizFlash
                     teacher.TeacherViewFrame.Content= new TeacherClassroomMainPage();
                 }
             }
-            }
         }
+        
 
         private void add_question(object sender, RoutedEventArgs e)
         {
@@ -108,3 +87,4 @@ namespace QuizFlash
         }
     }
 }
+
