@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace QuizFlash.Components
 {
-    /// <summary>
-    /// Interaction logic for QuizDisplayControl.xaml
-    /// </summary>
     public partial class QuizDisplayControl : UserControl
     {
         public int response = 1000, correct, questionId;
@@ -28,7 +25,7 @@ namespace QuizFlash.Components
             List<string> options_fromDb = new List<string> { option1, option2, option3, option4 };
             List<string> options = new List<string> { option1, option2, option3, option4 };
             List<RadioButton> buttons = new List<RadioButton> { option_1, option_2, option_3, option_4};
-            string correct_ans = options[answer];
+            correct = answer;
 
             Random random = new Random();
 

@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace QuizFlash
 {
-    /// <summary>
-    /// Interaction logic for QuizDesignPage.xaml
-    /// </summary>
     public partial class QuizDesignPage : Page
     {
         int quizId, marks, questionCount;
@@ -45,14 +42,16 @@ namespace QuizFlash
                     string option4 = quizDesignControl.optionDTextBox.Text;
 
 
-                    if (string.IsNullOrWhiteSpace(question) || string.IsNullOrWhiteSpace(option1) || string.IsNullOrWhiteSpace(option2) || string.IsNullOrWhiteSpace(option3) || string.IsNullOrWhiteSpace(option4))
+                    if (string.IsNullOrWhiteSpace(question) || string.IsNullOrWhiteSpace(option1) ||
+                        string.IsNullOrWhiteSpace(option2) || string.IsNullOrWhiteSpace(option3) || string.IsNullOrWhiteSpace(option4))
                     {
                             CustomMessageBox error = new CustomMessageBox("Empty Field", "You cannot leave any question or options empty", "Error");
                             error.ShowDialog();
                             return;
                     }
 
-                        string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
+                        string sql = "INSERT INTO QuestionAnswers (quizId, question, optionA, optionB, optionC, optionD, correct) " +
+                        "VALUES (@quizId,@question, @option1, @option2, @option3, @option4, @correct)";
                         MySqlParameter[] parameters = {
                                                    new MySqlParameter("@quizId", quizId),    
                                                    new MySqlParameter("@question",question), 
@@ -68,7 +67,9 @@ namespace QuizFlash
             }
 
             int questions = quizDesignPanel.Children.Count;
-            database.ExecuteNonQuery("Update Quiz Set totalQuestions=@questions, totalMarks=@marks where id=@quizId;", new MySqlParameter[] {new MySqlParameter("@questions",questions), new MySqlParameter("@quizId",quizId), new MySqlParameter("@marks",marks*questions)});
+            database.ExecuteNonQuery("Update Quiz Set totalQuestions=@questions, totalMarks=@marks where id=@quizId;", 
+                                      new MySqlParameter[] {new MySqlParameter("@questions",questions), 
+                                      new MySqlParameter("@quizId",quizId), new MySqlParameter("@marks",marks*questions)});
 
             foreach(Window window in Application.Current.Windows)
             {
