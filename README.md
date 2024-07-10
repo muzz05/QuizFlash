@@ -12,7 +12,7 @@
 Welcome to **QuizFlash**, a feature-rich WPF application designed to facilitate quiz and flashcard management for educational environments. QuizFlash empowers both teachers and students with intuitive tools to enhance learning experiences.
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Project Status](https://img.shields.io/badge/Status-Under%20Development-brightgreen)
+![Project Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 ## Features
 
