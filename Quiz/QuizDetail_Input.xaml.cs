@@ -26,6 +26,8 @@ namespace QuizFlash
             scaleDownStoryboard.Begin();
         }
 
+        
+
 
         private void playSimpleSound()
         {

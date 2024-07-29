@@ -46,8 +46,6 @@ namespace QuizFlash
                 comboBoxDepartments.Items.Add(DepartmentsDataItem);
             }
 
-
-
         }
 
 
