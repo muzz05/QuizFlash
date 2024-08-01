@@ -19,6 +19,21 @@ CREATE TABLE Students (
     studentCode VARCHAR(255) UNIQUE NOT NULL
 );
 
+-- THIS IS THE PREVIOUS MADE QUIZ TABLE
+-- CREATE TABLE Quiz (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     name VARCHAR(255),
+--     totalQuestions INT NOT NULL,
+--     totalMarks INT NOT NULL,
+--     marksPerQuestion INT NOT NULL,
+--     teacherId INT NOT NULL,
+--     classroomId INT NOT NULL,
+--     createTime BIGINT,
+--     dueDate BIGINT
+-- );
+
+
+-- THIS IS THE NEW MADE QUIZ TABLE (DueData removed, Duration Added)
 CREATE TABLE Quiz (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
@@ -27,8 +42,9 @@ CREATE TABLE Quiz (
     marksPerQuestion INT NOT NULL,
     teacherId INT NOT NULL,
     classroomId INT NOT NULL,
+    duration INT DEFAULT 15
     createTime BIGINT,
-    dueDate BIGINT
+    startTime BIGINT,
 );
 
 CREATE TABLE QuestionAnswers (
@@ -101,6 +117,27 @@ CREATE TABLE ClassroomStream (
     message VARCHAR(255),
     createTime BIGINT,
     isTeacher TINYINT(1)
+);
+
+-- THIS IS THE ATTENDANCE TABLE FOR FUTURE EXPANSION OF ADDING ATTENDANCE TAKING FEATURE
+CREATE TABLE Attendance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    classroomId INT NOT NULL,
+    studentId INT NOT NULL,
+    isPresent BOOLEAN NOT NULL,
+    attendanceDate BIGINT,
+    createTime BIGINT
+);
+
+
+-- THIS IS THE CLASSROOMNOTES TABLE FOR ADDING NOTES TO THE CLASSROOM (FUTURE EXPANSION)
+CREATE TABLE ClassroomNotes(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    classroomId INT NOT NULL,
+    teacherId INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    createTime BIGINT
 );
 
 -- ADDING DUMMY DATA TO THE TABLES
