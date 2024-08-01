@@ -61,7 +61,7 @@ namespace QuizFlash
             PART_Button.Content = $"{Hour:D2}:{Minute:D2}:{Second:D2}";
 
             // Update time in milliseconds
-            SelectedTimeInMilliseconds = (Hour * 3600 + Minute * 60 + Second) * 1000;
+            SelectedTimeInSeconds = (Hour * 3600 + Minute * 60 + Second);
         }
 
         public int Hour
@@ -106,6 +106,6 @@ namespace QuizFlash
         }
         private int _second;
 
-        public long SelectedTimeInMilliseconds { get; private set; }
+        public long SelectedTimeInSeconds { get; private set; }
     }
 }

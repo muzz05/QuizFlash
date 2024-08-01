@@ -43,22 +43,9 @@ namespace QuizFlash
                 AttemptedBadge.Background = new BrushConverter().ConvertFromString("#FF6666") as Brush;
                 textBlock.Text = "Expired";
             }
-            // Convert epoch timestamp to ISO 8601 string (assuming validUntilEpoch is in seconds)
-            string validUntilIsoString = ConvertEpochToIsoString(validUntilEpoch);
-            string validUntilDate = ConvertIsoStringToDate(validUntilIsoString); 
-            ValidUntil.Text= validUntilDate;
-        }
 
-        private string ConvertEpochToIsoString(long epochTimestamp)
-        {
-            var dateTime = DateTimeOffset.FromUnixTimeMilliseconds(epochTimestamp * 1000);
-            return dateTime.UtcDateTime.ToString("o");
-        }
-        private string ConvertIsoStringToDate(string isoString)
-        {
-            DateTime parsedDateTime = DateTime.Parse(isoString);
-            return parsedDateTime.ToString("d");  
-        }        
+            ValidUntil.Text= Utilities.ConvertEpochToCustomString(validUntilEpoch);
+        }     
 
         private void result_page_redirect(object sender, RoutedEventArgs e)
         {            

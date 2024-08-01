@@ -21,7 +21,7 @@
                     <ControlTemplate TargetType="DatePicker">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="210" />
+                                <ColumnDefinition Width="190" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Background="#252837"
@@ -143,30 +143,30 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <!-- Quiz Name -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Quiz Name: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <TextBox x:Name="quizname" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
+                        <TextBlock Text="Quiz Name: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="15,0"/>
+                        <TextBox x:Name="quizname" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
                     </StackPanel>
 
                     <!-- Total Marks -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="26,0"/>
-                        <TextBox x:Name="permarks" Style="{StaticResource filterTextBox}" Width="240" Height="35"/>
+                        <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="31,0"/>
+                        <TextBox x:Name="permarks" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
                     </StackPanel>
 
                     <!-- Total Marks -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Duration: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="16,0"/>
-                        <TextBox x:Name="duration" Style="{StaticResource filterTextBox}" Width="240" Height="32"/>
+                        <TextBlock Text="Duration (Min): " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="5,0"/>
+                        <TextBox x:Name="durationOfQuiz" Style="{StaticResource filterTextBox}" Width="220" Height="32" PreviewTextInput="duration_PreviewTextInput"/>
                     </StackPanel>
 
                         <!-- Due Date -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
-                        <TextBlock Text="Due Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="10,0"/>
-                        <DatePicker x:Name="duedate" SelectedDateFormat="Short" Width="250" Height="30" Background="Transparent"/>
+                        <TextBlock Text="Due Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="16,0"/>
+                        <DatePicker x:Name="duedate" SelectedDateFormat="Short" Width="230" Height="30" Background="Transparent"/>
                     </StackPanel>
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
-                            <TextBlock Text="Time: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="27,0"/>
+                            <TextBlock Text="Time (H:M:S): " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="5,0"/>
                             <local:CustomTimePicker x:Name="timePicker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>

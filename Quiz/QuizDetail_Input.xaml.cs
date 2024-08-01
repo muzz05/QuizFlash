@@ -2,11 +2,14 @@
 using System;
 using System.Data;
 using System.Media;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
+using System.Windows.Input;
+
 
 namespace QuizFlash
 {
@@ -56,6 +59,8 @@ namespace QuizFlash
             int tid=GlobalVariables.TeacherId;
             int cid = GlobalVariables.ActiveClassroomId;
 
+            //int duration = Convert.ToInt32(durationOfQuiz.Text);
+
 
 
             if (string.IsNullOrWhiteSpace(quizName) ||
@@ -67,6 +72,7 @@ namespace QuizFlash
             }
 
             long epochTimestamp = ConvertToEpoch(dueDate.Value);
+            epochTimestamp += timePicker.SelectedTimeInSeconds;
 
             Database db = new Database();
 
@@ -109,8 +115,23 @@ namespace QuizFlash
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show((timePicker.SelectedTimeInMilliseconds + ConvertToEpoch(duedate.SelectedDate.Value)).ToString());
             this.Close();
         }
+
+        private void duration_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        // Checking if the input is only number
+
+        private static readonly Regex rgx = new Regex("^[1-9][0-9]*$");
+        private bool IsTextAllowed(string text)
+        {
+            return rgx.IsMatch(text);
+        }
+
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -108,6 +109,35 @@ namespace QuizFlash
             DateTime parsedDateTime = DateTime.Parse(isoString);
             return parsedDateTime.ToString("d");
         }
+
+        // To Convert EPOCH to Custom Time String 
+        public static string ConvertEpochToCustomString(long epochTimestamp)
+        {
+            var dateTimeUtc = DateTimeOffset.FromUnixTimeMilliseconds(epochTimestamp * 1000);
+            var dateTimeLocal = dateTimeUtc.ToLocalTime();
+            string formattedDate = dateTimeLocal.ToString("dd MMMM yyyy hhtt", CultureInfo.InvariantCulture);
+            return formattedDate;
+        }
+
+        // To Get the Time in Hours and minutes If we give minutes
+        public static string GetFormattedTime(int totalMinutes)
+        {
+            if (totalMinutes < 60)
+            {
+                return $"{totalMinutes} Minutes";
+            }
+
+            int hours = totalMinutes / 60;
+            int minutes = totalMinutes % 60;
+
+            if (minutes == 0)
+            {
+                return $"{hours} Hours";
+            }
+
+            return $"{hours} Hours {minutes} Minutes";
+        }
+
 
         // To get the Device name
         public static string GetDeviceName()
