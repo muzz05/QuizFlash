@@ -25,13 +25,14 @@ namespace QuizFlash
         int quizId;
         Database database=new Database();
         long quizEpochTime;
-        public QuizControl(int quizId, string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
+        public QuizControl(int quizId, string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted, int duration)
         {
             InitializeComponent();
             this.quizId = quizId;
             QuizName.Text = quizname;
             QuizMarks.Text = totalmarks.ToString();
             QuesCount.Text = questions.ToString();
+            DurationBadge.Text = duration.ToString() + " Minutes";
             quizEpochTime = validUntilEpoch;
 
             AttemptedBadge.Visibility =  GlobalVariables.IsTeacher || !IsAttempted ? Visibility.Collapsed: Visibility.Visible;
@@ -68,27 +69,27 @@ namespace QuizFlash
             }
             else
             {
-                        string query= "Select s.isCorrect, q.totalMarks, q.marksPerQuestion from StudentResponse s JOIN Quiz q ON s.quizId=q.id where s.quizId=@quizId and s.studentId=@studentId;";
-                        DataTable result = database.ExecuteQuery(query, new MySqlParameter[] {new MySqlParameter("@quizId",quizId), new MySqlParameter("@studentId",GlobalVariables.StudentId)});
+                string query= "Select s.isCorrect, q.totalMarks, q.marksPerQuestion from StudentResponse s JOIN Quiz q ON s.quizId=q.id where s.quizId=@quizId and s.studentId=@studentId;";
+                DataTable result = database.ExecuteQuery(query, new MySqlParameter[] {new MySqlParameter("@quizId",quizId), new MySqlParameter("@studentId",GlobalVariables.StudentId)});
 
-                        if(result.Rows.Count == 0)
-                        {
-                            CustomMessageBox customMessageBox = new CustomMessageBox("Attempt it first!","You have not attempted this quiz yet", "Error");
-                            customMessageBox.ShowDialog();
-                        }
-                        else
-                        {
-                            int score = 0;
-                            int totalMarks = Convert.ToInt32(result.Rows[0]["totalMarks"]);
+                if(result.Rows.Count == 0)
+                {
+                    CustomMessageBox customMessageBox = new CustomMessageBox("Attempt it first!","You have not attempted this quiz yet", "Error");
+                    customMessageBox.ShowDialog();
+                }
+                else
+                {
+                    int score = 0;
+                    int totalMarks = Convert.ToInt32(result.Rows[0]["totalMarks"]);
 
-                            for (int i = 0; i < result.Rows.Count; i++)
-                            {
-                                score += Convert.ToBoolean(result.Rows[i]["isCorrect"]) ? Convert.ToInt32(result.Rows[i]["marksPerQuestion"]):0;
-                            }
+                    for (int i = 0; i < result.Rows.Count; i++)
+                    {
+                        score += Convert.ToBoolean(result.Rows[i]["isCorrect"]) ? Convert.ToInt32(result.Rows[i]["marksPerQuestion"]):0;
+                    }
 
-                            CustomMessageBox customMessageBox = new CustomMessageBox("Your Result", $"You got:\n {score} out of {totalMarks}", "OK");
-                            customMessageBox.ShowDialog();                        
-                        }
+                    CustomMessageBox customMessageBox = new CustomMessageBox("Your Result", $"You got:\n {score} out of {totalMarks}", "OK");
+                    customMessageBox.ShowDialog();                        
+                }
             }
         }
 
@@ -105,8 +106,8 @@ namespace QuizFlash
             {
                 if(window is Student student)
                 {
-                    DataTable marksPerQuestion = database.ExecuteQuery("Select marksPerQuestion from Quiz where id=@quizId", new MySqlParameter("@quizId",quizId));
-                    student.StudentViewFrame.Content = new QuizDisplayPage(quizId, QuizName.Text, Convert.ToInt32(marksPerQuestion.Rows[0]["marksPerQuestion"]));                    
+                    DataTable marksPerQuestion = database.ExecuteQuery("Select marksPerQuestion, duration from Quiz where id=@quizId", new MySqlParameter("@quizId",quizId));
+                    student.StudentViewFrame.Content = new QuizDisplayPage(quizId, QuizName.Text, Convert.ToInt32(marksPerQuestion.Rows[0]["marksPerQuestion"]), Convert.ToInt32(marksPerQuestion.Rows[0]["duration"]));                    
                 }
             }
         }

@@ -64,7 +64,7 @@ namespace QuizFlash
 
 
             if (string.IsNullOrWhiteSpace(quizName) ||
-                string.IsNullOrWhiteSpace(perQmarks) || dueDate == null)
+                string.IsNullOrWhiteSpace(perQmarks) || dueDate == null || string.IsNullOrWhiteSpace(durationOfQuiz.Text))
             {
                 CustomMessageBox msg = new CustomMessageBox("Input Error", "Please fill in all fields.", "Error");
                 msg.Show();
@@ -76,7 +76,7 @@ namespace QuizFlash
 
             Database db = new Database();
 
-            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
+            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate, duration) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate, @duration)";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@name",quizName),
@@ -86,7 +86,8 @@ namespace QuizFlash
                 new MySqlParameter("@teacherid",GlobalVariables.TeacherId),
                 new MySqlParameter("@classid",GlobalVariables.ActiveClassroomId),
                 new MySqlParameter("@createtime",time),
-                new MySqlParameter("@duedate",epochTimestamp)
+                new MySqlParameter("@duedate",epochTimestamp),
+                new MySqlParameter("@duration",Convert.ToInt32(durationOfQuiz.Text))
 
             };
 
@@ -127,6 +128,7 @@ namespace QuizFlash
         // Checking if the input is only number
 
         private static readonly Regex rgx = new Regex("^[1-9][0-9]*$");
+
         private bool IsTextAllowed(string text)
         {
             return rgx.IsMatch(text);

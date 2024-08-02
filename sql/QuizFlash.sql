@@ -42,7 +42,7 @@ CREATE TABLE Quiz (
     marksPerQuestion INT NOT NULL,
     teacherId INT NOT NULL,
     classroomId INT NOT NULL,
-    duration INT DEFAULT 15
+    duration INT DEFAULT 5
     createTime BIGINT,
     startTime BIGINT,
 );
@@ -64,7 +64,7 @@ CREATE TABLE StudentResponse (
     questionId INT NOT NULL,
     studentId INT NOT NULL,
     isCorrect BOOLEAN NOT NULL,
-    checkedAnswer BOOLEAN NOT NULL
+    checkedAnswer INT NOT NULL
 );
 
 CREATE TABLE Classroom (

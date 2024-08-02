@@ -62,7 +62,7 @@ namespace QuizFlash
                 DataTable result = await Task.Run(() =>db.ExecuteQuery(sql, new MySqlParameter("@ClassroomId", GlobalVariables.ActiveClassroomId)));
                 for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), false);
+                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), false ,Convert.ToInt32(result.Rows[i]["duration"]));
                 }
             }
             else
@@ -76,15 +76,15 @@ namespace QuizFlash
                 DataTable result = await Task.Run(() => db.ExecuteQuery(sql, quizParams));
                 for (int i = 0; i < result.Rows.Count; i++)
                 {
-                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), Convert.ToBoolean(result.Rows[i]["isAttempted"]));
+                    AddQuiz(Convert.ToInt32(result.Rows[i]["id"]), result.Rows[i]["name"].ToString(), Convert.ToInt32(result.Rows[i]["totalMarks"]), Convert.ToInt32(result.Rows[i]["totalQuestions"]), Convert.ToInt32(result.Rows[i]["dueDate"]), Convert.ToBoolean(result.Rows[i]["isAttempted"]), Convert.ToInt32(result.Rows[i]["duration"]));
                 }
             }
         }
 
-        public void AddQuiz(int quizId,string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted)
+        public void AddQuiz(int quizId,string quizname, int totalmarks, int questions, long validUntilEpoch, bool IsAttempted, int duration)
         {
             int index = TeacherClassroomQuizPanel.Children.Count - 1;
-            QuizControl newQuiz = new QuizControl(quizId,quizname, totalmarks, questions, validUntilEpoch,IsAttempted);
+            QuizControl newQuiz = new QuizControl(quizId,quizname, totalmarks, questions, validUntilEpoch,IsAttempted, duration);
             newQuiz.Margin = new Thickness(0, 15, 15, 0);
             TeacherClassroomQuizPanel.Children.Insert(index,newQuiz);
 

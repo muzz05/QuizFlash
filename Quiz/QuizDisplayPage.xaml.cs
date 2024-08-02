@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using QuizFlash.Components;
+using System.Windows.Threading;
 
 namespace QuizFlash
 {
@@ -25,7 +26,11 @@ namespace QuizFlash
     {
         int response, correct, quizId, marksPerQuestion;
         Database database = new Database();
-        public QuizDisplayPage(int id, string name, int marksPerQuestion)
+        private DispatcherTimer timer;
+        private TimeSpan timeLeft;
+
+
+        public QuizDisplayPage(int id, string name, int marksPerQuestion, int duration)
         {
             InitializeComponent();
             quizTitle.Text = name;
@@ -45,7 +50,38 @@ namespace QuizFlash
                 quiz.Rows.RemoveAt(index);
                 i++;
             }
+
+            // Setting the Timer
+            timeLeft = TimeSpan.FromMinutes(duration);
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick; 
+
+            timer.Start();
+
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+
+            timerText.Text = timeLeft.ToString(@"mm\:ss");
+
+            if (timeLeft.TotalSeconds <= 0)
+            {
+                timer.Stop();
+                next_button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
+
+            if(timeLeft.TotalSeconds == 20)
+            {
+                timer.Stop();
+                CustomMessageBox prompt = new CustomMessageBox("Not much time left", "Only 20 seconds left in auto submission", "Success");
+                prompt.ShowDialog();
+                timer.Start();
+            }
+        }
+
 
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
@@ -65,11 +101,6 @@ namespace QuizFlash
                     }
                 }
             }
-
-            if (isAllQuestionAttempted)
-            {
-
-            
 
             foreach (var control in quizDisplayPanel.Children)
             {
@@ -107,12 +138,6 @@ namespace QuizFlash
                 {
                     student.StudentViewFrame.Content = new TeacherClassroomMainPage();
                 }
-            }
-            }
-            else
-            {
-                CustomMessageBox error = new CustomMessageBox("Attempt All Question", "You cannot leave any question unsolved", "Error");
-                error.ShowDialog();
             }
         }
     }
