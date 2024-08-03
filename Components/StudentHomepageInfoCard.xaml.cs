@@ -27,7 +27,7 @@ namespace QuizFlash
         {
             AssociatedClassroomId = classroomId;
             InitializeComponent();
-            RecentQuizDateBadge.Text = "Due " + Utilities.ConvertEpochToRelativeTimeFuture(epoch);
+            RecentQuizDateBadge.Text = "Starts at " + Utilities.ConvertEpochToCustomString(epoch);
             classname.Text = className;
             this.announcement.Text = announcement;
         }

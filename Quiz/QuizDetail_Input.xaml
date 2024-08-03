@@ -161,8 +161,8 @@
 
                         <!-- Due Date -->
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
-                        <TextBlock Text="Due Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="16,0"/>
-                        <DatePicker x:Name="duedate" SelectedDateFormat="Short" Width="230" Height="30" Background="Transparent"/>
+                        <TextBlock Text="Start Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="14,0"/>
+                        <DatePicker x:Name="startDate" SelectedDateFormat="Short" Width="230" Height="30" Background="Transparent"/>
                     </StackPanel>
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">

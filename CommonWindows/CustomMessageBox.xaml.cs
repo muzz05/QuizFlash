@@ -24,6 +24,10 @@ namespace QuizFlash
             InitializeComponent();
             playSimpleSound();
             messageIcon.Kind = Type == "Error" ? MahApps.Metro.IconPacks.PackIconBootstrapIconsKind.ExclamationCircleFill : MahApps.Metro.IconPacks.PackIconBootstrapIconsKind.CheckCircleFill;
+            if(Type == "Info")
+            {
+                messageIcon.Kind = MahApps.Metro.IconPacks.PackIconBootstrapIconsKind.ExclamationCircleFill;
+            }
             messageBoxHeading.Text = Title;
             messageBoxText.Text = Message;
         }

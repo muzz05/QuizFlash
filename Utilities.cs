@@ -115,7 +115,7 @@ namespace QuizFlash
         {
             var dateTimeUtc = DateTimeOffset.FromUnixTimeMilliseconds(epochTimestamp * 1000);
             var dateTimeLocal = dateTimeUtc.ToLocalTime();
-            string formattedDate = dateTimeLocal.ToString("dd MMMM yyyy hhtt", CultureInfo.InvariantCulture);
+            string formattedDate = dateTimeLocal.ToString("dd MMMM yyyy hh:mm tt", CultureInfo.InvariantCulture);
             return formattedDate;
         }
 
