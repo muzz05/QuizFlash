@@ -45,6 +45,15 @@ QuizFlash features a robust authentication system with secure login and registra
 - **Quiz Announcements on Homepage:** Both users can see their upcoming quizzes in advance.
 - **Announcements:** Both users can add anouncements in classroom which can be seen by all the users in the classroom.
 
+### Upcoming Features
+- Settings section for updating name, email and password and fpr cheking updates. Along with that a section to check the terms and conditions and some information about the developers. In this section the users can see the FAQs and they can report for any bug or harassment within the app.
+- Adding option to add true false question inside the quiz.
+- Adding Classroom notes just like the flashcard feature.
+- Attendance system for both teachers and students. The teachers can mark the attendance and the students can view their attendace analytics.
+
+### Newly Added Features
+- Quiz now has a timer whose time can be set when the quiz is being made by the teacher. Along with that the dueDate selection is now replaced with the startDate and time selection while making the quiz.
+
 ## Installation
 
 To start using QuizFlash:
