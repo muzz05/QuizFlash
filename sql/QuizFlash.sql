@@ -1,5 +1,5 @@
--- Total Tables: 18
--- Total Dummy Data: 22 Users, 20 Teachers, 20 Students, 3 Quizzes, 4 QuestionAnswers, 4 StudentResponse, 10 Classrooms, 22 ClassroomStudents, 22 Flashcards
+-- Total Tables: 19
+-- Total Dummy Data: 22 Users, 20 Teachers, 20 Students, 3 Quizzes, 4 QuestionAnswers, 4 StudentResponse, 10 Classrooms, 22 ClassroomStudents, 22 Flashcards, 10 Reports, 5 FAQ, 5 Config, 5 ClassroomNotes, 42 Attendance, 2 Admins
 
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -8,6 +8,15 @@ CREATE TABLE Users (
     departmentId INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     isTeacher BOOLEAN NOT NULL
+);
+
+-- THIS IS THE ADMIN TABLE FOR FUTURE EXPANSION OF ADDING ADMINISTRATORS TO THE SYSTEM
+CREATE TABLE Admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+    power INT DEFAULT 0,
 );
 
 CREATE TABLE Teachers (
@@ -167,6 +176,18 @@ CREATE TABLE Config(
 );
 
 -- ADDING DUMMY DATA TO THE TABLES
+
+-- Dummyy dat for Admin table
+INSERT INTO
+    Admins (
+        username,
+        email,
+        password,
+        power
+    )
+VALUES
+    ('admin1', 'admin1@gmail.com', 'password1', 1),
+    ('admin2', 'admin2@gmail.com', 'password2', 1);
 
 -- Dummy data for Attendance table
 INSERT INTO
