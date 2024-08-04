@@ -1,3 +1,6 @@
+-- Total Tables: 18
+-- Total Dummy Data: 22 Users, 20 Teachers, 20 Students, 3 Quizzes, 4 QuestionAnswers, 4 StudentResponse, 10 Classrooms, 22 ClassroomStudents, 22 Flashcards
+
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
@@ -164,6 +167,120 @@ CREATE TABLE Config(
 );
 
 -- ADDING DUMMY DATA TO THE TABLES
+
+-- Dummy data for Attendance table
+INSERT INTO
+    Attendance (
+        classroomId,
+        studentId,
+        isPresent,
+        attendanceDate,
+        createTime
+    )VALUES
+    (1, 1, 1, 1718496000, 1718496000),
+    (1, 2, 1, 1718496000, 1718496000),
+    (1, 3, 1, 1718496000, 1718496000),
+    (1, 4, 1, 1718496000, 1718496000),
+    (1, 5, 1, 1718496000, 1718496000),
+    (1, 6, 1, 1718496000, 1718496000),
+    (1, 7, 1, 1718496000, 1718496000),
+    (1, 8, 1, 1718496000, 1718496000),
+    (1, 9, 1, 1718496000, 1718496000),
+    (1, 10, 1, 1718496000, 1718496000),
+    (1, 11, 1, 1718496000, 1718496000),
+    (1, 12, 1, 1718496000, 1718496000),
+    (1, 13, 1, 1718496000, 1718496000),
+    (1, 14, 1, 1718496000, 1718496000),
+    (1, 15, 1, 1718496000, 1718496000),
+    (1, 16, 1, 1718496000, 1718496000),
+    (1, 17, 1, 1718496000, 1718496000),
+    (1, 18, 1, 1718496000, 1718496000),
+    (1, 19, 1, 1718496000, 1718496000),
+    (1, 20, 1, 1718496000, 1718496000),
+    (1, 21, 1, 1718496000, 1718496000),
+    (1, 22, 1, 1718496000, 1718496000),
+    (1, 23, 1, 1718496000, 1718496000),
+    (1, 24, 1, 1718496000, 1718496000),
+    (1, 25, 1, 1718496000, 1718496000),
+    (1, 26, 1, 1718496000, 1718496000),
+    (1, 27, 1, 1718496000, 1718496000),
+    (1, 28, 1, 1718496000, 1718496000),
+    (1, 29, 1, 1718496000, 1718496000),
+    (1, 30, 1, 1718496000, 1718496000),
+    (1, 31, 1, 1718496000, 1718496000),
+    (1, 32, 1, 1718496000, 1718496000),
+    (1, 33, 1, 1718496000, 1718496000),
+    (1, 34, 1, 1718496000, 1718496000),
+    (1, 35, 1, 1718496000, 1718496000),
+    (1, 36, 1, 1718496000, 1718496000),
+    (1, 37, 1, 1718496000, 1718496000),
+    (1, 38, 1, 1718496000, 1718496000),
+    (1, 39, 1, 1718496000, 1718496000),
+    (1, 40, 1, 1718496000, 1718496000),
+    (1, 41, 1, 1718496000, 1718496000),
+    (1, 42, 1, 1718496000, 1718496000);
+
+-- Dummy data for ClassroomNotes table
+INSERT INTO
+    ClassroomNotes (
+        classroomId,
+        teacherId,
+        title,
+        content,
+        createTime
+    )
+VALUES
+    (1, 1, 'Introduction to Software Engineering', 'This lecture covers the basics of software engineering, including software development life cycle, agile methodologies, and design principles.', 1718496000),
+    (1, 1, 'Object-Oriented Programming Concepts', 'Key concepts of OOP, such as classes, objects, inheritance, and polymorphism, are discussed in this lecture.', 1718496000),
+    (1, 1, 'Database Design and Management', 'Database systems, SQL queries, normalization, and transaction management are covered in this lecture.', 1718496000),
+    (1, 1, 'Web Development Technologies', 'HTML, CSS, JavaScript, and frameworks like React and Angular are introduced in this lecture.', 1718496000),
+    (1, 1, 'Software Testing and Quality Assurance', 'Testing techniques, tools, and best practices for ensuring software quality are discussed in this lecture.', 1718496000);
+
+-- Dummy data for Reports table( bug reports and harrassment reports)
+INSERT INTO
+    Reports (
+        userId,
+        isTeacher,
+        report,
+        createTime
+    )
+VALUES
+    (1, 1, 'Bug report: The quiz timer is not working properly.', 1718496000),
+    (2, 1, 'Bug report: The student attendance feature is not updating correctly.', 1718496000),
+    (3, 1, 'Bug report: The classroom stream messages are not displaying for some students.', 1718496000),
+    (4, 1, 'Bug report: The flashcards feature is not saving new entries.', 1718496000),
+    (5, 1, 'Bug report: The quiz results are not calculating marks accurately.', 1718496000),
+    (6, 1, 'Harassment report: A student is using inappropriate language in the classroom stream.', 1718496000),
+    (7, 1, 'Harassment report: A student is posting offensive content in the classroom notes.', 1718496000),
+    (8, 1, 'Harassment report: A student is sending spam messages in the classroom stream.', 1718496000),
+    (9, 1, 'Harassment report: A student is bullying other students in the classroom.', 1718496000),
+    (10, 1, 'Harassment report: A student is sharing inappropriate links in the classroom stream.', 1718496000);
+
+-- Dummy data for FAQ table
+INSERT INTO
+    FAQ (
+        question,
+        answer
+    )
+VALUES
+    ('How do I create a new quiz?', 'To create a new quiz, go to the "Quizzes" section, click on "Create Quiz", enter the quiz details, add questions, and set the due date.'),
+    ('Can I edit a quiz after it has been published?', 'Yes, you can edit a quiz before the due date. Go to the "Quizzes" section, select the quiz, and click on "Edit Quiz" to make changes.'),
+    ('How do I view quiz results?', 'To view quiz results, go to the "Quizzes" section, select the quiz, and click on "View Results" to see the marks obtained by each student.'),
+    ('What is the duration of a quiz?', 'The duration of a quiz is set by the teacher when creating the quiz. Students have a limited time to complete the quiz.'),
+    ('How do I submit a quiz?', 'To submit a quiz, go to the "Quizzes" section, select the quiz, answer all questions, and click on "Submit Quiz" before the due date.');
+
+-- Dummy data for Config table
+INSERT INTO
+    Config (
+        keyName,
+        value
+    )
+VALUES
+    ('quizDuration', '5'),
+    ('attendanceDuration', '10'),
+    ('flashcardLimit', '5'),
+    ('reportLimit', '10'),
+    ('faqLimit', '5');
 
 -- Dummy data for User table
 INSERT INTO
