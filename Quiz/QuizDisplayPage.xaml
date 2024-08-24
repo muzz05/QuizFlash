@@ -11,6 +11,14 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
             <StackPanel>
                 <TextBlock x:Name="quizTitle" Style="{StaticResource TitleText}"  Text="Quiz 1" Margin="10" HorizontalAlignment="Center" Width="auto" Height="50"/>
+                <Border CornerRadius="7" Background="#22202f" Width="130" Height="35">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="130">
+                        <TextBlock Foreground="#c3c4cf" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold" Margin="8,3">Time Left</TextBlock>
+                    <Border CornerRadius="5" Background="#c3c4cf" Height="22">
+                            <TextBlock x:Name="timerText" Foreground="#4a4a4e" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="5,3" Text="00:00"></TextBlock>
+                     </Border>      
+                    </StackPanel>
+                </Border>
                 <WrapPanel x:Name="quizDisplayPanel" Width="800">
                     
                 </WrapPanel>

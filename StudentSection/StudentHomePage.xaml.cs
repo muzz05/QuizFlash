@@ -73,7 +73,7 @@ namespace QuizFlash
             string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
             DataTable allDevices = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId)));
 
-            sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName, c.id as classroomId FROM ClassroomStudents cs JOIN Classroom c ON cs.classroomId = c.id JOIN Quiz q ON q.classroomId = c.id WHERE cs.studentId = @StudentId AND q.dueDate > @CurrentDate AND NOT EXISTS(SELECT 1 FROM Result r WHERE r.studentId = @StudentId AND r.quizId = q.id)";
+            sql = "SELECT q.name as quizName, q.startTime ,c.name as classroomName, c.id as classroomId FROM ClassroomStudents cs JOIN Classroom c ON cs.classroomId = c.id JOIN Quiz q ON q.classroomId = c.id WHERE cs.studentId = @StudentId AND q.startTime + (5*60) > @CurrentDate AND NOT EXISTS(SELECT 1 FROM Result r WHERE r.studentId = @StudentId AND r.quizId = q.id)";
             MySqlParameter[] resultParams =
             {
                 new MySqlParameter("@StudentId", GlobalVariables.StudentId),
@@ -91,7 +91,7 @@ namespace QuizFlash
 
             foreach (DataRow row in quizesResult.Rows)
             {
-                AddRecentQuiz(Convert.ToInt32(row["classroomId"]), row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["dueDate"]));
+                AddRecentQuiz(Convert.ToInt32(row["classroomId"]), row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["startTime"]));
             }
         }
 

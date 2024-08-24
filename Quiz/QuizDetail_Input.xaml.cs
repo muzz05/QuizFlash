@@ -2,11 +2,14 @@
 using System;
 using System.Data;
 using System.Media;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
+using System.Windows.Input;
+
 
 namespace QuizFlash
 {
@@ -25,6 +28,8 @@ namespace QuizFlash
             Storyboard scaleDownStoryboard = (Storyboard)this.Resources["ScaleDownAnimation"];
             scaleDownStoryboard.Begin();
         }
+
+        
 
 
         private void playSimpleSound()
@@ -48,7 +53,7 @@ namespace QuizFlash
         {
             string quizName = quizname.Text;
             string perQmarks = permarks.Text;
-            DateTime? dueDate = duedate.SelectedDate;
+            DateTime? startdate = startDate.SelectedDate;
             int marksPerQuestion=Int32.Parse(perQmarks);
             long time = Utilities.GetCurrentTimeInEpoch();
             int tid=GlobalVariables.TeacherId;
@@ -57,18 +62,19 @@ namespace QuizFlash
 
 
             if (string.IsNullOrWhiteSpace(quizName) ||
-                string.IsNullOrWhiteSpace(perQmarks) || dueDate == null)
+                string.IsNullOrWhiteSpace(perQmarks) || startdate == null || string.IsNullOrWhiteSpace(durationOfQuiz.Text))
             {
                 CustomMessageBox msg = new CustomMessageBox("Input Error", "Please fill in all fields.", "Error");
                 msg.Show();
                 return;
             }
 
-            long epochTimestamp = ConvertToEpoch(dueDate.Value);
+            long epochTimestamp = ConvertToEpoch(startdate.Value);
+            epochTimestamp += timePicker.SelectedTimeInSeconds;
 
             Database db = new Database();
 
-            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,dueDate) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@duedate)";
+            string sql = "INSERT INTO Quiz(name,totalQuestions,totalMarks,marksPerQuestion,teacherId,classroomId,createTime,startTime, duration) VALUES(@name,@totalQues,@totalmark,@marksperQ,@teacherid,@classid,@createtime,@startTime, @duration)";
             MySqlParameter[] parameters =
             {
                 new MySqlParameter("@name",quizName),
@@ -78,7 +84,8 @@ namespace QuizFlash
                 new MySqlParameter("@teacherid",GlobalVariables.TeacherId),
                 new MySqlParameter("@classid",GlobalVariables.ActiveClassroomId),
                 new MySqlParameter("@createtime",time),
-                new MySqlParameter("@duedate",epochTimestamp)
+                new MySqlParameter("@startTime",epochTimestamp),
+                new MySqlParameter("@duration",Convert.ToInt32(durationOfQuiz.Text))
 
             };
 
@@ -109,6 +116,20 @@ namespace QuizFlash
         {
             this.Close();
         }
+
+        private void duration_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        // Checking if the input is only number
+        private static readonly Regex rgx = new Regex("^[1-9][0-9]*$");
+
+        private bool IsTextAllowed(string text)
+        {
+            return rgx.IsMatch(text);
+        }
+
     }
 }
 

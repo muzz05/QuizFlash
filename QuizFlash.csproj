@@ -312,6 +312,9 @@
     <Compile Include="Components\loginData.xaml.cs">
       <DependentUpon>loginData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomUserControls\CustomTimePicker.xaml.cs">
+      <DependentUpon>CustomTimePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherSection\ClassroomTeacherMsgBox.xaml.cs">
       <DependentUpon>ClassroomTeacherMsgBox.xaml</DependentUpon>
     </Compile>
@@ -415,6 +418,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\loginData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\CustomTimePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,18 +6,18 @@
       xmlns:local="clr-namespace:QuizFlash"
       xmlns:Icons ="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="790"
+      d:DesignHeight="450" d:DesignWidth="820"
       Title="TeacherClassroomQuizPage">
 
     <Grid>
 
-        <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="350" Width="790">
+        <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="350" Width="800">
             <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
-        <Grid Margin="20,0,0,0" HorizontalAlignment="Center" x:Name="ClassroomQuizGrid">
+        <Grid Margin="10,0,0,0" HorizontalAlignment="Center" x:Name="ClassroomQuizGrid">
             <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly" HorizontalAlignment="Center">
-                <WrapPanel x:Name="TeacherClassroomQuizPanel" Width="780" HorizontalAlignment="Center">
-                    <Border CornerRadius="20" Height="220" Width="180" BorderThickness="1" Margin="0,15,15,0" x:Name="AddQuizButton">
+                <WrapPanel x:Name="TeacherClassroomQuizPanel" Width="820" HorizontalAlignment="Center">
+                    <Border CornerRadius="20" Height="240" Width="190" BorderThickness="1" Margin="0,15,15,0" x:Name="AddQuizButton">
                         <Border.BorderBrush>
                             <VisualBrush>
                                 <VisualBrush.Visual>
@@ -32,7 +32,7 @@
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </Border.BorderBrush>
-                        <Grid Height="220" Width="180">
+                        <Grid Height="245" Width="180">
                             <Button Width="50" Height="50" VerticalAlignment="Center" Cursor="Hand" HorizontalAlignment="Center" x:Name="addquizbutton" Click="addquizbutton_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">

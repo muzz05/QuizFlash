@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Data;
-using MySql.Data.MySqlClient;   
+using MySql.Data.MySqlClient;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,17 +15,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using QuizFlash.Components;
+using System.Windows.Threading;
 
 namespace QuizFlash
 {
-    /// <summary>
-    /// Interaction logic for QuizDisplayPage.xaml
-    /// </summary>
     public partial class QuizDisplayPage : Page
     {
         int response, correct, quizId, marksPerQuestion;
         Database database = new Database();
-        public QuizDisplayPage(int id, string name, int marksPerQuestion)
+        private DispatcherTimer timer;
+        private TimeSpan timeLeft;
+
+
+        public QuizDisplayPage(int id, string name, int marksPerQuestion, int duration)
         {
             InitializeComponent();
             quizTitle.Text = name;
@@ -45,37 +47,55 @@ namespace QuizFlash
                 quiz.Rows.RemoveAt(index);
                 i++;
             }
+
+            // Setting the Timer
+            timeLeft = TimeSpan.FromMinutes(duration);
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick; 
+
+            timer.Start();
+
+            this.Unloaded += QuizDisplayPage_Unloaded;
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
+
+            timerText.Text = timeLeft.ToString(@"mm\:ss");
+
+            if (timeLeft.TotalSeconds <= 0)
+            {
+                timer.Stop();
+                SubmitQuiz();
+            }
+
+            if(timeLeft.TotalSeconds == 20)
+            {
+                timer.Stop();
+                CustomMessageBox prompt = new CustomMessageBox("Not much time left", "Only 20 seconds left in auto submission", "Info");
+                prompt.ShowDialog();
+                timer.Start();
+            }
+        }
+
 
         private void next_button_Click(object sender, RoutedEventArgs e)
         {
-            int questionCount = 0, marksObtained=0;
-            bool isAllQuestionAttempted = true;
+            SubmitQuiz();
+        }
 
-            // cheking if all the questions are attempted
-
-            foreach (var control in quizDisplayPanel.Children)
-            {
-                if (control is QuizDisplayControl quizDisplayControl)
-                {
-                    if(quizDisplayControl.response == 1000)
-                    {
-                        isAllQuestionAttempted = false;
-                        break;
-                    }
-                }
-            }
-
-            if (isAllQuestionAttempted)
-            {
-
-            
+        private void SubmitQuiz()
+        {
+            int questionCount = 0, marksObtained = 0;
 
             foreach (var control in quizDisplayPanel.Children)
             {
                 questionCount++;
                 if (control is QuizDisplayControl quizDisplayControl)
-                { string query = "Insert into StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
+                {
+                    string query = "Insert into StudentResponse (quizId, questionId, studentId, isCorrect, checkedAnswer) values(@quizId,@questionId,@studentId,@correctness,@response)";
                     MySqlParameter[] parameters =
                     {
                         new MySqlParameter("@quizId",quizId),
@@ -85,7 +105,7 @@ namespace QuizFlash
                         new MySqlParameter("@response",quizDisplayControl.response)
                     };
 
-                    marksObtained+=quizDisplayControl.response == quizDisplayControl.correct ? marksPerQuestion : 0;
+                    marksObtained += quizDisplayControl.response == quizDisplayControl.correct ? marksPerQuestion : 0;
 
                     database.ExecuteNonQuery(query, parameters);
                 }
@@ -108,12 +128,13 @@ namespace QuizFlash
                     student.StudentViewFrame.Content = new TeacherClassroomMainPage();
                 }
             }
-            }
-            else
-            {
-                CustomMessageBox error = new CustomMessageBox("Attempt All Question", "You cannot leave any question unsolved", "Error");
-                error.ShowDialog();
-            }
+        }
+
+        private void QuizDisplayPage_Unloaded(object sender, RoutedEventArgs e)
+        {
+            SubmitQuiz();
+            CustomMessageBox prompt = new CustomMessageBox("Quiz Submitted", "Quiz has automatically been submitted", "Info");
+            prompt.ShowDialog();
         }
     }
 }

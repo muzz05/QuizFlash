@@ -57,7 +57,7 @@ namespace QuizFlash
             string sql = "SELECT * FROM LoggedDevices WHERE userId = @UserId";
             DataTable allDevices = await Task.Run(() => db.ExecuteQuery(sql, new MySqlParameter("@UserId", GlobalVariables.UserId)));
 
-            sql = "SELECT q.name as quizName, q.dueDate ,c.name as classroomName, c.id as classroomId FROM Classroom c JOIN Quiz q ON q.classroomId = c.id WHERE c.TeacherId = @TeacherId AND q.dueDate > @CurrentDate";
+            sql = "SELECT q.name as quizName, q.startTime ,c.name as classroomName, c.id as classroomId FROM Classroom c JOIN Quiz q ON q.classroomId = c.id WHERE c.TeacherId = @TeacherId AND q.startTime > @CurrentDate";
             MySqlParameter[] resultParams =
             {
                 new MySqlParameter("@TeacherId", GlobalVariables.TeacherId),
@@ -74,7 +74,7 @@ namespace QuizFlash
 
             foreach (DataRow row in quizesResult.Rows)
             {
-                AddRecentQuiz(Convert.ToInt32(row["classroomId"]), row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["dueDate"]));
+                AddRecentQuiz(Convert.ToInt32(row["classroomId"]), row["classroomName"].ToString(), row["quizName"].ToString(), Convert.ToInt64(row["startTime"]));
             }
         }
 
@@ -98,9 +98,9 @@ namespace QuizFlash
             devices.Children.Add(newDevice);
         }
 
-        private void AddRecentQuiz(int classroomId, string classroomName, string quizName, long dueDate)
+        private void AddRecentQuiz(int classroomId, string classroomName, string quizName, long startTime)
         {
-            StudentHomepageInfoCard newQuiz = new StudentHomepageInfoCard(classroomId, classroomName, quizName, dueDate);
+            StudentHomepageInfoCard newQuiz = new StudentHomepageInfoCard(classroomId, classroomName, quizName, startTime);
 
             newQuiz.Margin = new Thickness(0, 0, 0, 15);
 
