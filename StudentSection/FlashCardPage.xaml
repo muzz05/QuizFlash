@@ -9,47 +9,239 @@
       Background="Transparent"
       d:DesignHeight="460" d:DesignWidth="880"
       Title="FlashCardPage">
-
     <Border CornerRadius="20" Margin="15">
         <Grid>
-
+            <!-- Loading Overlay -->
             <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="450" Width="800">
-                <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Regular Loader -->
+                    <local:Loader x:Name="regularLoader" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <Grid x:Name="aiLoader" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <!-- Adjust overall loader size here -->
+                        <Viewbox Width="120" Height="120">
+                            <!-- Confined coordinate system -->
+                            <Canvas Width="100" Height="100">
+
+                                <!-- 🌟 Center Star -->
+                                <Path Data="M143.56875 182.86875C145.63125 189.05625 154.36875 189.05625 156.43125 182.86875L168.525 146.55A54.1875 54.1875 0 0 1 202.81875 112.275L239.11875 100.18125C245.30625 98.11875 245.30625 89.38125 239.11875 87.31875L202.8 75.2250000000001A54.1875 54.1875 0 0 1 168.525 40.93125L156.43125 4.63125A6.76875 6.76875 0 0 0 143.56875 4.63125L131.4750000000001 40.95A54.1875 54.1875 0 0 1 97.2 75.225L60.88125 87.31875A6.76875 6.76875 0 0 0 60.88125 100.18125L97.2 112.275A54.1875 54.1875 0 0 1 131.4750000000001 146.55L143.56875 182.86875z"
+                  Fill="#8B5CF6"
+                  Opacity="0.95"
+                  Width="90" Height="90"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Left="5" Canvas.Top="5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform x:Name="centerStarScale" ScaleX="0.35" ScaleY="0.35"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+
+                                <!-- ✨ Top-Left Star -->
+                                <Path Data="M71.1375 278.475A4.06875 4.06875 0 0 0 78.8625 278.475L86.11875 256.6875C89.3625 246.975 96.975 239.3625 106.6875 236.11875L128.475 228.8625A4.06875 4.06875 0 0 0 128.475 221.1375L106.6875 213.88125A32.5125 32.5125 0 0 1 86.11875 193.3125L78.8625 171.525A4.06875 4.06875 0 0 0 71.1375 171.525L63.88125 193.3125A32.5125 32.5125 0 0 1 43.3125 213.88125L21.525 221.1375A4.06875 4.06875 0 0 0 21.525 228.8625L43.3125 236.11875A32.5125 32.5125 0 0 1 63.88125 256.6875L71.1375 278.475z"
+                  Fill="#C4B5FD"
+                  Opacity="0.85"
+                  Width="50" Height="50"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Left="5" Canvas.Top="5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform x:Name="topLeftStarScale" ScaleX="0.25" ScaleY="0.25"/>
+                                            <RotateTransform x:Name="topLeftStarRotate"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+
+                                <!-- ✨ Bottom-Right Star -->
+                                <Path Data="M203.68125 298.14375A2.71875 2.71875 0 0 0 208.81875 298.14375L213.65625 283.63125C215.8125 277.14375 220.89375 272.0625 227.38125 269.90625L241.89375 265.06875A2.71875 2.71875 0 0 0 241.89375 259.93125L227.38125 255.09375A21.675 21.675 0 0 1 213.65625 241.36875L208.81875 226.85625A2.71875 2.71875 0 0 0 203.68125 226.85625L198.84375 241.36875A21.675 21.675 0 0 1 185.11875 255.09375L170.625 259.93125A2.71875 2.71875 0 0 0 170.625 265.06875L185.1375 269.90625C191.625 272.0625 196.70625 277.14375 198.8625 283.63125L203.68125 298.125z"
+                  Fill="#DDD6FE"
+                  Opacity="0.85"
+                  Width="40" Height="40"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Right="10" Canvas.Bottom="10">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform x:Name="bottomRightStarScale" ScaleX="0.3" ScaleY="0.3"/>
+                                            <RotateTransform x:Name="bottomRightStarRotate"/>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+
+                            </Canvas>
+                        </Viewbox>
+
+                        <!-- ✨ Animations -->
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+
+                                <!-- Center Star -->
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="centerStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.35" To="0.45"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetName="centerStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.35" To="0.45"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                                <!-- Top-Left -->
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.2">
+                                        <DoubleAnimation Storyboard.TargetName="topLeftStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.25" To="0.35"
+                                     Duration="0:0:1.6"
+                                     AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetName="topLeftStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.25" To="0.35"
+                                     Duration="0:0:1.6"
+                                     AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetName="topLeftStarRotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="-360"
+                                     Duration="0:0:6"
+                                     RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                                <!-- Bottom-Right -->
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.4">
+                                        <DoubleAnimation Storyboard.TargetName="bottomRightStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.3" To="0.4"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetName="bottomRightStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.3" To="0.4"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                        <DoubleAnimation Storyboard.TargetName="bottomRightStarRotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="360"
+                                     Duration="0:0:6"
+                                     RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </EventTrigger>
+                        </Grid.Triggers>
+                    </Grid>
+
+                    <TextBlock x:Name="loadingText" Text="Loading..." Foreground="#c3c4cf" 
+                               FontSize="14" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+
+                    <!-- Cancel Button -->
+                    <Button x:Name="cancelButton" Content="Cancel Generation" 
+                            Visibility="Collapsed" Margin="0,15,0,0" 
+                            Click="CancelGeneration_Click" Cursor="Hand"
+                            Padding="15,8" FontSize="12" FontWeight="SemiBold">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FF6B6B"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    CornerRadius="8" Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF5252"/>
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" Value="#CCCCCC"/>
+                                        <Setter Property="Foreground" Value="#999999"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
             </Grid>
+
+            <!-- Main Content Grid -->
             <Grid x:Name="FlashcardGrid">
                 <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+                    <WrapPanel x:Name="WrapPanelFlashCards" Width="880">
+                        <!-- AI Upload Card -->
+                        <Border CornerRadius="20" Height="230" Width="200" BorderThickness="1" Margin="0,0,15,15" Background="#c3c4cf">
+                            <Grid Height="220" Width="200">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Button Width="60" Height="60" Click="UploadPdf_Click" Cursor="Hand" Margin="0,0,0,10">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="50" Background="#272538">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect Color="#272538" Opacity="0.3" BlurRadius="10" ShadowDepth="0"/>
+                                                    </Border.Effect>
+                                                    <Icons:PackIconMaterialDesign Height="30" Width="30" Kind="FileUpload" 
+                                                                                  Foreground="White" VerticalAlignment="Center" 
+                                                                                  HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                    <TextBlock Text="AI Generate" FontSize="14" FontWeight="SemiBold" 
+                                               Foreground="#272538" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Upload PDF/DOC" FontSize="10" Foreground="#272537" 
+                                               HorizontalAlignment="Center" Margin="0,3,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
 
-                <WrapPanel x:Name="WrapPanelFlashCards" Width="880">
-                    <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
-                        <Border.BorderBrush>
-                            <VisualBrush>
-                                <VisualBrush.Visual>
-                                    <Rectangle Width="50" Height="50" Fill="#c3c4cf">
-                                        <Rectangle.Stroke>
-                                            <SolidColorBrush Color="#c3c4cf"/>
-                                        </Rectangle.Stroke>
-                                        <Rectangle.StrokeDashArray>
-                                            <DoubleCollection>2 2 2 2</DoubleCollection>
-                                        </Rectangle.StrokeDashArray>
-                                    </Rectangle>
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </Border.BorderBrush>
-                        <Grid Height="220" Width="200">
-                            <Button Width="50" Height="50" VerticalAlignment="Center" Click="AddFlashCard_Click" Cursor="Hand" HorizontalAlignment="Center">
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border CornerRadius="50" Background="#c3c4cf">
-                                            <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" Foreground="#272538" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                        </Grid>
-                    </Border>
-                </WrapPanel>
-            </ScrollViewer>
-        </Grid>
+                        <!-- Add Manual Card -->
+                        <Border CornerRadius="20" Height="220" Width="200" BorderThickness="1" Margin="0,0,15,15">
+                            <Border.BorderBrush>
+                                <VisualBrush>
+                                    <VisualBrush.Visual>
+                                        <Rectangle Width="50" Height="50" Fill="#c3c4cf">
+                                            <Rectangle.Stroke>
+                                                <SolidColorBrush Color="#c3c4cf"/>
+                                            </Rectangle.Stroke>
+                                            <Rectangle.StrokeDashArray>
+                                                <DoubleCollection>2 2 2 2</DoubleCollection>
+                                            </Rectangle.StrokeDashArray>
+                                        </Rectangle>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Border.BorderBrush>
+                            <Grid Height="220" Width="200">
+                                <Button Width="50" Height="50" VerticalAlignment="Center" Click="AddFlashCard_Click" 
+                                        Cursor="Hand" HorizontalAlignment="Center">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="50" Background="#c3c4cf">
+                                                <Icons:PackIconMaterialDesign Height="25" Width="25" Kind="AddToPhotos" 
+                                                                              Foreground="#272538" VerticalAlignment="Center" 
+                                                                              HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
         </Grid>
     </Border>
 </Page>
