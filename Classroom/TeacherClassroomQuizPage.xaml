@@ -8,9 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="820"
       Title="TeacherClassroomQuizPage">
-
     <Grid>
-
         <Grid x:Name="loadingOverlay" Background="Transparent" Visibility="Collapsed" Height="350" Width="800">
             <local:Loader HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
@@ -43,7 +41,7 @@
                                 </Button.Template>
                             </Button>
                         </Grid>
-                    </Border>
+                    </Border>					
                 </WrapPanel>
             </ScrollViewer>
         </Grid>

@@ -9,7 +9,7 @@
              d:DesignHeight="240" d:DesignWidth="190"
              Background="Transparent">
     <Grid>
-        <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="240" Width="190" Padding="0" Margin="0">
+        <Border BorderThickness="0" x:Name="border_of_flashcard" Background="White" CornerRadius="20" Height="240" Width="200" HorizontalAlignment="Center" Padding="0" Margin="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7.5*" />
@@ -52,9 +52,9 @@
                 </Border>
 
 
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="180">
-                    <Border CornerRadius="10" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="10,0,15,0">
-
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Stretch" Width="Auto">
+                    
+				<Border CornerRadius="10" Grid.Row="1"  HorizontalAlignment="Stretch" Margin="10,0,15,0">
                         <Button Grid.Row="1" VerticalAlignment="Center" Click="result_page_redirect" HorizontalAlignment="Right" Margin="0,0,0,0" Foreground="#fafafa" Height="28" Width="78" Cursor="Hand">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
@@ -74,28 +74,51 @@
                             </Button.Template>
                         </Button>
                     </Border>
-                    <Border CornerRadius="10" HorizontalAlignment="Stretch" Margin="0,0,15,0">
-                    
-                    <Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="quizRedirect" x:Name="quizStartButton" Foreground="#fafafa" Height="28" Width="70" Cursor="Hand">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border CornerRadius="10" BorderThickness="0">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="#00BFFF" Offset="0.0" />
-                                            <GradientStop Color="#6A1B9A" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <!-- Add your icon here (e.g., an image or font icon) -->
-                                        <TextBlock Text="Start" FontSize="16" Margin="0,0,5,0"/>
-                                        <Icons:PackIconMaterial  Kind="PlayCircle" Foreground="#fafafa" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"/>
-                                    </StackPanel>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Border>
+
+					<Border CornerRadius="10" HorizontalAlignment="Stretch" Margin="0,0,15,0">
+						<Button Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Click="quizRedirect" x:Name="quizStartButton" Foreground="#fafafa" Height="28" Width="70" Cursor="Hand">
+							<Button.Template>
+								<ControlTemplate TargetType="Button">
+									<Border CornerRadius="10" BorderThickness="0">
+										<Border.Background>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#00BFFF" Offset="0.0" />
+												<GradientStop Color="#6A1B9A" Offset="1.0" />
+											</LinearGradientBrush>
+										</Border.Background>
+										<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+											<!-- Add your icon here (e.g., an image or font icon) -->
+											<TextBlock Text="Start" FontSize="16" Margin="0,0,5,0"/>
+											<Icons:PackIconMaterial  Kind="PlayCircle" Foreground="#fafafa" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+										</StackPanel>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+					</Border>
+
+					<Border CornerRadius="10">
+						<Button Grid.Row="1" VerticalAlignment="Center" Click="DeleteButton_Click" x:Name="quizDeleteButton" Foreground="#fafafa" Height="28" Width="80" Cursor="Hand">
+							<Button.Template>
+								<ControlTemplate TargetType="Button">
+									<Border CornerRadius="10" BorderThickness="0">
+										<Border.Background>
+											<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+												<GradientStop Color="#00BFFF" Offset="0.0" />
+												<GradientStop Color="#6A1B9A" Offset="1.0" />
+											</LinearGradientBrush>
+										</Border.Background>
+										<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+											<!-- Add your icon here (e.g., an image or font icon) -->
+											<TextBlock Text="Delete" FontSize="16" Margin="0,0,5,0"/>
+											<Icons:PackIconMaterial  Kind="Delete" Foreground="#fafafa" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+										</StackPanel>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+					</Border>
+				
                 </StackPanel>
             </Grid>
         </Border>

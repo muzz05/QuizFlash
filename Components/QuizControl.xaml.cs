@@ -25,6 +25,7 @@ namespace QuizFlash
         int quizId;
         Database database=new Database();
         long quizEpochTime;
+        public event EventHandler<int> DeleteRequested;
 
         // Scenarios:
         // 1. The user is a teacher and the quiz is not attempted (DONE)
@@ -46,6 +47,7 @@ namespace QuizFlash
 
             AttemptedBadge.Visibility =  GlobalVariables.IsTeacher || !IsAttempted ? Visibility.Collapsed: Visibility.Visible;
             quizStartButton.Visibility = GlobalVariables.IsTeacher || IsAttempted ? Visibility.Collapsed : Visibility.Visible;
+            quizDeleteButton.Visibility = !GlobalVariables.IsTeacher ? Visibility.Collapsed : Visibility.Visible;
 
             // If the time is 5 minutes after the starting time then the quiz is expired
             if(Utilities.GetCurrentTimeInEpoch() > startTimeEpoch + (5 * 60))
@@ -131,5 +133,11 @@ namespace QuizFlash
                 }
             }
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteRequested?.Invoke(this, quizId);
+        }
+
     }
 }
