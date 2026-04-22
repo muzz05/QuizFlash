@@ -373,7 +373,7 @@ namespace QuizFlash
             {
                 Margin = new Thickness(0, 0, 15, 15)
             };
-            WrapPanelFlashCards.Children.Insert(0, newFlashCard);
+            WrapPanelFlashCards.Children.Insert(1, newFlashCard);
         }
 
         private void ShowErrorMessage(string title, string message)
