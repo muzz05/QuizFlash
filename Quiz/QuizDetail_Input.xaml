@@ -127,79 +127,269 @@
                 <DropShadowEffect ShadowDepth="0.1" BlurRadius="8" Color="#c3c4cf" Opacity="0.4"/>
             </Border.Effect>
             <Grid Height="340" Width="390">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="6.5*"/>
-                <RowDefinition Height="1.5*"/>
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="6.5*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
 
-            <!-- Heading Text -->
-            <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20">
-                Enter Quiz Details
-            </TextBlock>
+                <!-- Heading Text -->
+                <TextBlock x:Name="messageBoxHeading" Foreground="#c4c3cf" Grid.Row="0" Margin="5" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20">
+               Enter Quiz Details
+                </TextBlock>
 
-            <!-- Entry Fields -->
-            <Grid Grid.Row="1" Margin="0,10,0,0" VerticalAlignment="Center">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <!-- Quiz Name -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Quiz Name: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="15,0"/>
-                        <TextBox x:Name="quizname" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
-                    </StackPanel>
+                <!-- Entry Fields -->
+                <Grid Grid.Row="1" Margin="0,10,0,0" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <!-- Quiz Name -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <TextBlock Text="Quiz Name: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="15,0"/>
+                            <TextBox x:Name="quizname" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
+                        </StackPanel>
 
-                    <!-- Total Marks -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="31,0"/>
-                        <TextBox x:Name="permarks" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
-                    </StackPanel>
+                        <!-- Total Marks -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <TextBlock Text="Marks: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="31,0"/>
+                            <TextBox x:Name="permarks" Style="{StaticResource filterTextBox}" Width="220" Height="35"/>
+                        </StackPanel>
 
-                    <!-- Total Marks -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
-                        <TextBlock Text="Duration (Min): " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="5,0"/>
-                        <TextBox x:Name="durationOfQuiz" Style="{StaticResource filterTextBox}" Width="220" Height="32" PreviewTextInput="duration_PreviewTextInput"/>
-                    </StackPanel>
+                        <!-- Total Marks -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10">
+                            <TextBlock Text="Duration (Min): " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="5,0"/>
+                            <TextBox x:Name="durationOfQuiz" Style="{StaticResource filterTextBox}" Width="220" Height="32" PreviewTextInput="duration_PreviewTextInput"/>
+                        </StackPanel>
 
                         <!-- Due Date -->
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
-                        <TextBlock Text="Start Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="14,0"/>
-                        <DatePicker x:Name="startDate" SelectedDateFormat="Short" Width="230" Height="30" Background="Transparent"/>
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
+                            <TextBlock Text="Start Date: " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="14,0"/>
+                            <DatePicker x:Name="startDate" SelectedDateFormat="Short" Width="230" Height="30" Background="Transparent"/>
+                        </StackPanel>
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,10" Height="35">
                             <TextBlock Text="Time (H:M:S): " Foreground="#fafafa" FontSize="14" FontWeight="Normal" VerticalAlignment="Center" Margin="5,0"/>
                             <local:CustomTimePicker x:Name="timePicker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
+                </Grid>
+
+                <!-- Buttons -->
+                <Grid Grid.Row="2" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100" Cursor="Hand" Click="CancelButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Icons:PackIconMaterialDesign Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="15" Width="15"/>
+                                <TextBlock Text="Cancel" Foreground="#c4c3cf" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100" Cursor="Hand" Click="SaveButton_Click">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Icons:PackIconMaterialDesign Kind="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Height="13" Width="15"/>
+                                <TextBlock Text="Create" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="120" Cursor="Hand" Click="UploadPdf_Click">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Icons:PackIconMaterial Kind="AutoFix" Foreground="#c4c3cf" VerticalAlignment="Center" Height="13" Width="15"/>
+                                <TextBlock Text="Generate" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
+        </Border>
+        <!-- Loading Overlay -->
+        <Grid x:Name="loadingOverlay" 
+              Background="#AA1E1E2A"
+              Visibility="Collapsed"
+              Height="350"
+              Width="350"
+              Panel.ZIndex="999">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!-- Regular Loader -->
+                <local:Loader x:Name="regularLoader" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <!-- Buttons -->
-            <Grid Grid.Row="2" Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                <Grid x:Name="aiLoader" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <!-- Adjust overall loader size here -->
+                    <Viewbox Width="120" Height="120">
+                        <!-- Confined coordinate system -->
+                        <Canvas Width="100" Height="100">
 
-                <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,20,0" Height="35" Width="100" Cursor="Hand" Click="CancelButton_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterialDesign Kind="Cancel" Foreground="#c4c3cf" VerticalAlignment="Center" Height="15" Width="15"/>
-                            <TextBlock Text="Cancel" Foreground="#c4c3cf" FontSize="14" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
+                            <!-- 🌟 Center Star -->
+                            <Path Data="M143.56875 182.86875C145.63125 189.05625 154.36875 189.05625 156.43125 182.86875L168.525 146.55A54.1875 54.1875 0 0 1 202.81875 112.275L239.11875 100.18125C245.30625 98.11875 245.30625 89.38125 239.11875 87.31875L202.8 75.2250000000001A54.1875 54.1875 0 0 1 168.525 40.93125L156.43125 4.63125A6.76875 6.76875 0 0 0 143.56875 4.63125L131.4750000000001 40.95A54.1875 54.1875 0 0 1 97.2 75.225L60.88125 87.31875A6.76875 6.76875 0 0 0 60.88125 100.18125L97.2 112.275A54.1875 54.1875 0 0 1 131.4750000000001 146.55L143.56875 182.86875z"
+                  Fill="#8B5CF6"
+                  Opacity="0.95"
+                  Width="90" Height="90"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Left="5" Canvas.Top="5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="centerStarScale" ScaleX="0.35" ScaleY="0.35"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
 
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource MessageBoxButtons}" Margin="0,0,0,0" Height="35" Width="100" Cursor="Hand" Click="SaveButton_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Icons:PackIconMaterialDesign Kind="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Height="13" Width="15"/>
-                            <TextBlock Text="Save" Foreground="#c4c3cf" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-            </Grid>
+                            <!-- ✨ Top-Left Star -->
+                            <Path Data="M71.1375 278.475A4.06875 4.06875 0 0 0 78.8625 278.475L86.11875 256.6875C89.3625 246.975 96.975 239.3625 106.6875 236.11875L128.475 228.8625A4.06875 4.06875 0 0 0 128.475 221.1375L106.6875 213.88125A32.5125 32.5125 0 0 1 86.11875 193.3125L78.8625 171.525A4.06875 4.06875 0 0 0 71.1375 171.525L63.88125 193.3125A32.5125 32.5125 0 0 1 43.3125 213.88125L21.525 221.1375A4.06875 4.06875 0 0 0 21.525 228.8625L43.3125 236.11875A32.5125 32.5125 0 0 1 63.88125 256.6875L71.1375 278.475z"
+                  Fill="#C4B5FD"
+                  Opacity="0.85"
+                  Width="50" Height="50"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Left="5" Canvas.Top="5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="topLeftStarScale" ScaleX="0.25" ScaleY="0.25"/>
+                                        <RotateTransform x:Name="topLeftStarRotate"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+
+                            <!-- ✨ Bottom-Right Star -->
+                            <Path Data="M203.68125 298.14375A2.71875 2.71875 0 0 0 208.81875 298.14375L213.65625 283.63125C215.8125 277.14375 220.89375 272.0625 227.38125 269.90625L241.89375 265.06875A2.71875 2.71875 0 0 0 241.89375 259.93125L227.38125 255.09375A21.675 21.675 0 0 1 213.65625 241.36875L208.81875 226.85625A2.71875 2.71875 0 0 0 203.68125 226.85625L198.84375 241.36875A21.675 21.675 0 0 1 185.11875 255.09375L170.625 259.93125A2.71875 2.71875 0 0 0 170.625 265.06875L185.1375 269.90625C191.625 272.0625 196.70625 277.14375 198.8625 283.63125L203.68125 298.125z"
+                  Fill="#DDD6FE"
+                  Opacity="0.85"
+                  Width="40" Height="40"
+                  Stretch="Uniform"
+                  RenderTransformOrigin="0.5,0.5"
+                  Canvas.Right="10" Canvas.Bottom="10">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="bottomRightStarScale" ScaleX="0.3" ScaleY="0.3"/>
+                                        <RotateTransform x:Name="bottomRightStarRotate"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+
+                        </Canvas>
+                    </Viewbox>
+
+                    <!-- ✨ Animations -->
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+
+                            <!-- Center Star -->
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation Storyboard.TargetName="centerStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.35" To="0.45"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="centerStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.35" To="0.45"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                            <!-- Top-Left -->
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.2">
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.25" To="0.35"
+                                     Duration="0:0:1.6"
+                                     AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.25" To="0.35"
+                                     Duration="0:0:1.6"
+                                     AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarRotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="-360"
+                                     Duration="0:0:6"
+                                     RepeatBehavior="Forever"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                            <!-- Bottom-Right -->
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.4">
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarScale"
+                                     Storyboard.TargetProperty="ScaleX"
+                                     From="0.3" To="0.4"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarScale"
+                                     Storyboard.TargetProperty="ScaleY"
+                                     From="0.3" To="0.4"
+                                     Duration="0:0:1.4"
+                                     AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarRotate"
+                                     Storyboard.TargetProperty="Angle"
+                                     From="0" To="360"
+                                     Duration="0:0:6"
+                                     RepeatBehavior="Forever"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+
+                        </EventTrigger>
+                    </Grid.Triggers>
+                </Grid>
+
+                <TextBlock x:Name="loadingText"
+                   Text="Loading..."
+                   Foreground="#E0E0E0"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Margin="0,25,0,0"
+                   HorizontalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                />
+
+
+                <!-- Cancel Button -->
+                <Button x:Name="cancelButton" Content="Cancel Generation" 
+                            Visibility="Collapsed" Margin="0,15,0,0" 
+                            Click="CancelGeneration_Click" Cursor="Hand"
+                            Padding="15,8" FontSize="12" FontWeight="SemiBold">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF6B6B"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" 
+                                                    CornerRadius="8" Padding="{TemplateBinding Padding}">
+                                            <ContentPresenter HorizontalAlignment="Center" 
+                                                                VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF5252"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="#CCCCCC"/>
+                                    <Setter Property="Foreground" Value="#999999"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
         </Grid>
-    </Border>
-        
+
     </Grid>
 
 </Window>

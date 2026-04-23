@@ -21,6 +21,7 @@ namespace QuizFlash
     public partial class QuizDesignControl : UserControl
     {
         public int correct=0;
+        public event EventHandler DeleteRequested;
         public QuizDesignControl(int questionN)
         {
             InitializeComponent();
@@ -42,6 +43,10 @@ namespace QuizFlash
         private void optionDcheck(object sender, RoutedEventArgs e)
         {
             correct = 3;
-        }        
+        }
+        private void deleteQuestion(object sender, RoutedEventArgs e)
+        {
+            DeleteRequested?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

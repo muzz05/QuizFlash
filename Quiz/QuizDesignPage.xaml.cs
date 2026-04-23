@@ -78,13 +78,30 @@ namespace QuizFlash
                     teacher.TeacherViewFrame.Content= new TeacherClassroomMainPage();
                 }
             }
+        }        
+
+        public void DeleteQuestion(object sender, EventArgs e)
+        {
+            var control = sender as QuizDesignControl;
+            quizDesignPanel.Children.Remove(control);
+
+            foreach (var child in quizDesignPanel.Children)
+            {
+                if (child is QuizDesignControl quizDesignControl)
+                {   
+                  quizDesignControl.ques_Number.Text = (quizDesignPanel.Children.IndexOf(quizDesignControl) + 1).ToString();
+                }
+            }
+
+            questionCount--;
         }
-        
 
         private void add_question(object sender, RoutedEventArgs e)
         {
             questionCount++;
-            quizDesignPanel.Children.Add(new QuizDesignControl(questionCount));
+            QuizDesignControl quizDesignControl = new QuizDesignControl(questionCount);
+            quizDesignControl.DeleteRequested += DeleteQuestion;
+            quizDesignPanel.Children.Add(quizDesignControl);
         }
     }
 }

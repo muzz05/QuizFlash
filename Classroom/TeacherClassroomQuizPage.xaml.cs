@@ -16,7 +16,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 using ZstdSharp.Unsafe;
+using System.IO;
+using Microsoft.Win32;
+using System.Net.Http;
+using System.Diagnostics;
 
 namespace QuizFlash
 {
@@ -25,8 +30,8 @@ namespace QuizFlash
     /// </summary>
     public partial class TeacherClassroomQuizPage : Page
     {
-
         private bool isLoading;
+
         public TeacherClassroomQuizPage()
         {
             InitializeComponent();
@@ -48,6 +53,21 @@ namespace QuizFlash
             isLoading = loading;
             loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
             ClassroomQuizGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void SetLoadingState(bool loading, string message = "Loading...", bool isAiGeneration = false)
+        {
+            isLoading = loading;
+            loadingOverlay.Visibility = loading ? Visibility.Visible : Visibility.Collapsed;
+            //FlashcardGrid.Visibility = loading ? Visibility.Collapsed : Visibility.Visible;
+            //loadingText.Text = message;
+
+            //if (loading)
+            //{
+            //    regularLoader.Visibility = isAiGeneration ? Visibility.Collapsed : Visibility.Visible;
+            //    aiLoader.Visibility = isAiGeneration ? Visibility.Visible : Visibility.Collapsed;
+            //    cancelButton.Visibility = isAiGeneration ? Visibility.Visible : Visibility.Collapsed;
+            //}
         }
 
         private async Task LoadAsyncData()
@@ -83,19 +103,45 @@ namespace QuizFlash
             }
         }
 
+        private async void QuizControl_DeleteRequested(object sender, int quizId)
+        {
+            Database db = new Database();
+
+            string sql = "DELETE FROM Quiz WHERE id = @QuizId";
+            MySqlParameter[] quizParams =
+            {
+                    new MySqlParameter("@QuizId", quizId)
+            };
+            
+            var result = await Task.Run(() => db.ExecuteNonQuery(sql, quizParams));
+
+            sql = "DELETE FROM QuestionAnswers WHERE quizId = @QuizId";            
+
+            result = await Task.Run(() => db.ExecuteNonQuery(sql, quizParams));
+
+            sql = "DELETE FROM StudentResponse WHERE quizId = @QuizId";
+
+            result = await Task.Run(() => db.ExecuteNonQuery(sql, quizParams));
+
+            var control = sender as QuizControl;
+            TeacherClassroomQuizPanel.Children.Remove(control);
+
+            Console.WriteLine($"Deleted quiz {quizId}, Result: {result}");
+        }
+
         public void AddQuiz(int quizId,string quizname, int totalmarks, int questions, long startTimeEpoch, bool IsAttempted, int duration)
         {
             int index = TeacherClassroomQuizPanel.Children.Count - 1;
             QuizControl newQuiz = new QuizControl(quizId,quizname, totalmarks, questions, startTimeEpoch,IsAttempted, duration);
             newQuiz.Margin = new Thickness(0, 15, 15, 0);
+            newQuiz.DeleteRequested += QuizControl_DeleteRequested;
             TeacherClassroomQuizPanel.Children.Insert(index,newQuiz);
-
         }
 
         private void addquizbutton_Click(object sender, RoutedEventArgs e)
         {
             QuizDetail_Input quiz = new QuizDetail_Input();
             quiz.ShowDialog();
-        }
+        }        
     }
 }

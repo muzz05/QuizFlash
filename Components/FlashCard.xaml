@@ -12,9 +12,9 @@
         </Border.Effect>
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.8*"/>
-                <RowDefinition Height="6.4*"/>
-                <RowDefinition Height="1.8*"/>
+                <RowDefinition Height="1.9*"/>
+                <RowDefinition Height="6.25*"/>
+                <RowDefinition Height="1.85*"/>
             </Grid.RowDefinitions>
 
             <!-- Badge Ellipse for Unsaved Status -->
@@ -23,15 +23,134 @@
             </Canvas>
 
             <Grid Grid.Row="0" Margin="0,5,0,0">
-                <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="180"
-                           MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center"/>
-                <TextBox TextWrapping="Wrap" x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="170" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8.2*"/>
+                    <ColumnDefinition Width="1.8*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="140"
+                           MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center" Grid.Column="0"/>
+                <TextBox TextWrapping="Wrap" x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="160" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0"/>
+                <Button x:Name="GenerateAIButton" 
+                Grid.Column="1" Width="18" Height="18"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                BorderThickness="0" 
+                Background="Transparent"
+                Focusable="False"
+                Cursor="Hand"
+                Margin="0,0,10,0"
+                Click="GenerateAIDescription">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <ContentPresenter/>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <Icons:PackIconBootstrapIcons Kind="Stars" 
+                                  Foreground="#8B5CF6" 
+                                  Height="18" Width="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Button>
+
             </Grid>
             <Line Fill="Black"/>
+
+            <!-- Description Row with AI Icon -->
             <Grid Grid.Row="1">
-                <TextBlock x:Name="FlashCardDescription" Cursor="IBeam" Width="180" MouseDown="FlashCardTextBlock_MouseDown" Text="Enter description" />
-                <TextBox x:Name="FlashCardDescriptionBox" Width="180" TextChanged="FlashCardTextChanged" Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent" Cursor="IBeam" BorderThickness="0" TextWrapping="Wrap"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <!-- AI Loader (Hidden by default) -->
+                <Grid x:Name="aiLoader" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed" Panel.ZIndex="10" Margin="0 20 0 0">
+
+                    <Viewbox Width="70" Height="70">
+                        <Canvas Width="90" Height="90">
+                            <!-- Center Star -->
+                            <Path Data="M143.56875 182.86875C145.63125 189.05625 154.36875 189.05625 156.43125 182.86875L168.525 146.55A54.1875 54.1875 0 0 1 202.81875 112.275L239.11875 100.18125C245.30625 98.11875 245.30625 89.38125 239.11875 87.31875L202.8 75.2250000000001A54.1875 54.1875 0 0 1 168.525 40.93125L156.43125 4.63125A6.76875 6.76875 0 0 0 143.56875 4.63125L131.4750000000001 40.95A54.1875 54.1875 0 0 1 97.2 75.225L60.88125 87.31875A6.76875 6.76875 0 0 0 60.88125 100.18125L97.2 112.275A54.1875 54.1875 0 0 1 131.4750000000001 146.55L143.56875 182.86875z"
+                                  Fill="#8B5CF6" Opacity="0.95" Width="80" Height="80" Stretch="Uniform"
+                                  RenderTransformOrigin="0.5,0.5" Canvas.Left="5" Canvas.Top="5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="centerStarScale" ScaleX="0.35" ScaleY="0.35"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+
+                            <!-- Top-Left Star -->
+                            <Path Data="M71.1375 278.475A4.06875 4.06875 0 0 0 78.8625 278.475L86.11875 256.6875C89.3625 246.975 96.975 239.3625 106.6875 236.11875L128.475 228.8625A4.06875 4.06875 0 0 0 128.475 221.1375L106.6875 213.88125A32.5125 32.5125 0 0 1 86.11875 193.3125L78.8625 171.525A4.06875 4.06875 0 0 0 71.1375 171.525L63.88125 193.3125A32.5125 32.5125 0 0 1 43.3125 213.88125L21.525 221.1375A4.06875 4.06875 0 0 0 21.525 228.8625L43.3125 236.11875A32.5125 32.5125 0 0 1 63.88125 256.6875L71.1375 278.475z"
+                                  Fill="#8B5CF6" Opacity="0.85" Width="45" Height="45" Stretch="Uniform"
+                                  RenderTransformOrigin="0.5,0.5" Canvas.Left="5" Canvas.Top="5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="topLeftStarScale" ScaleX="0.25" ScaleY="0.25"/>
+                                        <RotateTransform x:Name="topLeftStarRotate"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+
+                            <!-- Bottom-Right Star -->
+                            <Path Data="M203.68125 298.14375A2.71875 2.71875 0 0 0 208.81875 298.14375L213.65625 283.63125C215.8125 277.14375 220.89375 272.0625 227.38125 269.90625L241.89375 265.06875A2.71875 2.71875 0 0 0 241.89375 259.93125L227.38125 255.09375A21.675 21.675 0 0 1 213.65625 241.36875L208.81875 226.85625A2.71875 2.71875 0 0 0 203.68125 226.85625L198.84375 241.36875A21.675 21.675 0 0 1 185.11875 255.09375L170.625 259.93125A2.71875 2.71875 0 0 0 170.625 265.06875L185.1375 269.90625C191.625 272.0625 196.70625 277.14375 198.8625 283.63125L203.68125 298.125z"
+                                  Fill="#8B5CF6" Opacity="0.85" Width="35" Height="35" Stretch="Uniform"
+                                  RenderTransformOrigin="0.5,0.5" Canvas.Right="10" Canvas.Bottom="10">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="bottomRightStarScale" ScaleX="0.3" ScaleY="0.3"/>
+                                        <RotateTransform x:Name="bottomRightStarRotate"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Grid.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimation Storyboard.TargetName="centerStarScale" Storyboard.TargetProperty="ScaleX"
+                                                   From="0.35" To="0.45" Duration="0:0:1.4" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="centerStarScale" Storyboard.TargetProperty="ScaleY"
+                                                   From="0.35" To="0.45" Duration="0:0:1.4" AutoReverse="True"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.2">
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarScale" Storyboard.TargetProperty="ScaleX"
+                                                   From="0.25" To="0.35" Duration="0:0:1.6" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarScale" Storyboard.TargetProperty="ScaleY"
+                                                   From="0.25" To="0.35" Duration="0:0:1.6" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="topLeftStarRotate" Storyboard.TargetProperty="Angle"
+                                                   From="0" To="-360" Duration="0:0:6" RepeatBehavior="Forever"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever" BeginTime="0:0:0.4">
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarScale" Storyboard.TargetProperty="ScaleX"
+                                                   From="0.3" To="0.4" Duration="0:0:1.4" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarScale" Storyboard.TargetProperty="ScaleY"
+                                                   From="0.3" To="0.4" Duration="0:0:1.4" AutoReverse="True"/>
+                                    <DoubleAnimation Storyboard.TargetName="bottomRightStarRotate" Storyboard.TargetProperty="Angle"
+                                                   From="0" To="360" Duration="0:0:6" RepeatBehavior="Forever"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Grid.Triggers>
+
+                </Grid>
+                <TextBlock x:Name="loadingDescription" Text="Generating description based on the title..." Visibility="Collapsed"
+FontSize="12" Margin="0,95,0,0" HorizontalAlignment="Center" Width="180" TextWrapping="Wrap" TextAlignment="Center"/>
+
+                <!-- Description Content -->
+                <Grid Grid.Row="1" x:Name="DescriptionContent">
+                    <TextBlock x:Name="FlashCardDescription" Cursor="IBeam" Width="180" 
+                               MouseDown="FlashCardTextBlock_MouseDown" Text="Enter description" />
+                    <TextBox x:Name="FlashCardDescriptionBox" Width="180" TextChanged="FlashCardTextChanged" 
+                             Background="Transparent" HorizontalAlignment="Center" BorderBrush="Transparent" 
+                             Cursor="IBeam" BorderThickness="0" TextWrapping="Wrap"/>
+                </Grid>
             </Grid>
+
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3.33*"/>
