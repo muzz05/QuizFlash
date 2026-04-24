@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Share Flashcard (Invalid)</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>211c8428-61f4-4f8b-b4c2-2191d86b7406</testCaseGuid>
+</TestCaseEntity>

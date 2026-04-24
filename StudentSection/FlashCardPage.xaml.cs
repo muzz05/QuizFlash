@@ -94,7 +94,7 @@ namespace QuizFlash
             try
             {
                 int newCardId = await CreateEmptyFlashcardAsync();
-                AddFlashCard(string.Empty, string.Empty, newCardId);
+                AddFlashCardNew(string.Empty, string.Empty, newCardId);
             }
             catch (Exception ex)
             {
@@ -359,12 +359,21 @@ namespace QuizFlash
 
         private void AddFlashCard(string title, string description, int id)
         {
-            int index = Math.Max(0, WrapPanelFlashCards.Children.Count - 1);
+            int index = Math.Max(0, WrapPanelFlashCards.Children.Count);
             Flashcard newFlashCard = new Flashcard(title, description, id)
             {
                 Margin = new Thickness(0, 0, 15, 15)
             };
             WrapPanelFlashCards.Children.Insert(index, newFlashCard);
+        }
+
+        private void AddFlashCardNew(string title, string description, int id)
+        {
+            Flashcard newFlashCard = new Flashcard(title, description, id)
+            {
+                Margin = new Thickness(0, 0, 15, 15)
+            };
+            WrapPanelFlashCards.Children.Insert(2, newFlashCard);
         }
 
         private void AddAIFlashCard(string title, string description, int id)
@@ -373,20 +382,20 @@ namespace QuizFlash
             {
                 Margin = new Thickness(0, 0, 15, 15)
             };
-            WrapPanelFlashCards.Children.Insert(1, newFlashCard);
+            WrapPanelFlashCards.Children.Insert(2, newFlashCard);
         }
 
         private void ShowErrorMessage(string title, string message)
         {
             CustomMessageBox errorMsg = new CustomMessageBox(title, message, "Error");
-            errorMsg.ShowDialog();
+            errorMsg.Show();
         }
 
 
         private void ShowInfoMessage(string title, string message)
         {
             CustomMessageBox infoMsg = new CustomMessageBox(title, message, "Info");
-            infoMsg.ShowDialog();
+            infoMsg.Show();
         }
     }
 

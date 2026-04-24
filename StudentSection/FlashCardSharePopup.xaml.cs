@@ -59,7 +59,7 @@ namespace QuizFlash
             if(CheckingStudent.Rows.Count == 0)
             {
                 CustomMessageBox error = new CustomMessageBox("Incorrect Code", "Please enter the correct student code", "Error");
-                error.ShowDialog();
+                error.Show();
             }
             else
             {
@@ -74,7 +74,7 @@ namespace QuizFlash
                 {
                     this.Close();
                     CustomMessageBox success = new CustomMessageBox("Share Success", "Flashcard has been shared successfully", "Success");
-                    success.ShowDialog();
+                    success.Show();
                 }
             }
 

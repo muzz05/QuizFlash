@@ -215,13 +215,13 @@ namespace QuizFlash
         private void ShareFlashCard(object sender, RoutedEventArgs e)
         {
             FlashCardSharePopup Share = new FlashCardSharePopup(FlashCardId);
-            Share.ShowDialog();
+            Share.Show();
         }
 
         private void ShowErrorMessage(string title, string message)
         {
             CustomMessageBox errorMsg = new CustomMessageBox(title, message, "Error");
-            errorMsg.ShowDialog();
+            errorMsg.Show();
         }
     }
 }

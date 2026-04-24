@@ -186,7 +186,8 @@
                         <Border CornerRadius="20" Height="230" Width="200" BorderThickness="1" Margin="0,0,15,15" Background="#c3c4cf">
                             <Grid Height="220" Width="200">
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Button Width="60" Height="60" Click="UploadPdf_Click" Cursor="Hand" Margin="0,0,0,10">
+                                    <Button Width="60" Height="60" Click="UploadPdf_Click" Cursor="Hand" Margin="0,0,0,10" x:Name="UploadButton"
+        AutomationProperties.AutomationId="UploadPdfButton">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="50" Background="#272538">
@@ -226,7 +227,7 @@
                             </Border.BorderBrush>
                             <Grid Height="220" Width="200">
                                 <Button Width="50" Height="50" VerticalAlignment="Center" Click="AddFlashCard_Click" 
-                                        Cursor="Hand" HorizontalAlignment="Center">
+                                        Cursor="Hand" HorizontalAlignment="Center" x:Name="AddManualFlashcardButton">
                                     <Button.Template>
                                         <ControlTemplate TargetType="Button">
                                             <Border CornerRadius="50" Background="#c3c4cf">

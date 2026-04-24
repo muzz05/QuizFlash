@@ -18,9 +18,17 @@
             </Grid.RowDefinitions>
 
             <!-- Badge Ellipse for Unsaved Status -->
-            <Canvas x:Name="UnsavedBadge" HorizontalAlignment="Right" Margin="0, 6, 8,0" Visibility="Collapsed">
-                <Ellipse Width="8" Height="8" Fill="#353340"/>
-            </Canvas>
+            <ContentControl x:Name="UnsavedBadge" 
+                AutomationProperties.AutomationId="UnsavedBadge"
+                HorizontalAlignment="Right" 
+                Margin="0, 6, 8,0" 
+                Visibility="Hidden" 
+                IsTabStop="False"
+                Focusable="False">
+                <Canvas>
+                    <Ellipse Width="8" Height="8" Fill="#353340"/>
+                </Canvas>
+            </ContentControl>
 
             <Grid Grid.Row="0" Margin="0,5,0,0">
                 <Grid.ColumnDefinitions>
@@ -30,24 +38,35 @@
                 <TextBlock x:Name="FlashCardTitle" TextAlignment="Justify" Cursor="IBeam" FontWeight="Bold" Width="140"
                            MouseDown="FlashCardTitleTextBlock_MouseDown" Text="Enter Title" HorizontalAlignment="Center" Grid.Column="0"/>
                 <TextBox TextWrapping="Wrap" x:Name="FlashCardTitleBox" FontWeight="Bold" TextChanged="FlashCardTitleTextBox_TextChanged" Background="Transparent" BorderBrush="Transparent" Width="160" Cursor="IBeam" BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0"/>
-                <Button x:Name="GenerateAIButton" 
-                Grid.Column="1" Width="18" Height="18"
-                HorizontalAlignment="Right" VerticalAlignment="Top"
-                BorderThickness="0" 
-                Background="Transparent"
-                Focusable="False"
-                Cursor="Hand"
-                Margin="0,0,10,0"
-                Click="GenerateAIDescription">
+                <Button x:Name="GenerateAIButton"
+        Grid.Column="1"
+        Width="32" Height="32"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Top"
+        BorderThickness="0"
+        Background="Transparent"
+        Cursor="Hand"
+        Margin="0,0,6,0"
+        Click="GenerateAIDescription">
+
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <ContentPresenter/>
+                            <Border Background="Transparent"
+                    Width="32"
+                    Height="32"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+                                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            </Border>
                         </ControlTemplate>
                     </Button.Template>
 
-                    <Icons:PackIconBootstrapIcons Kind="Stars" 
-                                  Foreground="#8B5CF6" 
-                                  Height="18" Width="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Icons:PackIconBootstrapIcons Kind="Stars"
+                                  Foreground="#8B5CF6"
+                                  Height="18"
+                                  Width="18"/>
                 </Button>
 
             </Grid>
@@ -151,13 +170,13 @@ FontSize="12" Margin="0,95,0,0" HorizontalAlignment="Center" Width="180" TextWra
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1" HorizontalAlignment="Left" Margin="0,131,0,0" Grid.RowSpan="2" Width="180">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3.33*"/>
                     <ColumnDefinition Width="3.33*"/>
                     <ColumnDefinition Width="3.33*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="SaveFlashCard">
+                <Button Grid.Column="0" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="SaveFlashCard" x:Name="SaveFlashcardBtn" Margin="16,6,16,0" VerticalAlignment="Top">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
@@ -166,7 +185,7 @@ FontSize="12" Margin="0,95,0,0" HorizontalAlignment="Center" Width="180" TextWra
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Grid.Column="1" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="DeleteFlashCard">
+                <Button Grid.Column="1" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="DeleteFlashCard" x:Name="DeleteFlashcardBtn">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
@@ -175,7 +194,7 @@ FontSize="12" Margin="0,95,0,0" HorizontalAlignment="Center" Width="180" TextWra
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Grid.Column="2" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="ShareFlashCard">
+                <Button Grid.Column="2" Width="28" Height="28" BorderThickness="0" Cursor="Hand" Click="ShareFlashCard" AutomationProperties.AutomationId="ShareFlashcardBtn" x:Name="ShareFlashcardBtn">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="15" Background="#353340">
